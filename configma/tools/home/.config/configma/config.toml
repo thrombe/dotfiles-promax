@@ -8,6 +8,8 @@ profiles = [
       "nixos",
       "env",
       "tools",
+      "easyeffects-irs",
+      "game-savefiles",
       "kde-gl553ve",
       "games-gl553ve",
     ],
@@ -18,8 +20,10 @@ profiles = [
       "nixos",
       "env",
       "tools",
-      "kde-ga402xu",
-      "games-ga402xu",
+      "easyeffects-irs",
+      "game-savefiles",
+      # "kde-ga402xu",
+      # "games-ga402xu",
     ],
   },
   {
@@ -34,6 +38,16 @@ profiles = [
 ]
 
 modules = [
-  { name = "phone-private", path = "~/0Git/dotfiles-promax-private/configma" },
-  # { name = "game-savefiles", path = "~/0Git/game-savefiles" },
+  {
+    name = "phone-private",
+    path = "~/0Git/dotfiles-promax-private/configma",
+  },
+  {
+    name = "easyeffects-irs",
+    path = "~/0Git/dotfiles-promax-private/configma",
+  },
+  {
+    name = "game-savefiles",
+    path = "~/0Git/dotfiles-promax-private/configma",
+  },
 ]
