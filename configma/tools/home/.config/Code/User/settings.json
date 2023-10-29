@@ -1,0 +1,165 @@
+{
+    "editor.inlayHints.fontFamily": "Courier New",
+    "editor.inlayHints.fontSize": 11,
+    "workbench.colorCustomizations": {
+      "[Default Dark+]": {
+        "editorInlayHint.foreground": "#a5a5a5f0",
+        "editorInlayHint.background": "#3d3d3d48",
+  
+        "editor.foldBackground": "#25272bcc", // color of collapsed code
+      },
+      "[Gruvbox Dark (Hard)]": {
+        "editorInlayHint.foreground": "#a5a5a5f0",
+        "editorInlayHint.background": "#3d3d3d48",
+  
+        "editor.foldBackground": "#25272bcc", // color of collapsed code
+      },
+      "[gruvboxConcoctis dark hard]": {
+        "editorInlayHint.foreground": "#a5a5a5f0",
+        "editorInlayHint.background": "#3d3d3d48",
+  
+        "editor.foldBackground": "#25272bcc", // color of collapsed code
+
+        "sideBar.background": "#232323",
+        "editor.background": "#232323",
+      }
+    },
+
+    "editor.semanticTokenColorCustomizations": {
+        "[Default Dark+]": {
+            "enabled": true,
+            "rules": {
+                "*.mutable": { // removing underline from mutable variables in rust
+                    "underline": false
+                }
+            }
+        }
+    },
+
+    "better-comments.tags": [
+      {
+        "tag": "bad:", // BAD:
+        "color": "#FF2D00",
+        "strikethrough": false,
+        "underline": false,
+        "backgroundColor": "transparent",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "tag": "?", // ?
+        "color": "#3498DB",
+        "strikethrough": false,
+        "underline": false,
+        "backgroundColor": "transparent",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "tag": "//", // p
+        "color": "#474747",
+        "strikethrough": true,
+        "underline": false,
+        "backgroundColor": "transparent",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "tag": "todo:", // TODO:
+        "color": "#FF8C00",
+        "strikethrough": false,
+        "underline": false,
+        "backgroundColor": "transparent",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "tag": "dbg:", // DBG:
+        "color": "#67dae9",
+        "strikethrough": false,
+        "underline": false,
+        "backgroundColor": "transparent",
+        "bold": false,
+        "italic": false
+      },
+      {
+        "tag": "fix:", // FIX:
+        "color": "#ff5757",
+        "strikethrough": false,
+        "underline": false,
+        "backgroundColor": "transparent",
+        "bold": false,
+        "italic": false
+      },
+    ],
+
+    "activitusbar.views": [
+      {
+        "name": "explorer",
+        "codicon": "explorer-view-icon"
+      },
+      {
+        "name": "search",
+        "codicon": "search-view-icon"
+      },
+      {
+        "name": "scm",
+        "codicon": "source-control-view-icon"
+      },
+      {
+        "name": "debug",
+        "codicon": "run-view-icon"
+      },
+      {
+        "name": "extensions",
+        "codicon": "extensions-view-icon"
+      },
+      {
+        "name": "jupyter",
+        "codicon": "notebook"
+      }
+    ],
+
+    // to make vscode respect key remaps (needs restart to take effect)
+    "keyboard.dispatch": "keyCode",
+    
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 100, // 1000
+    "editor.fontSize": 14.3,
+    // "editor.fontSize": 20,
+    "window.zoomLevel": -1,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "'Hack', 'PowerlineSymbols'",
+    "markdown-preview-enhanced.previewTheme": "github-dark.css",
+    "workbench.colorTheme": "gruvboxConcoctis dark hard",
+    "gruvboxMaterial.darkContrast": "hard",
+    "gruvboxMaterial.highContrast": true,
+    // "glassit.alpha": 209,
+    // "glassit-linux.opacity": 90,
+    "vscode-blur-linux.opacity": 95,
+    "vscode-blur-linux.blur": true,
+    "editor.mouseWheelScrollSensitivity": 1.6,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.tabs.enabled": true,
+    "window.menuBarVisibility": "toggle", // alt
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": false,
+    "explorer.openEditors.visible": 15,
+    "workbench.editor.showTabs": false,
+    "explorer.autoReveal": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "git.timeline.showUncommitted": true,
+    "workbench.localHistory.enabled": false, // disable the file_saved spam from timeline
+    "git.terminalAuthentication": false, // git push in integrated terminal makes a pop upin vscode
+
+    // quick toggle section
+    // "rust-analyzer.checkOnSave.command": "clippy",
+    // "errorLens.enabled": false,
+    // "editor.inlayHints.enabled": "offUnlessPressed", // ctrl + alt
+    "editor.inlayHints.enabled": "onUnlessPressed", // ctrl + alt
+    
+    "sonarlint.ls.javaHome": "/home/issac/.vscode/extensions/sonarsource.sonarlint_managed-jre/jre/jdk-11.0.12+7-jre",
+    "workbench.editorAssociations": { // what is this?
+        "*.pdf": "default"
+    },
+}

@@ -1,0 +1,135 @@
+
+verbs: [
+    {
+        key: h
+        execution: ":back"
+    }
+    {
+        key: l
+        execution: ":open_stay"
+    }
+    {
+        key: ctrl-l
+        execution: ":panel_right"
+    }
+    {
+        key: ctrl-h
+        execution: ":panel_left_no_open"
+    }
+    {
+        invocation: hx
+        execution: "hx {file}"
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: bat
+        execution: "bat --paging always {file}"
+        key: ctrl-e
+        leave_broot: false
+    }
+    {
+        invocation: rd
+        execution: "zsh -i -c \"rd {file}\""
+        leave_broot: false
+    }
+    {
+        invocation: d
+        execution: "zsh -i -c \"d {directory}\""
+        leave_broot: false
+    }
+    {
+        invocation: o
+        execution: "zsh -i -c \"open {file}\""
+        leave_broot: false
+    }
+    {
+        invocation: wlp
+        execution: "zsh -i -c \"wlp {file}\""
+        leave_broot: false
+    }
+    {
+        invocation: lf
+        execution: "zsh -i -c \"lf {directory}\""
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: bt
+        execution: "zsh -i -c \"x konsole --workdir {directory} -e 'zsh -i -c bt'\""
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: t
+        execution: "$SHELL"
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: tt
+        execution: "zsh -ic \"new_terminal {directory}\""
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: code
+        execution: "code {directory}"
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: touch {name}
+        execution: "touch {directory}/{name}"
+        leave_broot: false
+    }
+    {
+        invocation: cpv
+        execution: "cp -r {file} {other-panel-directory}"
+        leave_broot: false
+    }
+    {
+        invocation: home
+        execution: ":focus ~"
+    }
+    {
+        key: ctrl-h
+        execution: ":toggle_hidden"
+    }
+    {
+        invocation: shb {command}
+        execution: "zsh -i -c \"{command} | bat --paging always --plain\""
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: sh {command}
+        execution: "zsh -i -c \"{command}\""
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: shf {command}
+        execution: "zsh -i -c \"{command} {file}\""
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
+        invocation: shfb {command}
+        execution: "zsh -i -c \"{command} {file} | bat --paging always --plain\""
+        set_working_dir: true
+        leave_broot: false
+    }
+    # {
+    #     invocation: n {command}
+    #     # execution: "zsh -i -c \"x konsole --workdir {directory} -e 'zsh -i -c {command}'\""
+    #     execution: "zsh -i -c \"{command}\""
+    #     leave_broot: false
+    # }
+    # {
+    #     invocation: nf {command}
+    #     execution: "zsh -i -c \"x konsole --workdir {directory} -e 'zsh -i -c \\\'{command} {file}\\\''\""
+    #     leave_broot: false
+    # }
+]
+

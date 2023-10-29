@@ -1,0 +1,140 @@
+
+# use-grammars = { only = [ "rust", "c", "cpp", "wgsl", "python", "bash", "glsl", "toml", "yaml", "markdown", "javascript", "typescript", "svelte", "css", "scss" ] }
+
+[[language]]
+name = "rust"
+auto-format = false
+
+[language-server.rust-analyzer.config]
+# - [`rust-analyzer`-specific target directory](https://github.com/rust-lang/rust-analyzer/issues/6007#issuecomment-1379342831)
+checkOnSave = { command = "clippy", features = "all", extraArgs = ["--profile", "rust-analyzer"] }
+# checkOnSave = { command = "check", extraArgs = ["--profile", "rust-analyzer"] }
+cargo = { features = "all" }
+
+# - [set extra features](https://github.com/helix-editor/helix/issues/2063)
+# checkOnSave = { command = "clippy", extraArgs = ["--target-dir", "target/rust-analyzer"] }
+
+
+[[language]]
+name = "java"
+auto-format = false
+indent = { tab-width = 4, unit = "    " }
+language-servers = [ "jdt-ls" ]
+
+[language-server.jdt-ls]
+language-id = "java"
+command = "jdt-language-server"
+args = [ "-data", ".cache/jdtls" ]
+# checkOnSave = { command = "jdt-langage-server" }
+
+
+# - [helix python lsp](https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers#python---ruff)
+[[language]]
+name = "python"
+auto-format = false
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "black", args = ["--quiet", "-"] }
+# not sure if it is necessary to mention both as helix docs have just one, but ruff has to be used with an lsp
+# language-servers = [ "ruff-lsp"]
+language-servers = [ "pylsp", "ruff-lsp"]
+
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+
+
+[[language]]
+name = "nix"
+auto-format = false
+# indent = { tab-width = 4, unit = "    " }
+formatter = { command = "alejandra", args = [] }
+
+[[language]]
+name = "json"
+auto-format = false
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "toml"
+auto-format = false
+
+[[language]]
+name = "javascript"
+auto-format = false
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "typescript"
+auto-format = false
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "c"
+auto-format = false
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "cpp"
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "bash"
+auto-format = false
+shebangs = [ "sh", "bash" ]
+
+
+[[language]]
+name = "svelte"
+auto-format = false
+indent = { tab-width = 4, unit = "    " }
+language-servers = [ "svelteserver", "tailwindcss-svelte" ]
+
+[language-server.tailwindcss-svelte]
+# language-id = "svelte"
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+config = { }
+
+[language-server.svelteserver]
+language-id = "svelte"
+# command = "node /home/issac/1Git/code_read/language-tools/packages/language-server/bin/server.js"
+command = "svelteserver"
+args = ["--stdio"]
+
+
+
+# - [Is there any plan to support typst? · Issue #6688 · helix-editor/helix · GitHub](https://github.com/helix-editor/helix/issues/6688)
+# - [Provide grammars and LSP · Issue #118 · typst/typst · GitHub](https://github.com/typst/typst/issues/118)
+[[language]]
+name = "typst"
+scope = "source.typst"
+# injection-regex = "typst"
+roots = ["typst.toml"]
+comment-token = "//"
+file-types = ["typ"]
+indent = { tab-width = 4, unit = "    " }
+language-servers = [ "typst-lsp" ]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'$' = '$'
+
+[language-server.typst-lsp]
+language-id = "typst"
+command = "typst-lsp"
+# - [Can't disable `exportPdf` · Issue #265 · nvarner/typst-lsp · GitHub](https://github.com/nvarner/typst-lsp/issues/265)
+# - [disable compile on save · nvarner/typst-lsp · Discussion #158 · GitHub](https://github.com/nvarner/typst-lsp/discussions/158#discussioncomment-6272972)
+config = { exportPdf = "never" }
+
+# "hx --grammar fetch; hx --grammar build" seems to work even for nix wrapped helix
+# also need to add queries to ~/.config/helix/runtime/queries/typst as mentioned in the repo
+# - [frozolotl/tree-sitter-typst](https://github.com/frozolotl/tree-sitter-typst)
+[[grammar]]
+name = "typst"
+# source = { path = "/path/to/git-clone/tree-sitter-typst" }
+source = { git = "https://github.com/frozolotl/tree-sitter-typst", rev = "b345818903b55ea01ab351c13e25b2d2dd9dd395"}
+# source = { git = "https://github.com/SeniorMars/tree-sitter-typst", rev = "2e66ef4b798a26f0b82144143711f3f7a9e8ea35"}

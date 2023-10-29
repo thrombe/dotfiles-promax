@@ -1,0 +1,24 @@
+
+
+# setup (as of april 2022)
+#
+# clone repo
+# compile helix/helix-term
+# paste the configs in ~/.configs/helix
+# simlink/paste the helix/runtime in .config/helix/runtime for syntax highlighting and stuff
+# install language servers
+# https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers
+# pip install python-lsp-server
+# copy paste the rust-analyzer binary from its releases in $PATH somewhere (or install from some package manager)
+
+# theme = "metheme"
+theme = "gruvbox_transparent"
+
+[editor]
+line-number = "relative"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.lsp]
+display-inlay-hints = true

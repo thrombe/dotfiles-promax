@@ -1,0 +1,47 @@
+{
+    "output": {
+        "blocklist": [],
+        "loudness#0": {
+            "bypass": false,
+            "clipping": false,
+            "clipping-range": 6.0,
+            "fft": "4096",
+            "input-gain": 0.0,
+            "output-gain": -0.5,
+            "std": "ISO226-2003",
+            "volume": 3.0000000000000013
+        },
+        "pitch#0": {
+            "bypass": true,
+            "cents": 0,
+            "detector": "Compound",
+            "formant": "Shifted",
+            "input-gain": 0.0,
+            "mode": "HighSpeed",
+            "octaves": 0,
+            "output-gain": 0.0,
+            "phase": "Laminar",
+            "semitones": 0,
+            "transients": "Crisp"
+        },
+        "plugins_order": [
+            "loudness#0",
+            "pitch#0",
+            "speex#0"
+        ],
+        "speex#0": {
+            "bypass": false,
+            "enable-agc": false,
+            "enable-denoise": true,
+            "enable-dereverb": false,
+            "input-gain": 0.0,
+            "noise-suppression": -40,
+            "output-gain": 19.8,
+            "vad": {
+                "enable": true,
+                "probability-continue": 90,
+                "probability-start": 95
+            }
+        }
+    }
+}
