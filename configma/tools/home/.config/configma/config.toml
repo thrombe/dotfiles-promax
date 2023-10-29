@@ -1,53 +1,50 @@
 
 repo = "~/0Git/dotfiles-promax/configma"
 
-profiles = [
-  {
-    name = "gl553ve",
-    modules = [
-      "nixos",
-      "env",
-      "tools",
-      "easyeffects-irs",
-      "game-savefiles",
-      "kde-gl553ve",
-      "games-gl553ve",
-    ],
-  },
-  {
-    name = "ga402xu",
-    modules = [
-      "nixos",
-      "env",
-      "tools",
-      "easyeffects-irs",
-      "game-savefiles",
-      # "kde-ga402xu",
-      # "games-ga402xu",
-    ],
-  },
-  {
-    name = "nothing",
-    modules = [
-      "tools",
-      "env",
-      "phone",
-      "phone-private",
-    ],
-  },
+[[profiles]]
+name = "gl553ve"
+modules = [
+  "nixos",
+  "env",
+  "tools",
+  "easyeffects-irs",
+  "game-savefiles",
+  "kde-gl553ve",
+  "games-gl553ve",
 ]
 
+[[profiles]]
+name = "ga402xu"
 modules = [
-  {
-    name = "phone-private",
-    path = "~/0Git/dotfiles-promax-private/configma",
-  },
-  {
-    name = "easyeffects-irs",
-    path = "~/0Git/dotfiles-promax-private/configma",
-  },
-  {
-    name = "game-savefiles",
-    path = "~/0Git/dotfiles-promax-private/configma",
-  },
+  "nixos",
+  "env",
+  "tools",
+  "easyeffects-irs",
+  "game-savefiles",
+  # "kde-ga402xu",
+  # "games-ga402xu",
 ]
+
+[[profiles]]
+name = "nothing"
+modules = [
+  "tools",
+  "env",
+  "phone",
+  "phone-private",
+]
+
+[[modules]]
+name = "phone-private"
+path = "~/0Git/dotfiles-promax-private/configma"
+
+[[modules]]
+name = "easyeffects-irs"
+path = "~/0Git/dotfiles-promax-private/configma"
+
+[[modules]]
+name = "game-savefiles"
+path = "~/0Git/dotfiles-promax-private/configma"
+
+
+

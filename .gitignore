@@ -1,6 +1,7 @@
 
 s3_temp
 
-*/home/.config/configma/dumps
+configma/*/home/.config/configma/dumps
+configma/*/home/.config/configma/profile.active.toml
 
 */home/.config/viper4linux/audio.conf
