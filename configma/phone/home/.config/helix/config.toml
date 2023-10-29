@@ -1,0 +1,6 @@
+
+
+theme = "my_theme"
+
+[editor]
+line-number = "relative"

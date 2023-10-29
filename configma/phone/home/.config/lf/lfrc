@@ -1,0 +1,120 @@
+# Basic Settings
+#set hidden false
+set ignorecase true
+set icons true
+set autoquit true
+set incfilter true
+set incsearch true
+set shell zsh
+set shellopts -i
+
+
+# Custom Functions
+
+# cmd open ${{
+#     open "$f"
+# }}
+
+# cmd konsole ${{
+#     # detach konsole --workdir "$(dirname "$f")"
+#     
+#     # using alias from ~/.bash_aliases
+#     t
+# }}
+
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zsh ${{
+    zsh
+}}
+
+# yeeting un-necessary bindings
+map a
+map b
+map c
+map d
+map e
+map f
+map g
+map h
+map i
+map j
+map k
+map l
+map m
+map n
+map o
+map p
+# map q # quit
+map r
+map s
+map t
+map u
+map v
+map w
+map x
+map y
+map z
+# map / # search
+map gg
+map gh
+map ,
+map ;
+map [
+map ]
+map <enter>
+cmap <c-m>
+cmap <c-v>
+
+# for some reason, ' and " disable only is written twice or something
+map "'"
+map "'"
+map '"'
+map '"'
+
+# custom shortcuts
+map . shell
+map <gt> zsh # <gt> means ">" symbol
+# map ? konsole
+
+
+
+# Basic Functions
+# map . set hidden!
+# map DD delete
+# map p paste
+# map x cut
+# map y copy
+# map <enter> open
+# map R reload
+# map mf mkfile
+# map md mkdir
+# map C clear
+
+# Movement
+# map gd cd ~/documents
+# map gD cd ~/downloads
+# map gp cd ~/pictures
+# map gc cd ~/.config
