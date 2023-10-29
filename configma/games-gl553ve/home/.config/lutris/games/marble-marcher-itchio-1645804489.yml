@@ -1,0 +1,5 @@
+game:
+  exe: /home/issac/Games/marble-marcher/MarbleMarcher.exe
+system: {}
+wine:
+  version: lutris-fshack-7.1-x86_64

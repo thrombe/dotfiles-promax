@@ -1,0 +1,14 @@
+game:
+  arch: win64
+  exe: /home/issac/Games/Sekiro - Shadows Die Twice/sekiro.exe
+  prefix: ~/Games/0prefixes/nier-prefix
+system:
+  env:
+    __GL_SHADER_DISK_CACHE: '1'
+    __GL_SHADER_DISK_CACHE_PATH: /home/issac/Games/sekiro-shadows-die-twice
+    __GL_THREADED_OPTIMIZATIONS: '1'
+    mesa_glthread: 'true'
+    vblank_mode: '0'
+  mangohud: vk64
+wine:
+  esync: true

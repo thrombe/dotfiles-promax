@@ -1,0 +1,7 @@
+game:
+  arch: win64
+  exe: /home/issac/Games/NieR Automata Game of the YoRHa Edition/NieRAutomata.exe
+  prefix: ~/Games/0prefixes/nier-prefix
+system: {}
+wine:
+  version: lutris-fshack-6.21-x86_64

@@ -1,0 +1,5 @@
+game:
+  exe: /home/issac/Games/Rain_World/RainWorld.exe
+  prefix: ~/Games/0prefixes/nier-prefix
+system: {}
+wine: {}

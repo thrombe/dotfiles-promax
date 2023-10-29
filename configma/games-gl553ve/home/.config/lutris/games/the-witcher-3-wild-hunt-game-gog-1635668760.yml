@@ -1,0 +1,12 @@
+game:
+  exe: /home/issac/Games/The Witcher 3 - Wild Hunt/bin/x64/witcher3.exe
+  prefix: ~/Games/0prefixes/the-witcher-3-wild-hunt-game-of-the-year-edition
+system:
+  env:
+    __GL_SHADER_DISK_CACHE: '1'
+    __GL_SHADER_DISK_CACHE_PATH: /home/issac/Games/the-witcher-3-wild-hunt-game-of-the-year-edition
+  mangohud: ''
+  pulse_latency: false
+wine:
+  Desktop: false
+  version: lutris-ge-6.16-1-x86_64

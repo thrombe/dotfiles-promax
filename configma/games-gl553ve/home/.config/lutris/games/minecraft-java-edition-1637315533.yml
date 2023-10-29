@@ -1,0 +1,6 @@
+game:
+  exe: /home/issac/Games/minecraft/TLauncher/launch.sh
+linux: {}
+system:
+  disable_runtime: true
+  terminal: false

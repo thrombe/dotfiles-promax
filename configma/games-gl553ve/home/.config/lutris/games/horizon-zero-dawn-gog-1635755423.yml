@@ -1,0 +1,20 @@
+game:
+  exe: /run/media/issac/binbows/Users/issac/Desktop/Gamse/Horizon - Zero Down CE/HorizonZeroDawn.exe
+  gogid: '1209025141'
+  prefix: /home/issac/Games/0prefixes/horizon-zero-dawn
+system:
+  disable_compositor: false
+  disable_runtime: false
+  env: {}
+  mangohud: vk64
+  prime: false
+  reset_desktop: true
+  terminal: false
+wine:
+  Desktop: false
+  WineDesktop: 1920x1080
+  custom_wine_path: ''
+  dxvk: true
+  esync: false
+  fsr: true
+  version: lutris-fshack-7.2-x86_64

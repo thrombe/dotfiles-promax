@@ -1,0 +1,25 @@
+game:
+  arch: win64
+  exe: /home/issac/Games/0prefixes/cemu/drive_c/Program Files (x86)/cemu_1.25.0/Cemu.exe
+  prefix: /home/issac/Games/0prefixes/cemu
+system:
+  disable_compositor: false
+  dri_prime: true
+  env:
+    R600_DEBUG: nohyperz
+    __GL_THREADED_OPTIMIZATIONS: '1'
+    mesa_glthread: 'true'
+    vblank_mode: '0'
+  prefix_command: ''
+  prime: true
+  pulse_latency: false
+  terminal: false
+wine:
+  Desktop: false
+  dxvk: true
+  esync: true
+  overrides:
+    dbghelp: native,builtin
+    mscoree: disabled
+    mshtml: disabled
+  version: lutris-ge-6.16-1-x86_64
