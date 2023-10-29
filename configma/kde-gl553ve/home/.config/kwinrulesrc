@@ -1,0 +1,113 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
+
+[1]
+Description=yeet min size
+clientmachine=localhost
+minsize=1,1
+minsizerule=2
+title=win10 on QEMU/KVM
+types=289
+wmclasscomplete=true
+
+[2]
+Description=yeet borders
+minsize=1,1
+minsizerule=2
+types=289
+wmclass=.*
+wmclasscomplete=true
+
+[2e99d840-6130-4214-a2eb-9ab1255a765d]
+Description=Window settings for virt-manager
+clientmachine=localhost
+noborder=true
+noborderrule=2
+title=manjaro on QEMU/KVM
+titlematch=1
+types=1
+wmclass=virt-manager
+wmclassmatch=1
+
+[42073155-8ccc-4363-97c1-33644dc49c1c]
+Description=yeet min size
+minsizerule=2
+types=289
+wmclasscomplete=true
+
+[4cf0df3b-e4ba-4a71-9fc3-7ba6ab12fb1e]
+Description=Window settings for virt-manager
+clientmachine=localhost
+noborder=true
+noborderrule=2
+title=android-x86-9.0 on QEMU/KVM
+titlematch=1
+types=1
+wmclass=virt-manager
+wmclassmatch=1
+
+[52b23acc-b8fa-4e93-8a80-40d9f94744f8]
+Description=Window settings for dolphin
+clientmachine=localhost
+title=Home — Dolphin
+types=1
+windowrole=dolphin#1
+windowrolematch=1
+wmclass=dolphin
+wmclassmatch=1
+
+[6]
+Description=yeet min size
+minsize=1,1
+minsizerule=2
+types=289
+wmclasscomplete=true
+
+[68972554-a525-4ad3-a215-d63343615379]
+Description=Application settings for virt-manager
+clientmachine=localhost
+noborder=true
+noborderrule=2
+wmclass=virt-manager
+wmclassmatch=1
+
+[898708f8-b968-4f16-b23d-7928f22d05c5]
+Description=yeet borders on win10 vm
+clientmachine=localhost
+noborder=true
+noborderrule=2
+title=win10 on QEMU/KVM
+titlematch=1
+types=1
+wmclass=virt-manager
+wmclassmatch=1
+
+[General]
+count=2
+rules=1,2
+
+[a074f155-e349-46a5-9989-20c52838684d]
+Description=yeet borders (disabled)
+noborderrule=2
+types=289
+wmclass=.*
+wmclasscomplete=true
+
+[af1803de-5aac-4da7-851d-fa3e5afa72b2]
+Description=Application settings for pamac-manager
+clientmachine=localhost
+noborder=true
+noborderrule=2
+wmclass=pamac-manager
+wmclassmatch=1
+
+[e5561fc4-f214-460b-b6a1-50775cf40a27]
+Description=Settings for ripdrag
+desktops=\\0
+desktopsrule=2
+type=32
+typerule=2
+types=33
+wmclass=ripdrag
+wmclasscomplete=true
+wmclassmatch=1

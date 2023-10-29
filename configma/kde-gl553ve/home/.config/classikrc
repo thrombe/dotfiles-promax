@@ -1,0 +1,16 @@
+[Common]
+ShadowSize=ShadowSmall
+ShadowStrength=26
+
+[Windeco]
+CornerRadius=0
+TitlebarTopBottomMargins=0
+thinWindowOutlineStyle=WindowOutlineAccentColor
+
+[Windeco Exception 0]
+BorderSize=0
+Enabled=true
+ExceptionPattern=.*
+ExceptionType=0
+HideTitleBar=true
+Mask=16
