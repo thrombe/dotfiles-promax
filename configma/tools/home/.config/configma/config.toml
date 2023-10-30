@@ -10,6 +10,7 @@ modules = [
   "easyeffects-irs",
   "game-savefiles",
   "games",
+  "games-private",
   "kde-gl553ve",
 ]
 
@@ -22,6 +23,7 @@ modules = [
   "easyeffects-irs",
   "game-savefiles",
   "games",
+  "games-private",
   "kde-ga402xu",
 ]
 
@@ -45,3 +47,10 @@ path = "~/0Git/dotfiles-promax-private/configma"
 [[modules]]
 name = "game-savefiles"
 path = "~/0Git/dotfiles-promax-private/configma"
+
+[[modules]]
+name = "games-private"
+path = "~/0Git/dotfiles-promax-private/configma"
+
+
+
