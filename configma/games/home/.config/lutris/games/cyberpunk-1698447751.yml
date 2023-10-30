@@ -1,0 +1,15 @@
+game:
+  args: ''
+  exe: /home/issac/Games/cyberpunk/REDprelauncher.exe
+  prefix: /home/issac/Games/cyberpunk-2077
+  working_dir: /home/issac/Games/cyberpunk
+system:
+  disable_runtime: true
+  env: {}
+  mangohud: true
+  prime: false
+  pulse_latency: true
+  use_us_layout: false
+wine:
+  system_winetricks: false
+  version: lutris-GE-Proton8-15-x86_64
