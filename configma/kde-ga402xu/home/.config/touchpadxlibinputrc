@@ -1,0 +1,11 @@
+[ELAN1200:00 04F3:3045 Touchpad]
+enabled=false
+pointerAcceleration=0.13
+pointerAccelerationProfileAdaptive=true
+pointerAccelerationProfileFlat=false
+scrollEdge=true
+scrollTwoFinger=false
+tapToClick=true
+
+[SynPS/2 Synaptics TouchPad]
+tapToClick=true

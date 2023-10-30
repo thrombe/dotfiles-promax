@@ -1,0 +1,15 @@
+[Plugins]
+org.kde.ActivityManager.ResourceScoringEnabled=false
+org.kde.ActivityManager.VirtualDesktopSwitchEnabled=true
+
+[activities]
+b05b12af-4ee5-455c-9ce7-1ca68d58cd77=issac
+b51bd6a7-2955-4ce4-9e25-a4e38e92ab40=colg
+
+[activities-icons]
+b51bd6a7-2955-4ce4-9e25-a4e38e92ab40=activities
+
+[main]
+currentActivity=b05b12af-4ee5-455c-9ce7-1ca68d58cd77
+runningActivities=b05b12af-4ee5-455c-9ce7-1ca68d58cd77,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40
+stoppedActivities=

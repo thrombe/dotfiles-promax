@@ -1,0 +1,54 @@
+[FileDialogSize]
+eDP-1-1 Height 1920x1080 eDP-1-1=794
+eDP-1-1 Width 1920x1080 eDP-1-1=980
+
+[KFileDialog Settings]
+Recent Files[$e]=wallhaven-7383zv.jpg,file:$HOME/0Git/scripts/bluetooth_detect.py,file:$HOME/Pictures/sorted_walls/other/wallhaven-3200.jpg,file:$HOME/Pictures/walls/wallhaven-73kgm9.jpg,file:$HOME/0Git/randomScripts/0notes/wiki.txt,file:$HOME/0Git/scripts/viper.sh,file:$HOME/Pictures/walls/wallhaven-7383zv.jpg,file:$HOME/Pictures/walls/wallhaven-4k30.jpg,file:$HOME/Pictures/walls/wallhaven-kwv381.jpg,file:$HOME/Pictures/walls/wallhaven-759421.jpg,file:$HOME/Pictures/ryu profile pic.jpg
+Recent URLs[$e]=file:$HOME/Pictures/walls/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/,file:///home/,file:$HOME/0Git/scripts/,file:$HOME/0Git/randomScripts/0notes/,file:$HOME/Pictures/sorted_walls/other/,file:$HOME/0Git/
+detailViewIconSize=16
+iconViewIconSize=48
+
+[KPropertiesDialog]
+eDP-1-1 Height 1920x1080=545
+eDP-1-1 Height 1920x1080 eDP-1-1=586
+eDP-1-1 Width 1920x1080=747
+eDP-1-1 Width 1920x1080 eDP-1-1=426
+
+[MainWindow]
+1920x1080 screen: Height=1050
+1920x1080 screen: Width=1920
+1920x1080 screen: Window-Maximized=true
+1920x1080 screen: XPosition=0
+1920x1080 screen: YPosition=30
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAQaAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+eDP-1=eDP-1
+eDP-1 Height 1920x1080=1055
+eDP-1 Height 1920x1080 eDP-1=1055
+eDP-1 Width 1920x1080=1920
+eDP-1 Width 1920x1080 eDP-1=1920
+eDP-1 Window-Maximized 1920x1080=true
+eDP-1 Window-Maximized 1920x1080 eDP-1=true
+eDP-1 XPosition 1920x1080=0
+eDP-1 XPosition 1920x1080 eDP-1=0
+eDP-1 YPosition 1920x1080=25
+eDP-1 YPosition 1920x1080 eDP-1=25
+eDP-1-1=eDP-1-1
+eDP-1-1 Height 1920x1080=1055
+eDP-1-1 Height 1920x1080 eDP-1-1=1080
+eDP-1-1 Width 1920x1080=1920
+eDP-1-1 Width 1920x1080 eDP-1-1=1920
+eDP-1-1 Window-Maximized 1920x1080=true
+eDP-1-1 Window-Maximized 1920x1080 eDP-1-1=true
+eDP-1-1 XPosition 1920x1080=0
+eDP-1-1 XPosition 1920x1080 eDP-1-1=0
+eDP-1-1 YPosition 1920x1080=25
+eDP-1-1 YPosition 1920x1080 eDP-1-1=0
+
+[Open-with settings]
+CompletionMode=1
+History=python /home/issac/0Git/scripts/bluetooth_detect.py,lib,~/0Git/bin/scman,imwheel -b 45,dis,mat
+
+[UiSettings]
+ColorScheme=

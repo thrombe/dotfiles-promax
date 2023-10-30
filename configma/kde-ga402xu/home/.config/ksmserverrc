@@ -1,0 +1,26 @@
+[$Version]
+update_info=ksmserver_update_loginMode_value.upd:ksmserver_update_loginMode_value_default_enum
+
+[General]
+loginMode=emptySession
+
+[LegacySession: saved at previous logout]
+clientMachine1=localhost
+clientMachine2=localhost
+command1=easyeffects
+command2=librewolf
+count=2
+
+[Session: saved at previous logout]
+clientId1=10e169786f000169343288300000312900013
+clientId3[$d]
+count=1
+discardCommand3[$d]
+program1=/etc/profiles/per-user/issac/bin/stremio
+program3[$d]
+restartCommand1=/etc/profiles/per-user/issac/bin/stremio,-session,10e169786f000169343288300000312900013_1693438776_345996
+restartCommand3[$d]
+restartStyleHint1=0
+restartStyleHint3[$d]
+userId1=issac
+userId3[$d]

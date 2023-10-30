@@ -1,0 +1,12 @@
+[Common]
+ShadowColor=86,97,145
+ShadowSize=ShadowNone
+ShadowStrength=138
+
+[Windeco Exception 0]
+BorderSize=0
+Enabled=true
+ExceptionPattern=.*
+ExceptionType=0
+HideTitleBar=true
+Mask=0

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Charset=
+Icon=folder-remote
+Name=note 7s sftp
+Type=Link
+URL=sftp://root@192.168.1.190:8022/data/data/com.termux/files/home/

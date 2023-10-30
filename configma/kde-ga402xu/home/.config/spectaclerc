@@ -1,0 +1,15 @@
+[$Version]
+update_info=spectacle_clipboard.upd:clipboard-settings-change,spectacle_newConfig.upd:spectacle-new-config,spectacle_rememberregion.upd:spectacle-migrate-rememberregion
+
+[General]
+rememberLastRectangularRegion=2
+
+[GuiConfig]
+captureMode=5
+quitAfterSaveCopyExport=true
+window-position=854,46
+
+[Save]
+defaultSaveLocation=file:///home/issac/Pictures
+lastSaveLocation=file:///home/issac/Pictures/Screenshot_20231026_122323.png
+lastUsedSaveMode=Save
