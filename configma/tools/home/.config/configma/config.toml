@@ -12,6 +12,7 @@ modules = [
   "games",
   "games-private",
   "kde-gl553ve",
+  "gl553ve",
 ]
 
 [[profiles]]
