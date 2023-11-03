@@ -3,6 +3,7 @@
   pkgs,
   lib,
   modulesPath,
+  username,
   ...
 }: let
   tags = ["ga402xu"];
@@ -253,7 +254,7 @@ in {
       event = "ac_adapter/*";
       action = ''
         # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
-        export XAUTHORITY=/home/issac/.Xauthority
+        export XAUTHORITY=/home/${username}/.Xauthority
         export DISPLAY=:0
 
         vals=($1)  # space separated string to array of multiple values

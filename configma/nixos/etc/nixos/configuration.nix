@@ -5,6 +5,7 @@
   config,
   pkgs,
   hostname,
+  username,
   ...
 }: {
   boot.supportedFilesystems = ["ntfs"];
@@ -150,9 +151,9 @@
   programs.kdeconnect.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.issac = {
+  users.users."${username}" = {
     isNormalUser = true;
-    description = "issac";
+    description = "${username}";
     extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [
       # apps

@@ -28,6 +28,7 @@
     # home-manager,
   }: let
     system = "x86_64-linux";
+    username = "issac";
 
     overlay-unstable = final: prev: {
       unstable = import nixpkgs-unstable {
@@ -52,7 +53,7 @@
       gl553ve = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           hostname = "gl553ve";
-          inherit pkgs system;
+          inherit pkgs system username;
         };
 
         modules = [
@@ -65,7 +66,7 @@
       ga402xu = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           hostname = "ga402xu";
-          inherit pkgs system;
+          inherit pkgs system username;
         };
 
         modules = [
