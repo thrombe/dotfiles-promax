@@ -87,6 +87,9 @@ padding=4
 [Tiling][213a9620-187e-58a6-b80b-85d8fb95dfce]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][e5534a7b-3b71-5819-8864-c4036112a139]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Windows]
 ElectricBorders=2
 RollOverDesktops=true

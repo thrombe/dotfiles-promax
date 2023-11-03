@@ -131,15 +131,20 @@
    </metadata>
   </info>
  </separator>
- <bookmark href="kdeconnect://c9432922_060d_4198_affd_738cf7087ae7/">
-  <title>Nothing Phone (1)</title>
+ <separator>
   <info>
-   <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="kdeconnect"/>
-   </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1698602895/2</ID>
+    <UDI>/org/freedesktop/UDisks2/block_devices/sda2</UDI>
+    <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
- </bookmark>
+ </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/nvme0n1p5</UDI>
+    <isSystemItem>true</isSystemItem>
+   </metadata>
+  </info>
+ </separator>
 </xbel>

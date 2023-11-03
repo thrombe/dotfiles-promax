@@ -136,7 +136,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [DirSelect Dialog]
-DirSelectDialog Size=854,616
+DirSelectDialog Size=892,628
+History Items[$e]=file:///run/media/issac/8d304fda-1fa9-4f82-b027-7c6b0096d137/home/issac/Downloads
 
 [General]
 BrowserApplication=librewolf.desktop

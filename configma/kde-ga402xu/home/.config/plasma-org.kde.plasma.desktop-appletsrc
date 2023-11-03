@@ -626,8 +626,8 @@ immutability=1
 lastScreen=0
 location=3
 plugin=org.kde.plasma.private.systemtray
-popupHeight=432
-popupWidth=432
+popupHeight=576
+popupWidth=576
 wallpaperplugin=org.kde.image
 
 [Containments][201][Applets][202]
@@ -741,6 +741,7 @@ shownItems=org.kde.plasma.notifications,org.kde.plasma.volume,org.kde.plasma.bat
 
 [Containments][229]
 ItemGeometries-1920x1080=
+ItemGeometries-2560x1600=
 ItemGeometriesHorizontal=
 activityId=b05b12af-4ee5-455c-9ce7-1ca68d58cd77
 formfactor=0
@@ -862,7 +863,7 @@ plugin=org.kde.plasma.notifications
 PreloadWeight=100
 
 [Containments][90][Applets][91][Shortcuts]
-global=Meta+N
+global=
 
 [Containments][90][Applets][92]
 immutability=1
@@ -948,4 +949,4 @@ launchers=
 
 [ScreenMapping]
 itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/chefs.txt,desktop:/cources.md,desktop:/musik.txt,desktop:/GSOC.txt,desktop:/to_watch.txt,desktop:/shadertoy_links.txt,desktop:/bdys.txt
-screenMapping=desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77
+screenMapping=desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77
