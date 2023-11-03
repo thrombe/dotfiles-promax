@@ -213,7 +213,64 @@ in {
     };
   };
 
-  # TODO: switch to 60Hz on battery
+  # power consumption stuff
+  # - [asus linux discord](https://discord.com/channels/725125934759411753/1166376689551548559)
+  # sudo cat /sys/kernel/debug/dri/0/amdgpu_pm_info (look at 'average GPU')
+  # sudo cat /sys/class/drm/card0/device/pp_dpm_sclk
+  # cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_available_preferences
+  # cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference
+  # cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+  # 'sudo turbostat' (look at PkgWatt. it should be entire cpu's power consumption)
+
+  # set the following in this same order for better battery
+  # - [tlp nixoswiki](https://nixos.wiki/wiki/Laptop#tlp)
+  #   - afaik tlp can also set this, but peeps over at asus-linux discord said no tlp is better
+  # on battery
+  # echo "powersave" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+  # echo "power" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+  # idle 35% bright 60Hz -> 10W
+  # idle 35% bright 165Hz -> 11W
+  # idle 5% bright 60Hz -> 8W
+  # 720p youtube 60Hz 5% bright -> 10W
+  # 720p youtube 60Hz 35% bright -> 12W
+  # 720p youtube 165Hz 35% bright -> 13W
+
+  # on AC
+  # echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+  # echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+  # xrandr -q (check available refresh rates)
+  # xrandr -r 60 (change refresh rate)
+
+  # check if on battery
+  # cat /sys/class/power_supply/ADP0/online
+
+  # - [nixpkgs acpid](https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/hardware/acpid.nix)
+  services.acpid = {
+    enable = true;
+    # - [acpid archwiki](https://wiki.archlinux.org/title/Acpid#Determine_the_event)
+    handlers.on-power-change = {
+      event = "ac_adapter/*";
+      action = ''
+        # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
+        export XAUTHORITY=/home/issac/.Xauthority
+        export DISPLAY=:0
+
+        vals=($1)  # space separated string to array of multiple values
+        if [[ ''${vals[3]} == 00000000 ]]; then
+          ${pkgs.xorg.xrandr}/bin/xrandr -r 60
+
+          ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+          ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+        else
+          ${pkgs.xorg.xrandr}/bin/xrandr -r 165
+
+          ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+          ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+        fi
+      '';
+    };
+  };
 
   # nvidia stuff
   # - [Nvidia - NixOS Wiki](https://nixos.wiki/wiki/Nvidia)
@@ -272,5 +329,9 @@ in {
 
     vulkan-tools
     glxinfo
+
+    # - [nixpkgs turbostat](https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/turbostat/default.nix)
+    linuxPackages.turbostat
+    acpi
   ];
 }
