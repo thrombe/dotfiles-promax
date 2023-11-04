@@ -163,6 +163,7 @@
       zathura
       stremio
       # discord # TODO: make voice work
+      qbittorrent
 
       # tools
       helix
@@ -171,7 +172,6 @@
       unstable.gitui
       unstable.distrobox
       neovim
-      btop
       alacritty
       fzf
       ripdrag
@@ -181,6 +181,12 @@
       # fzf-zsh
       neofetch
 
+      btop
+      s-tui # fan rpm + other stuff
+      nvtop # gpu stats
+      # bottom # battery stat + other stuff
+      # battop # only battery stat
+      
       # - [Virt-manager - NixOS Wiki](https://nixos.wiki/wiki/Virt-manager)
       virt-manager
       virtiofsd
