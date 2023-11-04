@@ -1,0 +1,23 @@
+game:
+  arch: win64
+  args: -USEALLAVAILABLECORES -cpuLoadRebalancing -ignorepipelinecach -vulkan
+  exe: /home/issac/Games/red_dead_2/Red Dead Redemption 2/RDR2.exe
+  prefix: /home/issac/Games/red-dead-redemption-ii
+  working_dir: /home/issac/Games/red_dead_2/Red Dead Redemption 2/home/issac/Games/red_dead_2/Red
+    Dead Redemption 2
+system:
+  disable_compositor: false
+  disable_runtime: true
+  env:
+    PROTON_NO_GLSL: '1'
+    PULSE_LATENCY_MSEC: '60'
+    RADV_PERFTEST: aco
+    WINEDLLOVERRIDES: '"dinput8=n,b"'
+  mangohud: false
+wine:
+  Desktop: false
+  battleye: true
+  eac: true
+  esync: false
+  fsync: false
+  version: Proton 7.0

@@ -1,0 +1,38 @@
+game:
+  args: /runWithoutUpdating /deelevated
+  exe: drive_c/Program Files (x86)/GOG Galaxy/GalaxyClient.exe
+  prefix: /home/issac/Games/cyberpunk-2077
+game_slug: cyberpunk-2077
+name: Cyberpunk 2077
+requires: null
+script:
+  files:
+  - galaxy: https://content-system.gog.com/open_link/download?path=/open/galaxy/client/setup_galaxy_1.2.67.58.exe
+  game:
+    args: /runWithoutUpdating /deelevated
+    exe: drive_c/Program Files (x86)/GOG Galaxy/GalaxyClient.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      app: win10
+      arch: win64
+      description: Set Windows version to Windows 10
+      name: winetricks
+      prefix: $GAMEDIR
+  - task:
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      executable: galaxy
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      app: mfc140
+      name: winetricks
+      prefix: $GAMEDIR
+slug: cyberpunk-2077-galaxy
+system: {}
+variables: {}
+version: Galaxy
+wine: {}
+year: 2020

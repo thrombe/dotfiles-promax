@@ -1,0 +1,16 @@
+game:
+  appid: '1174180'
+game_slug: red-dead-redemption-ii
+name: Red Dead Redemption 2
+requires: null
+script:
+  game:
+    appid: 1174180
+service: steam
+service_id: 1174180
+slug: red-dead-redemption-2-steam-proton
+steam: {}
+system: {}
+variables: {}
+version: Steam Proton
+year: 2019

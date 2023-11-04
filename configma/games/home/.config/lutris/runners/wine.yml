@@ -1,0 +1,4 @@
+system:
+  disable_runtime: true
+wine:
+  system_winetricks: true
