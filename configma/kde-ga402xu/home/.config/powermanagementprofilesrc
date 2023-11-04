@@ -14,9 +14,6 @@ powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
 
-[AC][PowerProfile]
-profile=performance
-
 [AC][SuspendSession]
 idleTime=900000
 suspendThenHibernate=false
@@ -37,9 +34,6 @@ lidAction=1
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
-
-[Battery][PowerProfile]
-profile=power-saver
 
 [Battery][SuspendSession]
 idleTime=600000
@@ -64,9 +58,6 @@ lidAction=1
 powerButtonAction=16
 powerDownAction=16
 triggerLidActionWhenExternalMonitorPresent=false
-
-[LowBattery][PowerProfile]
-profile=power-saver
 
 [LowBattery][SuspendSession]
 idleTime=300000

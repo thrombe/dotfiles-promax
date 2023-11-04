@@ -263,15 +263,26 @@ in {
 
           ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
           ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+
+          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
         else
           ${pkgs.xorg.xrandr}/bin/xrandr -r 165
 
           ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
           ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
         fi
       '';
     };
   };
+
+  # - [Laptop - NixOS Wiki](https://nixos.wiki/wiki/Laptop)
+  # default (atleast in kde)
+  services.power-profiles-daemon.enable = true;
+  # services.tlp.enable = false;
+  # powerManagement.powertop.enable = false;
+  # services.auto-cpufreq.enable = false;
 
   # nvidia stuff
   # - [Nvidia - NixOS Wiki](https://nixos.wiki/wiki/Nvidia)

@@ -299,13 +299,6 @@
     driSupport32Bit = true;
   };
 
-  # - [Laptop - NixOS Wiki](https://nixos.wiki/wiki/Laptop)
-  # default (atleast in kde)
-  # services.power-profiles-daemon.enable = false;
-  # services.tlp.enable = true;
-  # powerManagement.powertop.enable = false;
-  # services.auto-cpufreq.enable = false;
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
