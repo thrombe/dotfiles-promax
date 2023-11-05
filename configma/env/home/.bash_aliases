@@ -26,7 +26,15 @@ alias bt="broot"
 alias wiki="(cd ~/0Git/randomScripts/0notes && hx wiki.md)"
 alias bookmarks="(cd ~/0Git/randomScripts/bookmarks && hx README.md)"
 alias ze="launch_zellij"
-alias zz="zellij -l workspace.kdl"
+alias zz="open_zellij_workspace"
+
+open_zellij_workspace() {
+  if [[ -f ./workspace.kdl ]]; then
+    zellij -l ./workspace.kdl
+  else
+    zellij
+  fi
+}
 
 toggle_mic() {
   # - [WirePlumber - ArchWiki](https://wiki.archlinux.org/title/WirePlumber)
