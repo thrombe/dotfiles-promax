@@ -19,14 +19,19 @@
       url = "github:helix-editor/helix";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-update-input = {
+      url = "github:vimjoyer/nix-update-input";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     configma = {
       url = "github:thrombe/configma";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
     };
-    nix-update-input = {
-      url = "github:vimjoyer/nix-update-input";
+    yankpass = {
+      url = "github:thrombe/yankpass/discord_abuse";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
     };
   };
 
@@ -59,12 +64,13 @@
     commonModules = [
       {_module.args = inputs;}
       ./configuration.nix
-      nix-index-database.nixosModules.nix-index
+      inputs.nix-index-database.nixosModules.nix-index
 
       # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
       ({...}: {
         users.users."${username}".packages = map flakeDefaultPackage (with inputs; [
           configma
+          yankpass
           nix-update-input # update-input
         ]);
       })
