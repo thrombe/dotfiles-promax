@@ -30,17 +30,7 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    nixos-hardware,
-    nix-index-database,
-    helix-git,
-    configma,
-    nix-update-input,
-    # home-manager,
-  }: let
+  outputs = inputs @ {nixpkgs, ...}: let
     system = "x86_64-linux";
     username = "issac";
 
@@ -48,19 +38,19 @@
     flakeDefaultPackage = flake: flake.packages."${system}".default;
 
     overlay-unstable = final: prev: {
-      unstable = import nixpkgs-unstable {
+      unstable = import inputs.nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
     };
 
-    pkgs = import nixpkgs {
+    pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
       overlays = [
         overlay-unstable
         (self: super: {
-          helix = flakeDefaultPackage helix-git;
+          helix = flakeDefaultPackage inputs.helix-git;
           asusctl = super.unstable.asusctl;
         })
       ];
@@ -73,10 +63,10 @@
 
       # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
       ({...}: {
-        users.users."${username}".packages = map flakeDefaultPackage [
+        users.users."${username}".packages = map flakeDefaultPackage (with inputs; [
           configma
           nix-update-input # update-input
-        ];
+        ]);
       })
     ];
   in {
@@ -104,7 +94,7 @@
           commonModules
           ++ [
             ./${specialArgs.hostname}/configuration.nix
-            nixos-hardware.nixosModules.asus-zephyrus-ga402
+            inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402
           ];
       };
     };
