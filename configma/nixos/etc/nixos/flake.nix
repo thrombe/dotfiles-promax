@@ -33,6 +33,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
     };
+    scripts = {
+      url = "github:thrombe/dotfiles-promax?dir=scripts";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = inputs @ {nixpkgs, ...}: let
@@ -41,6 +46,7 @@
 
     # helpers
     flakeDefaultPackage = flake: flake.packages."${system}".default;
+    getScript = name: inputs.scripts.packages."${system}"."${name}";
 
     overlay-unstable = final: prev: {
       unstable = import inputs.nixpkgs-unstable {
@@ -62,17 +68,21 @@
     };
 
     commonModules = [
-      {_module.args = inputs;}
+      # {_module.args = inputs;}
       ./configuration.nix
       inputs.nix-index-database.nixosModules.nix-index
 
       # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
       ({...}: {
-        users.users."${username}".packages = map flakeDefaultPackage (with inputs; [
-          configma
-          yankpass
-          nix-update-input # update-input
-        ]);
+        users.users."${username}".packages =
+          (map flakeDefaultPackage (with inputs; [
+            configma
+            yankpass
+            nix-update-input # update-input
+          ]))
+          ++ (map getScript [
+            "wait-until"
+          ]);
       })
     ];
   in {

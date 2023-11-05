@@ -125,12 +125,13 @@ ifarg() {
 
 rdrag() {
   if [[ $# == 0 ]]; then
+    ripdrag -h
     return
   elif [[ $# > 1 ]]; then
-    x ripdrag --icon-size 70 -h $(k "85*$# + 30") -w 360 $@
+    x ripdrag --icon-size 70 -H $(k "85*$# + 30") -W 360 $@
   else
     if [[ -f $1 ]] ; then
-      x ripdrag --icon-size 70 -h $(k "85*$#") -w 360 -x $@
+      x ripdrag --icon-size 70 -H $(k "85*$# + 30") -W 360 -x $@
     else
       files_in_dir=()
       count=0
@@ -140,12 +141,11 @@ rdrag() {
           files_in_dir+=("$file")
         fi
       done
-      x ripdrag --icon-size 70 -h $(k "85*$count + 30") -w 360 $files_in_dir
+      x ripdrag --icon-size 70 -H $(k "85*$count + 30") -W 360 $files_in_dir
     fi
   fi
-  # sleep 0.2
-  if [[ $(~/0Git/bin/untill_window_class_detected_wmctl_timeout_10_sec ripdrag) == "1" ]]; then
-      xdotool key Super_L+KP_Begin # to make it go into floating window mode
+  if [[ "$(until-window-class-detected ripdrag)" == "1" ]]; then
+      xdotool key "Super_L+Shift_L+Control_L+F" # to make it go into floating window mode
   fi
 }
 
