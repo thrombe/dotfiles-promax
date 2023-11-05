@@ -6,6 +6,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    flake-utils.url = "github:numtide/flake-utils";
+
     # home-manager = {
     #   url = "github:nix-community/home-manager/release-23.05";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -27,16 +29,19 @@
       url = "github:thrombe/configma";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     yankpass = {
       url = "github:thrombe/yankpass/discord_abuse";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     scripts = {
       url = "github:thrombe/dotfiles-promax?dir=scripts";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
