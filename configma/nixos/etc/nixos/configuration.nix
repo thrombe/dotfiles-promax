@@ -204,6 +204,7 @@
       xclip
       wmctrl
       numlockx
+      libnotify
 
       # - [JackHack96/EasyEffects-Presets](https://github.com/JackHack96/EasyEffects-Presets)
       # - [Impulse Responses](https://github.com/wwmm/easyeffects/wiki/Impulse-Responses)
