@@ -15,7 +15,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix-git.url = "github:helix-editor/helix";
+    helix-git = {
+      url = "github:helix-editor/helix";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+    configma = {
+      url = "github:thrombe/configma";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+    };
+    nix-update-input = {
+      url = "github:vimjoyer/nix-update-input";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -25,10 +37,15 @@
     nixos-hardware,
     nix-index-database,
     helix-git,
+    configma,
+    nix-update-input,
     # home-manager,
   }: let
     system = "x86_64-linux";
     username = "issac";
+
+    # helpers
+    flakeDefaultPackage = flake: flake.packages."${system}".default;
 
     overlay-unstable = final: prev: {
       unstable = import nixpkgs-unstable {
@@ -43,11 +60,25 @@
       overlays = [
         overlay-unstable
         (self: super: {
-          helix = helix-git.packages."${system}".helix;
+          helix = flakeDefaultPackage helix-git;
           asusctl = super.unstable.asusctl;
         })
       ];
     };
+
+    commonModules = [
+      {_module.args = inputs;}
+      ./configuration.nix
+      nix-index-database.nixosModules.nix-index
+
+      # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
+      ({...}: {
+        users.users."${username}".packages = map flakeDefaultPackage [
+          configma
+          nix-update-input # update-input
+        ];
+      })
+    ];
   in {
     nixosConfigurations = {
       gl553ve = nixpkgs.lib.nixosSystem rec {
@@ -56,11 +87,11 @@
           inherit pkgs system username;
         };
 
-        modules = [
-          ./configuration.nix
-          ./${specialArgs.hostname}/configuration.nix
-          nix-index-database.nixosModules.nix-index
-        ];
+        modules =
+          commonModules
+          ++ [
+            ./${specialArgs.hostname}/configuration.nix
+          ];
       };
 
       ga402xu = nixpkgs.lib.nixosSystem rec {
@@ -69,12 +100,12 @@
           inherit pkgs system username;
         };
 
-        modules = [
-          ./configuration.nix
-          ./${specialArgs.hostname}/configuration.nix
-          nixos-hardware.nixosModules.asus-zephyrus-ga402
-          nix-index-database.nixosModules.nix-index
-        ];
+        modules =
+          commonModules
+          ++ [
+            ./${specialArgs.hostname}/configuration.nix
+            nixos-hardware.nixosModules.asus-zephyrus-ga402
+          ];
       };
     };
   };

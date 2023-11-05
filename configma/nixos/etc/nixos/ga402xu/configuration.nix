@@ -250,6 +250,7 @@ in {
   services.acpid = {
     enable = true;
     # - [acpid archwiki](https://wiki.archlinux.org/title/Acpid#Determine_the_event)
+    # - [ppd cli](https://discussion.fedoraproject.org/t/how-to-switch-profiles-of-power-profiles-daemon-automatically-on-kde-plasma/34071)
     handlers.on-power-change = {
       event = "ac_adapter/*";
       action = ''
