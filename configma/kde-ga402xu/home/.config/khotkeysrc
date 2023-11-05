@@ -1013,7 +1013,7 @@ Type=SIMPLE_ACTION_DATA
 
 [Data_4_10]
 Comment=Comment
-Enabled=true
+Enabled=false
 Name=viper smort restart reconnect
 Type=SIMPLE_ACTION_DATA
 
@@ -1091,7 +1091,7 @@ Uuid={43f296c1-e6a6-4627-aaa7-327695e61768}
 
 [Data_4_13]
 Comment=Comment
-Enabled=true
+Enabled=false
 Name=num_lock
 Type=SIMPLE_ACTION_DATA
 
@@ -1345,7 +1345,7 @@ Uuid={03fd006e-4348-4e4e-9538-611587390513}
 
 [Data_4_5]
 Comment=Comment
-Enabled=true
+Enabled=false
 Name=wiki
 Type=SIMPLE_ACTION_DATA
 
@@ -1423,7 +1423,7 @@ Uuid={4e0dd544-9029-4217-86c5-960c822c1f10}
 
 [Data_4_8]
 Comment=Comment
-Enabled=true
+Enabled=false
 Name=bookmarks
 Type=SIMPLE_ACTION_DATA
 
@@ -1449,7 +1449,7 @@ Uuid={f11fde68-953d-4490-b394-f4e78dee3149}
 
 [Data_4_9]
 Comment=Comment
-Enabled=true
+Enabled=false
 Name=viper smort restart
 Type=SIMPLE_ACTION_DATA
 
