@@ -7,3 +7,5 @@ configma/*/home/.config/configma/profile.active.toml
 */home/.config/viper4linux/audio.conf
 scripts/**/result
 scripts/**/.direnv
+flakes/**/result
+flakes/**/.direnv
