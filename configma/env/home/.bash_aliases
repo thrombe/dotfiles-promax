@@ -158,7 +158,7 @@ rdrag() {
 }
 
 browser_profile() {
-  br_path=/mnt/blouk/daata/browser_profiles
+  br_path=~/daata/browser_profiles
   if [[ "$1" == "-n" ]]; then
     echo "creating new profile from template profile $2"
     cp -r $br_path/template_profile $br_path/$2
@@ -177,10 +177,10 @@ browser_profile() {
 }
 
 lbwopen() {
-  script_path=~/0Git/randomScripts/scripts/librewolf_open_links.py
+  script_path=~/0Git/dotfiles-promax/scripts/librewolf_open_links.py
   script_path=$(readlink -f $script_path)
   
-  br_path=/mnt/blouk/daata/browser_profiles
+  br_path=~/daata/browser_profiles
   if [[ "$1" == "-p" ]]; then
     if [[ $# < 2 ]]; then
       br_name=$(ls $br_path | fzf)
