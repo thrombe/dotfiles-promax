@@ -1,5 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
+# Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
@@ -106,9 +105,7 @@
   virtualisation = {
     libvirtd = {
       enable = true;
-
       qemu.ovmf.packages = [pkgs.OVMFFull];
-
       # enable tpm
       qemu.swtpm.enable = true;
       # qemu.runAsRoot = false; # TODO: seems interesting. look into it
@@ -117,10 +114,8 @@
     # - [Podman - NixOS Wiki](https://nixos.wiki/wiki/Podman)
     podman = {
       enable = true;
-
       # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
-
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
@@ -133,8 +128,6 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -187,6 +180,7 @@
       # bottom # battery stat + other stuff
       # battop # only battery stat
       
+
       # - [Virt-manager - NixOS Wiki](https://nixos.wiki/wiki/Virt-manager)
       virt-manager
       virtiofsd
