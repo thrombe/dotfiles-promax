@@ -163,6 +163,7 @@
       unstable.zellij
       unstable.broot
       unstable.gitui
+      unstable.delta
       unstable.distrobox
       neovim
       alacritty
@@ -170,8 +171,7 @@
       ripdrag
       kalker
       libqalculate
-      zsh-fzf-tab
-      # fzf-zsh
+      sshfs
       neofetch
 
       btop
@@ -179,7 +179,6 @@
       nvtop # gpu stats
       # bottom # battery stat + other stuff
       # battop # only battery stat
-      
 
       # - [Virt-manager - NixOS Wiki](https://nixos.wiki/wiki/Virt-manager)
       virt-manager
@@ -199,6 +198,7 @@
       wmctrl
       numlockx
       libnotify
+      zsh-fzf-tab
 
       # - [JackHack96/EasyEffects-Presets](https://github.com/JackHack96/EasyEffects-Presets)
       # - [Impulse Responses](https://github.com/wwmm/easyeffects/wiki/Impulse-Responses)
@@ -279,13 +279,7 @@
     ohMyZsh = {
       enable = true;
       theme = "arrow";
-      plugins = [
-        "git"
-        "fzf"
-        # "fzf-tab"
-        # "zsh-autosuggestions"
-        # "zsh-syntax-highlighting"
-      ];
+      plugins = ["git" "fzf"];
     };
   };
   users.defaultUserShell = pkgs.zsh;
