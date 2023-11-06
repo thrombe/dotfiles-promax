@@ -300,7 +300,15 @@
   environment.pathsToLink = ["/share/zsh"];
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    # - [nixos wiki public key auth](https://nixos.wiki/wiki/SSH_public_key_authentication)
+    # 'ssh-keygen'
+    # then use 'ssh-copy-id <ip>' or just
+    # copy contents of ~/.ssh/id_rsa.pub from client machine on a new line in ~/.ssh/authorized_keys in host machine
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
 
   # Enable OpenGL
   hardware.opengl = {
