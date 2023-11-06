@@ -299,6 +299,9 @@
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enableCompletion
   environment.pathsToLink = ["/share/zsh"];
 
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
@@ -313,9 +316,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
