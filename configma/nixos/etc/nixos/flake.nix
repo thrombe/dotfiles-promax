@@ -68,6 +68,9 @@
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
           asusctl = super.unstable.asusctl;
+          # disable shell completion for dust (completion does not work for me)
+          # - [du-dust nixpkgs](https://github.com/NixOS/nixpkgs/blob/aeefe2054617cae501809b82b44a8e8f7be7cc4b/pkgs/tools/misc/dust/default.nix#L27C1-L27C14)
+          du-dust = super.du-dust.overrideAttrs {postInstall = "";};
         })
       ];
     };
