@@ -25,8 +25,8 @@
     in {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
-          yuzu-mainline
-          # yuzu-early-access
+          # yuzu-mainline
+          yuzu-early-access
 
           (pkgs.steam.override {
             extraLibraries = pkgs:
@@ -34,13 +34,6 @@
                 libxkbcommon
                 mesa
                 wayland
-                # (sndio.overrideAttrs (new: old: {
-                #   postFixup =
-                #     old.postFixup
-                #     + ''
-                #       ln -s $out/lib/libsndio.so $out/lib/libsndio.so.6.1
-                #     '';
-                # }))
                 sndio
               ];
           })
@@ -59,11 +52,6 @@
             extraLibraries = pkgs: [
               # List library dependencies here
               # pkg-config
-              # gst_all_1.gstreamer
-              # gst_all_1.gst-plugins-base
-              # gst_all_1.gst-plugins-bad
-              # gst_all_1.gst-plugins-good
-              # gst_all_1.gst-plugins-ugly
             ];
           })
         ];
