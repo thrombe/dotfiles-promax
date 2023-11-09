@@ -70,19 +70,14 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
 {03fd006e-4348-4e4e-9538-611587390513}=Meta+F12,none,yankpass
-{0b605081-e7f3-48a7-8346-086225409ad5}=Meta+F8,none,wiki
 {572694ef-b3a1-41b6-9a5d-ae103b21e396}=Meta+Z,none,zellij
 {5ecc58db-d310-4056-857d-238f9ffba9e5}=Meta+F7,none,screen sleep
-{65a94151-eddc-4999-8849-bc758db55447}=NumLock,none,num_lock
-{78e4256a-e55d-44b4-a466-f21f7ddbc6b7}=Meta+F11,none,viper smort restart
 {82a907c4-faff-4613-a2f4-73531297a842}=Meta+Shift+E,none,lbwopen -p
 {85db35b9-bef9-402f-9527-e1c120caf37c}=Meta+G,none,librewolf
 {8b1aca2c-94a9-44a0-b086-eb6cf449898a}=Meta+T,none,alacritty
 {8e567762-c009-4ebe-87e7-e211436fc834}=Meta+F,none,dolphin
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 {d0d01764-b7ff-48c2-90ad-0ec82c0f4a01}=Meta+E,none,br
-{d2b719ca-6968-461d-b384-73d70d0f65ce}=Meta+Ctrl+F11,none,viper smort restart reconnect
-{f11fde68-953d-4490-b394-f4e78dee3149}=none,none,bookmarks
 
 [kmix]
 _k_friendly_name=Audio Volume
