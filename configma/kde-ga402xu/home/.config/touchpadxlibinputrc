@@ -1,3 +1,7 @@
+[ASUF1204:00 2808:0201 Touchpad]
+scrollEdge=true
+scrollTwoFinger=false
+
 [ELAN1200:00 04F3:3045 Touchpad]
 enabled=false
 pointerAcceleration=0.13
