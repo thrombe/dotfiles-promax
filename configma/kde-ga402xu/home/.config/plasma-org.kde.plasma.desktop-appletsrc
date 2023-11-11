@@ -154,9 +154,9 @@ DialogWidth=720
 PreloadWeight=42
 
 [Containments][112][General]
-extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 hiddenItems=discord1,MSM Notifier for Plasma5,News available!,Optimus Manager Qt,viper-gui,com.github.zren.alphablackcontrol,org.kde.plasma.clipboard
-knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 shownItems=org.kde.plasma.notifications,org.kde.plasma.volume,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.devicenotifier,Plasma_microphone
 
 [Containments][137]
@@ -281,8 +281,8 @@ PreloadWeight=0
 PreloadWeight=42
 
 [Containments][137][General]
-extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
-knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
+knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 
 [Containments][161]
 activityId=
@@ -409,8 +409,8 @@ PreloadWeight=0
 PreloadWeight=42
 
 [Containments][161][General]
-extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
-knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
+knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 
 [Containments][178]
 activityId=
@@ -537,8 +537,8 @@ PreloadWeight=0
 PreloadWeight=42
 
 [Containments][178][General]
-extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
-knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
+knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 
 [Containments][195]
 activityId=
@@ -580,8 +580,8 @@ plugin=org.kde.plasma.digitalclock
 
 [Containments][195][Applets][213][Configuration]
 PreloadWeight=100
-popupHeight=450
-popupWidth=396
+popupHeight=600
+popupWidth=528
 
 [Containments][195][Applets][213][Configuration][Appearance]
 use24hFormat=2
@@ -734,9 +734,9 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][201][General]
-extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 hiddenItems=discord1,News available!,org.kde.plasma.mediacontroller,obs,Optimus Manager Qt,Stremio,org.kde.plasma.devicenotifier,org.kde.kdeconnect,com.github.zren.alphablackcontrol,org.kde.plasma.clipboard,org.kde.plasma.nightcolorcontrol,viper-gui,Package Manager,MSM Notifier for Plasma5,Plasma_microphone
-knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.volume,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 shownItems=org.kde.plasma.notifications,org.kde.plasma.volume,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement
 
 [Containments][229]
@@ -759,6 +759,8 @@ DialogWidth=720
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=444
 ToolBoxButtonY=30
+positions={"2560x1600":[]}
+sortMode=-1
 
 [Containments][229][Wallpaper][org.kde.image][General]
 Image=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/Next/
@@ -932,9 +934,9 @@ DialogWidth=1137
 PreloadWeight=0
 
 [Containments][90][General]
-extraItems=org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.keyboardindicator,org.kde.plasma.volume,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+extraItems=org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.keyboardindicator,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 hiddenItems=MSM Notifier for Plasma5,News available!,Package Manager,discord1,Optimus Manager Qt,viper-gui,org.kde.plasma.devicenotifier,KWin,discord,com.github.zren.alphablackcontrol,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller
-knownItems=org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.keyboardindicator,org.kde.plasma.volume,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect
+knownItems=org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.mediacontroller,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.keyboardindicator,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
 shownItems=org.kde.plasma.volume,org.kde.plasma.battery,Plasma_microphone,org.kde.plasma.bluetooth,org.kde.plasma.notifications
 
 [Containments195Appletsts][223][Configuration][General]
@@ -949,4 +951,4 @@ launchers=
 
 [ScreenMapping]
 itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/chefs.txt,desktop:/cources.md,desktop:/musik.txt,desktop:/GSOC.txt,desktop:/to_watch.txt,desktop:/shadertoy_links.txt,desktop:/bdys.txt
-screenMapping=desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77
+screenMapping=desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77

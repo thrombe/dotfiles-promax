@@ -1,0 +1,6 @@
+[Desktop Entry]
+Charset=
+Icon=folder-remote
+Name=gl553ve sftp
+Type=Link
+URL=sftp://issac@192.168.1.13:22/home/issac
