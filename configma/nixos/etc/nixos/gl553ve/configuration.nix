@@ -15,22 +15,22 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ad0ef280-0c6d-40fc-a5b6-6fe14b547bd2";
+    device = "/dev/nvme0n1p3";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/68D7-B0A1";
+    device = "/dev/nvme0n1p1";
     fsType = "vfat";
   };
 
   fileSystems."/mnt/blouk" = {
-    device = "/dev/disk/by-uuid/4fbfc40c-9181-4599-9e23-e5de2082816a";
+    device = "/dev/sda1";
     fsType = "ext4";
   };
 
   fileSystems."/mnt/jaro" = {
-    device = "/dev/disk/by-uuid/a5585e75-fdcd-4e79-91e7-f3eefb4b5188";
+    device = "/dev/nvme0n1p2";
     fsType = "ext4";
   };
 
