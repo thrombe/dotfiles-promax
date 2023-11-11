@@ -25,16 +25,16 @@ in {
     sandisk-ssd.configuration = {
       system.nixos.tags = tags ++ sandisk-ssd.tags;
 
-      fileSystems."/" = sandisk-ssd."/";
-      fileSystems."/boot" = sandisk-ssd."/boot";
+      fileSystems."/" = lib.mkForce sandisk-ssd."/";
+      fileSystems."/boot" = lib.mkForce sandisk-ssd."/boot";
     };
 
     sandisk-ssd-vm.configuration = {
       system.nixos.tags = tags ++ sandisk-ssd.tags ++ ["gl553ve-vm" "mount-mnt"];
 
-      fileSystems."/" = sandisk-ssd."/";
-      fileSystems."/boot" = sandisk-ssd."/boot";
-      fileSystems."/mnt" = {
+      fileSystems."/" = lib.mkForce sandisk-ssd."/";
+      fileSystems."/boot" = lib.mkForce sandisk-ssd."/boot";
+      fileSystems."/mnt" = lib.mkForce {
         device = "mnt";
         fsType = "virtiofs";
       };
@@ -52,11 +52,29 @@ in {
       services.asusd.enable = lib.mkForce false;
       systemd.services.asusd-deepsleep.enable = lib.mkForce false;
     };
+
+    nvme-ssd-boot-alone.configuration = {
+      system.nixos.tags = tags ++ ["nvme-ssd-boot-alone"];
+
+      fileSystems."/boot" = lib.mkForce {
+        device = "/dev/nvme0n1p1";
+        fsType = "vfat";
+      };
+      fileSystems."/" = lib.mkForce {
+        device = "/dev/nvme0n1p2";
+        fsType = "ext4";
+      };
+    };
   };
 
-  # TODO: temporary
-  fileSystems."/" = sandisk-ssd."/";
-  fileSystems."/boot" = sandisk-ssd."/boot";
+  fileSystems."/boot" = {
+    device = "/dev/nvme0n1p1";
+    fsType = "vfat";
+  };
+  fileSystems."/" = {
+    device = "/dev/nvme0n1p2";
+    fsType = "ext4";
+  };
 
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
