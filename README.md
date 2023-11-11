@@ -1,2 +1,2 @@
 # dotfiles-promax
-configma modules for my various systems
+configma modules for my systems

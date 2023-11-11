@@ -147,7 +147,12 @@
   users.users."${username}" = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = ["networkmanager" "wheel" "libvirtd"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "audio" # for pulse
+    ];
     packages = with pkgs; [
       # apps
       firefox
@@ -207,7 +212,11 @@
       # - [sound from multiple outputs](https://askubuntu.com/a/1413329)
       helvum # allows to pipe sinks into other sinks (sound out of multiple headsets)
       # jamesdsp
+      # viper also needs pulseaudio package separately for some reason
+      # viper still gives problems with audio
       # viper4linux-gui # does not work with pipewire
+      # viper4linux
+      # pulseaudio
 
       # nix
       nil
