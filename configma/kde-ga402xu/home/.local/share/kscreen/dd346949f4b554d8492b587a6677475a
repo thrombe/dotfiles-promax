@@ -1,0 +1,27 @@
+[
+    {
+        "enabled": true,
+        "id": "c9b3e3aed9d1bffffc30d7626941ef60",
+        "metadata": {
+            "fullname": "xrandr-TL140ADXP02-0",
+            "name": "eDP"
+        },
+        "mode": {
+            "refresh": 165.0017852783203,
+            "size": {
+                "height": 1600,
+                "width": 2560
+            }
+        },
+        "overscan": 0,
+        "pos": {
+            "x": 0,
+            "y": 0
+        },
+        "priority": 1,
+        "rgbrange": 0,
+        "rotation": 1,
+        "scale": 1,
+        "vrrpolicy": 2
+    }
+]
