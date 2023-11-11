@@ -170,6 +170,10 @@ Sort reversed=false
 Speedbar Width=138
 View Style=Detail
 
+[KScreen]
+ScaleFactor=1.25
+ScreenScaleFactors=eDP=1.25;DisplayPort-0=1.25;DisplayPort-1=1.25;DisplayPort-2=1.25;DisplayPort-3=1.25;DisplayPort-4=1.25;DisplayPort-5=1.25;DisplayPort-6=1.25;DisplayPort-7=1.25;DP-1-0=1.25;DP-1-1=1.25;HDMI-1-0=1.25;DP-1-2=1.25;
+
 [KShortcutsDialog Settings]
 Dialog Size=775,480
 
