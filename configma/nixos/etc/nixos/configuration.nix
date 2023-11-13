@@ -105,7 +105,7 @@
   virtualisation = {
     libvirtd = {
       enable = true;
-      qemu.ovmf.packages = [pkgs.OVMFFull];
+      qemu.ovmf.packages = with pkgs; [unstable.OVMFFull];
       # enable tpm
       qemu.swtpm.enable = true;
       # qemu.runAsRoot = false; # TODO: seems interesting. look into it
