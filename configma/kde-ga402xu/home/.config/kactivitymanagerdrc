@@ -3,10 +3,12 @@ org.kde.ActivityManager.ResourceScoringEnabled=false
 org.kde.ActivityManager.VirtualDesktopSwitchEnabled=true
 
 [activities]
-b05b12af-4ee5-455c-9ce7-1ca68d58cd77=issac
-b51bd6a7-2955-4ce4-9e25-a4e38e92ab40=colg
+879b2e5b-fe29-472e-a6bc-f5af18a07cc9=3_overflow
+b05b12af-4ee5-455c-9ce7-1ca68d58cd77=1_issac
+b51bd6a7-2955-4ce4-9e25-a4e38e92ab40=2_colg
 
 [activities-icons]
+879b2e5b-fe29-472e-a6bc-f5af18a07cc9=activities
 b51bd6a7-2955-4ce4-9e25-a4e38e92ab40=activities
 
 [main]
