@@ -29,6 +29,22 @@ types=1
 wmclass=virt-manager
 wmclassmatch=1
 
+[3]
+Description=krunner allow requested geometry
+ignoregeometryrule=2
+types=1
+wmclass=krunner
+wmclasscomplete=true
+
+[4]
+Description=don't remember size and pos
+ignoregeometry=true
+ignoregeometryrule=2
+placementrule=2
+types=1
+wmclass=.*
+wmclasscomplete=true
+
 [42073155-8ccc-4363-97c1-33644dc49c1c]
 Description=yeet min size
 minsizerule=2
@@ -83,13 +99,22 @@ wmclass=virt-manager
 wmclassmatch=1
 
 [General]
-count=2
-rules=1,2
+count=4
+rules=1,2,3,4
 
 [a074f155-e349-46a5-9989-20c52838684d]
 Description=yeet borders (disabled)
 noborderrule=2
 types=289
+wmclass=.*
+wmclasscomplete=true
+
+[aceb1087-1c69-49e3-a297-a1b39f7a88ac]
+Description=don't remember size and pos
+ignoregeometry=true
+ignoregeometryrule=2
+placementrule=2
+types=1
 wmclass=.*
 wmclasscomplete=true
 
@@ -100,6 +125,13 @@ noborder=true
 noborderrule=2
 wmclass=pamac-manager
 wmclassmatch=1
+
+[b34b5708-83b0-47bc-9cea-05845aaf68ac]
+Description=krunner allow requested geometry
+ignoregeometryrule=2
+types=1
+wmclass=krunner
+wmclasscomplete=true
 
 [e5561fc4-f214-460b-b6a1-50775cf40a27]
 Description=Settings for ripdrag
