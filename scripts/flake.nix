@@ -15,9 +15,9 @@
     ...
   }:
     flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
-      # pkgs = import nixpkgs {
-      #   inherit system;
-      # };
+      pkgs = import nixpkgs {
+        inherit system;
+      };
       # unstable = import nixpkgs-unstable {
       #   inherit system;
       # };
@@ -30,6 +30,17 @@
     in {
       packages = {
         wait-until = flakeDefaultPackage wait-until;
+      };
+
+      devShells.default = pkgs.mkShell {
+        packages = with pkgs; [
+          (python311.withPackages (ps:
+            with ps; [
+            ]))
+          python311Packages.python-lsp-server
+          python311Packages.ruff-lsp # python linter
+          python311Packages.black # python formatter
+        ];
       };
     });
 }
