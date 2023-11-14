@@ -1151,7 +1151,7 @@ Type=SIMPLE_ACTION_DATA
 ActionsCount=1
 
 [Data_4_15Actions0]
-CommandURL=zsh -i -c 'br default'
+CommandURL=zsh -i -c 'br -e general'
 Type=COMMAND_URL
 
 [Data_4_15Conditions]

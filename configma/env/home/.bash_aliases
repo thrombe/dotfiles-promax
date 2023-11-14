@@ -162,6 +162,13 @@ browser_profile() {
   if [[ "$1" == "-n" ]]; then
     echo "creating new profile from template profile $2"
     cp -r $br_path/template_profile $br_path/$2
+  elif [[ $1 == "-e" ]]; then
+    if [[ $# == 2 ]]; then
+      br_name="$2"
+      detach librewolf --profile $br_path/$br_name
+    else
+      echo "-e option needs exact profile name as argument"
+    fi
   else
     if [[ $# < 1 ]]; then
       br_name=$(ls $br_path | fzf)
