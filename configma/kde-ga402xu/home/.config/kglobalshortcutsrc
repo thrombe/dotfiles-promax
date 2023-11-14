@@ -70,12 +70,15 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
 {03fd006e-4348-4e4e-9538-611587390513}=Meta+F12,none,yankpass
+{0ef7a3c0-e4cc-49a3-b05e-a90826772502}=Meta+Ctrl+Tab,none,move to activity
+{52d0e0cb-8372-4816-9a8e-8bca99fe0202}=Meta+Tab,none,focus next activity
 {572694ef-b3a1-41b6-9a5d-ae103b21e396}=Meta+Z,none,zellij
 {5ecc58db-d310-4056-857d-238f9ffba9e5}=Meta+F7,none,screen sleep
 {82a907c4-faff-4613-a2f4-73531297a842}=Meta+Shift+E,none,lbwopen -p
 {85db35b9-bef9-402f-9527-e1c120caf37c}=Meta+G,none,librewolf
 {8b1aca2c-94a9-44a0-b086-eb6cf449898a}=Meta+T,none,alacritty
 {8e567762-c009-4ebe-87e7-e211436fc834}=Meta+F,none,dolphin
+{a3e00ce0-d17b-4b8a-be5a-e7d2897a4558}=Meta+Shift+Tab,none,focus prev activity
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 {d0d01764-b7ff-48c2-90ad-0ec82c0f4a01}=Meta+E,none,br
 
@@ -344,8 +347,8 @@ cycleNextAction=none,,Next History Item
 cyclePrevAction=none,,Previous History Item
 edit_clipboard=none,,Edit Contents…
 manage activities=none,Meta+Q,Show Activity Switcher
-next activity=Meta+Tab,Meta+Tab,Walk through activities
-previous activity=Meta+Shift+Tab,Meta+Shift+Tab,Walk through activities (Reverse)
+next activity=,Meta+Tab,Walk through activities
+previous activity=,Meta+Shift+Tab,Walk through activities (Reverse)
 repeat_action=Ctrl+Alt+R,Meta+Ctrl+R,Manually Invoke Action on Current Clipboard
 show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
 show-barcode=none,,Show Barcode…
