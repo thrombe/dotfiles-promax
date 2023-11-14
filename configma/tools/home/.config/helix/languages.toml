@@ -129,12 +129,3 @@ command = "typst-lsp"
 # - [Can't disable `exportPdf` · Issue #265 · nvarner/typst-lsp · GitHub](https://github.com/nvarner/typst-lsp/issues/265)
 # - [disable compile on save · nvarner/typst-lsp · Discussion #158 · GitHub](https://github.com/nvarner/typst-lsp/discussions/158#discussioncomment-6272972)
 config = { exportPdf = "never" }
-
-# "hx --grammar fetch; hx --grammar build" seems to work even for nix wrapped helix
-# also need to add queries to ~/.config/helix/runtime/queries/typst as mentioned in the repo
-# - [frozolotl/tree-sitter-typst](https://github.com/frozolotl/tree-sitter-typst)
-[[grammar]]
-name = "typst"
-# source = { path = "/path/to/git-clone/tree-sitter-typst" }
-source = { git = "https://github.com/frozolotl/tree-sitter-typst", rev = "b345818903b55ea01ab351c13e25b2d2dd9dd395"}
-# source = { git = "https://github.com/SeniorMars/tree-sitter-typst", rev = "2e66ef4b798a26f0b82144143711f3f7a9e8ea35"}
