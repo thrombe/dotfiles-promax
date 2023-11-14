@@ -145,6 +145,8 @@ ColorScheme=GruvboxColors_modified
 ColorSchemeHash=ca9eaffe9b91d0700f16cbfec797eaa321225e9f
 TerminalApplication=alacritty
 TerminalService=Alacritty.desktop
+XftHintStyle=hintslight
+XftSubPixel=none
 
 [KDE]
 SingleClick=false
@@ -171,8 +173,8 @@ Speedbar Width=138
 View Style=Detail
 
 [KScreen]
-ScaleFactor=1.25
-ScreenScaleFactors=eDP=1.25;DisplayPort-0=1.25;DisplayPort-1=1.25;DisplayPort-2=1.25;DisplayPort-3=1.25;DisplayPort-4=1.25;DisplayPort-5=1.25;DisplayPort-6=1.25;DisplayPort-7=1.25;DP-1-0=1.25;DP-1-1=1.25;HDMI-1-0=1.25;DP-1-2=1.25;
+ScaleFactor=1
+ScreenScaleFactors=eDP=1;DisplayPort-0=1;DisplayPort-1=1;DisplayPort-2=1;DisplayPort-3=1;DisplayPort-4=1;DisplayPort-5=1;DisplayPort-6=1;DisplayPort-7=1;DP-1-0=1;DP-1-1=1;HDMI-1-0=1;DP-1-2=1;
 
 [KShortcutsDialog Settings]
 Dialog Size=775,480
