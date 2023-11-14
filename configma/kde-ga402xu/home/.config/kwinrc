@@ -37,6 +37,9 @@ NoiseStrength=0
 [Effect-diminactive]
 Strength=10
 
+[Effect-kwin4_effect_translucency]
+IndividualMenuConfig=true
+
 [Effect-presentwindows]
 BorderActivateAll=9
 
