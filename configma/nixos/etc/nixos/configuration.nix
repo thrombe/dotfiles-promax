@@ -103,9 +103,10 @@
   boot.kernelModules = ["kvm-amd" "kvm-intel"];
 
   virtualisation = {
+    spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
-      qemu.ovmf.packages = with pkgs; [unstable.OVMFFull];
+      # qemu.ovmf.packages = with pkgs; [unstable.OVMFFull];
       # enable tpm
       qemu.swtpm.enable = true;
       # qemu.runAsRoot = false; # TODO: seems interesting. look into it
