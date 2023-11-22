@@ -20,6 +20,33 @@
       fsType = "vfat";
     };
   };
+
+  powerstate-sync = pkgs.writeShellScriptBin "powerstate-sync" ''
+    # status=="$(${pkgs.busybox}/bin/grep "Battery 0" | ${pkgs.busybox}/bin/cut -d ',' -f1 | ${pkgs.busybox}/bin/cut ' ' -f3)"
+    status=="$(${pkgs.acpi}/bin/acpi -b | ${pkgs.busybox}/bin/grep 'Battery 0')"
+
+    # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
+    export XAUTHORITY=/home/${username}/.Xauthority
+    export DISPLAY=:0
+
+    if [[ "$status" == *"Discharging"* ]]; then
+      echo "setting battery power settings"
+      ${pkgs.xorg.xrandr}/bin/xrandr -r 60
+
+      ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+      ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+
+      ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
+    else
+      echo "setting ac power settings"
+      ${pkgs.xorg.xrandr}/bin/xrandr -r 165
+
+      ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+      ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+      ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
+    fi
+  '';
 in {
   specialisation = {
     sandisk-ssd.configuration = {
@@ -272,29 +299,23 @@ in {
     handlers.on-power-change = {
       event = "ac_adapter/*";
       action = ''
-        # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
-        export XAUTHORITY=/home/${username}/.Xauthority
-        export DISPLAY=:0
-
-        vals=($1)  # space separated string to array of multiple values
-        if [[ ''${vals[3]} == 00000000 ]]; then
-          ${pkgs.xorg.xrandr}/bin/xrandr -r 60
-
-          ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-          ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-
-          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
-        else
-          ${pkgs.xorg.xrandr}/bin/xrandr -r 165
-
-          ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-          ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-
-          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
-        fi
+        echo "on-power-change handler"
+        ${powerstate-sync}/bin/powerstate-sync
       '';
     };
   };
+  # this runs too early
+  # powerManagement.powerUpCommands = ''
+  #   echo "power up command"
+  #   ${powerstate-sync}/bin/powerstate-sync
+  # '';
+
+  # asusd anime stuff does not work after resume unless asusd is restarted (asusctl 4.7.1)
+  powerManagement.resumeCommands = ''
+    echo "resume started"
+    ${pkgs.systemd}/bin/systemctl restart asusd
+    echo "asusd restart command ended"
+  '';
 
   # - [Laptop - NixOS Wiki](https://nixos.wiki/wiki/Laptop)
   # default (atleast in kde)
@@ -364,5 +385,7 @@ in {
     # - [nixpkgs turbostat](https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/turbostat/default.nix)
     linuxPackages.turbostat
     acpi
+
+    powerstate-sync
   ];
 }
