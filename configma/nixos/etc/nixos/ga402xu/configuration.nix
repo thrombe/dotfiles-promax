@@ -21,30 +21,40 @@
     };
   };
 
-  powerstate-sync = pkgs.writeShellScriptBin "powerstate-sync" ''
-    # status=="$(${pkgs.busybox}/bin/grep "Battery 0" | ${pkgs.busybox}/bin/cut -d ',' -f1 | ${pkgs.busybox}/bin/cut ' ' -f3)"
-    status=="$(${pkgs.acpi}/bin/acpi -b | ${pkgs.busybox}/bin/grep 'Battery 0')"
-
+  powerstate-sync-ac = pkgs.writeShellScriptBin "powerstate-sync-ac" ''
     # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
     export XAUTHORITY=/home/${username}/.Xauthority
     export DISPLAY=:0
 
+    echo "setting ac power settings"
+    ${pkgs.xorg.xrandr}/bin/xrandr -r 165
+
+    ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+    ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
+  '';
+  powerstate-sync-bat = pkgs.writeShellScriptBin "powerstate-sync-bat" ''
+    # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
+    export XAUTHORITY=/home/${username}/.Xauthority
+    export DISPLAY=:0
+
+    echo "setting battery power settings"
+    ${pkgs.xorg.xrandr}/bin/xrandr -r 60
+
+    ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+
+    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
+  '';
+  powerstate-sync = pkgs.writeShellScriptBin "powerstate-sync" ''
+    # status=="$(${pkgs.busybox}/bin/grep "Battery 0" | ${pkgs.busybox}/bin/cut -d ',' -f1 | ${pkgs.busybox}/bin/cut ' ' -f3)"
+    status=="$(${pkgs.acpi}/bin/acpi -b | ${pkgs.busybox}/bin/grep 'Battery 0')"
+
     if [[ "$status" == *"Discharging"* ]]; then
-      echo "setting battery power settings"
-      ${pkgs.xorg.xrandr}/bin/xrandr -r 60
-
-      ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-      ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-
-      ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
+        ${powerstate-sync-bat}/bin/powerstate-sync-bat
     else
-      echo "setting ac power settings"
-      ${pkgs.xorg.xrandr}/bin/xrandr -r 165
-
-      ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-      ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-
-      ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
+        ${powerstate-sync-ac}/bin/powerstate-sync-ac
     fi
   '';
 in {
@@ -300,7 +310,13 @@ in {
       event = "ac_adapter/*";
       action = ''
         echo "on-power-change handler"
-        ${powerstate-sync}/bin/powerstate-sync
+
+        vals=($1)  # space separated string to array of multiple values
+        if [[ ''${vals[3]} == 00000000 ]]; then
+          ${powerstate-sync-bat}/bin/powerstate-sync-bat
+        else
+          ${powerstate-sync-ac}/bin/powerstate-sync-ac
+        fi
       '';
     };
   };
@@ -386,6 +402,8 @@ in {
     linuxPackages.turbostat
     acpi
 
+    powerstate-sync-ac
+    powerstate-sync-bat
     powerstate-sync
   ];
 }
