@@ -7,6 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     flake-utils.url = "github:numtide/flake-utils";
+    flake-compat.url = "github:edolstra/flake-compat";
 
     # home-manager = {
     #   url = "github:nix-community/home-manager/release-23.05";
@@ -15,6 +16,13 @@
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nix-index-database.follows = "nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     helix-git = {
@@ -65,6 +73,7 @@
       config.allowUnfree = true;
       overlays = [
         overlay-unstable
+        inputs.nix-alien.overlays.default
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
           asusctl = super.unstable.asusctl;

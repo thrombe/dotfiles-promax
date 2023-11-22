@@ -225,6 +225,7 @@
       cached-nix-shell
       nix-tree
       nix-melt # flake.lock visualizer
+      nix-alien
 
       # dev
       # rustup
