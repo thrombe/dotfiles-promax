@@ -13,11 +13,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1699195099,
-        "narHash": "sha256-gETGM4Mf1ZsX+cciV+b1rGuVi6aYs89McXRWNPTgnMQ=",
+        "lastModified": 1700038128,
+        "narHash": "sha256-PKfn91I6VJnzOQXnrej9cNWMFjg1ouKeYhjcwLYjNB4=",
         "owner": "thrombe",
         "repo": "configma",
-        "rev": "1e2d4fe7c3245b9635df596b9c1f77164e870ffc",
+        "rev": "1fd627b5773b8173e50d8c200132dd8909599e80",
         "type": "github"
       },
       "original": {
