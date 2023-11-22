@@ -1,0 +1,9 @@
+game:
+  exe: /home/issac/Games/Post.Void.Build.10891672/Post Void.exe
+  prefix: /home/issac/Games/red-dead-redemption-ii
+system: {}
+wine:
+  esync: false
+  fsr: false
+  fsync: false
+  version: Proton 7.0

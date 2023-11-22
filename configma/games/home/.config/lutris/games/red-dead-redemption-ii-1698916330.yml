@@ -1,10 +1,9 @@
 game:
   arch: win64
   args: -USEALLAVAILABLECORES -cpuLoadRebalancing -ignorepipelinecach -vulkan
-  exe: /home/issac/Games/red_dead_2/Red Dead Redemption 2/RDR2.exe
+  exe: /home/issac/Games/Red Dead Redemption 2/RDR2.exe
   prefix: /home/issac/Games/red-dead-redemption-ii
-  working_dir: /home/issac/Games/red_dead_2/Red Dead Redemption 2/home/issac/Games/red_dead_2/Red
-    Dead Redemption 2
+  working_dir: ''
 system:
   disable_compositor: false
   disable_runtime: true

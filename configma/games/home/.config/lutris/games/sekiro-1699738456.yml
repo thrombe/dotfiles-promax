@@ -1,0 +1,6 @@
+game:
+  exe: /home/issac/Games/Sekiro - Shadows Die Twice/sekiro.exe
+  prefix: /home/issac/Games/cyberpunk-2077
+system:
+  disable_compositor: false
+wine: {}
