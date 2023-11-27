@@ -23,6 +23,12 @@ verbs: [
         leave_broot: false
     }
     {
+        invocation: gitui
+        execution: "gitui"
+        set_working_dir: true
+        leave_broot: false
+    }
+    {
         invocation: bat
         execution: "bat --paging always {file}"
         key: ctrl-e
@@ -44,19 +50,8 @@ verbs: [
         leave_broot: false
     }
     {
-        invocation: wlp
-        execution: "zsh -i -c \"wlp {file}\""
-        leave_broot: false
-    }
-    {
         invocation: lf
         execution: "zsh -i -c \"lf {directory}\""
-        set_working_dir: true
-        leave_broot: false
-    }
-    {
-        invocation: bt
-        execution: "zsh -i -c \"x konsole --workdir {directory} -e 'zsh -i -c bt'\""
         set_working_dir: true
         leave_broot: false
     }
@@ -73,14 +68,19 @@ verbs: [
         leave_broot: false
     }
     {
-        invocation: code
-        execution: "code {directory}"
-        set_working_dir: true
+        invocation: touch {name}
+        execution: "touch {directory}/{name}"
         leave_broot: false
     }
     {
-        invocation: touch {name}
-        execution: "touch {directory}/{name}"
+        invocation: rmdir
+        execution: "rmdir {file}"
+        leave_broot: false
+    }
+    {
+        invocation: zz
+        execution: "zsh -ic zz"
+        set_working_dir: true
         leave_broot: false
     }
     {
@@ -120,16 +120,5 @@ verbs: [
         set_working_dir: true
         leave_broot: false
     }
-    # {
-    #     invocation: n {command}
-    #     # execution: "zsh -i -c \"x konsole --workdir {directory} -e 'zsh -i -c {command}'\""
-    #     execution: "zsh -i -c \"{command}\""
-    #     leave_broot: false
-    # }
-    # {
-    #     invocation: nf {command}
-    #     execution: "zsh -i -c \"x konsole --workdir {directory} -e 'zsh -i -c \\\'{command} {file}\\\''\""
-    #     leave_broot: false
-    # }
 ]
 
