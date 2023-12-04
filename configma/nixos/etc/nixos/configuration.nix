@@ -171,6 +171,7 @@
       unstable.gitui
       unstable.delta
       unstable.distrobox
+      ueberzugpp
       neovim
       alacritty
       fzf

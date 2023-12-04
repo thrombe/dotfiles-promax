@@ -9,6 +9,10 @@ set shell zsh
 set shellopts -i
 set ratios 1:2:5 # ratio of the three column widths
 
+# - [thimc/lfimg](https://github.com/thimc/lfimg)
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+
 # Custom Functions
 
 cmd wlp ${{

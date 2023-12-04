@@ -6,7 +6,7 @@ export LC_CTYPE="en_US.UTF-8"
 
 alias ls="ls --color=auto"
 alias la="ls -a --color=auto"
-# alias lf="lf-ueberzug"
+alias lf="~/.config/lf/lfrun"
 alias musiman="python ~/0Git/musimanager/src/main.py"
 alias kk="qalc"
 alias k="kalker"
