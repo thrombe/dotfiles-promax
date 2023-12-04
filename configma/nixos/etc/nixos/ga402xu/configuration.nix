@@ -80,7 +80,7 @@ in {
     nix-latest-kernel.configuration = {
       system.nixos.tags = tags ++ ["nix-latest-kernel"];
 
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
     };
 
     asusd-disabled.configuration = {
@@ -151,11 +151,11 @@ in {
     # - [applying patches to kernel](https://www.kernel.org/doc/html/v4.11/process/applying-patches.html)
     # - [linux source code](https://cdn.kernel.org/pub/linux/kernel/v6.x/)
     # patch -p1 < ./name.patch
-    patches = builtins.fetchTarball {
+    patches_6-5-8-arch1 = builtins.fetchTarball {
       url = "https://aur.archlinux.org/cgit/aur.git/snapshot/aur-3433bb9107cb5c4d80f09dd0d5a1825c5945169e.tar.gz";
       sha256 = "sha256:1ms9wp6g314iq86f7dyfkf3k5m3zvqgn860zcm4d04qlfn5zyp90";
     };
-    linux_g14_pkg = {
+    linux_g14_6-5-8-arch1_pkg = {
       fetchurl,
       buildLinux,
       ...
@@ -193,7 +193,7 @@ in {
             ]
             ++ (map (x: {
                 name = x;
-                patch = "${patches}/${x}";
+                patch = "${patches_6-5-8-arch1}/${x}";
               }) [
                 "0001-acpi-proc-idle-skip-dummy-wait.patch"
                 "0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch"
@@ -228,9 +228,79 @@ in {
               ]);
         }
         // (args.argsOverride or {}));
-    linux_g14 = pkgs.callPackage linux_g14_pkg {};
+    patches_6-6-2-arch1 = builtins.fetchTarball {
+      url = let rev = "8e4c2a7a455959bdd2da814d71f1a18660350c97"; in "https://aur.archlinux.org/cgit/aur.git/snapshot/aur-${rev}.tar.gz";
+      sha256 = "sha256:0as73wsi6bv2d079yg1jzcl1vh5jdrn3nfki6px7d17z5nrlf3fp";
+    };
+    linux_g14_6-6-2-arch1_pkg = {
+      fetchurl,
+      buildLinux,
+      ...
+    } @ args:
+    # - [buildLinux](https://github.com/NixOS/nixpkgs/blob/a6207181cf6300566bc15f38cf8e4d4c7ce6bc90/pkgs/top-level/linux-kernels.nix#L676)
+      buildLinux (args
+        // rec {
+          version = "6.6.2-arch1";
+          extraMeta.branch = "6.6";
+          modDirVersion = version;
+
+          # - [howto linux configuration](https://linuxconfig.org/in-depth-howto-on-linux-kernel-configuration)
+          # - [common-config nix linux kernel](https://github.com/NixOS/nixpkgs/blob/4f4312a71cd8129620af1d004f54b7056012e21a/pkgs/os-specific/linux/kernel/common-config.nix#L35)
+          # as i understand it, this can be disabled as nix uses it's own configs if not specified.
+          #   - [](https://github.com/NixOS/nixpkgs/blob/bd406645637326b1538a869cd54cc3fdf17e975a/pkgs/os-specific/linux/kernel/generic.nix#L133)
+          # defconfig = "${patches}/config";
+          # extraConfig = "${patches}/config";
+
+          src = fetchurl {
+            # - [git archlinux releases](https://github.com/archlinux/linux/releases)
+            url = "https://github.com/archlinux/linux/archive/refs/tags/v6.6.2-arch1.tar.gz";
+            sha256 = "sha256-KeA4gY4hAH/eiMw2C9+ZTHBKjsk296zcDGpGavh7rp4=";
+          };
+
+          # go to the PKGBUILD file of the arch package and copy all patches from 'source' in the same order
+          kernelPatches =
+            [
+              {
+                patch = fetchurl {
+                  name = "sys-kernel_arch-sources-g14_files-0004-5.17+--more-uarches-for-kernel.patch";
+                  url = "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.17+.patch";
+                  sha256 = "sha256-ga1mOSWgqltTMqabrnInOTZku4HuLleig+fxbp/3Xv4=";
+                };
+              }
+            ]
+            ++ (map (x: {
+                name = x;
+                patch = "${patches_6-6-2-arch1}/${x}";
+              }) [
+                "0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-G814Jx.patch"
+                "0001-acpi-proc-idle-skip-dummy-wait.patch"
+                "0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch"
+                "0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch"
+                "0001-linux6.6.y-bore3.3.0.patch"
+                "0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch"
+                "0035-Add_quirk_for_polling_the_KBD_port.patch"
+                "0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
+                "0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
+                "v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch"
+                "v2-0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-sw.patch"
+                "0038-mediatek-pci-reset.patch"
+                "0040-workaround_hardware_decoding_amdgpu.patch"
+                "0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-if-.patch"
+                "0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-switc.patch"
+                "0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch"
+                "amd-tablet-sfh.patch"
+                "v2-0002-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-m.patch"
+                "v6-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch"
+                "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
+                "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
+              ]);
+        }
+        // (args.argsOverride or {}));
+    linux_g14_6-5-8-arch1 = pkgs.callPackage linux_g14_6-5-8-arch1_pkg {};
+    linux_g14_6-6-2-arch1 = pkgs.unstable.callPackage linux_g14_6-6-2-arch1_pkg {};
+    linux_g14 = linux_g14_6-6-2-arch1;
   in
-    pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_g14));
+    pkgs.unstable.recurseIntoAttrs (pkgs.unstable.linuxPackagesFor linux_g14));
 
   services.supergfxd.enable = true;
   # - [Power Management nixos wiki](https://nixos.wiki/wiki/Power_Management)
