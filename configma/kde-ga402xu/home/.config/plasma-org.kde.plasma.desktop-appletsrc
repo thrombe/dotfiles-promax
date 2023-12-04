@@ -588,7 +588,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][195][Applets][213][Configuration]
-PreloadWeight=93
+PreloadWeight=100
 popupHeight=600
 popupWidth=528
 
@@ -714,7 +714,7 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][201][Applets][210][Configuration]
-PreloadWeight=97
+PreloadWeight=100
 
 [Containments][201][Applets][211]
 immutability=1
@@ -749,14 +749,14 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][201][Applets][217][Configuration]
-PreloadWeight=92
+PreloadWeight=100
 
 [Containments][201][Applets][218]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][201][Applets][218][Configuration]
-PreloadWeight=60
+PreloadWeight=65
 
 [Containments][201][Applets][225]
 immutability=1
@@ -765,18 +765,21 @@ plugin=org.kde.kscreen
 [Containments][201][Applets][225][Configuration]
 PreloadWeight=18
 
+[Containments][201][Applets][235][Configuration]
+PreloadWeight=42
+
 [Containments][201][ConfigDialog]
 DialogHeight=540
-DialogWidth=720
+DialogWidth=917
 
 [Containments][201][Configuration]
 PreloadWeight=18
 
 [Containments][201][General]
 extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
-hiddenItems=discord1,News available!,org.kde.plasma.mediacontroller,obs,Optimus Manager Qt,Stremio,org.kde.plasma.devicenotifier,org.kde.kdeconnect,com.github.zren.alphablackcontrol,org.kde.plasma.clipboard,org.kde.plasma.nightcolorcontrol,viper-gui,Package Manager,MSM Notifier for Plasma5,Plasma_microphone
+hiddenItems=discord1,News available!,org.kde.plasma.mediacontroller,obs,Optimus Manager Qt,Stremio,org.kde.plasma.devicenotifier,org.kde.kdeconnect,com.github.zren.alphablackcontrol,org.kde.plasma.clipboard,org.kde.plasma.nightcolorcontrol,viper-gui,Package Manager,MSM Notifier for Plasma5
 knownItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
-shownItems=org.kde.plasma.notifications,org.kde.plasma.volume,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement
+shownItems=org.kde.plasma.notifications,org.kde.plasma.volume,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,Plasma_microphone
 
 [Containments][229]
 ItemGeometries-1920x1080=
@@ -801,7 +804,7 @@ PreloadWeight=18
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=629
 ToolBoxButtonY=30
-positions={"2560x1600":[]}
+positions={"2560x1600":[]\\,"1920x1080":[]\\,"1920x1200":[""]}
 sortMode=-1
 
 [Containments][229][Wallpaper][org.kde.image][General]
@@ -809,6 +812,7 @@ Image=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wa
 SlidePaths=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/,/etc/profiles/per-user/issac/share/wallpapers/,/run/current-system/sw/share/wallpapers/
 
 [Containments][234]
+ItemGeometries-0x0=
 ItemGeometries-1920x1080=
 ItemGeometries-2560x1600=
 ItemGeometriesHorizontal=
@@ -821,15 +825,24 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][234][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
+DialogHeight=720
+DialogWidth=840
 
 [Containments][234][Configuration]
 PreloadWeight=18
 
 [Containments][234][Wallpaper][org.kde.image][General]
-Image=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/Next/
+Image=/nix/store/4lkbr2pif5zyjr1yzap1507r917s50fb-breeze-qt5-5.27.9-bin/share/wallpapers/Next/
 SlidePaths=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/,/etc/profiles/per-user/issac/share/wallpapers/,/run/current-system/sw/share/wallpapers/
+
+[Containments][235]
+activityId=b05b12af-4ee5-455c-9ce7-1ca68d58cd77
+formfactor=0
+immutability=1
+lastScreen=1
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
 
 [Containments][90]
 activityId=
@@ -999,5 +1012,5 @@ history=#ddccbe,#3592ac,#3592ac
 launchers=
 
 [ScreenMapping]
-itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/chefs.txt,desktop:/cources.md,desktop:/musik.txt,desktop:/GSOC.txt,desktop:/to_watch.txt,desktop:/shadertoy_links.txt,desktop:/bdys.txt
-screenMapping=desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40
+itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/musik.txt,desktop:/cources.md,desktop:/bdys.txt,desktop:/shadertoy_links.txt,desktop:/GSOC.txt,desktop:/to_watch.txt,desktop:/chefs.txt
+screenMapping=desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40

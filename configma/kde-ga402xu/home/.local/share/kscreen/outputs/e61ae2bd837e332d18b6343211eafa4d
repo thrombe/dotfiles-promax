@@ -1,0 +1,19 @@
+{
+    "id": "e61ae2bd837e332d18b6343211eafa4d",
+    "metadata": {
+        "fullname": "xrandr-BenQ PJ-286",
+        "name": "HDMI-1-0"
+    },
+    "mode": {
+        "refresh": 60,
+        "size": {
+            "height": 1080,
+            "width": 1920
+        }
+    },
+    "overscan": 0,
+    "rgbrange": 0,
+    "rotation": 1,
+    "scale": 1,
+    "vrrpolicy": 2
+}
