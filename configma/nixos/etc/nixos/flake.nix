@@ -105,19 +105,6 @@
     ];
   in {
     nixosConfigurations = {
-      gl553ve = nixpkgs.lib.nixosSystem rec {
-        specialArgs = {
-          hostname = "gl553ve";
-          inherit pkgs system username;
-        };
-
-        modules =
-          commonModules
-          ++ [
-            ./${specialArgs.hostname}/configuration.nix
-          ];
-      };
-
       ga402xu = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           hostname = "ga402xu";
