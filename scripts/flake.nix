@@ -7,18 +7,12 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    flake-utils,
-    ...
-  }:
-    flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
-      pkgs = import nixpkgs {
+  outputs = inputs:
+    inputs.flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
+      pkgs = import inputs.nixpkgs {
         inherit system;
       };
-      # unstable = import nixpkgs-unstable {
+      # unstable = import inputs.nixpkgs-unstable {
       #   inherit system;
       # };
 
