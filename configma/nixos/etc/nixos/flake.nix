@@ -102,6 +102,53 @@
             "wait-until"
           ]);
       })
+
+      # - [Nixos and Hyprland - Best Match Ever - YouTube](https://www.youtube.com/watch?v=61wGzIv12Ds)
+      # - [Installing NixOS with Hyprland! - by Josiah - Tech Prose](https://josiahalenbrown.substack.com/p/installing-nixos-with-hyprland)
+      ({...}: {
+        programs.hyprland = {
+          enable = true;
+          enableNvidiaPatches = true;
+          xwayland.enable = true;
+        };
+
+        environment.sessionVariables = {
+          # if cursor invisible
+          WLR_NO_HARDWARE_CURSORS = "1";
+
+          # hint electron to use wayland
+          NIXOS_OZONE_WL = "1";
+        };
+        # hardware.nvidia.modsetting.enable = true;
+
+        environment.systemPackages = with pkgs; [
+          # eww
+          (pkgs.waybar.overrideAttrs (old: {
+            mesonFlags = old.mesonFlags ++ ["-Dexperimental=true"];
+          }))
+          dunst
+          libnotify
+          swww
+          kitty
+          rofi-wayland
+          networkmanagerapplet
+
+          # xrandr eq for wl-roots compositors
+          wlr-randr
+          wl-clipboard
+        ];
+
+        xdg.portal = {
+          enable = true;
+          wlr.enable = true;
+          extraPortals = [pkgs.xdg-desktop-portal-gtk];
+        };
+
+        fonts.packages = with pkgs; [
+          nerdfonts
+          meslo-lgs-nf
+        ];
+      })
     ];
   in {
     nixosConfigurations = {
