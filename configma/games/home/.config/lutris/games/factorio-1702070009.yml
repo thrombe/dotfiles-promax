@@ -1,0 +1,5 @@
+game:
+  exe: /home/issac/Games/Factorio/bin/x64/factorio.exe
+  prefix: /home/issac/Games/cyberpunk-2077
+system: {}
+wine: {}
