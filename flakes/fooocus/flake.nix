@@ -27,40 +27,30 @@
         ];
       };
 
-      dontCheckPython = drv: drv.overridePythonAttrs (old: {doCheck = false;});
+      fhs = pkgs.buildFHSEnv {
+        name = "fhs-shell";
+        targetPkgs = p: (packages p) ++ [fooocus-serve];
+        runScript = "${pkgs.zsh}/bin/zsh";
+        profile = ''
+          export FHS=1
+          source ./.venv/bin/activate
+        '';
+      };
+      fooocus-serve = 
+        (pkgs.buildFHSEnv {
+          name = "fooocus-serve";
+          targetPkgs = packages;
+          runScript = ''
+            #!/usr/bin/env bash
+            source ./.venv/bin/activate
+            # pip install -r ./Fooocus/requirements_versions.txt
+            python ./Fooocus/entry_with_update.py
+          '';
+        });
 
       packages = pkgs: (with pkgs; [
-        pkgs.stdenv.cc.cc.lib
-
-        # (python3.withPackages (ps:
-        #   with ps; [
-        #     (dontCheckPython numpy)
-        #     (dontCheckPython torch)
-        #     (dontCheckPython torchvision)
-        #   ]))
-        # python3Packages.pip
-        # python3Packages.virtualenv
         (pkgs.python310.withPackages (ps:
           with ps; [
-            # numpy
-            # torch-bin
-            # torchsde
-            # torchvision-bin
-            # gradio
-            # einops
-            # transformers
-            # safetensors
-            # accelerate
-            # pyyaml
-            # pillow
-            # scipy
-            # tqdm
-            # psutil
-            # # pytorch_lightning
-            # omegaconf
-            # pygit2
-            # # opencv-contrib-python
-            # httpx
           ]))
         pkgs.python310Packages.pip
         pkgs.python310Packages.virtualenv
@@ -75,78 +65,17 @@
         libGL
         vulkan-headers
         vulkan-loader
-        libxkbcommon
-        glibc
         glib
 
-        # python311Packages.python-lsp-server
-        # python311Packages.ruff-lsp # python linter
-        # python311Packages.black # python formatter
-        # unstable.pyenv # kinda like 'nvm' but python
         # virtualenv .venv
         # source ./.venv/bin/activate
         # pip install ..
-        # python311Packages.venvShellHook
-        # python311Packages.torch
-
-        # vscodium-fhs
-        # (vscode-with-extensions.override {
-        #   vscode = vscodium;
-        #   vscodeExtensions = with vscode-extensions;
-        #     [
-        #       # bbenoist.nix
-        #       ms-python.python
-        #       # ms-python.vscode-pylance
-        #       # ms-vscode-remote.remote-ssh
-        #       ms-toolsai.jupyter
-        #     ]
-        #     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        #       # {
-        #       #   name = "remote-ssh-edit";
-        #       #   publisher = "ms-vscode-remote";
-        #       #   version = "0.47.2";
-        #       #   sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-        #       # }
-        #     ];
-        # })
+        # python311Packages.venvShellHook # ??
       ]);
     in {
       devShells.default = pkgs.mkShell {
-        nativeBuildInputs =
-          (packages pkgs)
-          ++ [
-            (pkgs.buildFHSEnv {
-              name = "fhs-run";
-              targetPkgs = packages;
-              runScript = ''
-                #!/usr/bin/env bash
-                source ./.venv/bin/activate
-                # cd ./Fooocus
-                # pip install -r ./requirements_versions.txt
-                # python ./entry_with_update.py
-                python ./Fooocus/entry_with_update.py
-              '';
-            })
-            (pkgs.buildFHSUserEnv {
-              name = "fhs-shell";
-              targetPkgs = packages;
-              runScript = "${pkgs.zsh}/bin/zsh";
-              profile = ''
-                source ./.venv/bin/activate
-              '';
-            })
-          ];
-        shellHook = ''
-          # source ./.venv/bin/activate
-          LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
-        '';
+        nativeBuildInputs = [fhs fooocus-serve] ++ packages pkgs;
       };
-      devShells.fhs =
-        (pkgs.buildFHSUserEnv {
-          name = "fhs-shell";
-          targetPkgs = packages;
-          runScript = "${pkgs.zsh}/bin/zsh";
-        })
-        .env;
+      # devShells.default = fhs.env;
     });
 }
