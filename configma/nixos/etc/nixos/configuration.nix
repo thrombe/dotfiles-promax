@@ -180,6 +180,15 @@
       libqalculate
       sshfs
       neofetch
+      unoconv
+      (pkgs.writeScriptBin "convert-all-to-pdf" ''
+        #!/usr/bin/env zsh
+        mkdir -p unconverted
+        for i in ./**.(doc|ppt|xls|docx|pptx|xlsx); do
+          ${unoconv}/bin/unoconv -f pdf ./$i
+          mv $i ./unconverted/$i
+        done
+      '')
 
       btop
       s-tui # fan rpm + other stuff
