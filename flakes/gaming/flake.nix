@@ -7,28 +7,20 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    flake-utils,
+  outputs = inputs@{...
   }:
-    flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
-      pkgs = import nixpkgs {
+    inputs.flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
+      pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      unstable = import nixpkgs-unstable {
+      unstable = import inputs.nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
-    in {
-      devShells.default = pkgs.mkShell {
-        packages = with pkgs; [
-          # yuzu-mainline
-          yuzu-early-access
 
-          (pkgs.steam.override {
+      steam-pkg = 
+          (unstable.steam.override {
             extraLibraries = pkgs:
               with pkgs; [
                 libxkbcommon
@@ -36,18 +28,26 @@
                 wayland
                 sndio
               ];
-          })
-          .run
+          });
+    in {
+      devShells.default = pkgs.mkShell {
+        packages = with pkgs; [
+          # yuzu-mainline
+          yuzu-early-access
+
+          steam-pkg
+          steam-pkg.run
+
+          # steam
           # steam-run
 
-          steam
           winetricks
 
           # pkg-config
           # gnome3.adwaita-icon-theme
 
           # lutris
-          unstable.mangohud
+          mangohud
           (lutris.override {
             extraLibraries = pkgs: [
               # List library dependencies here
