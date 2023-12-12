@@ -22,12 +22,16 @@
   };
 
   powerstate-sync-ac = pkgs.writeShellScriptBin "powerstate-sync-ac" ''
-    # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
-    export XAUTHORITY=/home/${username}/.Xauthority
-    export DISPLAY=:0
+    if [ -S /tmp/.X11-unix/X0 ]; then
+      # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
+      export XAUTHORITY=/home/${username}/.Xauthority
+      export DISPLAY=:0
 
-    echo "setting ac power settings"
-    ${pkgs.xorg.xrandr}/bin/xrandr -r 165
+      echo "setting ac power settings"
+      ${pkgs.xorg.xrandr}/bin/xrandr -r 165
+    else
+      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@165.001999Hz
+    fi
 
     ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
     ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
@@ -35,12 +39,16 @@
     ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
   '';
   powerstate-sync-bat = pkgs.writeShellScriptBin "powerstate-sync-bat" ''
-    # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
-    export XAUTHORITY=/home/${username}/.Xauthority
-    export DISPLAY=:0
+    if [ -S /tmp/.X11-unix/X0 ]; then
+      # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
+      export XAUTHORITY=/home/${username}/.Xauthority
+      export DISPLAY=:0
 
-    echo "setting battery power settings"
-    ${pkgs.xorg.xrandr}/bin/xrandr -r 60
+      echo "setting battery power settings"
+      ${pkgs.xorg.xrandr}/bin/xrandr -r 60
+    else
+      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@60.001999Hz
+    fi
 
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
@@ -368,12 +376,17 @@ in {
   # xrandr -q (check available refresh rates)
   # xrandr -r 60 (change refresh rate)
 
+  # wlr-randr --output eDP-1 --mode 2560x1600@60.001999Hz
+  # wlr-randr --output eDP-1 --mode 2560x1600@165.001999Hz
+
   # check if on battery
   # cat /sys/class/power_supply/ADP0/online
 
   # - [nixpkgs acpid](https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/hardware/acpid.nix)
   services.acpid = {
     enable = true;
+
+    # 'systemctl status acpid' to check logs
     # - [acpid archwiki](https://wiki.archlinux.org/title/Acpid#Determine_the_event)
     # - [ppd cli](https://discussion.fedoraproject.org/t/how-to-switch-profiles-of-power-profiles-daemon-automatically-on-kde-plasma/34071)
     handlers.on-power-change = {
