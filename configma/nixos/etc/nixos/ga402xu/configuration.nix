@@ -88,7 +88,7 @@ in {
     nix-latest-kernel.configuration = {
       system.nixos.tags = tags ++ ["nix-latest-kernel"];
 
-      boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+      boot.kernelPackages = pkgs.linuxPackages_latest;
     };
 
     asusd-disabled.configuration = {
@@ -305,10 +305,10 @@ in {
         }
         // (args.argsOverride or {}));
     linux_g14_6-5-8-arch1 = pkgs.callPackage linux_g14_6-5-8-arch1_pkg {};
-    linux_g14_6-6-2-arch1 = pkgs.unstable.callPackage linux_g14_6-6-2-arch1_pkg {};
+    linux_g14_6-6-2-arch1 = pkgs.callPackage linux_g14_6-6-2-arch1_pkg {};
     linux_g14 = linux_g14_6-6-2-arch1;
   in
-    pkgs.unstable.recurseIntoAttrs (pkgs.unstable.linuxPackagesFor linux_g14));
+    pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_g14));
 
   services.supergfxd.enable = true;
   # - [Power Management nixos wiki](https://nixos.wiki/wiki/Power_Management)
