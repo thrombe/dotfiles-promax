@@ -196,7 +196,7 @@
       lightly-qt
 
       # system behavior
-      libsForQt5.bismuth
+      # libsForQt5.bismuth
       xorg.xmodmap
       xdotool
       # wtype # 'xdotool type' for wayland

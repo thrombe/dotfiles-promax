@@ -85,22 +85,52 @@
       ];
     };
 
+    # - [Future of Bismuth after kde 5.27](https://github.com/Bismuth-Forge/bismuth/issues/471#issuecomment-1700307974)
+    # or try this new project:
+    #   - [GitHub - zeroxoneafour/polonium: Tiling window manager for KWin 5.27](https://github.com/zeroxoneafour/polonium)
+    bismuth =
+      pkgs.libsForQt5.bismuth.overrideAttrs
+      (finalAttrs: previousAttrs: {
+        patches =
+          (previousAttrs.patches or [])
+          ++ [
+            # (fetchpatch {
+            #   name = "bismuth-3.1-4-border-color.patch";
+            #   url = "https://github.com/I-Want-ToBelieve/bismuth/commit/dac110934fe1ae0da9e4aca8c331f27987b033cf.patch";
+            #   sha256 = "sha256-3fQs/A4hc/qeiu+792nZBTl4ujg8rQD25kuwNr03YUs=";
+            # })
+            (pkgs.fetchpatch {
+              name = "bismuth-3.1-4-static-block.patch";
+              url = "https://github.com/I-Want-ToBelieve/bismuth/commit/99438b55a82f90d4df3653d00f1f0978eddc2725.patch";
+              sha256 = "sha256-jEt0YdS7k0bJRIS0UMY21o71jgrJcwNp3gFA8e8TG6I=";
+            })
+            (pkgs.fetchpatch {
+              name = "bismuth-3.1-4-window-id.patch";
+              url = "https://github.com/jkcdarunday/bismuth/commit/ce377a33232b7eac80e7d99cb795962a057643ae.patch";
+              sha256 = "sha256-15txf7pRhIvqsrBdBQOH1JDQGim2Kh5kifxQzVs5Zm0=";
+            })
+          ];
+      });
+
     commonModules = [
       # {_module.args = inputs;}
       ./configuration.nix
       inputs.nix-index-database.nixosModules.nix-index
 
-      # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
       ({...}: {
         users.users."${username}".packages =
           (map flakeDefaultPackage (with inputs; [
+            # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
             configma
             yankpass
             nix-update-input # update-input
           ]))
           ++ (map getScript [
             "wait-until"
-          ]);
+          ])
+          ++ [
+            bismuth
+          ];
       })
 
       # - [Nixos and Hyprland - Best Match Ever - YouTube](https://www.youtube.com/watch?v=61wGzIv12Ds)
