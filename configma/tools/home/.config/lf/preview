@@ -40,7 +40,7 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.zip|*.jar|*.war|*.ear|*.oxt) unzip -l "$1" ;;
 	*.gz) gzip -l "$1" ;;
 	*.rar) unrar l "$1" ;;
-	*.md) glowormdcat "$1";;
+	# *.md) glowormdcat "$1";;
 	*.7z) 7z l "$1" ;;
 	*.[1-8]) man "$1" | col -b ;;
 	*.o) nm "$1";;
@@ -73,9 +73,9 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 			ffmpegthumbnailer -i "$1" -o "${CACHE}.jpg" -s 0 -q 5
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"
 		;;
-	*.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp|*.tiff|*.gif|*.jfif|*.ico)
-		image "$1" "$2" "$3" "$4" "$5"
-		;;
+	# *.bmp|*.jpg|*.jpeg|*.png|*.xpm|*.webp|*.tiff|*.gif|*.jfif|*.ico)
+	# 	image "$1" "$2" "$3" "$4" "$5"
+	# 	;;
 	*.svg)
 		[ ! -f "${CACHE}.jpg" ] && convert "$1" "${CACHE}.jpg"
 		image "${CACHE}.jpg" "$2" "$3" "$4" "$5"

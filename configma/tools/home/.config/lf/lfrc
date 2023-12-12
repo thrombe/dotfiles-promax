@@ -9,6 +9,14 @@ set shell zsh
 set shellopts -i
 set ratios 1:2:5 # ratio of the three column widths
 
+# - [neeshy/lfimg](https://github.com/neeshy/lfimg)
+# set previewer ~/.config/lf/pv
+# set cleaner ~/.config/lf/cls
+
+# - [gokcehan/lf](https://github-wiki-see.page/m/gokcehan/lf/wiki/Previews)
+# set previewer ~/.config/lf/previewer.sh
+# set cleaner ~/.config/lf/clear_img.sh
+
 # - [thimc/lfimg](https://github.com/thimc/lfimg)
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
