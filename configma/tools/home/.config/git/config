@@ -6,6 +6,7 @@
 # https://stackoverflow.com/a/50700468
 [credential]
 	helper = store
+	username = thrombe
 
 
 
