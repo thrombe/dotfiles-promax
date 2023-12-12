@@ -130,7 +130,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][112][Applets][126][Configuration]
-PreloadWeight=12
+PreloadWeight=4
 
 [Containments][112][Applets][127]
 immutability=1
@@ -271,7 +271,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][137][Applets][152][Configuration]
-PreloadWeight=2
+PreloadWeight=0
 
 [Containments][137][Applets][153]
 immutability=1
@@ -392,7 +392,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][161][Applets][175][Configuration]
-PreloadWeight=2
+PreloadWeight=0
 
 [Containments][161][Applets][176]
 immutability=1
@@ -520,7 +520,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][178][Applets][192][Configuration]
-PreloadWeight=2
+PreloadWeight=0
 
 [Containments][178][Applets][193]
 immutability=1
@@ -632,7 +632,7 @@ DialogWidth=2560
 PreloadWeight=18
 
 [Containments][195][General]
-AppletOrder=198;224;223;200;213;197
+AppletOrder=198;224;223;200;;213;197
 
 [Containments][201]
 activityId=
@@ -794,8 +794,8 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][229][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
+DialogHeight=995
+DialogWidth=1529
 
 [Containments][229][Configuration]
 PreloadWeight=18
@@ -809,6 +809,7 @@ sortMode=-1
 
 [Containments][229][Wallpaper][org.kde.image][General]
 Image=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/Next/
+PreviewImage=/home/issac/0Git/dotfiles-promax/flakes/fooocus/Fooocus/outputs/2023-12-12/2023-12-12_23-08-35_8144.png
 SlidePaths=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/,/etc/profiles/per-user/issac/share/wallpapers/,/run/current-system/sw/share/wallpapers/
 
 [Containments][234]
@@ -882,7 +883,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][90][Applets][104][Configuration]
-PreloadWeight=18
+PreloadWeight=10
 
 [Containments][90][Applets][104][Configuration][General]
 showPercentage=true
@@ -892,7 +893,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][90][Applets][105][Configuration]
-PreloadWeight=60
+PreloadWeight=52
 
 [Containments][90][Applets][106]
 immutability=1
@@ -1012,5 +1013,5 @@ history=#ddccbe,#3592ac,#3592ac
 launchers=
 
 [ScreenMapping]
-itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/musik.txt,desktop:/cources.md,desktop:/bdys.txt,desktop:/shadertoy_links.txt,desktop:/GSOC.txt,desktop:/to_watch.txt,desktop:/chefs.txt
-screenMapping=desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40
+itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/shadertoy_links.txt,desktop:/cources.md,desktop:/bdys.txt,desktop:/GSOC.txt,desktop:/chefs.txt,desktop:/musik.txt,desktop:/to_watch.txt
+screenMapping=desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40

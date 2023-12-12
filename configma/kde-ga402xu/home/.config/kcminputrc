@@ -8,7 +8,7 @@ RepeatDelay=250
 RepeatRate=50
 
 [Mouse]
-X11LibInputXAccelProfileFlat=false
+X11LibInputXAccelProfileFlat=true
 XLbInptAccelProfileFlat=false
 cursorTheme=Breeze_Snow
 
