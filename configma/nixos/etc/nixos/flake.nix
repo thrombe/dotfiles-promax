@@ -9,10 +9,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
 
-    # home-manager = {
-    #   url = "github:nix-community/home-manager/release-23.05";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,7 +53,7 @@
     };
   };
 
-  outputs = inputs @ {nixpkgs, ...}: let
+  outputs = inputs: let
     system = "x86_64-linux";
     username = "issac";
 
@@ -133,6 +133,24 @@
           ];
       })
 
+      # - [Home Manager Manual](https://nix-community.github.io/home-manager/index.xhtml#sec-install-nixos-module)
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit username;
+        };
+        # home-manager.users."${username}" = import ./home.nix;
+        home-manager.users."${username}" = {...}: {
+          home.username = "${username}";
+          home.homeDirectory = "/home/${username}";
+          home.stateVersion = "23.05";
+
+          home.packages = [];
+        };
+      }
+
       # - [Nixos and Hyprland - Best Match Ever - YouTube](https://www.youtube.com/watch?v=61wGzIv12Ds)
       # - [Installing NixOS with Hyprland! - by Josiah - Tech Prose](https://josiahalenbrown.substack.com/p/installing-nixos-with-hyprland)
       ({...}: {
@@ -182,7 +200,7 @@
     ];
   in {
     nixosConfigurations = {
-      ga402xu = nixpkgs.lib.nixosSystem rec {
+      ga402xu = inputs.nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           hostname = "ga402xu";
           inherit pkgs system username;
