@@ -314,6 +314,8 @@
       # - [Configuration | Starship](https://starship.rs/config/#prompt)
       # - [Customize Linux Terminal Prompt](https://www.maketecheasier.com/customize-linux-terminal-prompt-using-starship/)
 
+      # check logs in ~/.cache/starship
+
       "$schema" = "https://starship.rs/config-schema.json";
       add_newline = true;
       format = "\${directory}\${nix_shell}\${custom.fhs_shell}\${python}\${shell}\${character}";
@@ -342,7 +344,7 @@
       };
       python = {
         version_format = "";
-        format = "[ \\(\$virtualenv\\)]($style)";
+        format = "[( \\(\$virtualenv\\))]($style)";
       };
       directory = {
         format = "[ $path]($style)";
