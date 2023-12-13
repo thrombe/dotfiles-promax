@@ -171,6 +171,7 @@
       unstable.gitui
       unstable.delta
       unstable.distrobox
+      starship
       ueberzugpp
       neovim
       alacritty
@@ -251,6 +252,7 @@
           colorama
         ]))
     ];
+    useDefaultShell = true;
   };
 
   programs.nix-ld.enable = true;
@@ -340,7 +342,7 @@
       custom.fhs_shell = {
         format = "[ \\(FHS\\)]($style)";
         style = "bold blue";
-        when = '' test "$FHS" = "1" '';
+        when = ''test "$FHS" = "1" '';
       };
       python = {
         version_format = "";
