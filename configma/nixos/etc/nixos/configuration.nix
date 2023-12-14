@@ -308,6 +308,9 @@
   environment.shells = with pkgs; [zsh];
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enableCompletion
   environment.pathsToLink = ["/share/zsh"];
+  environment.variables = {
+    EDITOR = "${pkgs.helix}/bin/helix";
+  };
 
   programs.starship = {
     enable = true;
