@@ -94,16 +94,6 @@
         patches =
           (previousAttrs.patches or [])
           ++ [
-            # (fetchpatch {
-            #   name = "bismuth-3.1-4-border-color.patch";
-            #   url = "https://github.com/I-Want-ToBelieve/bismuth/commit/dac110934fe1ae0da9e4aca8c331f27987b033cf.patch";
-            #   sha256 = "sha256-3fQs/A4hc/qeiu+792nZBTl4ujg8rQD25kuwNr03YUs=";
-            # })
-            (pkgs.fetchpatch {
-              name = "bismuth-3.1-4-static-block.patch";
-              url = "https://github.com/I-Want-ToBelieve/bismuth/commit/99438b55a82f90d4df3653d00f1f0978eddc2725.patch";
-              sha256 = "sha256-jEt0YdS7k0bJRIS0UMY21o71jgrJcwNp3gFA8e8TG6I=";
-            })
             (pkgs.fetchpatch {
               name = "bismuth-3.1-4-window-id.patch";
               url = "https://github.com/jkcdarunday/bismuth/commit/ce377a33232b7eac80e7d99cb795962a057643ae.patch";
