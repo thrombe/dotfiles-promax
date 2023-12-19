@@ -1,2 +1,0 @@
-FROM llama2
-PARAMETER num_gpu 34
