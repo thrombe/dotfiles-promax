@@ -88,6 +88,7 @@
               --replace '[bundle pathForResource:@"ggml-metal" ofType:@"metal"];' "@\"$out/bin/ggml-metal.metal\";"
           '';
 
+          # NOTE(thrombe): this line had a bug. pkg-config should also be included when cudaSupport is true
           nativeBuildInputs = [cmake pkg-config];
 
           buildInputs =
