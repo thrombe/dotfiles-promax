@@ -47,6 +47,35 @@
             python ./Fooocus/entry_with_update.py
           '';
         });
+      comfyui-serve = 
+        (pkgs.buildFHSEnv {
+          name = "comfyui-serve";
+          targetPkgs = packages;
+          runScript = ''
+            #!/usr/bin/env bash
+            source ./.venv/bin/activate
+            python ./ComfyUI/main.py
+          '';
+        });
+      sd-webui-serve = 
+        (pkgs.buildFHSEnv {
+          name = "sd-webui-serve";
+          targetPkgs = packages;
+          runScript = ''
+            #!/usr/bin/env bash
+            source ./.venv/bin/activate
+            python ./stable-diffusion-webui/webui.py
+          '';
+        });
+      textg-webui-serve = 
+        (pkgs.buildFHSEnv {
+          name = "textg-webui-serve";
+          targetPkgs = packages;
+          runScript = ''
+            #!/usr/bin/env bash
+            sh ./text-generation-webui/start_linux.sh
+          '';
+        });
 
       packages = pkgs: (with pkgs; [
         (pkgs.python310.withPackages (ps:
@@ -74,7 +103,7 @@
       ]);
     in {
       devShells.default = pkgs.mkShell {
-        nativeBuildInputs = [fhs fooocus-serve] ++ packages pkgs;
+        nativeBuildInputs = [fhs fooocus-serve comfyui-serve sd-webui-serve textg-webui-serve] ++ packages pkgs;
       };
       # devShells.default = fhs.env;
     });

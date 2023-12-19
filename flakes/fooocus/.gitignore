@@ -2,3 +2,11 @@
 .venv
 models
 Fooocus
+ComfyUI
+comfyui*.log
+db
+outputs
+privateGPT
+stable-diffusion-webui
+text-generation-webui
+

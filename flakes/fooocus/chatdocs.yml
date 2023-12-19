@@ -1,0 +1,12 @@
+
+
+# embeddings:
+#   model_kwargs:
+#     device: cuda
+
+ctransformers:
+  config:
+    gpu_layers: 30
+
+huggingface:
+  device: 0
