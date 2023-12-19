@@ -1,0 +1,4 @@
+# FROM llama2
+# FROM codellama
+FROM llama2-uncensored
+PARAMETER num_gpu 34

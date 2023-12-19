@@ -9,4 +9,5 @@ outputs
 privateGPT
 stable-diffusion-webui
 text-generation-webui
+llama.log
 
