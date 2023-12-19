@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs-git.url = "github:nixos/nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
@@ -66,6 +67,10 @@
         inherit system;
         config.allowUnfree = true;
       };
+      pkgs-git = import inputs.nixpkgs-git {
+        inherit system;
+        config.allowUnfree = true;
+      };
     };
 
     pkgs = import inputs.nixpkgs {
@@ -76,8 +81,13 @@
         inputs.nix-alien.overlays.default
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
-          asusctl = super.unstable.asusctl;
+
+          # - [asusctl: 4.7.2 -> 5.0.0, supergfxctl: 5.1.1 -> 5.1.2](https://github.com/NixOS/nixpkgs/pull/273808/files)
+          asusctl = super.pkgs-git.asusctl;
+          supergfxctl = super.pkgs-git.supergfxctl;
+
           tlp = super.unstable.tlp;
+
           # disable shell completion for dust (completion does not work for me)
           # - [du-dust nixpkgs](https://github.com/NixOS/nixpkgs/blob/aeefe2054617cae501809b82b44a8e8f7be7cc4b/pkgs/tools/misc/dust/default.nix#L27C1-L27C14)
           du-dust = super.du-dust.overrideAttrs {postInstall = "";};

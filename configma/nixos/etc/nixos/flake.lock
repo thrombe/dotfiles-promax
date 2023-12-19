@@ -282,6 +282,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-git": {
+      "locked": {
+        "lastModified": 1702848752,
+        "narHash": "sha256-wc7H5NBt/fxgTZ2w88D7B3BBF3o2TxE+JtfkQN5DleU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8855560298be3c6ba18d40bedd3256f91b5de5f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1702312524,
@@ -326,6 +341,7 @@
         "nix-update-input": "nix-update-input",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-git": "nixpkgs-git",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "scripts": "scripts",
         "yankpass": "yankpass"
