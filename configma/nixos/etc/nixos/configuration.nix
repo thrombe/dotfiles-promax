@@ -310,7 +310,7 @@
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enableCompletion
   environment.pathsToLink = ["/share/zsh"];
   environment.variables = {
-    EDITOR = "${pkgs.helix}/bin/helix";
+    EDITOR = "${pkgs.helix}/bin/hx";
   };
 
   programs.starship = {
