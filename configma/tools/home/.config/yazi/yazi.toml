@@ -3,13 +3,15 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
-ratio          = [ 1, 4, 3 ]
-sort_by        = "modified"
-sort_sensitive = true
-sort_reverse   = true
+# YAAAAAAAAAAAA: edited
+sort_by        = "natural"
+sort_sensitive = false
+sort_reverse   = false
 sort_dir_first = true
+show_hidden    = true
+
+ratio          = [ 1, 4, 3 ]
 linemode       = "none"
-show_hidden    = false
 show_symlink   = true
 
 [preview]
@@ -26,7 +28,9 @@ edit = [
 	{ exec = 'code "%*"',    orphan = true, for = "windows" },
 ]
 open = [
-	{ exec = 'xdg-open "$@"',                desc = "Open", for = "linux" },
+	# YAAAAAAAAAAAA: edited
+	{ exec = 'xdg-open "$@"', block = true, orphan = true, desc = "Open", for = "linux" },
+
 	{ exec = 'open "$@"',                    desc = "Open", for = "macos" },
 	{ exec = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" }
 ]
@@ -47,6 +51,10 @@ play = [
 
 [open]
 rules = [
+	# YAAAAAAAAAAAA: edited
+	# use 'file -ibL <>' to figure out mime
+	{ mime = "inode/directory", use = [ "open", "reveal" ] },
+
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
 
 	{ mime = "text/*",  use = [ "edit", "reveal" ] },
