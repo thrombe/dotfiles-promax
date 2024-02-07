@@ -422,31 +422,31 @@ in {
   # powerManagement.powertop.enable = false;
   # services.auto-cpufreq.enable = false;
   services.tlp = {
-        enable = false;
-        settings = {
-          # - [Laptop - NixOS Wiki](https://nixos.wiki/wiki/Laptop)
-          # - [Processor — TLP 1.6 documentation](https://linrunner.de/tlp/settings/processor.html)
-          CPU_SCALING_GOVERNOR_ON_AC = "performance";
-          CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+    enable = false;
+    settings = {
+      # - [Laptop - NixOS Wiki](https://nixos.wiki/wiki/Laptop)
+      # - [Processor — TLP 1.6 documentation](https://linrunner.de/tlp/settings/processor.html)
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-          CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-          CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-          CPU_MIN_PERF_ON_AC = 0;
-          CPU_MAX_PERF_ON_AC = 100;
-          CPU_MIN_PERF_ON_BAT = 0;
-          CPU_MAX_PERF_ON_BAT = 20;
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 20;
 
-          CPU_BOOST_ON_AC = 1;
-          CPU_BOOST_ON_BAT = 0;
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;
 
-          # CPU_DRIVER_OPMODE_ON_AC = "guided";
-          # CPU_DRIVER_OPMODE_ON_BAT= "guided";
-          # CPU_SCALING_MIN_FREQ_ON_AC = 0;
-          # CPU_SCALING_MAX_FREQ_ON_AC = 9999999;
-          # CPU_SCALING_MIN_FREQ_ON_BAT = 0;
-          # CPU_SCALING_MAX_FREQ_ON_BAT = 2000000;
-        };
+      # CPU_DRIVER_OPMODE_ON_AC = "guided";
+      # CPU_DRIVER_OPMODE_ON_BAT= "guided";
+      # CPU_SCALING_MIN_FREQ_ON_AC = 0;
+      # CPU_SCALING_MAX_FREQ_ON_AC = 9999999;
+      # CPU_SCALING_MIN_FREQ_ON_BAT = 0;
+      # CPU_SCALING_MAX_FREQ_ON_BAT = 2000000;
+    };
   };
 
   # nvidia stuff
