@@ -185,14 +185,22 @@
           }))
           dunst
           libnotify
-          swww
           kitty
           rofi-wayland
           networkmanagerapplet
 
+          # wallpaper stuff
+          swww
+
           # xrandr eq for wl-roots compositors
           wlr-randr
           wl-clipboard
+
+          (pkgs.writeShellScriptBin "start-hypr" ''
+            export XDG_SESSION_TYPE=wayland
+
+            ${pkgs.hyprland}/bin/Hyprland
+          '')
         ];
 
         xdg.portal = {
