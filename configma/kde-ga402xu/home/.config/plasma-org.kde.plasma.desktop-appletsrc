@@ -39,49 +39,49 @@ immutability=1
 plugin=com.github.zren.alphablackcontrol
 
 [Containments][112][Applets][113][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][114]
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
 
 [Containments][112][Applets][114][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][115]
 immutability=1
 plugin=org.kde.kdeconnect
 
 [Containments][112][Applets][115][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][116]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][112][Applets][116][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][117]
 immutability=1
 plugin=org.kde.plasma.keyboardindicator
 
 [Containments][112][Applets][117][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][118]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][112][Applets][118][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][119]
 immutability=1
 plugin=org.kde.plasma.printmanager
 
 [Containments][112][Applets][119][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][120]
 immutability=1
@@ -95,21 +95,21 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][112][Applets][121][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][122]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
 
 [Containments][112][Applets][122][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][123]
 immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][112][Applets][123][Configuration]
-PreloadWeight=15
+PreloadWeight=0
 
 [Containments][112][Applets][124]
 immutability=1
@@ -123,14 +123,14 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][112][Applets][125][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][Applets][126]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][112][Applets][126][Configuration]
-PreloadWeight=4
+PreloadWeight=0
 
 [Containments][112][Applets][127]
 immutability=1
@@ -151,7 +151,7 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][112][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][112][General]
 extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
@@ -173,49 +173,49 @@ immutability=1
 plugin=com.github.zren.alphablackcontrol
 
 [Containments][137][Applets][138][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][139]
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
 
 [Containments][137][Applets][139][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][140]
 immutability=1
 plugin=org.kde.kdeconnect
 
 [Containments][137][Applets][140][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][141]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][137][Applets][141][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][142]
 immutability=1
 plugin=org.kde.plasma.keyboardindicator
 
 [Containments][137][Applets][142][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][143]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][137][Applets][143][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][144]
 immutability=1
 plugin=org.kde.plasma.printmanager
 
 [Containments][137][Applets][144][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][145]
 immutability=1
@@ -229,28 +229,28 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][137][Applets][146][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][147]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
 
 [Containments][137][Applets][147][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][148]
 immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][137][Applets][148][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][149]
 immutability=1
 plugin=org.kde.kscreen
 
 [Containments][137][Applets][149][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][137][Applets][150]
 immutability=1
@@ -264,7 +264,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][137][Applets][151][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][Applets][152]
 immutability=1
@@ -281,7 +281,7 @@ plugin=org.kde.plasma.bluetooth
 PreloadWeight=0
 
 [Containments][137][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][137][General]
 extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
@@ -301,49 +301,49 @@ immutability=1
 plugin=com.github.zren.alphablackcontrol
 
 [Containments][161][Applets][162][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][163]
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
 
 [Containments][161][Applets][163][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][164]
 immutability=1
 plugin=org.kde.kdeconnect
 
 [Containments][161][Applets][164][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][165]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][161][Applets][165][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][166]
 immutability=1
 plugin=org.kde.plasma.keyboardindicator
 
 [Containments][161][Applets][166][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][167]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][161][Applets][167][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][168]
 immutability=1
 plugin=org.kde.plasma.printmanager
 
 [Containments][161][Applets][168][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][169]
 immutability=1
@@ -357,21 +357,21 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][161][Applets][170][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][171]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
 
 [Containments][161][Applets][171][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][172]
 immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][161][Applets][172][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][173]
 immutability=1
@@ -385,7 +385,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][161][Applets][174][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][Applets][175]
 immutability=1
@@ -409,7 +409,7 @@ plugin=org.kde.plasma.mediacontroller
 PreloadWeight=0
 
 [Containments][161][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][161][General]
 extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
@@ -429,49 +429,49 @@ immutability=1
 plugin=com.github.zren.alphablackcontrol
 
 [Containments][178][Applets][179][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][180]
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
 
 [Containments][178][Applets][180][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][181]
 immutability=1
 plugin=org.kde.kdeconnect
 
 [Containments][178][Applets][181][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][182]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][178][Applets][182][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][183]
 immutability=1
 plugin=org.kde.plasma.keyboardindicator
 
 [Containments][178][Applets][183][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][184]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][178][Applets][184][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][185]
 immutability=1
 plugin=org.kde.plasma.printmanager
 
 [Containments][178][Applets][185][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][186]
 immutability=1
@@ -485,21 +485,21 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][178][Applets][187][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][188]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
 
 [Containments][178][Applets][188][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][189]
 immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][178][Applets][189][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][190]
 immutability=1
@@ -513,7 +513,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][178][Applets][191][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][Applets][192]
 immutability=1
@@ -537,7 +537,7 @@ plugin=org.kde.plasma.mediacontroller
 PreloadWeight=0
 
 [Containments][178][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][178][General]
 extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
@@ -557,14 +557,14 @@ immutability=1
 plugin=org.kde.plasma.pager
 
 [Containments][195][Applets][197][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][195][Applets][198]
 immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][195][Applets][198][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][195][Applets][198][Configuration][ConfigDialog]
 DialogHeight=540
@@ -588,7 +588,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][195][Applets][213][Configuration]
-PreloadWeight=100
+PreloadWeight=96
 popupHeight=600
 popupWidth=528
 
@@ -604,7 +604,7 @@ immutability=1
 plugin=org.kde.plasma.activitypager
 
 [Containments][195][Applets][223][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][195][Applets][223][Configuration][ConfigDialog]
 DialogHeight=540
@@ -619,7 +619,7 @@ immutability=1
 plugin=org.kde.plasma.colorpicker
 
 [Containments][195][Applets][224][Configuration]
-PreloadWeight=68
+PreloadWeight=36
 
 [Containments][195][Applets][224][Configuration][General]
 history=#a3a3a3,#d9d9d9,#e5e7eb,#3c4426,#687733,#29295b,#0078bd,#06a4dc,#cae7fb
@@ -629,10 +629,10 @@ DialogHeight=100
 DialogWidth=2560
 
 [Containments][195][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][195][General]
-AppletOrder=198;224;223;200;;213;197
+AppletOrder=198;224;223;200;213;197
 
 [Containments][201]
 activityId=
@@ -650,21 +650,21 @@ immutability=1
 plugin=com.github.zren.alphablackcontrol
 
 [Containments][201][Applets][202][Configuration]
-PreloadWeight=68
+PreloadWeight=36
 
 [Containments][201][Applets][203]
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
 
 [Containments][201][Applets][203][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][Applets][204]
 immutability=1
 plugin=org.kde.kdeconnect
 
 [Containments][201][Applets][204][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][Applets][205]
 immutability=1
@@ -686,21 +686,21 @@ immutability=1
 plugin=org.kde.plasma.keyboardindicator
 
 [Containments][201][Applets][206][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][Applets][207]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][201][Applets][207][Configuration]
-PreloadWeight=92
+PreloadWeight=60
 
 [Containments][201][Applets][208]
 immutability=1
 plugin=org.kde.plasma.printmanager
 
 [Containments][201][Applets][208][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][Applets][209]
 immutability=1
@@ -714,21 +714,21 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][201][Applets][210][Configuration]
-PreloadWeight=100
+PreloadWeight=83
 
 [Containments][201][Applets][211]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
 
 [Containments][201][Applets][211][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][Applets][212]
 immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][201][Applets][212][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][Applets][215]
 immutability=1
@@ -749,21 +749,21 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][201][Applets][217][Configuration]
-PreloadWeight=100
+PreloadWeight=92
 
 [Containments][201][Applets][218]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][201][Applets][218][Configuration]
-PreloadWeight=65
+PreloadWeight=30
 
 [Containments][201][Applets][225]
 immutability=1
 plugin=org.kde.kscreen
 
 [Containments][201][Applets][225][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][Applets][235][Configuration]
 PreloadWeight=42
@@ -773,7 +773,7 @@ DialogHeight=540
 DialogWidth=917
 
 [Containments][201][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][201][General]
 extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.mediacontroller,org.kde.plasma.keyboardindicator,org.kde.plasma.devicenotifier,org.kde.plasma.printmanager,org.kde.plasma.battery,org.kde.plasma.nightcolorcontrol,org.kde.plasma.networkmanagement,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.kscreen,com.github.zren.alphablackcontrol,org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.volume
@@ -798,7 +798,7 @@ DialogHeight=995
 DialogWidth=1529
 
 [Containments][229][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][229][General]
 ToolBoxButtonState=topcenter
@@ -808,8 +808,7 @@ positions={"2560x1600":[]\\,"1920x1080":[]\\,"1920x1200":[""]}
 sortMode=-1
 
 [Containments][229][Wallpaper][org.kde.image][General]
-Image=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/Next/
-PreviewImage=/home/issac/0Git/dotfiles-promax/flakes/fooocus/Fooocus/outputs/2023-12-12/2023-12-12_23-08-35_8144.png
+Image=/home/issac/0Git/dotfiles-promax/flakes/ai_apps/Fooocus/outputs/2023-12-12/2023-12-12_23-08-35_8144.png
 SlidePaths=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/,/etc/profiles/per-user/issac/share/wallpapers/,/run/current-system/sw/share/wallpapers/
 
 [Containments][234]
@@ -830,10 +829,10 @@ DialogHeight=720
 DialogWidth=840
 
 [Containments][234][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][234][Wallpaper][org.kde.image][General]
-Image=/nix/store/4lkbr2pif5zyjr1yzap1507r917s50fb-breeze-qt5-5.27.9-bin/share/wallpapers/Next/
+Image=/home/issac/Pictures/walls/wallhaven-lm7edq.png
 SlidePaths=/nix/store/kx3hcvq16hzac6yqb4qz25ghlslzrlby-breeze-qt5-5.27.7-bin/share/wallpapers/,/etc/profiles/per-user/issac/share/wallpapers/,/run/current-system/sw/share/wallpapers/
 
 [Containments][235]
@@ -844,6 +843,9 @@ lastScreen=1
 location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
+
+[Containments][235][Configuration]
+PreloadWeight=18
 
 [Containments][90]
 activityId=
@@ -861,7 +863,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][90][Applets][100][Configuration]
-PreloadWeight=68
+PreloadWeight=36
 
 [Containments][90][Applets][100][Configuration][ConfigDialog]
 DialogHeight=540
@@ -883,7 +885,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][90][Applets][104][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][90][Applets][104][Configuration][General]
 showPercentage=true
@@ -893,7 +895,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][90][Applets][105][Configuration]
-PreloadWeight=52
+PreloadWeight=12
 
 [Containments][90][Applets][106]
 immutability=1
@@ -918,14 +920,14 @@ immutability=1
 plugin=org.kde.kscreen
 
 [Containments][90][Applets][227][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][90][Applets][91]
 immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][90][Applets][91][Configuration]
-PreloadWeight=68
+PreloadWeight=36
 
 [Containments][90][Applets][91][Shortcuts]
 global=
@@ -935,7 +937,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][90][Applets][92][Configuration]
-PreloadWeight=68
+PreloadWeight=36
 
 [Containments][90][Applets][93]
 immutability=1
@@ -1013,5 +1015,5 @@ history=#ddccbe,#3592ac,#3592ac
 launchers=
 
 [ScreenMapping]
-itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/shadertoy_links.txt,desktop:/cources.md,desktop:/bdys.txt,desktop:/GSOC.txt,desktop:/chefs.txt,desktop:/musik.txt,desktop:/to_watch.txt
-screenMapping=desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40
+itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/to_watch.txt,desktop:/bdys.txt,desktop:/cources.md,desktop:/shadertoy_links.txt,desktop:/chefs.txt,desktop:/GSOC.txt,desktop:/musik.txt
+screenMapping=desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40

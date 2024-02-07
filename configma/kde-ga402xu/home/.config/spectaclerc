@@ -5,11 +5,11 @@ update_info=spectacle_clipboard.upd:clipboard-settings-change,spectacle_newConfi
 rememberLastRectangularRegion=2
 
 [GuiConfig]
-captureMode=5
+captureMode=0
 quitAfterSaveCopyExport=true
 window-position=854,46
 
 [Save]
 defaultSaveLocation=file:///home/issac/Pictures
-lastSaveLocation=file:///home/issac/Pictures/Screenshot_20231212_005122.png
+lastSaveLocation=file:///home/issac/Pictures/Screenshot_20240206_235829.png
 lastUsedSaveMode=Save
