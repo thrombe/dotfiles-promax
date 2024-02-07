@@ -57,6 +57,7 @@ alias wiki="(cd ~/0Git/randomScripts/0notes && hx wiki.md)"
 alias bookmarks="(cd ~/0Git/randomScripts/bookmarks && hx README.md)"
 alias ze="launch_zellij"
 alias zz="open_zellij_workspace"
+alias za="zellij a \$(zellij ls | grep -v 'EXITED' | cut -d ' ' -f1 | sed 's/\x1b\[[0-9;]*m//g' | fzf)"
 
 open_zellij_workspace() {
   if [[ -f ./workspace.kdl ]]; then
