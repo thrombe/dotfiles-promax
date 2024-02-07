@@ -167,6 +167,7 @@
       # tools
       helix
       unstable.zellij
+      unstable.yazi
       unstable.broot
       unstable.gitui
       unstable.delta
