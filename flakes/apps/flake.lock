@@ -18,6 +18,19 @@
         "type": "github"
       }
     },
+    "magicavoxel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704230432,
+        "narHash": "sha256-tBmUY8NMwT9C9iOuZLHd7EeUZD37AQUfppTz+fCEUMQ=",
+        "type": "tarball",
+        "url": "https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.1-win64.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.1-win64.zip"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1701539137,
@@ -53,6 +66,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "magicavoxel": "magicavoxel",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }

@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    magicavoxel = {
+      url = "https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.1-win64.zip";
+      flake = false;
+    };
   };
 
   outputs = inputs:
@@ -37,6 +42,12 @@
           mpv
 
           libreoffice-qt
+
+          (pkgs.writeShellScriptBin "magicavoxel" ''
+            ${pkgs.wine64Packages.unstable}/bin/wine64 ${inputs.magicavoxel}/MagicaVoxel.exe
+          '')
+          pkgs.wine64Packages.unstable
+          pkgs.winePackages.unstable
         ];
       };
     });
