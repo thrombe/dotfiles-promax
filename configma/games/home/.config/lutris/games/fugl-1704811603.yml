@@ -1,0 +1,13 @@
+game:
+  arch: auto
+  exe: /home/issac/Games/Fugl.v23.04.2022/Fugl.exe
+  prefix: /home/issac/Games/0prefixes/fugl-prefix
+  working_dir: /home/issac/Games/Fugl.v23.04.2022
+system:
+  disable_runtime: true
+  prefer_system_libs: true
+wine:
+  esync: false
+  fsync: false
+  system_winetricks: true
+  version: Proton - Experimental

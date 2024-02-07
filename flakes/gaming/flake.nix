@@ -7,8 +7,7 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = inputs@{...
-  }:
+  outputs = inputs:
     inputs.flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
       pkgs = import inputs.nixpkgs {
         inherit system;
@@ -42,6 +41,8 @@
           # steam-run
 
           winetricks
+          pkgs.wine64Packages.unstable
+          pkgs.winePackages.unstable
 
           # pkg-config
           # gnome3.adwaita-icon-theme
@@ -54,6 +55,11 @@
               # pkg-config
             ];
           })
+
+          renderdoc
+          (pkgs.writeShellScriptBin "fugl" ''
+            ./fugl.sh
+          '')
         ];
       };
     });
