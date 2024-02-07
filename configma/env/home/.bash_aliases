@@ -25,6 +25,16 @@ function bt {
     fi
 }
 
+# - [Quick Start | Yazi](https://yazi-rs.github.io/docs/quick-start#shell-wrapper)
+function ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 alias ls="ls --color=auto"
 alias la="ls -a --color=auto"
 # alias lf="~/.config/lf/lfrun"
