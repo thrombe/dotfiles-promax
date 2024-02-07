@@ -7,24 +7,19 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    flake-utils,
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {
+  outputs = inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
         config.cudaSupport = true;
       };
-      unstable = import nixpkgs-unstable {
+      unstable = import inputs.nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
         config.cudaSupport = true;
       };
-      unstable-nocuda = import nixpkgs-unstable {
+      unstable-nocuda = import inputs.nixpkgs-unstable {
         inherit system;
       };
     in {
@@ -38,6 +33,10 @@
           unstable.blender
           unstable.godot_4
           unstable-nocuda.obs-studio
+          unstable-nocuda.libsForQt5.kdenlive
+          mpv
+
+          libreoffice-qt
         ];
       };
     });
