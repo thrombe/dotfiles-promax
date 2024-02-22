@@ -8,7 +8,7 @@ sort_by        = "natural"
 sort_sensitive = false
 sort_reverse   = false
 sort_dir_first = true
-show_hidden    = true
+show_hidden    = false
 
 ratio          = [ 1, 4, 3 ]
 linemode       = "none"
