@@ -223,10 +223,15 @@
                 # - [starship.nix](https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/programs/starship.nix)
                 # $env.STARSHIP_CONFIG = ${(pkgs.formats.toml {}).generate "starship.toml" config.programs.starship.settings}
                 $env.STARSHIP_CONFIG = ${(pkgs.formats.toml {}).generate "starship.toml" (import ./starship.nix {})}
+
+                source ~/.cache/nushell/zoxide.nu
               '';
               extraEnv = ''
                 mkdir ~/.cache/starship
                 starship init nu | save -f ~/.cache/starship/init.nu
+
+                mkdir ~/.cache/nushell
+                zoxide init nushell | save -f ~/.cache/nushell/zoxide.nu
               '';
               shellAliases = {
               };

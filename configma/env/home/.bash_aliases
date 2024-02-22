@@ -35,6 +35,11 @@ function ya() {
 	rm -f -- "$tmp"
 }
 
+eval "$(zoxide init zsh)"
+alias cd="z"
+alias cdi="zi"
+
+
 alias ls="ls --color=auto"
 alias la="ls -a --color=auto"
 # alias lf="~/.config/lf/lfrun"
