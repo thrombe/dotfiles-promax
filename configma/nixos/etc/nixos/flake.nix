@@ -309,7 +309,7 @@
           commonModules
           ++ [
             ./${specialArgs.hostname}/configuration.nix
-            inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402
+            inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402x.nvidia
           ];
       };
     };
