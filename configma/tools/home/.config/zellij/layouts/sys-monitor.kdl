@@ -1,0 +1,62 @@
+layout {
+    cwd "/home/issac"
+    tab name="Tab #1" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane size="72%" split_direction="vertical" {
+            pane command="btop" focus=true size="80%" {
+            }
+            pane command="s-tui" size="20%" {
+            }
+        }
+        pane size="27%" split_direction="vertical" {
+            pane size="75%" {
+                // command "nvtop"
+            }
+            pane command="battop" size="25%" {
+            }
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    swap_tiled_layout name="stack" {
+        tab  {
+            pane size=1 borderless=true {
+                plugin location="zellij:tab-bar"
+            }
+            pane {
+                pane stacked=true {
+                    pane
+                    pane
+                }
+            }
+            pane size=1 borderless=true {
+                plugin location="zellij:status-bar"
+            }
+        }
+    }
+    swap_tiled_layout name="no stack" {
+        tab  {
+            pane size=1 borderless=true {
+                plugin location="zellij:tab-bar"
+            }
+            pane {
+                pane
+            }
+            pane size=1 borderless=true {
+                plugin location="zellij:status-bar"
+            }
+        }
+    }
+}
