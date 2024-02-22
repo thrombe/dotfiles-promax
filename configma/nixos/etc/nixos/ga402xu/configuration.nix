@@ -34,7 +34,9 @@
     fi
 
     ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-    ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    # performance scaling_governer is too aggressive. powersave is fine
+    # ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
     ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
   '';
@@ -426,7 +428,8 @@ in {
     settings = {
       # - [Laptop - NixOS Wiki](https://nixos.wiki/wiki/Laptop)
       # - [Processor — TLP 1.6 documentation](https://linrunner.de/tlp/settings/processor.html)
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      # CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
