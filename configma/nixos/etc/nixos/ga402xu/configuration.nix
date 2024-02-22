@@ -306,9 +306,71 @@ in {
               ]);
         }
         // (args.argsOverride or {}));
+    patches_6-7-4-arch1 = builtins.fetchTarball {
+      url = let rev = "48d671300dfa0e4f01cc92541256919422e51f07"; in "https://aur.archlinux.org/cgit/aur.git/snapshot/aur-${rev}.tar.gz";
+      sha256 = "sha256:1r6lmcw6zbjfa9g4c37yy0qk91cglg7ivqfznfmavrjkqy47wmhr";
+    };
+    linux_g14_6-7-4-arch1_pkg = {
+      fetchurl,
+      buildLinux,
+      ...
+    } @ args:
+    # - [buildLinux](https://github.com/NixOS/nixpkgs/blob/a6207181cf6300566bc15f38cf8e4d4c7ce6bc90/pkgs/top-level/linux-kernels.nix#L676)
+      buildLinux (args
+        // rec {
+          version = "6.7.4-arch1";
+          extraMeta.branch = "6.7";
+          modDirVersion = version;
+
+          # - [howto linux configuration](https://linuxconfig.org/in-depth-howto-on-linux-kernel-configuration)
+          # - [common-config nix linux kernel](https://github.com/NixOS/nixpkgs/blob/4f4312a71cd8129620af1d004f54b7056012e21a/pkgs/os-specific/linux/kernel/common-config.nix#L35)
+          # as i understand it, this can be disabled as nix uses it's own configs if not specified.
+          #   - [](https://github.com/NixOS/nixpkgs/blob/bd406645637326b1538a869cd54cc3fdf17e975a/pkgs/os-specific/linux/kernel/generic.nix#L133)
+          # defconfig = "${patches}/config";
+          # extraConfig = "${patches}/config";
+
+          src = fetchurl {
+            # - [git archlinux releases](https://github.com/archlinux/linux/releases)
+            url = "https://github.com/archlinux/linux/archive/refs/tags/v6.7.4-arch1.tar.gz";
+            sha256 = "sha256-W8d5llmwnBLqBQqLnPDvTLjXmSwCdEFtYEshzW0hXKM=";
+          };
+
+          # go to the PKGBUILD file of the arch package and copy all patches from 'source' in the same order
+          kernelPatches =
+            [
+              {
+                patch = fetchurl {
+                  name = "sys-kernel_arch-sources-g14_files-0004-5.17+--more-uarches-for-kernel.patch";
+                  url = "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.17+.patch";
+                  sha256 = "sha256-zTsJfTX7xEjxCstvuR4btHXI2SUFOxu5ZAqIYuo8LT0=";
+                };
+              }
+            ]
+            ++ (map (x: {
+                name = x;
+                patch = "${patches_6-7-4-arch1}/${x}";
+              }) [
+                "0001-acpi-proc-idle-skip-dummy-wait.patch"
+                "0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch"
+                "0001-linux6.7.y-bore4.0.0.patch"
+                "0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch"
+                "0035-Add_quirk_for_polling_the_KBD_port.patch"
+                "0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
+                "0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
+                "v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch"
+                "0038-mediatek-pci-reset.patch"
+                "0040-workaround_hardware_decoding_amdgpu.patch"
+                "0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch"
+                "amd-tablet-sfh.patch"
+                "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
+                "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
+              ]);
+        }
+        // (args.argsOverride or {}));
     linux_g14_6-5-8-arch1 = pkgs.callPackage linux_g14_6-5-8-arch1_pkg {};
     linux_g14_6-6-2-arch1 = pkgs.callPackage linux_g14_6-6-2-arch1_pkg {};
-    linux_g14 = linux_g14_6-6-2-arch1;
+    linux_g14_6-7-4-arch1 = pkgs.callPackage linux_g14_6-7-4-arch1_pkg {};
+    linux_g14 = linux_g14_6-7-4-arch1;
   in
     pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_g14));
 
