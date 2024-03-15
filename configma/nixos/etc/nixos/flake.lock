@@ -498,11 +498,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1699201107,
-        "narHash": "sha256-ECTMS6ZTTZnmBh+Rk32XuKifVJef9qFP2MxTYqXPEtc=",
+        "lastModified": 1710449715,
+        "narHash": "sha256-PrnUo9L4LnlQZpSpAlnZZa1hgfPBhnIyYFAAHUYjITA=",
         "owner": "thrombe",
         "repo": "yankpass",
-        "rev": "c9cf7514efb1a4b2df655a53aa5a26fcfcafc2f3",
+        "rev": "842bd4ff615addf5fcf37ed43da290a73b6b6436",
         "type": "github"
       },
       "original": {
