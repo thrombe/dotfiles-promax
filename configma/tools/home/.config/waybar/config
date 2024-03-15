@@ -8,17 +8,14 @@
 	"pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "  {icon} {format_source}",
-        "format-muted": "  {format_source}",
+        "format-bluetooth-muted": "x  {icon} {format_source}",
+        "format-muted": "x {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "",
-        // "on-click": "pavucontrol",
-
-		"tooltip": false,
+        "tooltip": false,
 		"scroll-step": 5,
-		// "format": "{icon} {volume}%",
-		// "format-muted": "{icon} {volume}%",
-		// "on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"on-click-right":"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
 		"format-icons": {
 			"default": ["", "", ""]
 		}
