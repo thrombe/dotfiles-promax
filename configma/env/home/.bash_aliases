@@ -58,11 +58,10 @@ alias rd="rdrag"
 alias de="distrobox enter"
 alias br="browser_profile"
 # alias wlp="wallpaper_set"
-alias wiki="(cd ~/0Git/randomScripts/0notes && hx wiki.md)"
-alias bookmarks="(cd ~/0Git/randomScripts/bookmarks && hx README.md)"
 alias ze="launch_zellij"
 alias zz="open_zellij_workspace"
 alias za="zellij a \$(zellij ls | grep -v 'EXITED' | cut -d ' ' -f1 | sed 's/\x1b\[[0-9;]*m//g' | fzf)"
+alias yp="~/0Git/dotfiles-promax-private/scripts/yankpass.sh"
 
 open_zellij_workspace() {
   if [[ -f ./workspace.kdl ]]; then
