@@ -156,6 +156,32 @@
           home.homeDirectory = "/home/${username}";
           home.stateVersion = "23.05";
 
+          # - [cursors home-manager options](https://nix-community.github.io/home-manager/options.xhtml#opt-home.pointerCursor)
+          # TODO: still broken
+          # possible fixes:
+          #   - [Hyprcursor | Hyprland Wiki](https://wiki.hyprland.org/Hypr-Ecosystem/hyprcursor/#important-notes)
+          #   - [Master Tutorial | Hyprland Wiki](https://wiki.hyprland.org/Getting-Started/Master-Tutorial/#themes)
+          #   - [Cursor themes - ArchWiki](https://wiki.archlinux.org/title/Cursor_themes)
+          home.pointerCursor = {
+            x11.enable = true;
+            gtk.enable = true;
+            size = 48;
+
+            package = pkgs.phinger-cursors;
+            name = "phinger-cursors-light";
+
+            # package = pkgs.catppuccin-cursors;
+            # name = "capitaine-cursors";
+
+            # package = pkgs.volantes-cursors;
+            # name = "volantes_light_cursors";
+            # name = "volantes_cursors";
+
+            # package = pkgs.vimix-cursors;
+            # name = "Vimix-white-cursors";
+            # name = "Vimix-cursors";
+          };
+
           home.packages = [];
 
           # - [Nushell - NixOS Wiki](https://nixos.wiki/wiki/Nushell)
