@@ -121,6 +121,7 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
+  programs.virt-manager.enable = true;
 
   # - [Bluetooth - NixOS Wiki](https://nixos.wiki/wiki/Bluetooth)
   hardware.bluetooth.enable = true;
@@ -200,7 +201,6 @@
       # battop # only battery stat
 
       # - [Virt-manager - NixOS Wiki](https://nixos.wiki/wiki/Virt-manager)
-      virt-manager
       virtiofsd
       qemu
 
