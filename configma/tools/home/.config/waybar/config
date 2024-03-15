@@ -1,9 +1,9 @@
 {
 	// https://github.com/theCode-Breaker/riverwm/blob/main/waybar/river/river_style.css
 	"layer": "top",
-	"modules-left": ["custom/launcher","custom/media"],
+	"modules-left": ["custom/launcher", "hyprland/submap", "custom/media", "hyprland/window"],
 	"modules-center": ["river/tags"],
-	"modules-right": ["tray", "network", "idle_inhibitor", "backlight","pulseaudio", "battery", "custom/power", "clock"],
+	"modules-right": ["hyprland/workspaces", "tray", "network", "idle_inhibitor", "backlight","pulseaudio", "battery", "custom/power", "clock"],
 	
 	"pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
@@ -24,8 +24,41 @@
 		}
 	},
 
+	// - [Module: Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland)
+	"hyprland/submap": {
+	    "format": "{}",
+	    // "max-length": 8,
+		// - [add option for default mode hyprland/submap](https://github.com/Alexays/Waybar/issues/2896)
+		// "always-on": true,
+		// "default-submap": "normal",
+	    "tooltip": false
+	},
+	"hyprland/window": {
+	    "format": "👉 {class} {initialClass}",
+	    // "rewrite": {
+	    //     "(.*) — Mozilla Firefox": "🌎 $1",
+	    //     "(.*) - fish": "> [$1]"
+	    // },
+		"max-length": 200,
+	    "separate-outputs": false
+	},
+	"hyprland/workspaces": {
+		"format": "{name}: {icon}",
+		"format-icons": {
+			"active": "",
+			"default": ""
+		},
+		 "on-scroll-up": "hyprctl dispatch workspace e+1",
+	     "on-scroll-down": "hyprctl dispatch workspace e-1",
+		"on-click": "activate",
+		"persistent-workspaces": {
+			 // "*": 5, // 5 workspaces by default on every monitor
+		}
+	},
+
     "idle_inhibitor": {
         "format": "{icon} ",
+		"on-click-right": "~/.config/waybar/idle_inhibitor.sh",
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -43,8 +76,8 @@
 		"tooltip": false,
 		"format": " {}%",
 		"interval":1,
-        "on-scroll-up": "light -A 5",
-		"on-scroll-down": "light -U 5"
+        "on-scroll-up": "brightnessctl set +5",
+		"on-scroll-down": "brightnessctl set 5- --min-value 1"
 	},
     "battery": {
         "states": {
@@ -97,7 +130,8 @@
     },
     "custom/power":{
 		"interval": 15,
-        "exec": "powerprofilesctl | grep '\\*' | cut -d ' ' -f2 | cut -d ':' -f1",
-        "format": " {} "
+        "exec": "powerprofilesctl get",
+        "format": " {} ",
+		"on-click": "powerprofilesctl set $(echo 'performance\nbalanced\npower-saver' | rofi -dmenu)"
     },
 }

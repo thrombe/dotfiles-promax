@@ -247,8 +247,8 @@
       ({...}: {
         programs.hyprland = {
           enable = true;
-          enableNvidiaPatches = true;
           xwayland.enable = true;
+          package = pkgs.unstable.hyprland;
         };
 
         environment.sessionVariables = {
@@ -270,6 +270,7 @@
           kitty
           rofi-wayland
           networkmanagerapplet
+          brightnessctl
 
           # wallpaper stuff
           swww
@@ -277,6 +278,15 @@
           # xrandr eq for wl-roots compositors
           wlr-randr
           wl-clipboard
+          cliphist
+
+          # plugin manager
+          unstable.pyprland
+          # plugins
+          # unstable.hyprcursor
+          unstable.hyprlock
+          unstable.hypridle
+          unstable.hyprshot
 
           (pkgs.writeShellScriptBin "start-hypr" ''
             export XDG_SESSION_TYPE=wayland
