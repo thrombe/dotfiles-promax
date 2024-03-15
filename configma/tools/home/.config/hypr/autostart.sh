@@ -16,4 +16,6 @@ pypr &
 
 hypridle &
 
+easyeffects --gapplication-service &
+
 dunst
