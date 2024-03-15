@@ -56,7 +56,9 @@ alias ssh7s="ssh 192.168.1.190 -p 8022"
 alias sshphon="ssh 192.168.1.191 -p 8022"
 alias rd="rdrag"
 alias de="distrobox enter"
-alias br="browser_profile"
+alias br="browser_profile old"
+alias brf="browser_profile firefox"
+alias brn="browser_profile librewolf"
 # alias wlp="wallpaper_set"
 alias ze="launch_zellij"
 alias zz="open_zellij_workspace"
@@ -193,14 +195,22 @@ rdrag() {
 }
 
 browser_profile() {
-  br_path=~/daata/browser_profiles
+  browser="$1"
+  shift
+
+  br_path=~/daata/browser_profiles/$browser
+  if [[ $browser == "old" ]]; then
+    br_path=~/daata/browser_profiles
+    browser="librewolf"
+  fi
+
   if [[ "$1" == "-n" ]]; then
     echo "creating new profile from template profile $2"
     cp -r $br_path/template_profile $br_path/$2
   elif [[ $1 == "-e" ]]; then
     if [[ $# == 2 ]]; then
       br_name="$2"
-      detach librewolf --profile $br_path/$br_name
+      detach $browser --profile $br_path/$br_name
     else
       echo "-e option needs exact profile name as argument"
     fi
@@ -213,7 +223,7 @@ browser_profile() {
     fi
     if [[ $br_name != "" ]]; then
       echo "$br_path/$br_name"
-      detach librewolf --profile $br_path/$br_name
+      detach $browser --profile $br_path/$br_name
     fi
   fi
 }
