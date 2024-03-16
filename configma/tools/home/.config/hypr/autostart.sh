@@ -18,4 +18,6 @@ hypridle &
 
 easyeffects --gapplication-service &
 
+hyprkool mouse-loop &
+
 dunst

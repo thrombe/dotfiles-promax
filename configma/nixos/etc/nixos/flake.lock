@@ -178,6 +178,32 @@
         "type": "github"
       }
     },
+    "hyprkool": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-unstable": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1710622338,
+        "narHash": "sha256-AUhGKUlTRnll8sns4Q40azpmRIt8QXSVxd0CSRTKSyA=",
+        "owner": "thrombe",
+        "repo": "hyprkool",
+        "rev": "313fab4730c1e2960cf1696103b4202c61c279aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thrombe",
+        "repo": "hyprkool",
+        "type": "github"
+      }
+    },
     "nix-alien": {
       "inputs": {
         "flake-compat": [
@@ -349,6 +375,7 @@
         "flake-utils": "flake-utils",
         "helix-git": "helix-git",
         "home-manager": "home-manager",
+        "hyprkool": "hyprkool",
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database",
         "nix-update-input": "nix-update-input",

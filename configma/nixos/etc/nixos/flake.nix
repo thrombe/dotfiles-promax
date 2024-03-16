@@ -55,6 +55,12 @@
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    hyprkool = {
+      url = "github:thrombe/hyprkool";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     scripts = {
       url = "github:thrombe/dotfiles-promax?dir=scripts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -132,6 +138,7 @@
             # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
             configma
             yankpass
+            hyprkool
             nix-update-input # update-input
           ]))
           ++ (map getScript [

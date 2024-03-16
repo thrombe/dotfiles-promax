@@ -1,0 +1,6 @@
+
+activities = ["issac", "colg"]
+
+polling_rate = 300
+edge_width = 0
+edge_margin = 2
