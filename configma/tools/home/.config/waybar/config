@@ -1,9 +1,29 @@
 {
 	// https://github.com/theCode-Breaker/riverwm/blob/main/waybar/river/river_style.css
 	"layer": "top",
-	"modules-left": ["custom/launcher", "hyprland/submap", "custom/media", "hyprland/window"],
-	"modules-center": ["river/tags"],
-	"modules-right": ["hyprland/workspaces", "custom/hyprkool-workspaces", "tray", "network", "idle_inhibitor", "backlight","pulseaudio", "battery", "custom/power", "clock"],
+	"modules-left": [
+		"custom/launcher",
+		"hyprland/submap",
+		"custom/media",
+		"hyprland/window",
+	],
+	"modules-center": [
+		"river/tags",
+	],
+	"modules-right": [
+		"hyprland/workspaces",
+		"custom/hyprkool-workspaces",
+		"tray",
+		"network",
+		"idle_inhibitor",
+		"backlight",
+		"pulseaudio",
+		"battery",
+		"custom",
+		// "power-profiles-daemon",
+		"custom/power",
+		"clock",
+	],
 	
 	"pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
@@ -21,6 +41,16 @@
 		"format-icons": {
 			"default": ["", "", ""]
 		}
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}   {profile}",
+		 "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		 "tooltip": true,
+		 "format-icons": {
+		    "performance": "",
+		    "balanced": "",
+		    "power-saver": ""
+		 }
 	},
 
 	// - [Module: Custom · Alexays/Waybar Wiki · GitHub](https://github.com/Alexays/Waybar/wiki/Module:-Custom)
@@ -48,7 +78,7 @@
 	    "separate-outputs": false
 	},
 	"hyprland/workspaces": {
-		"format": "{name}: {icon}",
+		"format": "{name} {icon}",
 		"format-icons": {
 			"active": "",
 			"default": ""
