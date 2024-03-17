@@ -1,31 +1,29 @@
 {
-	// https://github.com/theCode-Breaker/riverwm/blob/main/waybar/river/river_style.css
-	"layer": "top",
-	"modules-left": [
-		"custom/launcher",
-		"hyprland/submap",
-		"custom/media",
-		"hyprland/window",
-	],
-	"modules-center": [
-		"river/tags",
-	],
-	"modules-right": [
-		"hyprland/workspaces",
-		"custom/hyprkool-workspaces",
-		"tray",
-		"network",
-		"idle_inhibitor",
-		"backlight",
-		"pulseaudio",
-		"battery",
-		"custom",
-		// "power-profiles-daemon",
-		"custom/power",
-		"clock",
-	],
-	
-	"pulseaudio": {
+    "layer": "top",
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/submap",
+        "custom/media",
+        "hyprland/window",
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "hyprland/workspaces",
+        "custom/hyprkool-workspaces",
+        "tray",
+        "network",
+        "idle_inhibitor",
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "custom",
+        // "power-profiles-daemon",
+        "custom/power",
+        "clock",
+    ],
+    
+    "pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": " {icon} {volume}% {format_source}",
         "format-bluetooth-muted": "x  {icon} {format_source}",
@@ -33,87 +31,83 @@
         "format-source": " {volume}%",
         "format-source-muted": "",
         "tooltip": false,
-		// "scroll-step": 5,
-		"on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
-		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-		"on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-		"on-click-right":"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-		"format-icons": {
-			"default": ["", "", ""]
-		}
-	},
-	"power-profiles-daemon": {
-		"format": "{icon}   {profile}",
-		 "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-		 "tooltip": true,
-		 "format-icons": {
-		    "performance": "",
-		    "balanced": "",
-		    "power-saver": ""
-		 }
-	},
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right":"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "format-icons": {
+         "default": ["", "", ""]
+        }
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}   {profile}",
+         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+         "tooltip": true,
+         "format-icons": {
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+         }
+    },
 
-	// - [Module: Custom · Alexays/Waybar Wiki · GitHub](https://github.com/Alexays/Waybar/wiki/Module:-Custom)
-	"custom/hyprkool-workspaces": {
-		"format": "{}",
-		"return-type": "json",
-		"exec": "hyprkool print-activity-status"
-	},
-	// - [Module: Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland)
-	"hyprland/submap": {
-	    "format": "{}",
-	    // "max-length": 8,
-		// - [add option for default mode hyprland/submap](https://github.com/Alexays/Waybar/issues/2896)
-		// "always-on": true,
-		// "default-submap": "normal",
-	    "tooltip": false
-	},
-	"hyprland/window": {
-	    "format": "👉 {class} {initialClass}",
-	    // "rewrite": {
-	    //     "(.*) — Mozilla Firefox": "🌎 $1",
-	    //     "(.*) - fish": "> [$1]"
-	    // },
-		"max-length": 200,
-	    "separate-outputs": false
-	},
-	"hyprland/workspaces": {
-		"format": "{name} {icon}",
-		"format-icons": {
-			"active": "",
-			"default": ""
-		},
-		 "on-scroll-up": "hyprctl dispatch workspace e+1",
-	     "on-scroll-down": "hyprctl dispatch workspace e-1",
-		"on-click": "activate",
-		"persistent-workspaces": {
-			 // "*": 5, // 5 workspaces by default on every monitor
-		}
-	},
+    // - [Module: Custom · Alexays/Waybar Wiki · GitHub](https://github.com/Alexays/Waybar/wiki/Module:-Custom)
+    "custom/hyprkool-workspaces": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "hyprkool print-activity-status"
+    },
+    // - [Module: Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland)
+    "hyprland/submap": {
+        "format": "{}",
+        // "max-length": 8,
+        // - [add option for default mode hyprland/submap](https://github.com/Alexays/Waybar/issues/2896)
+        // "always-on": true,
+        // "default-submap": "normal",
+        "tooltip": false,
+    },
+    "hyprland/window": {
+        "format": "👉 {class} {initialClass}",
+        // "rewrite": {
+        //     "(.*) — Mozilla Firefox": "🌎 $1",
+        //     "(.*) - fish": "> [$1]",
+        // },
+        "max-length": 200,
+        "separate-outputs": false,
+    },
+    "hyprland/workspaces": {
+        "format": "{name} {icon}",
+        "format-icons": {
+         "active": "",
+         "default": ""
+        },
+         "on-scroll-up": "hyprctl dispatch workspace e+1",
+         "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate",
+        "persistent-workspaces": {
+          // "*": 5, // 5 workspaces by default on every monitor
+        },
+    },
 
     "idle_inhibitor": {
         "format": "{icon} ",
-		"on-click-right": "~/.config/waybar/idle_inhibitor.sh",
+        "on-click-right": "~/.config/waybar/idle_inhibitor.sh",
         "format-icons": {
             "activated": "",
-            "deactivated": ""
-        }
+            "deactivated": "",
+        },
     },
-    "river/tags": {
-		"num-tags": 6
+    "network": {
+        "tooltip": false,
+        "format-wifi": "  {essid}",
+        "format-ethernet": ""
     },
-	"network": {
-		"tooltip": false,
-		"format-wifi": "  {essid}",
-		"format-ethernet": ""
-	},
-	"backlight": {
-		"tooltip": false,
-		"format": " {}%",
-		"interval":1,
+    "backlight": {
+        "tooltip": false,
+        "format": " {}%",
+        "interval":1,
         "on-scroll-up": "brightnessctl set +5",
-		"on-scroll-down": "brightnessctl set 5- --min-value 1"
-	},
+        "on-scroll-down": "brightnessctl set 5- --min-value 1",
+    },
     "battery": {
         "states": {
             "good": 95,
@@ -124,26 +118,15 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
     },
-	"tray":{
-		"icon-size":18,
-		"spacing": 10
-	},
+    "tray":{
+        "icon-size":18,
+        "spacing": 10,
+    },
     "clock": {
-        // "format": "{: %I:%M %p   %d/%m/%Y}"
+        "format": "{: %H:%M   %d/%m/%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{: %H:%M   %d/%m/%Y}"
-    },
-    "cpu": {
-        "interval": 15,
-        "format": " {}%",
-        "max-length": 10
-    },
-    "memory": {
-        "interval": 30,
-        "format": " {}%",
-        "max-length": 10
     },
     "custom/media": {
         "interval": 30,
@@ -156,18 +139,18 @@
         },
         "escape": true,
         "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
-        "on-click": "playerctl play-pause"
+        "on-click": "playerctl play-pause",
     },
     "custom/launcher":{
         "format": " ",
         "on-click": "rofi -show drun",
-        "on-click-right": "killall rofi"
+        "on-click-right": "killall rofi",
     },
     "custom/power":{
-		"interval": 15,
+        "interval": 15,
         "exec": "powerprofilesctl get",
         "format": " {} ",
-		"on-click": "powerprofilesctl set $(echo 'performance\nbalanced\npower-saver' | rofi -dmenu)"
-		// "on-click": "asusctl profile --profile-set $(asusctl profile -l | rofi -dmenu)"
+        "on-click": "powerprofilesctl set $(echo 'performance\nbalanced\npower-saver' | rofi -dmenu)",
+        // "on-click": "asusctl profile --profile-set $(asusctl profile -l | rofi -dmenu)",
     },
 }

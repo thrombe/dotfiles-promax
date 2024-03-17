@@ -6,6 +6,14 @@
   min-height: 10px;
 }
 
+window#waybar {
+  background: transparent;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
 #custom-hyprkool-workspaces {
   font-size: 7px;
   color: #ebdbb2;
@@ -14,14 +22,6 @@
   padding: 2px;
   margin: 1px;
   margin-left: 8px;
-}
-
-window#waybar {
-  background: transparent;
-}
-
-window#waybar.hidden {
-  opacity: 0.2;
 }
 
 #submap {
@@ -35,6 +35,7 @@ window#waybar.hidden {
   color: #161320;
   background: #bd93f9;
 }
+
 #workspaces {
   margin-top: 3px;
   margin-left: 8px;
@@ -56,49 +57,6 @@ window#waybar.hidden {
   transition: none;
   color: transparent;
   background: transparent;
-}
-#tags {
-  margin-top: 3px;
-  margin-left: 12px;
-  font-size: 4px;
-  margin-bottom: 3px;
-  border-radius: 10px;
-  background: #161320;
-  transition: none;
-}
-
-#tags button {
-  transition: none;
-  color: #B5E8E0;
-  background: transparent;
-  font-size: 16px;
-  border-radius: 2px;
-}
-
-#tags button.occupied {
-  transition: none;
-  color: #F28FAD;
-  background: transparent;
-  font-size: 4px;
-}
-
-#tags button.focused {
-  color: #ABE9B3;
-  border-top: 2px solid #ABE9B3;
-  border-bottom: 2px solid #ABE9B3;
-}
-
-#tags button:hover {
-  transition: none;
-  box-shadow: inherit;
-  text-shadow: inherit;
-  color: #FAE3B0;
-  border-color: #E8A2AF;
-  color: #E8A2AF;
-}
-
-#tags button.focused:hover {
-  color: #E8A2AF;
 }
 
 #network {
@@ -170,6 +128,7 @@ window#waybar.hidden {
   color: #161320;
   background: #F8BD96;
 }
+
 #idle_inhibitor {
   margin-top: 3px;
   margin-left: 8px;
@@ -181,6 +140,7 @@ window#waybar.hidden {
   color: #161320;
   background: #FF9999;
 }
+
 #clock {
   margin-top: 3px;
   margin-left: 8px;
@@ -192,29 +152,6 @@ window#waybar.hidden {
   color: #161320;
   background: #ABE9B3;
   /*background: #1A1826;*/
-}
-
-#memory {
-  margin-top: 3px;
-  margin-left: 8px;
-  padding-left: 10px;
-  margin-bottom: 3px;
-  padding-right: 10px;
-  border-radius: 10px;
-  transition: none;
-  color: #161320;
-  background: #DDB6F2;
-}
-#cpu {
-  margin-top: 3px;
-  margin-left: 8px;
-  padding-left: 10px;
-  margin-bottom: 3px;
-  padding-right: 10px;
-  border-radius: 10px;
-  transition: none;
-  color: #161320;
-  background: #96CDFB;
 }
 
 #tray {
@@ -252,30 +189,6 @@ window#waybar.hidden {
   transition: none;
   color: #161320;
   background: #F28FAD;
-}
-
-#custom-wallpaper {
-  margin-top: 3px;
-  margin-left: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 3px;
-  border-radius: 10px;
-  transition: none;
-  color: #161320;
-  background: #C9CBFF;
-}
-
-#custom-updates {
-  margin-top: 3px;
-  margin-left: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 3px;
-  border-radius: 10px;
-  transition: none;
-  color: #161320;
-  background: #E8A2AF;
 }
 
 #custom-media {
