@@ -3,7 +3,7 @@
 	"layer": "top",
 	"modules-left": ["custom/launcher", "hyprland/submap", "custom/media", "hyprland/window"],
 	"modules-center": ["river/tags"],
-	"modules-right": ["hyprland/workspaces", "custom/workspaces_test", "tray", "network", "idle_inhibitor", "backlight","pulseaudio", "battery", "custom/power", "clock"],
+	"modules-right": ["hyprland/workspaces", "custom/hyprkool-workspaces", "tray", "network", "idle_inhibitor", "backlight","pulseaudio", "battery", "custom/power", "clock"],
 	
 	"pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
@@ -23,7 +23,8 @@
 		}
 	},
 
-	"custom/workspaces_test": {
+	// - [Module: Custom · Alexays/Waybar Wiki · GitHub](https://github.com/Alexays/Waybar/wiki/Module:-Custom)
+	"custom/hyprkool-workspaces": {
 		"format": "{}",
 		"return-type": "json",
 		"exec": "hyprkool print-activity-status"
