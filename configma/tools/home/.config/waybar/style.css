@@ -187,8 +187,8 @@ window#waybar.hidden {
   padding-right: 5px;
   border-radius: 10px;
   transition: none;
-  color: #000000;
-  background: #DDDDDD;
+  color: #282828;
+  background: #8caaee;
 }
 
 #power-profiles-daemon {
