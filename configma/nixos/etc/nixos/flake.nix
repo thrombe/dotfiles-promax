@@ -295,7 +295,7 @@
 
         environment.systemPackages = with pkgs; [
           # eww
-          (pkgs.waybar.overrideAttrs (old: {
+          (pkgs.unstable.waybar.overrideAttrs (old: {
             mesonFlags = old.mesonFlags ++ ["-Dexperimental=true"];
           }))
           dunst

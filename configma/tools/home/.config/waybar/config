@@ -16,31 +16,35 @@
         "idle_inhibitor",
         "backlight",
         "pulseaudio",
+        "wireplumber",
         "battery",
         "custom",
-        // "power-profiles-daemon",
-        "custom/power",
+        "power-profiles-daemon",
         "clock",
     ],
     
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "x",
+        // "on-click": "helvum",
+        "on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5.0,
+        "format-icons": ["", "", ""],
+    },
     "pulseaudio": {
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": " {icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "x  {icon} {format_source}",
-        "format-muted": "x {format_source}",
+        "format": "{format_source}",
+        "format-bluetooth": "{format_source}",
+        "format-bluetooth-muted": "{format_source}",
+        "format-muted": "{format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "",
         "tooltip": false,
-        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-        "on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-click-right":"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "format-icons": {
-         "default": ["", "", ""]
-        }
+        // "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+",
+        // "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+        "on-click":"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
     },
     "power-profiles-daemon": {
-        "format": "{icon}   {profile}",
+        "format": "{icon}  {profile} ",
          "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
          "tooltip": true,
          "format-icons": {
@@ -80,6 +84,7 @@
          "active": "",
          "default": ""
         },
+        // "show-special": true,
          "on-scroll-up": "hyprctl dispatch workspace e+1",
          "on-scroll-down": "hyprctl dispatch workspace e-1",
         "on-click": "activate",
@@ -125,8 +130,22 @@
         "spacing": 10,
     },
     "clock": {
-        "format": "{: %H:%M   %d/%m/%Y}",
+        "format": " {:%H:%M |  %d/%m/%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+            },
+        },
     },
     "custom/media": {
         "interval": 30,
@@ -145,12 +164,5 @@
         "format": " ",
         "on-click": "rofi -show drun",
         "on-click-right": "killall rofi",
-    },
-    "custom/power":{
-        "interval": 15,
-        "exec": "powerprofilesctl get",
-        "format": " {} ",
-        "on-click": "powerprofilesctl set $(echo 'performance\nbalanced\npower-saver' | rofi -dmenu)",
-        // "on-click": "asusctl profile --profile-set $(asusctl profile -l | rofi -dmenu)",
     },
 }
