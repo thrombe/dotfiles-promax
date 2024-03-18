@@ -1,5 +1,6 @@
 
 activities = ["issac", "colg"]
+workspaces = [3, 3]
 
 polling_rate = 300
 edge_width = 0
