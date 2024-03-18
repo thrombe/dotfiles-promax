@@ -4,12 +4,10 @@
         "custom/launcher",
         "hyprland/submap",
         "custom/media",
-        "hyprland/window",
     ],
     "modules-center": [
     ],
     "modules-right": [
-        "hyprland/workspaces",
         "custom/hyprkool-workspaces",
         "tray",
         "network",
@@ -24,7 +22,7 @@
     ],
     
     "wireplumber": {
-        "format": "{volume}% {icon}",
+        "format": "{icon} {volume}%",
         "format-muted": "x",
         // "on-click": "helvum",
         "on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -58,7 +56,8 @@
     "custom/hyprkool-workspaces": {
         "format": "{}",
         "return-type": "json",
-        "exec": "hyprkool print-activity-status"
+        "exec": "hyprkool print-activity-status",
+        "on-click": "hyprctl dispatch workspace \"$(hyprctl -j workspaces | jq -r '.[] | .name' | rofi -p 'Workspaces:' -dmenu)\"",
     },
     // - [Module: Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland)
     "hyprland/submap": {
@@ -70,13 +69,13 @@
         "tooltip": false,
     },
     "hyprland/window": {
-        "format": "👉 {class} {initialClass}",
+        "format": "👉 {}",
         // "rewrite": {
         //     "(.*) — Mozilla Firefox": "🌎 $1",
         //     "(.*) - fish": "> [$1]",
         // },
-        "max-length": 200,
-        "separate-outputs": false,
+        // "max-length": 200,
+        "separate-outputs": true,
     },
     "hyprland/workspaces": {
         "format": "{name} {icon}",
