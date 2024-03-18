@@ -56,9 +56,9 @@ alias ssh7s="ssh 192.168.1.190 -p 8022"
 alias sshphon="ssh 192.168.1.191 -p 8022"
 alias rd="rdrag"
 alias de="distrobox enter"
-alias br="browser_profile old"
-alias brf="browser_profile firefox"
-alias brn="browser_profile librewolf"
+alias br="browser_profile fzf old"
+alias brf="browser_profile fzf firefox"
+alias brn="browser_profile fzf librewolf"
 # alias wlp="wallpaper_set"
 alias ze="launch_zellij"
 alias zz="open_zellij_workspace"
@@ -195,6 +195,8 @@ rdrag() {
 }
 
 browser_profile() {
+  runner="$1"
+  shift
   browser="$1"
   shift
 
@@ -215,11 +217,15 @@ browser_profile() {
       echo "-e option needs exact profile name as argument"
     fi
   else
-    if [[ $# < 1 ]]; then
-      br_name=$(ls $br_path | fzf)
-    else
-      br_inputs="$@"
-      br_name=$(ls $br_path | fzf -1 -q $br_inputs)
+    if [[ $runner == "fzf" ]]; then
+      if [[ $# < 1 ]]; then
+        br_name=$(ls $br_path | fzf)
+      else
+        br_inputs="$@"
+        br_name=$(ls $br_path | fzf -1 -q $br_inputs)
+      fi
+    elif [[ $runner == "rofi" ]]; then
+      br_name=$(ls $br_path | rofi -p 'Profiles:' -dmenu)
     fi
     if [[ $br_name != "" ]]; then
       echo "$br_path/$br_name"
