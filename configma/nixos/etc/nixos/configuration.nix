@@ -141,6 +141,7 @@
     ripgrep-all
     file
     du-dust
+    jq
   ];
   programs.partition-manager.enable = true;
   programs.kdeconnect.enable = true;
