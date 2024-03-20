@@ -294,16 +294,19 @@
         # hardware.nvidia.modsetting.enable = true;
 
         environment.systemPackages = with pkgs; [
-          # eww
+          dunst
+          libnotify
+          networkmanagerapplet
+          brightnessctl
+
+          # widget/bar
+          unstable.eww
           (pkgs.unstable.waybar.overrideAttrs (old: {
             mesonFlags = old.mesonFlags ++ ["-Dexperimental=true"];
           }))
-          dunst
-          libnotify
-          kitty
+
+          # app launcher
           rofi-wayland
-          networkmanagerapplet
-          brightnessctl
 
           # wallpaper stuff
           swww
@@ -312,6 +315,7 @@
           wlr-randr
           wl-clipboard
           cliphist
+          wtype
 
           # plugin manager
           unstable.pyprland
