@@ -98,8 +98,8 @@
           helix = flakeDefaultPackage inputs.helix-git;
 
           # - [asusctl: 4.7.2 -> 5.0.0, supergfxctl: 5.1.1 -> 5.1.2](https://github.com/NixOS/nixpkgs/pull/273808/files)
-          asusctl = super.pkgs-git.asusctl;
-          supergfxctl = super.pkgs-git.supergfxctl;
+          asusctl = super.unstable.asusctl;
+          supergfxctl = super.unstable.supergfxctl;
 
           tlp = super.unstable.tlp;
 
