@@ -168,6 +168,7 @@
 
       # tools
       helix
+      unstable.alacritty
       unstable.zellij
       unstable.zoxide
       unstable.yazi
@@ -178,7 +179,6 @@
       starship
       ueberzugpp
       neovim
-      alacritty
       fzf
       ripdrag
       kalker
