@@ -2,6 +2,7 @@ game:
   exe: /home/issac/Games/NieR Automata Game of the YoRHa Edition/NieRAutomata.exe
   prefix: /home/issac/Games/red-dead-redemption-ii
 system:
+  gamescope: false
   prime: true
   vk_icd: /run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json:/run/opengl-driver-32/share/vulkan/icd.d/nvidia_icd.i686.json
 wine:

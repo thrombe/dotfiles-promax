@@ -1,5 +1,10 @@
 game:
   exe: /home/issac/.local/share/Steam/steamapps/common/GUNRUN Demo/gunrun.exe
   prefix: /home/issac/Games/cyberpunk-2077
-system: {}
-wine: {}
+system:
+  gamescope: false
+wine:
+  Desktop: false
+  esync: false
+  fsync: false
+  version: lutris-GE-Proton8-15-x86_64

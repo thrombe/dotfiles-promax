@@ -2,7 +2,7 @@
 # /home/issac/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Sat Nov 25 02:48:43 2023
+# Generated on Tue Mar 19 22:13:06 2024
 #
 
 # ConfigProperties:
@@ -18,4 +18,3 @@ Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 
 # Attributes:
 
-[GPU:0]/GPUPowerMizerMode=2

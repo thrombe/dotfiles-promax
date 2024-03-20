@@ -742,7 +742,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][201][Applets][216][Configuration]
-PreloadWeight=100
+PreloadWeight=84
 
 [Containments][201][Applets][217]
 immutability=1
@@ -1015,5 +1015,5 @@ history=#ddccbe,#3592ac,#3592ac
 launchers=
 
 [ScreenMapping]
-itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/shadertoy_links.txt,desktop:/GSOC.txt,desktop:/to_watch.txt,desktop:/bdys.txt,desktop:/cources.md,desktop:/chefs.txt,desktop:/musik.txt
-screenMapping=desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77
+itemsOnDisabledScreens=0,c4f63bec-72c9-48bc-9d8e-2c69bdf87341,7,desktop:/cources.md,desktop:/bdys.txt,desktop:/to_watch.txt,desktop:/shadertoy_links.txt,desktop:/GSOC.txt,desktop:/musik.txt,desktop:/chefs.txt
+screenMapping=desktop:/chefs.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/Screenshot_20231109-215844~2.png,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/bdys.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/shadertoy_links.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/shadertoy_links.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/musik.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/to_watch.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/random_links.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/cources.md,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/random_links.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/todo_sticker.txt,0,b05b12af-4ee5-455c-9ce7-1ca68d58cd77,desktop:/GSOC.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/chefs.txt,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40,desktop:/musik.md,0,b51bd6a7-2955-4ce4-9e25-a4e38e92ab40

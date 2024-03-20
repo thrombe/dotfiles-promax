@@ -1,4 +1,7 @@
 
+
+// - [Themes - Rofi Documentation](https://davatorium.github.io/rofi/current/rofi-theme.5/#children)
+
 // yeet all theme
 @theme "/dev/null"
 

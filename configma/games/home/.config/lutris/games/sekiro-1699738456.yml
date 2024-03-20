@@ -3,4 +3,5 @@ game:
   prefix: /home/issac/Games/cyberpunk-2077
 system:
   disable_compositor: false
+  gamescope: false
 wine: {}
