@@ -47,7 +47,7 @@ path = "~/0Git/dotfiles-promax-private/configma"
 
 [[modules]]
 name = "game-savefiles"
-path = "~/0Git/dotfiles-promax-private/configma"
+path = "~/Games/configma"
 
 [[modules]]
 name = "games-private"
