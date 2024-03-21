@@ -94,7 +94,7 @@
 
     "idle_inhibitor": {
         "format": "{icon} ",
-        "on-click-right": "~/.config/waybar/idle_inhibitor.sh",
+        "on-click-right": "~/.config/waybar/power_menu.sh",
         "format-icons": {
             "activated": "",
             "deactivated": "",
