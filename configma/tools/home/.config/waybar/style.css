@@ -24,6 +24,18 @@ window#waybar.hidden {
   margin-left: 8px;
 }
 
+#custom-hyprkool-window {
+  margin-top: 3px;
+  margin-left: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 3px;
+  border-radius: 10px;
+  transition: none;
+  color: #161320;
+  background: #FF9999;
+}
+
 #submap {
   margin-top: 3px;
   margin-left: 8px;

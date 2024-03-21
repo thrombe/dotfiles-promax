@@ -4,6 +4,7 @@
         "custom/launcher",
         "hyprland/submap",
         "custom/media",
+        "custom/hyprkool-window",
     ],
     "modules-center": [
     ],
@@ -52,11 +53,16 @@
          }
     },
 
+    "custom/hyprkool-window": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "hyprkool waybar-active-window",
+    },
     // - [Module: Custom · Alexays/Waybar Wiki · GitHub](https://github.com/Alexays/Waybar/wiki/Module:-Custom)
     "custom/hyprkool-workspaces": {
         "format": "{}",
         "return-type": "json",
-        "exec": "hyprkool print-activity-status",
+        "exec": "hyprkool waybar-activity-status",
         "on-click": "hyprctl dispatch workspace \"$(hyprctl -j workspaces | jq -r '.[] | .name' | rofi -p 'Workspaces:' -dmenu)\"",
     },
     // - [Module: Hyprland](https://github.com/Alexays/Waybar/wiki/Module:-Hyprland)
