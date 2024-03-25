@@ -17,6 +17,9 @@ theme = "gruvbox_transparent"
 [editor]
 line-number = "relative"
 
+[editor.smart-tab]
+enable = false
+
 [editor.soft-wrap]
 enable = true
 
