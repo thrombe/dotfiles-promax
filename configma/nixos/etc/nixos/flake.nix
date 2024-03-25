@@ -27,10 +27,7 @@
     };
 
     helix-git = {
-      # url = "github:helix-editor/helix";
-
-      # - [Toggle block comments](https://github.com/helix-editor/helix/pull/4718)
-      url = "github:gabydd/helix/toggle-block";
+      url = "github:helix-editor/helix";
 
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.flake-utils.follows = "flake-utils";
