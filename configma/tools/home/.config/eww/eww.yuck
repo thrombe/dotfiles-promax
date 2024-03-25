@@ -1,0 +1,286 @@
+; (defvar hyprkool "/home/issac/0Git/hyprkool/target/debug/hyprkool")
+(defvar hyprkool "hyprkool")
+
+; - [[FEATURE] Can't format command strings · Issue #998 · elkowar/eww · GitHub](https://github.com/elkowar/eww/issues/998)
+(deflisten workspace-windows :initial "[]" "hyprkool info -m active-workspace-windows -s 64 -t Papirus")
+(deflisten active-window :initial "{}" "hyprkool info -m active-window -s 64 -t Papirus")
+(deflisten activities :initial "[]" "hyprkool info -m activities")
+(deflisten workspaces :initial "{}" "hyprkool info -m workspaces")
+(deflisten submap :initial "{\"submap\": \"\"}" "hyprkool info -m submap")
+
+(deflisten brightness :initial "{}" "./scripts/brightness.sh")
+
+(defpoll volume :initial "{\"level\": 0, \"muted\": true}" :interval "5s" "./scripts/volume.sh")
+(defpoll mic :initial "{\"level\": 0, \"muted\": true}" :interval "5s" "./scripts/mic.sh")
+(defpoll network :initial "{\"enabled\": false}" :interval "30s" "./scripts/network.sh")
+(defpoll power :initial "{\"profile\": \"donno\"}" :interval "60s" "./scripts/power.sh")
+(defpoll time :initial "" :interval "60s" "date '+%H:%M'")
+(defpoll date :initial "" :interval "60s" "date '+%d/%m/%Y'")
+
+
+(defwindow top-bar
+  :stacking "fg"
+  :namespace "eww"
+  :monitor 0
+  :geometry (geometry
+    :y 2
+    :width "100%"
+    :height "36px"
+    :anchor "top center"
+  )
+  (box
+    (box
+      :halign "start"
+      :space-evenly false
+      :spacing 5
+      :style "
+        margin-left: 5px;
+      "
+      (Launcher)
+      (Activities)
+      (Workspaces)
+      (Submap)
+    )
+    (box
+      :halign "center"
+      :space-evenly false
+      (WorkspaceWindows :icon-size 36)
+    )
+    (box
+      :style "
+        margin-right: 5px;
+      "
+      :space-evenly false
+      :halign "end"
+      :spacing 5
+      (Stats)
+    )
+  )
+)
+
+(defwidget WorkspaceWindows [icon-size]
+  (box :space-evenly false :orientation "horizontal" :halign "center"
+    (label :visible false :text "${active-window}") ; without this, it does not update in the style for some reason
+    (for window in workspace-windows
+      (box
+        :style "
+          background-color: #24273a;
+          border: 3px solid ${window.title == active-window.title ? "#a6da95" : "#24273a"};
+          margin-right: 4px;
+        "
+        (eventbox
+          :tooltip "${window.initial_title}: ${window.title}"
+          :onclick "${hyprkool} focus-window -a ${window.address}"
+          (image
+            :path "${window.icon}"
+            :image-height {icon-size - 6}
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget Activities []
+  (box :orientation "horizontal"
+    :style "
+      background-color: #ed8796;
+
+      border-radius: 5px;
+
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-left: 3px;
+      padding-right: 3px;
+    "
+    (for ac in activities
+      (box
+        (eventbox
+          :width {40}
+          :height {10}
+          :style "
+            background-color: ${ac.focus ? "#45475a" : "transparent"};
+            border-radius: 1px;
+            margin-right: 3px;
+          "
+          :tooltip "${ac.name}"
+          :onclick "${hyprkool} switch-to-activity -n '${ac.name}'"
+        )
+      )
+    )
+  )
+)
+
+(defwidget Workspaces []
+  (box :orientation "vertical"
+    :style "
+      background-color: ${active-window.workspace == "special:minimized" ? "#ca9ee6" : "#a6e3a1"};
+
+      border-radius: 5px;
+
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-left: 3px;
+      padding-right: 3px;
+    "
+    (for row in workspaces
+      (box
+        (for ws in row
+          (eventbox
+            :width {17}
+            :height {10}
+            :style "
+              background-color: ${ws.focus ? "#45475a" : "transparent"};
+              border-radius: 1px;
+            "
+            :tooltip "${ws.name}"
+            :onclick "${hyprkool} switch-to-workspace -n '${ws.name}'"
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget Launcher []
+  (eventbox
+    :onclick "rofi -show drun -show-icons &"
+    (fancy-box :color "#89b4fa"
+      (label
+        :text ""
+        :style "
+          font-size: 25px;
+          padding-right: 9px;
+        "
+      )
+    )
+  )
+)
+
+(defwidget Submap []
+  (eventbox
+    (fancy-box :color "#f5a97f"
+      (label :text "${submap.submap == "" ? "normal" : submap.submap}")
+    )
+  )
+)
+
+(defwidget Stats []
+  (box
+    :space-evenly false
+    :spacing 5
+    (NetworkStat)
+    (BatteryStat)
+    (BrightnessStat)
+    (VolumeStat)
+    (MicStat)
+    (PowerStat)
+    (Datetime)
+  )
+)
+
+(defwidget NetworkStat []
+  (eventbox
+    (fancy-box :color "#bd93f9"
+      (label :text "    ${network.id}")
+    )
+  )
+)
+
+(defwidget Datetime []
+  (eventbox
+    (fancy-box :color "#ABE9B3"
+      (label :text "  ${time} |   ${date}")
+    )
+  )
+)
+
+(defwidget PowerStat []
+  (eventbox
+    :onclick "./scripts/power-interact.sh"
+    (fancy-box :color "#F28FAD"
+      (label :text "${
+        power.profile == "performance" ? " "
+        : power.profile == "balanced" ? "  "
+        : "  "
+      }")
+      (label :text "${power.profile}")
+    )
+  )
+)
+
+(defwidget MicStat []
+  (eventbox
+    :onscroll "./scripts/mic-interact.sh {}"
+    :onclick "./scripts/mic-interact.sh click"
+    (fancy-box :color "#FAE3B0"
+      (box
+        :style "
+          padding-right: 5px;
+        "
+        (label :text "${mic.muted ? '' : ''}")
+      )
+      (label :text "${mic.muted ? '' : mic.level}")
+    )
+  )
+)
+
+(defwidget VolumeStat []
+  (eventbox
+    :onscroll "./scripts/volume-interact.sh {}"
+    :onclick "./scripts/volume-interact.sh click"
+    (fancy-box :color "#f4b8e4"
+      (label :text "${
+        volume.muted ? "x"
+        : volume.level > 60 ? " "
+        : volume.level > 30 ? " "
+        : " "
+      }")
+      (label :text " ${volume.muted ? '' : volume.level}")
+    )
+  )
+)
+
+(defwidget BrightnessStat []
+  (eventbox
+    :onscroll "./scripts/brightness-scroll.sh {}"
+    (fancy-box :color "#F8BD96"
+      (label :text " ${brightness.level}")
+    )
+  )
+)
+
+(defwidget BatteryStat []
+  (eventbox
+    (fancy-box :color "#B5E8E0"
+      (label :text "${EWW_BATTERY.BAT0.status == "Not charging" ? "" : "  "}")
+      (label :text "${
+        EWW_BATTERY.BAT0.capacity > 80 ? "  "
+        : EWW_BATTERY.BAT0.capacity > 60 ? "  "
+        : EWW_BATTERY.BAT0.capacity > 40 ? "  "
+        : EWW_BATTERY.BAT0.capacity > 20 ? "  "
+        : "  "
+      }")
+      (label :text "${EWW_BATTERY.BAT0.capacity}%")
+    )
+  )
+)
+
+
+(defwidget fancy-box [color]
+  (box
+    :style "
+      color: black;
+      font-size: 17px;
+      font-weight: 700;
+
+      background-color: ${color};
+
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 10px;
+    "
+    :space-evenly false
+    (children)
+  )
+)

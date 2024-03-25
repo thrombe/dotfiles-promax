@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-
 nm-applet --indicate &
 
-waybar &
+# waybar &
+eww open top-bar
 
 swww init &
 
