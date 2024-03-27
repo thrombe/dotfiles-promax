@@ -3,10 +3,13 @@
   font-family: JetBrainsMono Nerd Font;
 }
 
-.cal, .top-bar, .top-left-bar, .top-right-bar, .top-center-bar {
+.top-left-bar, .top-right-bar, .top-center-bar {
   background-color: transparent;
 }
 
+.cal {
+  background-color: transparent;
+}
 .calendar {
   font-size: 18px;
   font-weight: 500;
@@ -16,18 +19,25 @@
   border-radius: 20px;
   background-color: #313244;
 }
-
+calendar:indeterminate {
+  color: #777777;
+  font-weight: 100;
+}
+calendar {
+  /* color: red; */
+}
 calendar.button {
   /* background-color: black; */
 }
-
 calendar:selected {
-  /* color: #74c7ec; */
+  color: #f5bde6;
   background-color: #282828
 }
-
 calendar.header {
-  /* color: red; */
+  color: #f5bde6;
+}
+calendar.highlight {
+  color: #f5bde6;
 }
 
 tooltip * {
@@ -39,7 +49,6 @@ tooltip.background {
     border: none;
     border-radius: 20px;
 }
-
 tooltip label {
     margin: 6px;
     color: #f4dbd6;
