@@ -3,6 +3,29 @@
   font-family: JetBrainsMono Nerd Font;
 }
 
-.top-bar, .top-left-bar, .top-right-bar, .top-center-bar {
+.cal, .top-bar, .top-left-bar, .top-right-bar, .top-center-bar {
   background-color: transparent;
+}
+
+.calendar {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px 5px 5px 8px;
+  color: #f4dbd6;
+  border: none;
+  border-radius: 20px;
+  background-color: #313244;
+}
+
+calendar.button {
+  /* background-color: black; */
+}
+
+calendar:selected {
+  /* color: #74c7ec; */
+  background-color: #282828
+}
+
+calendar.header {
+  /* color: red; */
 }

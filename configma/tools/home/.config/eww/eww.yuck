@@ -81,6 +81,20 @@
   )
 )
 
+(defwindow cal
+  :stacking "fg"
+  :namespace "eww"
+  :monitor 0
+  :geometry (geometry
+    :y 50
+    :x 10
+    :width "0%"
+    :height "0%"
+    :anchor "top right"
+  )
+  (Cal)
+)
+
 (defwidget WorkspaceWindows [icon-size]
   (box :space-evenly false :orientation "horizontal" :halign "center"
     (label :visible false :text "${active-window}") ; without this, it does not update in the style for some reason
@@ -245,8 +259,38 @@
   )
 )
 
+(defwidget Cal []
+  (box
+    :space-evenly false
+    :orientation "vertical"
+    :spacing 5
+    (box
+      :space-evenly false
+      :halign "end"
+      :style "
+        padding-right: 20px;
+      "
+      (eventbox
+        :style "
+          background-color: #e64553;
+        "
+        :width 30
+        :height 30
+        :onclick "eww close cal"
+        (label :text "X " :halign "end")
+      )
+    )
+    (eventbox
+      :onhoverlost "sleep 0.5 && eww close cal &"
+      (calendar :class "calendar")
+    )
+  )
+)
+
 (defwidget Datetime []
   (eventbox
+    :onclick "eww open --toggle cal"
+    :onhover "eww open cal"
     (fancy-box :color "#ABE9B3"
       (label :text " ${time} |  ${date}")
     )
