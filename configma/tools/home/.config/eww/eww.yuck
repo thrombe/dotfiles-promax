@@ -19,43 +19,65 @@
 (defpoll date :initial "" :interval "60s" "date '+%d/%m/%Y'")
 
 
-(defwindow top-bar
+(defwindow top-left-bar
   :stacking "fg"
   :namespace "eww"
   :monitor 0
   :geometry (geometry
     :y 2
-    :width "100%"
+    :width "0%"
+    :height "36px"
+    :anchor "top left"
+  )
+  (box
+    :halign "start"
+    :space-evenly false
+    :spacing 5
+    :style "
+      margin-left: 5px;
+    "
+    (Launcher)
+    (Activities)
+    ; (Workspaces)
+    (AllWorkspaces)
+    (Submap)
+  )
+)
+(defwindow top-center-bar
+  :stacking "fg"
+  :namespace "eww"
+  :monitor 0
+  :geometry (geometry
+    :y 2
+    :width "0%"
     :height "36px"
     :anchor "top center"
   )
   (box
-    (box
-      :halign "start"
-      :space-evenly false
-      :spacing 5
-      :style "
-        margin-left: 5px;
-      "
-      (Launcher)
-      (Activities)
-      (Workspaces)
-      (Submap)
-    )
-    (box
-      :halign "center"
-      :space-evenly false
-      (WorkspaceWindows :icon-size 36)
-    )
-    (box
-      :style "
-        margin-right: 5px;
-      "
-      :space-evenly false
-      :halign "end"
-      :spacing 5
-      (Stats)
-    )
+    :halign "center"
+    :space-evenly false
+    :width 10
+    (WorkspaceWindows :icon-size 36)
+  )
+)
+(defwindow top-right-bar
+  :stacking "fg"
+  :namespace "eww"
+  :monitor 0
+  :geometry (geometry
+    :y 2
+    :width "0%"
+    :height "36px"
+    :anchor "top right"
+  )
+  (box
+    :style "
+      margin-right: 5px;
+    "
+    :space-evenly false
+    :halign "end"
+    :spacing 5
+    (Stats)
   )
 )
 
