@@ -71,7 +71,8 @@
     username = "issac";
 
     # helpers
-    flakeDefaultPackage = flake: flake.packages."${system}".default;
+    flakePackage = flake: package: flake.packages."${system}"."${package}";
+    flakeDefaultPackage = flake: flakePackage flake "default";
     getScript = name: inputs.scripts.packages."${system}"."${name}";
 
     overlay-unstable = final: prev: {
@@ -295,6 +296,8 @@
           libnotify
           networkmanagerapplet
           brightnessctl
+          inotify-tools
+          wirelesstools
 
           # widget/bar
           unstable.eww
