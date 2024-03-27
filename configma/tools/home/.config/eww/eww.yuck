@@ -6,6 +6,7 @@
 (deflisten active-window :initial "{}" "hyprkool info -m active-window -s 64 -t Papirus")
 (deflisten activities :initial "[]" "hyprkool info -m activities")
 (deflisten workspaces :initial "{}" "hyprkool info -m workspaces")
+(deflisten all-workspaces :initial "{}" "hyprkool info -m all-workspaces")
 (deflisten submap :initial "{\"submap\": \"\"}" "hyprkool info -m submap")
 
 (deflisten brightness :initial "{}" "./scripts/brightness.sh")
@@ -105,6 +106,41 @@
           "
           :tooltip "${ac.name}"
           :onclick "${hyprkool} switch-to-activity -n '${ac.name}'"
+        )
+      )
+    )
+  )
+)
+
+(defwidget AllWorkspaces []
+  (box :orientation "horizontal" :spacing 5
+    (for workspaces in all-workspaces
+      (box :orientation "vertical"
+        :style "
+          background-color: ${active-window.workspace == "special:minimized" ? "#ca9ee6" : "#a6e3a1"};
+
+          border-radius: 5px;
+
+          padding-top: 3px;
+          padding-bottom: 3px;
+          padding-left: 3px;
+          padding-right: 3px;
+        "
+        (for row in workspaces
+          (box
+            (for ws in row
+              (eventbox
+                :width {17}
+                :height {10}
+                :style "
+                  background-color: ${ws.focus ? "#45475a" : "transparent"};
+                  border-radius: 1px;
+                "
+                :tooltip "${ws.name}"
+                :onclick "${hyprkool} switch-to-workspace -n '${ws.name}'"
+              )
+            )
+          )
         )
       )
     )

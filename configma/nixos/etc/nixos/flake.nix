@@ -53,7 +53,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     hyprkool = {
-      url = "github:thrombe/hyprkool";
+      url = "github:thrombe/hyprkool/dev";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
