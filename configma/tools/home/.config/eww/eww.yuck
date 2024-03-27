@@ -16,7 +16,7 @@
 (defpoll network :initial "{\"enabled\": false}" :interval "30s" "./scripts/network.sh")
 (defpoll power :initial "{\"profile\": \"donno\"}" :interval "60s" "./scripts/power.sh")
 (defpoll time :initial "" :interval "60s" "date '+%H:%M'")
-(defpoll date :initial "" :interval "60s" "date '+%d/%m/%Y'")
+(defpoll date :initial "" :interval "60s" "date '+%a %d/%m/%Y'")
 
 
 (defwindow top-left-bar
@@ -240,7 +240,7 @@
 (defwidget NetworkStat []
   (eventbox
     (fancy-box :color "#bd93f9"
-      (label :text "    ${network.id}")
+      (label :text "  ${network.id}")
     )
   )
 )
@@ -248,7 +248,7 @@
 (defwidget Datetime []
   (eventbox
     (fancy-box :color "#ABE9B3"
-      (label :text "  ${time} |   ${date}")
+      (label :text " ${time} |  ${date}")
     )
   )
 )
