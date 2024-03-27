@@ -29,3 +29,19 @@ calendar:selected {
 calendar.header {
   /* color: red; */
 }
+
+tooltip * {
+    box-shadow: none;
+}
+tooltip.background {
+    background-color: #313244;
+    font-size: 18;
+    border: none;
+    border-radius: 20px;
+}
+
+tooltip label {
+    margin: 6px;
+    color: #f4dbd6;
+}
+
