@@ -289,7 +289,12 @@
 (defwidget BatteryStat []
   (eventbox
     (fancy-box :color "#B5E8E0"
-      (label :text "${EWW_BATTERY.BAT0.status == "Not charging" ? "" : "  "}")
+      (label :text "${
+        EWW_BATTERY.BAT0.status == "Charging" ? "  "
+        : EWW_BATTERY.BAT0.status == "Discharging" ? ""
+        : EWW_BATTERY.BAT0.status == "Not charging" ? "  "
+        : ""
+      }")
       (label :text "${
         EWW_BATTERY.BAT0.capacity > 80 ? "  "
         : EWW_BATTERY.BAT0.capacity > 60 ? "  "
