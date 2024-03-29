@@ -398,8 +398,9 @@ in {
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # hyprland wants nvidia 535
+    # https://www.reddit.com/r/hyprland/comments/1bmw7n7/comment/kwevz1z/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     prime = {
       offload = {
