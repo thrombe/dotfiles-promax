@@ -136,7 +136,7 @@
           :width {40}
           :height {10}
           :style "
-            background-color: ${ac.focus ? "#45475a" : "transparent"};
+            background-color: ${ac.focused ? "#45475a" : "transparent"};
             border-radius: 1px;
             margin-right: 3px;
           "
@@ -169,11 +169,19 @@
                 :width {17}
                 :height {10}
                 :style "
-                  background-color: ${ws.focus ? "#45475a" : "transparent"};
+                  background-color: ${ws.focused ? "#45475a" : (arraylength(ws.named_focus) == 0 ? "transparent" : "#40803b")};
+
                   border-radius: 1px;
                 "
                 :tooltip "${ws.name}"
                 :onclick "${hyprkool} switch-to-workspace -n '${ws.name}'"
+                :onmiddleclick "${hyprkool} switch-to-workspace -w -n '${ws.name}'"
+                (label
+                  :text "${ws.named_focus[0] ?: ""}"
+                  :style "
+                    font-size: 6px;
+                  "
+                )
               )
             )
           )
@@ -202,7 +210,7 @@
             :width {17}
             :height {10}
             :style "
-              background-color: ${ws.focus ? "#45475a" : "transparent"};
+              background-color: ${ws.focused ? "#45475a" : "transparent"};
               border-radius: 1px;
             "
             :tooltip "${ws.name}"
