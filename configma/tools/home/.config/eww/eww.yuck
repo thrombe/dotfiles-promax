@@ -86,7 +86,7 @@
   :namespace "eww"
   :monitor 0
   :geometry (geometry
-    :y 50
+    :y 0
     :x 10
     :width "0%"
     :height "0%"
@@ -268,28 +268,31 @@
 )
 
 (defwidget Cal []
-  (box
-    :space-evenly false
-    :orientation "vertical"
-    :spacing 5
+  (eventbox
+    :onhoverlost "sleep 0.5 && eww close cal &"
     (box
       :space-evenly false
-      :halign "end"
+      :orientation "vertical"
+      :spacing 5
       :style "
-        padding-right: 20px;
+        margin-top: 50px;
       "
-      (eventbox
+      (box
+        :space-evenly false
+        :halign "end"
         :style "
-          background-color: #e64553;
+          padding-right: 20px;
         "
-        :width 30
-        :height 30
-        :onclick "eww close cal"
-        (label :text "X " :halign "end")
+        (eventbox
+          :style "
+            background-color: #e64553;
+          "
+          :width 30
+          :height 30
+          :onclick "eww close cal"
+          (label :text "X " :halign "end")
+        )
       )
-    )
-    (eventbox
-      :onhoverlost "sleep 0.5 && eww close cal &"
       (calendar :class "calendar")
     )
   )
