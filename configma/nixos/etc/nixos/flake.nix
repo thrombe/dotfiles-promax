@@ -149,10 +149,6 @@
       ];
     };
 
-
-    # - [Installation - nixvim docs](https://nix-community.github.io/nixvim/user-guide/install.html)
-    nixvim = pkgs.callPackage ./nixvim.nix {inherit inputs system;};
-
     commonModules = [
       # {_module.args = inputs;}
       inputs.nix-index-database.nixosModules.nix-index
@@ -170,7 +166,8 @@
             "wait-until"
           ])
           ++ [
-            nixvim
+            # - [Installation - nixvim docs](https://nix-community.github.io/nixvim/user-guide/install.html)
+            (pkgs.callPackage ./nixvim.nix {inherit inputs system;})
           ];
       })
 
@@ -569,18 +566,17 @@
         ];
 
         users.users."${username}" = {
-          packages =
-            with pkgs; [
-              xorg.xmodmap
-              xdotool
-              xorg.xhost
-              xclip
-              wmctrl
-              numlockx
-              libnotify
+          packages = with pkgs; [
+            xorg.xmodmap
+            xdotool
+            xorg.xhost
+            xclip
+            wmctrl
+            numlockx
+            libnotify
 
-              bismuth
-            ];
+            bismuth
+          ];
         };
       })
 
