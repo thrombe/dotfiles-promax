@@ -178,7 +178,6 @@
       unstable.distrobox
       starship
       ueberzugpp
-      neovim
       fzf
       ripdrag
       kalker

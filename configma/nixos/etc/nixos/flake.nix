@@ -9,6 +9,11 @@
 
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -35,6 +40,19 @@
       #   url = "github:ipetkov/crane";
       #   inputs.flake-compat.follows = "flake-compat";
       # };
+    };
+    nixvim = {
+      # url = "github:nix-community/nixvim/nixos-23.11";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.flake-utils.follows = "flake-utils";
+
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+      inputs.devshell.follows = "devshell";
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-parts.follows = "flake-parts";
     };
     nix-update-input = {
       url = "github:vimjoyer/nix-update-input";
@@ -125,6 +143,9 @@
           ];
       });
 
+    # - [Installation - nixvim docs](https://nix-community.github.io/nixvim/user-guide/install.html)
+    nixvim = pkgs.callPackage ./nixvim.nix { inherit inputs system; };
+
     commonModules = [
       # {_module.args = inputs;}
       ./configuration.nix
@@ -144,6 +165,7 @@
           ])
           ++ [
             bismuth
+            nixvim
           ];
       })
 
@@ -349,7 +371,7 @@
       ga402xu = inputs.nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           hostname = "ga402xu";
-          inherit pkgs system username;
+          inherit inputs pkgs system username;
         };
 
         modules =
