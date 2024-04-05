@@ -794,11 +794,11 @@
       },
       "locked": {
         "dir": "scripts",
-        "lastModified": 1699212309,
-        "narHash": "sha256-OIu6WRrvdHtQ9OcdC9XqQRNq30ded38aKL9/ivbUPvQ=",
+        "lastModified": 1712332633,
+        "narHash": "sha256-WjLVVovjMfYCmPmOIMSLiGGCFwxg8OWKMsNfeZR1/Ng=",
         "owner": "thrombe",
         "repo": "dotfiles-promax",
-        "rev": "66851bf13520491099b7f68898d60dae52ccf74c",
+        "rev": "2537271640221c571d12eb7016a3479167b0ed66",
         "type": "github"
       },
       "original": {

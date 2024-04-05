@@ -235,8 +235,7 @@ browser_profile() {
 }
 
 lbwopen() {
-  script_path=~/0Git/dotfiles-promax/scripts/librewolf_open_links.py
-  script_path=$(readlink -f $script_path)
+  command=lbwopen-links
   
   br_path=~/daata/browser_profiles
   if [[ "$1" == "-p" ]]; then
@@ -248,10 +247,10 @@ lbwopen() {
     fi
     if [[ $br_name != "" ]]; then
       echo "$br_path/$br_name"
-      python "$script_path" "$br_path/$br_name"
+      $command "$br_path/$br_name"
     fi
   else
-    python "$script_path"
+    $command
   fi
 }
 

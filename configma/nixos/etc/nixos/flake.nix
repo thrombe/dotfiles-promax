@@ -164,6 +164,7 @@
           ]))
           ++ (map getScript [
             "wait-until"
+            "lbwopen-links"
           ])
           ++ [
             # - [Installation - nixvim docs](https://nix-community.github.io/nixvim/user-guide/install.html)
