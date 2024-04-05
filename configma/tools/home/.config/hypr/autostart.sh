@@ -12,9 +12,9 @@ swww img ~/0Git/dotfiles-promax/flakes/ai_apps/Fooocus/outputs/2023-12-12/2023-1
 # https://wiki.hyprland.org/Useful-Utilities/Clipboard-Managers/
 wl-paste --type text --watch cliphist store &
 
-pypr &
+# pypr &
 
-hypridle &
+# hypridle &
 
 easyeffects --gapplication-service &
 
