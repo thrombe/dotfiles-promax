@@ -338,6 +338,7 @@
           wl-clipboard
           cliphist
           wtype
+          wev # like xev
 
           # plugin manager
           unstable.pyprland
@@ -346,6 +347,10 @@
           unstable.hyprlock
           unstable.hypridle
           unstable.hyprshot
+
+          papirus-icon-theme
+          adwaita-qt
+          gnome.adwaita-icon-theme
 
           (pkgs.writeShellScriptBin "start-hypr" ''
             export XDG_SESSION_TYPE=wayland
