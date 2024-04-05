@@ -54,6 +54,10 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
     };
+    hyprland-git = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     nix-update-input = {
       url = "github:vimjoyer/nix-update-input";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -112,6 +116,8 @@
         inputs.nix-alien.overlays.default
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
+          # hyprland = pkgs.unstable.hyprland;
+          hyprland = flakeDefaultPackage inputs.hyprland-git;
 
           # - [asusctl: 4.7.2 -> 5.0.0, supergfxctl: 5.1.1 -> 5.1.2](https://github.com/NixOS/nixpkgs/pull/273808/files)
           asusctl = super.unstable.asusctl;
@@ -301,7 +307,6 @@
         programs.hyprland = {
           enable = true;
           xwayland.enable = true;
-          package = pkgs.unstable.hyprland;
         };
 
         environment.sessionVariables = {
@@ -369,6 +374,13 @@
           nerdfonts
           meslo-lgs-nf
         ];
+
+        # - [use unstable mesa for hyprland-git / unstable hyprland](https://github.com/hyprwm/Hyprland/issues/5148#issuecomment-2002533086)
+        # - [also on hyprland wiki](https://wiki.hyprland.org/0.38.0/Nix/Hyprland-on-NixOS/)
+        hardware.opengl = {
+          package = pkgs.unstable.mesa.drivers;
+          package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
+        };
       })
     ];
   in {
