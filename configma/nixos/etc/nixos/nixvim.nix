@@ -122,6 +122,7 @@
         "<leader>F" = "git_files";
         "<leader>f" = "find_files";
         "<leader>b" = "buffers";
+        "<leader>/" = "live_grep";
       };
     };
     treesitter = {
