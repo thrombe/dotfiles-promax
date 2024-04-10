@@ -301,7 +301,7 @@
 (defwidget Datetime []
   (eventbox
     :onclick "eww open --toggle cal"
-    :onhover "eww open cal"
+    ; :onhover "eww open cal"
     (fancy-box :color "#ABE9B3"
       (label :text " ${time} |  ${date}")
     )
