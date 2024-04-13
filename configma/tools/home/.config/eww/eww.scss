@@ -72,10 +72,12 @@ tooltip label {
   	>menuitem {
       font-size: 16px;
       font-weight: 500;
-  		padding-top: 5px;
-  		padding-bottom: 5px;
-      padding-left: 0px;
-      padding-right: 0px;
+      border-radius: 20px;
+
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
 
   		&:disabled label {
         color: #f5bde6;
@@ -87,9 +89,11 @@ tooltip label {
         background-color: #282828;
         color: #f5bde6;
         border: none;
-    		padding-top: 6px;
-    		padding-bottom: 6px;
-    		padding-left: 1px;
+
+        padding-left: 11px;
+        padding-right: 11px;
+        padding-top: 11px;
+        padding-bottom: 11px;
   		}
   	}
 

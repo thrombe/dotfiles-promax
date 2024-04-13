@@ -57,6 +57,7 @@
       :spacing 5
       (systray
         :class "tray"
+        :spacing 5
       )
       (Stats)
     )
