@@ -77,6 +77,9 @@
     :space-evenly false
     :halign "end"
     :spacing 5
+    (systray
+      :class "tray"
+    )
     (Stats)
   )
 )

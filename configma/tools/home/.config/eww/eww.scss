@@ -1,6 +1,8 @@
 * {
   border-radius: 3px;
   font-family: JetBrainsMono Nerd Font;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .top-left-bar, .top-right-bar, .top-center-bar {
@@ -41,16 +43,64 @@ calendar.highlight {
 }
 
 tooltip * {
-    box-shadow: none;
+  box-shadow: none;
 }
 tooltip.background {
-    background-color: #313244;
-    font-size: 18;
-    border: none;
-    border-radius: 20px;
+  background-color: #313244;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
 }
 tooltip label {
-    margin: 6px;
-    color: #f4dbd6;
+  margin: 6px;
+  color: #f4dbd6;
 }
 
+.tray {
+  background-color: #89dceb;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 10px;
+  
+  menu {
+  	border-radius: 10px;
+  	background-color: #313244;
+    color: #f4dbd6;
+    border: none;
+    border-radius: 20px;
+
+  	>menuitem {
+      font-size: 16px;
+      font-weight: 500;
+  		padding-top: 5px;
+  		padding-bottom: 5px;
+      padding-left: 0px;
+      padding-right: 0px;
+
+  		&:disabled label {
+        color: #f5bde6;
+        font-size: 18px;
+        font-weight: 800;
+  		}
+
+  		&:hover {
+        background-color: #282828;
+        color: #f5bde6;
+        border: none;
+    		padding-top: 6px;
+    		padding-bottom: 6px;
+    		padding-left: 1px;
+  		}
+  	}
+
+  	separator {
+  		background-color: #222222;
+  		padding-top: 3px;
+
+  		&:last-child {
+  			padding: unset;
+    		background-color: unset;
+  		}
+  	}
+  }
+}
