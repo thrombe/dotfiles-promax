@@ -259,22 +259,6 @@
       :style "
         margin-top: 50px;
       "
-      (box
-        :space-evenly false
-        :halign "end"
-        :style "
-          padding-right: 20px;
-        "
-        (eventbox
-          :style "
-            background-color: #e64553;
-          "
-          :width 30
-          :height 30
-          :onclick "eww close cal"
-          (label :text "X " :halign "end")
-        )
-      )
       (calendar :class "calendar")
     )
   )
