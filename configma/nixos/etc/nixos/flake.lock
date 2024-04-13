@@ -71,6 +71,32 @@
         "type": "github"
       }
     },
+    "eww-git": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1712401919,
+        "narHash": "sha256-WcAWIvIdGE0tcS7WJ6JlbRlUnKvpvut500NozUmJ6jY=",
+        "owner": "elkowar",
+        "repo": "eww",
+        "rev": "ebe5f349d184e79edc33199d064d9ec5f1e4dd9b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elkowar",
+        "repo": "eww",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "locked": {
         "lastModified": 1696426674,
@@ -709,6 +735,7 @@
       "inputs": {
         "configma": "configma",
         "devshell": "devshell",
+        "eww-git": "eww-git",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
@@ -724,6 +751,7 @@
         "nixpkgs-git": "nixpkgs-git",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
+        "rust-overlay": "rust-overlay_3",
         "scripts": "scripts",
         "yankpass": "yankpass"
       }
@@ -772,6 +800,29 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "f335a0213504c7e6481c359dc1009be9cf34432c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_3": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1712973993,
+        "narHash": "sha256-ZJxC6t2K0UAPW+lV+bJ+pAtwbn29eqZQzXLTG54oL+I=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a497535d074432133b683dda3a1faa8c8ab587ad",
         "type": "github"
       },
       "original": {

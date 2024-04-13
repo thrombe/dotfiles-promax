@@ -14,6 +14,11 @@
       url = "github:numtide/devshell";
       inputs.flake-utils.follows = "flake-utils";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -57,6 +62,13 @@
     hyprland-git = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    eww-git = {
+      url = "github:elkowar/eww";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
     nix-update-input = {
       url = "github:vimjoyer/nix-update-input";
@@ -118,6 +130,9 @@
           helix = flakeDefaultPackage inputs.helix-git;
           # hyprland = pkgs.unstable.hyprland;
           hyprland = flakeDefaultPackage inputs.hyprland-git;
+
+          # eww = super.unstable.eww;
+          eww = flakeDefaultPackage inputs.eww-git;
 
           # - [asusctl: 4.7.2 -> 5.0.0, supergfxctl: 5.1.1 -> 5.1.2](https://github.com/NixOS/nixpkgs/pull/273808/files)
           asusctl = super.unstable.asusctl;
@@ -607,7 +622,7 @@
           wirelesstools
 
           # widget/bar
-          unstable.eww
+          eww
           (pkgs.unstable.waybar.overrideAttrs (old: {
             mesonFlags = old.mesonFlags ++ ["-Dexperimental=true"];
           }))
