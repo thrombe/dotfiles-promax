@@ -29,7 +29,7 @@ edit = [
 ]
 open = [
 	# YAAAAAAAAAAAA: edited
-	{ run = 'xdg-open "$@"', block = true, orphan = true, desc = "Open", for = "linux" },
+	{ run = 'xdg-open "$@"', block = false, orphan = true, desc = "Open", for = "linux" },
 
 	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
 	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" }
