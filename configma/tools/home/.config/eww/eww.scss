@@ -1,4 +1,5 @@
 * {
+  /* all: unset; */
   border-radius: 3px;
   font-family: JetBrainsMono Nerd Font;
   background-color: transparent;
@@ -79,6 +80,21 @@ tooltip label {
       padding-top: 10px;
       padding-bottom: 10px;
 
+      check {
+        border-radius: 15px;
+        border: none;
+        background-color: #282828;
+        padding: 5px;
+
+        &:checked {
+        }
+
+        &:hover {
+          background-color: #f5bde6;
+          color: #282828;
+        }
+      }
+
   		&:disabled label {
         color: #f5bde6;
         font-size: 18px;
@@ -102,8 +118,9 @@ tooltip label {
   		padding-top: 3px;
 
   		&:last-child {
-  			padding: unset;
-    		background-color: unset;
+  			padding-top: 0px;
+  			padding-bottom: 0px;
+    		background-color: transparent;
   		}
   	}
   }
