@@ -19,68 +19,47 @@
 (defpoll date :initial "" :interval "60s" "date '+%a %d/%m/%Y'")
 
 
-(defwindow top-left-bar
+(defwindow top-bar
   :stacking "fg"
   :namespace "eww"
   :monitor 0
   :geometry (geometry
     :y 2
-    :width "0%"
+    :width "100%"
     :height "36px"
     :anchor "top left"
   )
-  (box
-    :halign "start"
-    :space-evenly false
-    :spacing 5
-    :style "
-      margin-left: 5px;
-    "
-    (Launcher)
-    (Activities)
-    ; (Workspaces)
-    (AllWorkspaces)
-    (Submap)
-  )
-)
-(defwindow top-center-bar
-  :stacking "fg"
-  :namespace "eww"
-  :monitor 0
-  :geometry (geometry
-    :y 2
-    :width "0%"
-    :height "36px"
-    :anchor "top center"
-  )
-  (box
-    :halign "center"
-    :space-evenly false
-    :width 10
-    (WorkspaceWindows :icon-size 36)
-  )
-)
-(defwindow top-right-bar
-  :stacking "fg"
-  :namespace "eww"
-  :monitor 0
-  :geometry (geometry
-    :y 2
-    :width "0%"
-    :height "36px"
-    :anchor "top right"
-  )
-  (box
-    :style "
-      margin-right: 5px;
-    "
-    :space-evenly false
-    :halign "end"
-    :spacing 5
-    (systray
-      :class "tray"
+  (centerbox
+    (box
+      :halign "start"
+      :style "
+        margin-left: 5px;
+      "
+      :space-evenly false
+      :spacing 5
+      (Launcher)
+      (Activities)
+      ; (Workspaces)
+      (AllWorkspaces)
+      (Submap)
     )
-    (Stats)
+    (box
+      :halign "center"
+      :space-evenly false
+      (WorkspaceWindows :icon-size 36)
+    )
+    (box
+      :halign "end"
+      :style "
+        margin-right: 5px;
+      "
+      :space-evenly false
+      :spacing 5
+      (systray
+        :class "tray"
+      )
+      (Stats)
+    )
   )
 )
 

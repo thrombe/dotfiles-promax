@@ -3,7 +3,7 @@
 nm-applet --indicate &
 
 # waybar &
-eww open-many top-left-bar top-center-bar top-right-bar
+eww open top-bar
 
 swww init &
 
