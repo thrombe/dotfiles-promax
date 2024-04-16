@@ -128,8 +128,9 @@
         inputs.nix-alien.overlays.default
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
-          # hyprland = pkgs.unstable.hyprland;
-          hyprland = flakeDefaultPackage inputs.hyprland-git;
+
+          hyprland = pkgs.unstable.hyprland;
+          # hyprland = flakeDefaultPackage inputs.hyprland-git;
 
           # eww = super.unstable.eww;
           eww = flakeDefaultPackage inputs.eww-git;
@@ -603,15 +604,6 @@
           enable = true;
           xwayland.enable = true;
         };
-
-        environment.sessionVariables = {
-          # if cursor invisible
-          WLR_NO_HARDWARE_CURSORS = "1";
-
-          # hint electron to use wayland
-          NIXOS_OZONE_WL = "1";
-        };
-        # hardware.nvidia.modsetting.enable = true;
 
         environment.systemPackages = with pkgs; [
           dunst
