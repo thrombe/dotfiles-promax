@@ -14,7 +14,7 @@ wl-paste --type text --watch cliphist store &
 
 # pypr &
 
-# hypridle &
+hypridle &
 
 easyeffects --gapplication-service &
 
