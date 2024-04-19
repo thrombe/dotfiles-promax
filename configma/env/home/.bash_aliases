@@ -254,7 +254,7 @@ lbwopen() {
   fi
 }
 
-xhost +si:localuser:$USER > /dev/null
+# xhost +si:localuser:$USER > /dev/null
 
 # export FZF_DEFAULT_COMMAND='rg --hidden --files -L -i -g "!.git" -g "!.cache" -g "!.cargo/registry"'
 # export FZF_DEFAULT_COMMAND='rg --hidden -L -l "" -i --max-depth 15 -g "!.git" -g "!.cache" -g "!.cargo/registry"'
