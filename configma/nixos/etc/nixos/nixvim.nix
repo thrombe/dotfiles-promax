@@ -49,6 +49,8 @@
       -- leader p to paste from system clipboard
       vim.keymap.set("n", "<leader>p", "\"+p")
       vim.keymap.set("v", "<leader>p", "\"+p")
+      vim.keymap.set("n", "<leader>P", "\"+P")
+      vim.keymap.set("v", "<leader>P", "\"+P")
 
       -- alt + d to delete without copying
       vim.keymap.set("n", "<M-d>", "\"_d")
@@ -56,6 +58,14 @@
 
       -- goto last buffer
       vim.keymap.set("n", "ga", ":b#<CR>")
+
+      -- more gotos
+      vim.keymap.set("n", "gh", "0")
+      vim.keymap.set("v", "gh", "0")
+      vim.keymap.set("n", "gs", "^")
+      vim.keymap.set("v", "gs", "^")
+      vim.keymap.set("n", "gl", "$")
+      vim.keymap.set("v", "gl", "$")
     '';
 
   plugins = {
