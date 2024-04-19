@@ -152,6 +152,7 @@
       };
     };
     gitgutter.enable = true;
+    nvim-autopairs.enable = true;
     # TODO: check how to set up keymaps for it
     # undotree = {
     #   enable = true;
