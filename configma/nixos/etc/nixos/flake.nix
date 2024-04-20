@@ -59,8 +59,8 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
     };
-    hyprland-git = {
-      url = "github:hyprwm/Hyprland";
+    hyprland-latest = {
+      url = "github:hyprwm/Hyprland/v0.39.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     eww-git = {
@@ -125,12 +125,14 @@
       config.allowUnfree = true;
       overlays = [
         overlay-unstable
+
         inputs.nix-alien.overlays.default
+
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
 
-          hyprland = pkgs.unstable.hyprland;
-          # hyprland = flakeDefaultPackage inputs.hyprland-git;
+          # hyprland = pkgs.unstable.hyprland;
+          hyprland = flakeDefaultPackage inputs.hyprland-latest;
 
           # eww = super.unstable.eww;
           eww = flakeDefaultPackage inputs.eww-git;
