@@ -343,11 +343,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712911185,
-        "narHash": "sha256-uO05q9uP3AU1YlBKMJnsR7df31spp/vaMYazq08Zurs=",
+        "lastModified": 1713639104,
+        "narHash": "sha256-8U5eHFaJhrqbrzA+6hNa1kdI9XkVplU0fv4sBrbbozM=",
         "owner": "thrombe",
         "repo": "hyprkool",
-        "rev": "422caaa84180ca618dba126fe6e6c32a6c746e28",
+        "rev": "15acf950720e0f25a93d029c8140237acc0295f0",
         "type": "github"
       },
       "original": {

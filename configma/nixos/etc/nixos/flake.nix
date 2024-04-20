@@ -91,6 +91,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.hyprland.follows = "hyprland-latest";
     };
     scripts = {
       url = "github:thrombe/dotfiles-promax?dir=scripts";
@@ -652,6 +653,13 @@
             ${pkgs.hyprland}/bin/Hyprland
           '')
         ];
+
+        # oof. what a sad way to load plugins
+        # home-manager has a module for this, but it insists on managing hyprland.conf for good reasons
+        # but i can't have it cuz changing these configs with nix is slow
+        environment.variables = {
+          HYPRKOOL_SO = "${flakePackage inputs.hyprkool "hyprkool-plugin"}/lib/hyprkool.so";
+        };
 
         xdg.portal = {
           enable = true;
