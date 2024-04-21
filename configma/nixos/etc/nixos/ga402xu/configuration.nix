@@ -21,40 +21,75 @@
     };
   };
 
+  get-session = pkgs.writeShellScriptBin "get-session" ''
+    status="$(${pkgs.systemd}/bin/loginctl | ${pkgs.busybox}/bin/grep '${username}' | ${pkgs.busybox}/bin/awk '{print $1}')"
+    session="$(${pkgs.systemd}/bin/loginctl show-session $status -p Type)"
+    echo $session
+  '';
+  is-wayland = pkgs.writeShellScriptBin "is-wayland" ''
+    session="$(${get-session}/bin/get-session)"
+    if [[ "$session" == *"wayland"* ]]; then
+      echo 1
+    else
+      echo 0
+    fi
+  '';
+  is-x11 = pkgs.writeShellScriptBin "is-x11" ''
+    session="$(${get-session}/bin/get-session)"
+    if [[ "$session" == *"x11"* ]]; then
+      echo 1
+    else
+      echo 0
+    fi
+  '';
+
+  # TODO: powerstate commands are completely broken
+  # wlr-randr does not work with sudo
   powerstate-sync-ac = pkgs.writeShellScriptBin "powerstate-sync-ac" ''
-    if [ -S /tmp/.X11-unix/X0 ]; then
+    echo "setting ac power settings"
+
+    if [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
+      echo "powerstate wayland"
+
+      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@165.001999Hz
+    else
+      echo "powerstate x11"
+
       # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
       export XAUTHORITY=/home/${username}/.Xauthority
       export DISPLAY=:0
 
-      echo "setting ac power settings"
       ${pkgs.xorg.xrandr}/bin/xrandr -r 165
-    else
-      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@165.001999Hz
     fi
 
     ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
-    # performance scaling_governer is too aggressive. powersave is fine
-    # ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    # NOTE: performance scaling_governer is too aggressive. powersave is fine
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
-    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
+    # ${pkgs.asusctl}/bin/asusctl profile --profile-set balanced
+    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
   '';
   powerstate-sync-bat = pkgs.writeShellScriptBin "powerstate-sync-bat" ''
-    if [ -S /tmp/.X11-unix/X0 ]; then
+    echo "setting battery power settings"
+
+    if [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
+      echo "powerstate wayland"
+
+      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@60.001999Hz
+    else
+      echo "powerstate x11"
+
       # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
       export XAUTHORITY=/home/${username}/.Xauthority
       export DISPLAY=:0
 
-      echo "setting battery power settings"
       ${pkgs.xorg.xrandr}/bin/xrandr -r 60
-    else
-      ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@60.001999Hz
     fi
 
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
 
+    # ${pkgs.asusctl}/bin/asusctl profile --profile-set quiet
     ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
   '';
   powerstate-sync = pkgs.writeShellScriptBin "powerstate-sync" ''
@@ -442,5 +477,8 @@ in {
     powerstate-sync-ac
     powerstate-sync-bat
     powerstate-sync
+    get-session
+    is-wayland
+    is-x11
   ];
 }
