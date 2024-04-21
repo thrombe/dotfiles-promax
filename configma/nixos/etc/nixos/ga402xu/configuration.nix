@@ -155,11 +155,11 @@ in {
     # - [applying patches to kernel](https://www.kernel.org/doc/html/v4.11/process/applying-patches.html)
     # - [linux source code](https://cdn.kernel.org/pub/linux/kernel/v6.x/)
     # patch -p1 < ./name.patch
-    patches_6-8-1-arch1 = builtins.fetchTarball {
-      url = let rev = "005a5394c20fa0495489d479c7c3a3a36172add5"; in "https://aur.archlinux.org/cgit/aur.git/snapshot/aur-${rev}.tar.gz";
-      sha256 = "sha256:0j5p3lfgvmllqbl2vfrkqhwxf7lk7pjnmj1aly4ywsv4c569xifb";
+    patches_6-8-7-arch1 = builtins.fetchTarball {
+      url = let rev = "2ffb1a70f45b6d9824aef8d0f590ac3a4883bbcc"; in "https://aur.archlinux.org/cgit/aur.git/snapshot/aur-${rev}.tar.gz";
+      sha256 = "sha256:1glqbzbm73y0aacjjg5jxy4cirb20vy07ja17klvsjhiwy6p2nqg";
     };
-    linux_g14_6-8-1-arch1_pkg = {
+    linux_g14_6-8-7-arch1_pkg = {
       fetchurl,
       buildLinux,
       ...
@@ -167,7 +167,7 @@ in {
     # - [buildLinux](https://github.com/NixOS/nixpkgs/blob/a6207181cf6300566bc15f38cf8e4d4c7ce6bc90/pkgs/top-level/linux-kernels.nix#L676)
       buildLinux (args
         // rec {
-          version = "6.8.1-arch1";
+          version = "6.8.7-arch1";
           extraMeta.branch = "6.8";
           modDirVersion = version;
 
@@ -180,8 +180,8 @@ in {
 
           src = fetchurl {
             # - [git archlinux releases](https://github.com/archlinux/linux/releases)
-            url = "https://github.com/archlinux/linux/archive/refs/tags/v6.8.1-arch1.tar.gz";
-            sha256 = "sha256-WpHTYGGcHv7y8nEFH0xDgq0thA/yVAlJhbIfAiFK6hY=";
+            url = "https://github.com/archlinux/linux/archive/refs/tags/v6.8.7-arch1.tar.gz";
+            sha256 = "sha256-N/XisB9S75PhUtlG9EspsgT9PmASCKedilvFAEkS0Vw=";
           };
 
           # go to the PKGBUILD file of the arch package and copy all patches from 'source' in the same order
@@ -197,11 +197,11 @@ in {
             ]
             ++ (map (x: {
                 name = x;
-                patch = "${patches_6-8-1-arch1}/${x}";
+                patch = "${patches_6-8-7-arch1}/${x}";
               }) [
                 "0001-acpi-proc-idle-skip-dummy-wait.patch"
                 "0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch"
-                "0001-linux6.7.y-bore4.0.0.patch"
+                "0001-linux6.8.y-bore4.5.0.patch"
                 "0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch"
                 "0035-Add_quirk_for_polling_the_KBD_port.patch"
                 "0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
@@ -211,13 +211,27 @@ in {
                 "0040-workaround_hardware_decoding_amdgpu.patch"
                 "0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch"
                 "amd-tablet-sfh.patch"
+                "0001-v4-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch"
+                "0002-v4-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-MUX.patch"
+                "0003-v4-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch"
+                "0004-v4-platform-x86-asus-wmi-support-toggling-POST-sound.patch"
+                "0005-v4-platform-x86-asus-wmi-store-a-min-default-for-ppt-op.patch"
+                "0006-v4-platform-x86-asus-wmi-adjust-formatting-of-ppt-fcts.patch"
+                "0007-v4-platform-x86-asus-wmi-ROG-Ally-increase-wait-time.patch"
+                "0008-v4-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch"
+                "0009-v4-platform-x86-asus-wmi-add-clean-up-structs.patch"
+                "0001-HID-asus-fix-more-n-key-report-descriptors-if-n-key-.patch"
+                "0001-platform-x86-asus-wmi-add-support-for-vivobook-fan-p.patch"
+                "0002-HID-asus-make-asus_kbd_init-generic-remove-rog_nkey_.patch"
+                "0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch"
+                "0004-HID-asus-add-ROG-Z13-lightbar.patch"
                 "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
                 "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
               ]);
         }
         // (args.argsOverride or {}));
-    linux_g14_6-8-1-arch1 = pkgs.callPackage linux_g14_6-8-1-arch1_pkg {};
-    linux_g14 = linux_g14_6-8-1-arch1;
+    linux_g14_6-8-7-arch1 = pkgs.callPackage linux_g14_6-8-7-arch1_pkg {};
+    linux_g14 = linux_g14_6-8-7-arch1;
   in
     pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_g14));
 
