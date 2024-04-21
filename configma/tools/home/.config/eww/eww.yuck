@@ -277,7 +277,7 @@
 
 (defwidget PowerStat []
   (eventbox
-    :onclick "./scripts/power-interact.sh"
+    :onclick "./scripts/power-interact.sh &"
     (fancy-box :color "#F28FAD"
       (label :text "${
         power.profile == "performance" ? " "

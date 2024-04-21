@@ -11,3 +11,13 @@ fi
 
 power="$(./scripts/power.sh)"
 eww update power="$power"
+
+# power=$(echo "performance
+# balanced
+# power-saver" | rofi -dmenu)
+
+# if [[ $power != "" ]]; then
+#   powerprofilesctl set $power
+#   eww update power="{\"profile\": \"$power\"}"
+# fi
+
