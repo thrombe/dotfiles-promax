@@ -421,6 +421,9 @@
             # viper4linux
             # pulseaudio
 
+            unstable.nh
+            unstable.nvd
+            unstable.nix-output-monitor
             # nix
             nil
             alejandra # nix formatter
