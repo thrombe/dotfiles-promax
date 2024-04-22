@@ -213,7 +213,7 @@ browser_profile() {
   elif [[ $1 == "-e" ]]; then
     if [[ $# == 2 ]]; then
       br_name="$2"
-      detach $browser --profile $br_path/$br_name
+      detach nixGLIntel $browser --profile $br_path/$br_name
     else
       echo "-e option needs exact profile name as argument"
     fi
@@ -230,7 +230,7 @@ browser_profile() {
     fi
     if [[ $br_name != "" ]]; then
       echo "$br_path/$br_name"
-      detach $browser --profile $br_path/$br_name
+      detach nixGLIntel $browser --profile $br_path/$br_name
     fi
   fi
 }

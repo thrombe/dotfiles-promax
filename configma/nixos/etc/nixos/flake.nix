@@ -35,6 +35,12 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.flake-compat.follows = "flake-compat";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     helix-git = {
       url = "github:helix-editor/helix";
@@ -128,6 +134,7 @@
         overlay-unstable
 
         inputs.nix-alien.overlays.default
+        inputs.nixgl.overlay
 
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
@@ -183,6 +190,8 @@
           ]))
           ++ (map getScript [
             "wait-until"
+            # TODO: nixgl support (pass parameters of browser command (that way, it also has firefox support))
+            #     ig also change name
             "lbwopen-links"
           ])
           ++ [
@@ -432,6 +441,14 @@
             nix-tree
             nix-melt # flake.lock visualizer
             nix-alien
+
+            nixgl.nixGLIntel
+            nixgl.nixVulkanIntel
+            # auto detection needs --impure so it won't work (do i need it anyway?)
+            # nixgl.auto.nixGLDefault
+            # nixgl.auto.nixGLNvidia
+            # nixgl.auto.nixGLNvidiaBumblebee
+            # pkgs.auto.nixgl.nixVulkanNvidia
 
             # dev
             # rustup
