@@ -265,10 +265,10 @@ in {
               ]);
         }
         // (args.argsOverride or {}));
-    linux_g14_6-8-7-arch1 = pkgs.callPackage linux_g14_6-8-7-arch1_pkg {};
+    linux_g14_6-8-7-arch1 = pkgs.unstable.callPackage linux_g14_6-8-7-arch1_pkg {};
     linux_g14 = linux_g14_6-8-7-arch1;
   in
-    pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_g14));
+    pkgs.unstable.recurseIntoAttrs (pkgs.unstable.linuxPackagesFor linux_g14));
 
   services.supergfxd.enable = true;
   # - [Power Management nixos wiki](https://nixos.wiki/wiki/Power_Management)
@@ -424,7 +424,7 @@ in {
 
   hardware.nvidia = {
     # Modesetting is needed most of the time
-    modesetting.enable = false;
+    modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     powerManagement.enable = true;
