@@ -2,8 +2,7 @@
 
 nm-applet --indicate &
 
-# waybar &
-eww open top-bar
+hyprkool daemon -m &
 
 swww init &
 
@@ -18,6 +17,7 @@ hypridle &
 
 easyeffects --gapplication-service &
 
-hyprkool daemon -m &
+# waybar &
+eww open top-bar
 
 dunst
