@@ -363,6 +363,14 @@ in {
         fi
       '';
     };
+
+    # handlers.on-lid-open = {
+    #   event = "??";
+    #   action = ''
+    #     echo "on-lid-open handler"
+    #     ${powerstate-sync}/bin/powerstate-sync
+    #   '';
+    # };
   };
   # this runs too early
   # powerManagement.powerUpCommands = ''

@@ -6,6 +6,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs-git.url = "github:nixos/nixpkgs";
+    # nur.url = "github:nix-community/NUR";
 
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
@@ -19,6 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    # nci = {
+    #   url = "github:yusdacra/nix-cargo-integration";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -35,6 +40,7 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.flake-compat.follows = "flake-compat";
     };
+    # MAYBE: - [nixgl wrapper](https://github.com/nix-community/nixGL/issues/140#issuecomment-1950754800)
     nixgl = {
       url = "github:nix-community/nixGL";
       # inputs.nixpkgs.follows = "nixpkgs";
@@ -132,6 +138,16 @@
       config.allowUnfree = true;
       overlays = [
         overlay-unstable
+
+        # inputs.nur.overlay
+        # (self: super: {
+        #   # - [GitHub - nix-community/NUR: Nix User Repository: User contributed nix packages [maintainer=@Mic92]](https://github.com/nix-community/NUR)
+        #   # - [Packages search for NUR](https://nur.nix-community.org/documentation/)
+        #   nur = import inputs.nur {
+        #     # import inputs.nixpkgs again to avoid cycle
+        #     nurpkgs = import inputs.nixpkgs {inherit system;};
+        #   };
+        # })
 
         inputs.nix-alien.overlays.default
         inputs.nixgl.overlay
@@ -445,6 +461,8 @@
             nixgl.nixGLIntel
             nixgl.nixVulkanIntel
             # auto detection needs --impure so it won't work (do i need it anyway?)
+            # - [nixgl with custom nvidiaVersion?](https://discourse.nixos.org/t/design-discussion-about-nixgl-opengl-cuda-opencl-wrapper-for-nix/2453#nixgl-example-4)
+            #   - can't get this to work :/
             # nixgl.auto.nixGLDefault
             # nixgl.auto.nixGLNvidia
             # nixgl.auto.nixGLNvidiaBumblebee
@@ -699,6 +717,18 @@
           package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
         };
       })
+      # # hyprland home-manager config
+      # inputs.home-manager.nixosModules.home-manager
+      # {
+      #   home-manager.users."${username}" = {config, ...}: {
+      #     wayland.windowManager.hyprland = {
+      #       enable = true;
+      #       plugins = [
+      #         (flakePackage inputs.hyprkool "hyprkool-plugin")
+      #       ];
+      #     };
+      #   };
+      # }
     ];
   in {
     nixosConfigurations = {
