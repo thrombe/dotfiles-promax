@@ -252,6 +252,7 @@
           home.packages = [];
         };
       }
+      ./firefox.nix
 
       ({hostname, ...}: {
         boot.supportedFilesystems = ["ntfs"];
@@ -365,7 +366,6 @@
           ];
           packages = with pkgs; [
             # apps
-            firefox
             librewolf
             ungoogled-chromium
             zathura
