@@ -265,10 +265,10 @@ in {
               ]);
         }
         // (args.argsOverride or {}));
-    linux_g14_6-8-7-arch1 = pkgs.unstable.callPackage linux_g14_6-8-7-arch1_pkg {};
+    linux_g14_6-8-7-arch1 = pkgs.callPackage linux_g14_6-8-7-arch1_pkg {};
     linux_g14 = linux_g14_6-8-7-arch1;
   in
-    pkgs.unstable.recurseIntoAttrs (pkgs.unstable.linuxPackagesFor linux_g14));
+    pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_g14));
 
   services.supergfxd.enable = true;
   # - [Power Management nixos wiki](https://nixos.wiki/wiki/Power_Management)
@@ -447,9 +447,16 @@ in {
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # hyprland wants nvidia 535
-    # https://www.reddit.com/r/hyprland/comments/1bmw7n7/comment/kwevz1z/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    # package = config.boot.kernelPackages.nvidiaPackages.production;
+    # - [TLATER nix config](https://github.com/TLATER/dotfiles/blob/ef1a08cf30ab648f799c7369847fe935df7e7a93/nixos-config/hosts/yui/nvidia/default.nix#L11)
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "550.67";
+      sha256_64bit = "sha256-mSAaCccc/w/QJh6w8Mva0oLrqB+cOSO1YMz1Se/32uI=";
+      sha256_aarch64 = "sha256-+UuK0UniAsndN15VDb/xopjkdlc6ZGk5LIm/GNs5ivA=";
+      openSha256 = "sha256-M/1qAQxTm61bznAtCoNQXICfThh3hLqfd0s1n1BFj2A=";
+      settingsSha256 = "sha256-FUEwXpeUMH1DYH77/t76wF1UslkcW721x9BHasaRUaM=";
+      persistencedSha256 = "sha256-ojHbmSAOYl3lOi2X6HOBlokTXhTCK6VNsH6+xfGQsyo=";
+    };
 
     prime = {
       offload = {
