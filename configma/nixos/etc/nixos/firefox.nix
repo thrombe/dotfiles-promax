@@ -29,7 +29,9 @@ in {
     enable = true;
 
     # about:config
-    preferences = {};
+    preferences = {
+      "media.hardware-video-decoding.force-enabled" = true;
+    };
 
     # - [Mozilla's documentation](https://mozilla.github.io/policy-templates/)
     policies = {
