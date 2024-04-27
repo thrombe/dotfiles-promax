@@ -64,6 +64,7 @@ alias brn="browser_profile fzf librewolf"
 alias ze="launch_zellij"
 alias zz="open_zellij_workspace"
 alias za="zellij a \$(zellij ls | grep -v 'EXITED' | cut -d ' ' -f1 | sed 's/\x1b\[[0-9;]*m//g' | fzf)"
+alias zri="zellij run --in-place -- "
 alias yp="~/0Git/dotfiles-promax-private/scripts/yankpass.sh"
 
 open_zellij_workspace() {
