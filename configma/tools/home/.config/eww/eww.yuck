@@ -237,6 +237,7 @@
     (BrightnessStat)
     (VolumeStat)
     (MicStat)
+    (Cpu)
     (PowerStat)
     (Datetime)
   )
@@ -271,6 +272,21 @@
     ; :onhover "eww open cal"
     (fancy-box :color "#ABE9B3"
       (label :text " ${time} |  ${date}")
+    )
+  )
+)
+
+(defwidget Cpu []
+  (eventbox
+    (fancy-box
+      :color "${
+        EWW_TEMPS.ACPITZ_TEMP1 >= 80 ? "#F28FAD"
+        : EWW_TEMPS.ACPITZ_TEMP1 >= 70 ? "#F8BD96"
+        : EWW_TEMPS.ACPITZ_TEMP1 > 57 ? "#ABE9B3"
+        : "#B5E8E0"
+      }"
+      ; (label :text "CPU ${round(EWW_CPU.avg, 0)}% ")
+      (label :text "${EWW_TEMPS.ACPITZ_TEMP1}℃ ")
     )
   )
 )
