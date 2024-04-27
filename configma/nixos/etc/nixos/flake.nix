@@ -696,7 +696,7 @@
         # home-manager has a module for this, but it insists on managing hyprland.conf for good reasons
         # but i can't have it cuz changing these configs with nix is slow
         environment.variables = {
-          HYPRKOOL_SO = "${flakePackage inputs.hyprkool "hyprkool-plugin"}/lib/hyprkool.so";
+          HYPRKOOL_SO = "${flakePackage inputs.hyprkool "hyprkool-plugin"}/lib/libhyprkool.so";
         };
 
         xdg.portal = {
