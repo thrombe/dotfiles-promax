@@ -28,25 +28,28 @@ keybinds clear-defaults=true {
         bind "l" "Right" { MoveFocus "Right"; }
         bind "j" "Down" { MoveFocus "Down"; }
         bind "k" "Up" { MoveFocus "Up"; }
-        bind "p" { SwitchFocus; }
+        bind "r" { SwitchToMode "RenamePane"; PaneNameInput 0;}
         bind "n" { NewPane; SwitchToMode "Normal"; }
-        bind "d" { NewPane "Down"; SwitchToMode "Normal"; }
-        bind "r" { NewPane "Right"; SwitchToMode "Normal"; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
+        bind "H" { NewPane "Left"; SwitchToMode "Normal"; }
+        bind "K" { NewPane "Up"; SwitchToMode "Normal"; }
+        bind "J" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "L" { NewPane "Right"; SwitchToMode "Normal"; }
+
+        bind "p" { SwitchFocus; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
-        bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
     move {
         bind "Alt m" { SwitchToMode "Normal"; }
-        bind "n" "Tab" { MovePane; }
-        bind "p" { MovePaneBackwards; }
         bind "h" "Left" { MovePane "Left"; }
         bind "j" "Down" { MovePane "Down"; }
         bind "k" "Up" { MovePane "Up"; }
         bind "l" "Right" { MovePane "Right"; }
+        bind "Alt l" { MoveTab "Right"; }
+        bind "Alt h" { MoveTab "Left"; }
     }
     tab {
         bind "Alt t" { SwitchToMode "Normal"; }
@@ -113,6 +116,13 @@ keybinds clear-defaults=true {
         bind "Alt s" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
         bind "q" { Quit; }
+        bind "w" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal";
+        }
     }
     shared_except "locked" {
         bind "Alt g" { SwitchToMode "Locked"; }
@@ -157,9 +167,7 @@ keybinds clear-defaults=true {
     }
 }
 
-// - [Support reorder tab? · Issue #2033 · zellij-org/zellij · GitHub](https://github.com/zellij-org/zellij/issues/2033)
 // - [borderless not working · Issue #1647 · zellij-org/zellij · GitHub](https://github.com/zellij-org/zellij/issues/1647)
-// - [Feature Request: (Re-)Run a command in an existing pane with a keybind · Issue #2222 · zellij-org/zellij · GitHub](https://github.com/zellij-org/zellij/issues/2222)
 // - [Ability to rerun all `zellij run` panes in a given tab. · Issue #2101 · zellij-org/zellij · GitHub](https://github.com/zellij-org/zellij/issues/2101)
 // - [Is it possible to chain commands? · Issue #1902 · zellij-org/zellij · GitHub](https://github.com/zellij-org/zellij/issues/1902)
 
@@ -206,6 +214,8 @@ pane_frames false
 scroll_buffer_size 3000
 
 scrollback_editor "hx"
+
+session_serialization true
 
 ui {
     pane_frames {
