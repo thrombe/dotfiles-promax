@@ -692,11 +692,16 @@
           '')
         ];
 
-        # oof. what a sad way to load plugins
-        # home-manager has a module for this, but it insists on managing hyprland.conf for good reasons
-        # but i can't have it cuz changing these configs with nix is slow
-        environment.variables = {
-          HYPRKOOL_SO = "${flakePackage inputs.hyprkool "hyprkool-plugin"}/lib/libhyprkool.so";
+        home-manager.users."${username}" = {config, ...}: {
+          wayland.windowManager.hyprland = {
+            enable = true;
+            plugins = [
+              (flakePackage inputs.hyprkool "hyprkool-plugin")
+            ];
+            extraConfig = ''
+              source = ~/.config/hypr/hyprland_nonix.conf
+            '';
+          };
         };
 
         xdg.portal = {
@@ -717,18 +722,6 @@
           package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
         };
       })
-      # # hyprland home-manager config
-      # inputs.home-manager.nixosModules.home-manager
-      # {
-      #   home-manager.users."${username}" = {config, ...}: {
-      #     wayland.windowManager.hyprland = {
-      #       enable = true;
-      #       plugins = [
-      #         (flakePackage inputs.hyprkool "hyprkool-plugin")
-      #       ];
-      #     };
-      #   };
-      # }
     ];
   in {
     nixosConfigurations = {
