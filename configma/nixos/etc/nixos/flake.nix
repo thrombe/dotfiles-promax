@@ -105,6 +105,12 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.hyprland.follows = "hyprland-latest";
     };
+    zathura-images = {
+      url = "github:thrombe/zathura-images";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     scripts = {
       url = "github:thrombe/dotfiles-promax?dir=scripts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -118,7 +124,8 @@
     username = "issac";
 
     # helpers
-    flakePackage = flake: package: flake.packages."${system}"."${package}";
+    forSystem = thing: thing."${system}";
+    flakePackage = flake: package: (forSystem flake.packages)."${package}";
     flakeDefaultPackage = flake: flakePackage flake "default";
     getScript = name: inputs.scripts.packages."${system}"."${name}";
 
@@ -151,6 +158,12 @@
 
         inputs.nix-alien.overlays.default
         inputs.nixgl.overlay
+
+        # zathura-images needs unstable
+        (self: super: {
+          zathura = super.unstable.zathura;
+        })
+        (forSystem inputs.zathura-images.overlays).default
 
         (self: super: {
           helix = flakeDefaultPackage inputs.helix-git;
