@@ -7,19 +7,6 @@
   ...
 }: let
   tags = ["ga402xu"];
-  sandisk-ssd = {
-    tags = ["sandisk-ssd"];
-
-    "/" = {
-      device = "/dev/disk/by-uuid/aefbe3df-3d17-4106-ba90-71a1a71874bb";
-      fsType = "ext4";
-    };
-
-    "/boot" = {
-      device = "/dev/disk/by-uuid/193B-69DB";
-      fsType = "vfat";
-    };
-  };
 
   get-session = pkgs.writeShellScriptBin "get-session" ''
     status="$(${pkgs.systemd}/bin/loginctl | ${pkgs.busybox}/bin/grep '${username}' | ${pkgs.busybox}/bin/awk '{print $1}')"
@@ -104,24 +91,6 @@
   '';
 in {
   specialisation = {
-    sandisk-ssd.configuration = {
-      system.nixos.tags = tags ++ sandisk-ssd.tags;
-
-      fileSystems."/" = lib.mkForce sandisk-ssd."/";
-      fileSystems."/boot" = lib.mkForce sandisk-ssd."/boot";
-    };
-
-    sandisk-ssd-vm.configuration = {
-      system.nixos.tags = tags ++ sandisk-ssd.tags ++ ["gl553ve-vm" "mount-mnt"];
-
-      fileSystems."/" = lib.mkForce sandisk-ssd."/";
-      fileSystems."/boot" = lib.mkForce sandisk-ssd."/boot";
-      fileSystems."/mnt" = lib.mkForce {
-        device = "mnt";
-        fsType = "virtiofs";
-      };
-    };
-
     asusd-disabled.configuration = {
       system.nixos.tags = tags ++ ["no-asusd" "linux-g14"];
 
