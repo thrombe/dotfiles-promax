@@ -378,8 +378,11 @@
           file
           du-dust
           jq
+
+          gparted
         ];
 
+        # - [gparted cannot open display : r/hyprland](https://www.reddit.com/r/hyprland/comments/13ri2nj/gparted_cannot_open_display/)
         programs.partition-manager.enable = true;
         programs.kdeconnect.enable = true;
 
