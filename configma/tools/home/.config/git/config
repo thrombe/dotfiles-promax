@@ -1,12 +1,12 @@
 [user]
-	email = yash.n.thombare620@gmail.com
-	name = thrombe
+    email = yash.n.thombare620@gmail.com
+    name = thrombe
 
 # store passwords in ./git-credentials
 # https://stackoverflow.com/a/50700468
 [credential]
-	helper = store
-	username = thrombe
+    helper = store
+    username = thrombe
 
 
 
@@ -16,21 +16,19 @@
 #        tool = difftastic
 
 [difftool]
-        prompt = false
+    prompt = false
 
 [difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
+    cmd = difft "$LOCAL" "$REMOTE"
 
 # Use a pager for large output, just like other git commands.
 [pager]
-        difftool = true
+    difftool = true
 
 # `git dft` is less to type than `git difftool`.
 [alias]
-        dft = "difftool --tool=difftastic"
-        tree = "log --oneline --decorate --all --graph"
-
-
+    dft = "difftool --tool=difftastic"
+    tree = "log --oneline --decorate --all --graph"
 
 
 
@@ -53,7 +51,5 @@
 
 [diff]
     colorMoved = default
-
-
 
 
