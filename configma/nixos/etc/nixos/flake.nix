@@ -127,7 +127,7 @@
     forSystem = thing: thing."${system}";
     flakePackage = flake: package: (forSystem flake.packages)."${package}";
     flakeDefaultPackage = flake: flakePackage flake "default";
-    getScript = name: inputs.scripts.packages."${system}"."${name}";
+    getScript = name: (forSystem inputs.scripts.packages)."${name}";
 
     overlay-unstable = final: prev: {
       unstable = import inputs.nixpkgs-unstable {
