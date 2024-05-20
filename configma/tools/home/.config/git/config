@@ -8,6 +8,11 @@
     helper = store
     username = thrombe
 
+# pull all refrences advertised by origin
+# basically pulls all PRs and stuff
+# NOTE: it pollutes 'git tree' tho :/
+# [remote "origin"]
+#     fetch = +refs/pull/*:refs/remotes/origin/pull/*
 
 
 
@@ -53,4 +58,12 @@
 [diff]
     colorMoved = default
 
+
+# [includeIf "gitdir:~/2stuudy/"]
+#     # path = ~/2stuudy/.gitconfig
+#     [user]
+#         email = thombareyn@rknec.edu
+#         name = thombareyn
+#     [credential]
+#         username = thombareyn
 
