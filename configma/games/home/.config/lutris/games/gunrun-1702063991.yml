@@ -1,5 +1,5 @@
 game:
-  exe: /home/issac/.local/share/Steam/steamapps/common/GUNRUN Demo/gunrun.exe
+  exe: /home/issac/Games/steam/GUNRUN Demo/gunrun.exe
   prefix: /home/issac/Games/cyberpunk-2077
 system:
   gamescope: false
