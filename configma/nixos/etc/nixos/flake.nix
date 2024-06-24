@@ -261,25 +261,25 @@
           #   - [Hyprcursor | Hyprland Wiki](https://wiki.hyprland.org/Hypr-Ecosystem/hyprcursor/#important-notes)
           #   - [Master Tutorial | Hyprland Wiki](https://wiki.hyprland.org/Getting-Started/Master-Tutorial/#themes)
           #   - [Cursor themes - ArchWiki](https://wiki.archlinux.org/title/Cursor_themes)
-          # home.pointerCursor = {
-          #   x11.enable = true;
-          #   gtk.enable = true;
-          #   # size = 24;
+          home.pointerCursor = {
+            x11.enable = true;
+            gtk.enable = true;
+            # size = 24;
 
-          #   # package = pkgs.phinger-cursors;
-          #   # name = "phinger-cursors-light";
+            package = pkgs.phinger-cursors;
+            name = "phinger-cursors-light";
 
-          #   # package = pkgs.catppuccin-cursors;
-          #   # name = "capitaine-cursors";
+            # package = pkgs.catppuccin-cursors;
+            # name = "capitaine-cursors";
 
-          #   # package = pkgs.volantes-cursors;
-          #   # name = "volantes_light_cursors";
-          #   # name = "volantes_cursors";
+            # package = pkgs.volantes-cursors;
+            # name = "volantes_light_cursors";
+            # name = "volantes_cursors";
 
-          #   # package = pkgs.vimix-cursors;
-          #   # name = "Vimix-white-cursors";
-          #   # name = "Vimix-cursors";
-          # };
+            # package = pkgs.vimix-cursors;
+            # name = "Vimix-white-cursors";
+            # name = "Vimix-cursors";
+          };
 
           # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#fixing-problems-with-themes
           # gtk = {
