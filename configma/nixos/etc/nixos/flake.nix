@@ -412,6 +412,7 @@
             stremio
             # discord # TODO: make voice work
             qbittorrent
+            mpv
 
             # tools
             helix
