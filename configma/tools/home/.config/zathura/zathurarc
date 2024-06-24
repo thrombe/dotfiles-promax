@@ -56,7 +56,7 @@ map K zoom in
 map J zoom out
 
 map i recolor
-set recolor                     true
+set recolor false
 
 map j scroll down
 map k scroll up
