@@ -8,5 +8,5 @@ else
 fi
 
 vol=$(echo $contents | cut -d ' ' -f2)
-vol=$(echo "$vol * 100" | kalker)
+vol=$(echo "$vol * 100" | kalker | cut -d ' ' -f2)
 echo "{\"level\": $vol, \"muted\": $muted}"
