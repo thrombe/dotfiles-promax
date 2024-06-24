@@ -49,7 +49,7 @@
       ${pkgs.xorg.xrandr}/bin/xrandr -r 165
     fi
 
-    ${pkgs.coreutils}/bin/echo "performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+    ${pkgs.coreutils}/bin/echo "balance_performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
     # NOTE: performance scaling_governer is too aggressive. powersave is fine
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
