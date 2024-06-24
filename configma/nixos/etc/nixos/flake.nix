@@ -48,6 +48,12 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    stylix = {
+      url = "github:danth/stylix/release-23.11";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+    };
 
     helix-git = {
       url = "github:helix-editor/helix";
@@ -208,6 +214,7 @@
     commonModules = [
       # {_module.args = inputs;}
       inputs.nix-index-database.nixosModules.nix-index
+      inputs.stylix.nixosModules.stylix
 
       ({...}: {
         users.users."${username}".packages =
@@ -257,10 +264,10 @@
           home.pointerCursor = {
             x11.enable = true;
             gtk.enable = true;
-            size = 48;
+            # size = 24;
 
-            package = pkgs.phinger-cursors;
-            name = "phinger-cursors-light";
+            # package = pkgs.phinger-cursors;
+            # name = "phinger-cursors-light";
 
             # package = pkgs.catppuccin-cursors;
             # name = "capitaine-cursors";
@@ -556,6 +563,32 @@
           enable = true;
           # - [Nix file starship.toml <format = "$all"> · GitHub](https://gist.github.com/s-a-c/0e44dc7766922308924812d4c019b109#file-starship-nix)
           settings = import ./starship.nix {};
+        };
+
+        stylix = {
+          # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+          base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
+          image = ~/0Git/dotfiles-promax/flakes/ai_apps/Fooocus/outputs/2023-12-12/2023-12-12_23-08-35_8144.png;
+
+          cursor = {
+            size = 24;
+
+            package = pkgs.phinger-cursors;
+            name = "phinger-cursors-light";
+          };
+
+          opacity = {
+            terminal = 0.82;
+            popups = 0.82;
+          };
+
+          polarity = "dark";
+
+          fonts = {
+            sizes = {
+              applications = 10;
+            };
+          };
         };
 
         # Enable the OpenSSH daemon.
