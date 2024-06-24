@@ -30,18 +30,64 @@
     in {
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
+          mpv
+
+          unstable.thunderbird
+
           unstable.logseq
           unstable.obsidian
-          unstable.thunderbird
           # no focalboard package on nix. and it don't work with nix-alien stuff
+
           unstable.krita
           unstable.blender
           unstable.godot_4
+
           unstable-nocuda.obs-studio
           unstable-nocuda.libsForQt5.kdenlive
-          mpv
 
+          unstable.wf-recorder
+          unstable.slurp
+          (pkgs.writeShellScriptBin "record-this-window" ''
+            monitors=`hyprctl -j monitors`
+            clients=`hyprctl -j clients | jq -r '[.[] | select(.workspace.id | contains('$(echo $monitors | jq -r 'map(.activeWorkspace.id) | join(",")')'))]'`
+            boxes="$(echo $clients | jq -r '.[] | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1]) \(.title)"')"
+            geometry="$(slurp -r <<< "$boxes")"
+            echo $geometry
+            wf-recorder -g "$geometry" $@
+          '')
+
+          ventoy
+
+          unstable.floorp
           libreoffice-qt
+
+          # music apps
+          spotube
+          clementine
+          unstable.nuclear
+          (let
+            # bin/muffon-2.0.3
+            pname = "muffon";
+            version = "2.0.3";
+
+            src = pkgs.fetchurl {
+              url = "https://github.com/staniel359/muffon/releases/download/v${version}/${pname}-${version}-linux-x86_64.AppImage";
+              hash = "sha256-2eLe/xvdWcOcUSE0D+pMOcOYCfFVEyKO13LiaJiZgX0=";
+            };
+
+            appimageTools = pkgs.appimageTools;
+            appimageContents = appimageTools.extract {inherit pname version src;};
+          in
+            appimageTools.wrapType2 {
+              inherit pname version src;
+
+              extraInstallCommands = ''
+                install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
+                substituteInPlace $out/share/applications/${pname}.desktop \
+                  --replace 'Exec=AppRun' 'Exec=${pname}'
+                cp -r ${appimageContents}/usr/share/icons $out/share
+              '';
+            })
 
           (pkgs.writeShellScriptBin "magicavoxel" ''
             ${pkgs.wine64Packages.unstable}/bin/wine64 ${inputs.magicavoxel}/MagicaVoxel.exe
