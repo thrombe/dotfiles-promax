@@ -13,6 +13,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     devshell = {
       url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
     rust-overlay = {
@@ -51,12 +52,13 @@
     helix-git = {
       url = "github:helix-editor/helix";
 
-      # inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.flake-utils.follows = "flake-utils";
-      # inputs.crane = {
-      #   url = "github:ipetkov/crane";
-      #   inputs.flake-compat.follows = "flake-compat";
-      # };
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.crane = {
+        url = "github:ipetkov/crane";
+        inputs.flake-compat.follows = "flake-compat";
+      };
+      inputs.rust-overlay.follows = "rust-overlay";
     };
     nixvim = {
       # url = "github:nix-community/nixvim/nixos-23.11";
