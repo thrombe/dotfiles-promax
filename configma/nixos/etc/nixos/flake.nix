@@ -2,10 +2,10 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixpkgs-git.url = "github:nixos/nixpkgs";
+    # nixpkgs-git.url = "github:nixos/nixpkgs";
     # nur.url = "github:nix-community/NUR";
 
     flake-utils.url = "github:numtide/flake-utils";
@@ -27,7 +27,7 @@
     # };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -49,7 +49,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     stylix = {
-      url = "github:danth/stylix/release-23.11";
+      url = "github:danth/stylix/release-24.05";
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
@@ -141,10 +141,10 @@
         inherit system;
         config.allowUnfree = true;
       };
-      pkgs-git = import inputs.nixpkgs-git {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      # pkgs-git = import inputs.nixpkgs-git {
+      #   inherit system;
+      #   config.allowUnfree = true;
+      # };
     };
 
     pkgs = import inputs.nixpkgs {
@@ -261,25 +261,25 @@
           #   - [Hyprcursor | Hyprland Wiki](https://wiki.hyprland.org/Hypr-Ecosystem/hyprcursor/#important-notes)
           #   - [Master Tutorial | Hyprland Wiki](https://wiki.hyprland.org/Getting-Started/Master-Tutorial/#themes)
           #   - [Cursor themes - ArchWiki](https://wiki.archlinux.org/title/Cursor_themes)
-          home.pointerCursor = {
-            x11.enable = true;
-            gtk.enable = true;
-            # size = 24;
+          # home.pointerCursor = {
+          #   x11.enable = true;
+          #   gtk.enable = true;
+          #   # size = 24;
 
-            # package = pkgs.phinger-cursors;
-            # name = "phinger-cursors-light";
+          #   # package = pkgs.phinger-cursors;
+          #   # name = "phinger-cursors-light";
 
-            # package = pkgs.catppuccin-cursors;
-            # name = "capitaine-cursors";
+          #   # package = pkgs.catppuccin-cursors;
+          #   # name = "capitaine-cursors";
 
-            # package = pkgs.volantes-cursors;
-            # name = "volantes_light_cursors";
-            # name = "volantes_cursors";
+          #   # package = pkgs.volantes-cursors;
+          #   # name = "volantes_light_cursors";
+          #   # name = "volantes_cursors";
 
-            # package = pkgs.vimix-cursors;
-            # name = "Vimix-white-cursors";
-            # name = "Vimix-cursors";
-          };
+          #   # package = pkgs.vimix-cursors;
+          #   # name = "Vimix-white-cursors";
+          #   # name = "Vimix-cursors";
+          # };
 
           # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#fixing-problems-with-themes
           # gtk = {
