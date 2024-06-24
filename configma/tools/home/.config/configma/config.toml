@@ -25,6 +25,7 @@ modules = [
   "game-savefiles",
   "games",
   "games-private",
+  # "gtk-ga402xu",
   "kde-ga402xu",
 ]
 
