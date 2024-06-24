@@ -155,15 +155,8 @@ in {
   # select patched linux kernel
   # - [Linux kernel nix wiki](https://nixos.wiki/wiki/Linux_kernel)
   boot.kernelPackages = pkgs.lib.mkDefault (let
-    # - [linux-g14 6.5.8-arch1]https://aur.archlinux.org/packages/linux-g14)
-    # - [applying patches to kernel](https://www.kernel.org/doc/html/v4.11/process/applying-patches.html)
-    # - [linux source code](https://cdn.kernel.org/pub/linux/kernel/v6.x/)
-    # patch -p1 < ./name.patch
-    patches_6-8-7-arch1 = builtins.fetchTarball {
-      url = let rev = "2ffb1a70f45b6d9824aef8d0f590ac3a4883bbcc"; in "https://aur.archlinux.org/cgit/aur.git/snapshot/aur-${rev}.tar.gz";
-      sha256 = "sha256:1glqbzbm73y0aacjjg5jxy4cirb20vy07ja17klvsjhiwy6p2nqg";
-    };
-    linux_g14_6-8-7-arch1_pkg = {
+    linux_g14_6-9-6-arch1_pkg = {
+      fetchzip,
       fetchurl,
       buildLinux,
       ...
@@ -171,8 +164,8 @@ in {
     # - [buildLinux](https://github.com/NixOS/nixpkgs/blob/a6207181cf6300566bc15f38cf8e4d4c7ce6bc90/pkgs/top-level/linux-kernels.nix#L676)
       buildLinux (args
         // rec {
-          version = "6.8.7-arch1";
-          extraMeta.branch = "6.8";
+          version = "6.9.6-arch1";
+          extraMeta.branch = "6.9";
           modDirVersion = version;
 
           # - [howto linux configuration](https://linuxconfig.org/in-depth-howto-on-linux-kernel-configuration)
@@ -182,39 +175,49 @@ in {
           # defconfig = "${patches}/config";
           # extraConfig = "${patches}/config";
 
-          src = fetchurl {
+          src = fetchzip {
+            # - [linux source code](https://cdn.kernel.org/pub/linux/kernel/v6.x/)
             # - [git archlinux releases](https://github.com/archlinux/linux/releases)
-            url = "https://github.com/archlinux/linux/archive/refs/tags/v6.8.7-arch1.tar.gz";
-            sha256 = "sha256-N/XisB9S75PhUtlG9EspsgT9PmASCKedilvFAEkS0Vw=";
+            url = let
+              rev = "ec7189215b04f825c0cef51fa102b8f521eb3bf5";
+            in "https://github.com/archlinux/linux/archive/${rev}.zip";
+            sha256 = "sha256-3NhsaIXFLP2+4Y+vYhzHGeJdgT5hz1Pz+2nf+/BKq50=";
           };
 
           # go to the PKGBUILD file of the arch package and copy all patches from 'source' in the same order
-          kernelPatches =
+          kernelPatches = let
+            # - [linux-g14 6.5.8-arch1]https://aur.archlinux.org/packages/linux-g14)
+            # - [applying patches to kernel](https://www.kernel.org/doc/html/v4.11/process/applying-patches.html)
+            # patch -p1 < ./name.patch
+            patches = builtins.fetchTarball {
+              url = let
+                rev = "ca794d215234324a098d3095db5e2fb404a51bd6";
+              in "https://aur.archlinux.org/cgit/aur.git/snapshot/aur-${rev}.tar.gz";
+              sha256 = "sha256:1vm69zd223bici4sl8l1rq971909y4zx9xzr7w0mb119gcyw012c";
+            };
+          in
             [
               {
                 patch = fetchurl {
                   name = "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch";
-                  url = "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/c409515574bd4d69af45ad74d4e7ba7151010516/more-uarches-for-kernel-6.8-rc4+.patch";
-                  sha256 = "sha256-1pIyr9DdaYKulBzy0fV39L4gEeO7hH0ds3lSrPQWtdM=";
+                  url = "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/30db2170d3ddefa13a3dcffd05db66efff2fea7d/more-uarches-for-kernel-6.8-rc4+.patch";
+                  sha256 = "sha256-9Of80BHyaRhA0sjCNh3KhQp46jPMXCTS4nw+ApT9HcU=";
+                };
+              }
+              {
+                patch = fetchurl {
+                  name = "0001-sched-ext.patch";
+                  url = "https://raw.githubusercontent.com/CachyOS/kernel-patches/97d61eeeab14589187757e923f4207a6a2a932ea/6.9/sched/0001-sched-ext.patch";
+                  sha256 = "sha256-tuWbQq6W1pQwqnjl98UhLiCS56F6nNZ1dcdteaaPKOE=";
                 };
               }
             ]
             ++ (map (x: {
                 name = x;
-                patch = "${patches_6-8-7-arch1}/${x}";
+                patch = "${patches}/${x}";
               }) [
                 "0001-acpi-proc-idle-skip-dummy-wait.patch"
-                "0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch"
-                "0001-linux6.8.y-bore4.5.0.patch"
-                "0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch"
-                "0035-Add_quirk_for_polling_the_KBD_port.patch"
-                "0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
-                "0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
-                "v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch"
-                "0038-mediatek-pci-reset.patch"
-                "0040-workaround_hardware_decoding_amdgpu.patch"
-                "0001-platform-x86-asus-wmi-Support-2023-ROG-X16-tablet-mo.patch"
-                "amd-tablet-sfh.patch"
+
                 "0001-v4-platform-x86-asus-wmi-add-support-for-2024-ROG-Mini-LED.patch"
                 "0002-v4-platform-x86-asus-wmi-add-support-for-Vivobook-GPU-MUX.patch"
                 "0003-v4-platform-x86-asus-wmi-add-support-variant-of-TUF-RGB.patch"
@@ -224,18 +227,43 @@ in {
                 "0007-v4-platform-x86-asus-wmi-ROG-Ally-increase-wait-time.patch"
                 "0008-v4-platform-x86-asus-wmi-add-support-for-MCU-powersave.patch"
                 "0009-v4-platform-x86-asus-wmi-add-clean-up-structs.patch"
+
                 "0001-HID-asus-fix-more-n-key-report-descriptors-if-n-key-.patch"
                 "0001-platform-x86-asus-wmi-add-support-for-vivobook-fan-p.patch"
                 "0002-HID-asus-make-asus_kbd_init-generic-remove-rog_nkey_.patch"
                 "0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch"
                 "0004-HID-asus-add-ROG-Z13-lightbar.patch"
+
+                "0001-platform-x86-asus-wmi-add-debug-print-in-more-key-pl.patch"
+                "0002-platform-x86-asus-wmi-don-t-fail-if-platform_profile.patch"
+                "0003-asus-bios-refactor-existing-tunings-in-to-asus-bios-.patch"
+                "0004-asus-bios-add-panel-hd-control.patch"
+                "0005-asus-bios-add-dgpu-tgp-control.patch"
+                "0006-asus-bios-add-apu-mem.patch"
+                "0007-asus-bios-add-core-count-control.patch"
+                "v2-0001-hid-asus-use-hid-for-brightness-control-on-keyboa.patch"
+
+                "0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch"
+
+                "0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch"
+                "0035-Add_quirk_for_polling_the_KBD_port.patch"
+
+                "0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
+                "0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch"
+
+                "0038-mediatek-pci-reset.patch"
+                "0040-workaround_hardware_decoding_amdgpu.patch"
+
+                "amd-tablet-sfh.patch"
+
+                # "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.9/sched/0001-sched-ext.patch"
+
                 "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
                 "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
               ]);
         }
         // (args.argsOverride or {}));
-    linux_g14_6-8-7-arch1 = pkgs.callPackage linux_g14_6-8-7-arch1_pkg {};
-    linux_g14 = linux_g14_6-8-7-arch1;
+    linux_g14 = pkgs.callPackage linux_g14_6-9-6-arch1_pkg {};
   in
     pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_g14));
 
