@@ -55,17 +55,17 @@
       inputs.flake-compat.follows = "flake-compat";
     };
 
-    helix-git = {
-      url = "github:helix-editor/helix";
+    # helix-git = {
+    #   url = "github:helix-editor/helix/24.03";
 
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.crane = {
-        url = "github:ipetkov/crane";
-        inputs.flake-compat.follows = "flake-compat";
-      };
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-utils.follows = "flake-utils";
+    #   inputs.crane = {
+    #     url = "github:ipetkov/crane";
+    #     inputs.flake-compat.follows = "flake-compat";
+    #   };
+    #   inputs.rust-overlay.follows = "rust-overlay";
+    # };
     nixvim = {
       # url = "github:nix-community/nixvim/nixos-23.11";
       # inputs.nixpkgs.follows = "nixpkgs";
@@ -82,13 +82,13 @@
       url = "github:hyprwm/Hyprland/v0.39.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    eww-git = {
-      url = "github:elkowar/eww";
-      # inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
+    # eww-git = {
+    #   url = "github:elkowar/eww";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    #   inputs.flake-compat.follows = "flake-compat";
+    #   inputs.rust-overlay.follows = "rust-overlay";
+    # };
     nix-update-input = {
       url = "github:vimjoyer/nix-update-input";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -173,13 +173,13 @@
         (forSystem inputs.zathura-images.overlays).default
 
         (self: super: {
-          helix = flakeDefaultPackage inputs.helix-git;
+          # helix = flakeDefaultPackage inputs.helix-git;
 
           # hyprland = pkgs.unstable.hyprland;
           hyprland = flakeDefaultPackage inputs.hyprland-latest;
 
           # eww = super.unstable.eww;
-          eww = flakeDefaultPackage inputs.eww-git;
+          # eww = flakeDefaultPackage inputs.eww-git;
 
           # - [asusctl: 4.7.2 -> 5.0.0, supergfxctl: 5.1.1 -> 5.1.2](https://github.com/NixOS/nixpkgs/pull/273808/files)
           asusctl = super.unstable.asusctl;
