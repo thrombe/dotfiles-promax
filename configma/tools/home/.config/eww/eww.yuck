@@ -312,7 +312,7 @@
     (fancy-box :color "#FAE3B0"
       (box
         :style "
-          padding-right: 5px;
+          padding-right: 9px;
         "
         (label :text "${mic.muted ? '' : ''}")
       )
@@ -328,7 +328,7 @@
     (fancy-box :color "#f4b8e4"
       (label :text "${
         volume.muted ? "x"
-        : volume.level > 60 ? " "
+        : volume.level > 60 ? "  "
         : volume.level > 30 ? " "
         : " "
       }")
@@ -350,9 +350,9 @@
   (eventbox
     (fancy-box :color "#B5E8E0"
       (label :text "${
-        EWW_BATTERY.BAT0.status == "Charging" ? "  "
+        EWW_BATTERY.BAT0.status == "Charging" ? "   "
         : EWW_BATTERY.BAT0.status == "Discharging" ? ""
-        : EWW_BATTERY.BAT0.status == "Not charging" ? "  "
+        : EWW_BATTERY.BAT0.status == "Not charging" ? " "
         : ""
       }")
       (label :text "${
