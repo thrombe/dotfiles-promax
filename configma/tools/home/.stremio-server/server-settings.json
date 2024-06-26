@@ -1,4 +1,5 @@
 {
+    "serverVersion": "4.19.0",
     "appPath": "/home/issac/.stremio-server",
     "cacheRoot": "/home/issac/.stremio-server",
     "cacheSize": 2147483648,
@@ -9,6 +10,5 @@
     "btDownloadSpeedHardLimit": 3670016,
     "btMinPeersForStable": 5,
     "remoteHttps": "",
-    "localAddonEnabled": false,
-    "serverVersion": "4.18.0"
+    "localAddonEnabled": false
 }
