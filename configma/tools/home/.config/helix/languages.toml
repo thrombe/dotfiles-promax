@@ -45,8 +45,14 @@ command = "ruff-lsp"
 [[language]]
 name = "nix"
 auto-format = false
-# indent = { tab-width = 4, unit = "    " }
 formatter = { command = "alejandra", args = [] }
+language-servers = [ "nixd", "nil" ]
+
+# - [Update languages.toml - add nixd by KiaraGrouwstra · Pull Request #10767 · helix-editor/helix · GitHub](https://github.com/helix-editor/helix/pull/10767)
+[language-server.nixd]
+language-id = "nix"
+command = "nixd"
+args = []
 
 [[language]]
 name = "json"
