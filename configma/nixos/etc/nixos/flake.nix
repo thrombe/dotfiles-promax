@@ -435,6 +435,7 @@
             libqalculate
             sshfs
             neofetch
+            p7zip
             unoconv
             (pkgs.writeScriptBin "convert-all-to-pdf" ''
               #!/usr/bin/env zsh
@@ -479,6 +480,7 @@
             unstable.nix-output-monitor
             # nix
             nil
+            nixd
             alejandra # nix formatter
             nixos-option
             cached-nix-shell
