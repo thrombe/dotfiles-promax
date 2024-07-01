@@ -175,24 +175,26 @@ rdrag() {
     ripdrag -h
     return
   elif [[ $# > 1 ]]; then
-    x ripdrag --icon-size 70 -H $(k "85*$# + 30") -W 360 $@
+    x ripdrag --icon-size 70 -H "$((85 * $# + 30))" -W 360 $@
   else
     if [[ -f $1 ]] ; then
-      x ripdrag --icon-size 70 -H $(k "85*$# + 30") -W 360 -x $@
+      x ripdrag --icon-size 70 -H "$((85 * $# + 30))" -W 360 -x $@
     else
       files_in_dir=()
       count=0
       for file in $(realpath $1)/* ; do
         if [[ -f $file ]] ; then
-          count=$(kalker $count + 1)
+          count=$(($count + 1))
           files_in_dir+=("$file")
         fi
       done
-      x ripdrag --icon-size 70 -H $(k "85*$count + 30") -W 360 $files_in_dir
+      x ripdrag --icon-size 70 -H "$((85 * $count + 30))" -W 360 $files_in_dir
     fi
   fi
-  if [[ "$(until-window-class-detected ripdrag)" == "1" ]]; then
-      xdotool key "Super_L+Shift_L+Control_L+F" # to make it go into floating window mode
+  if [[ "$(is-x11)" == "1" ]]; then
+    if [[ "$(until-window-class-detected ripdrag)" == "1" ]]; then
+        xdotool key "Super_L+Shift_L+Control_L+F" # to make it go into floating window mode
+    fi
   fi
 }
 
