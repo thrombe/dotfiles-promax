@@ -266,8 +266,8 @@
             gtk.enable = true;
             size = 24;
 
-            package = pkgs.phinger-cursors;
-            name = "phinger-cursors-light";
+            # package = pkgs.phinger-cursors;
+            # name = "phinger-cursors-light";
 
             # package = pkgs.catppuccin-cursors;
             # name = "capitaine-cursors";
@@ -287,6 +287,9 @@
           # };
 
           home.packages = [];
+
+          # stylix hm module goofs up when kde is not running
+          stylix.targets.kde.enable = false;
         };
       }
       ./firefox.nix
@@ -567,6 +570,8 @@
         };
 
         stylix = {
+          enable = true;
+
           # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
           base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
           image = ~/0Git/dotfiles-promax/flakes/ai_apps/Fooocus/outputs/2023-12-12/2023-12-12_23-08-35_8144.png;
