@@ -409,6 +409,7 @@
           ];
           packages = with pkgs; [
             # apps
+            thunderbird
             librewolf
             ungoogled-chromium
             zathura
@@ -730,6 +731,9 @@
           cliphist
           wtype
           wev # like xev
+
+          # color picker
+          hyprpicker
 
           # plugin manager
           unstable.pyprland
