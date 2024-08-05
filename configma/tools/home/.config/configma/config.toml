@@ -22,6 +22,7 @@ modules = [
   "env",
   "tools",
   "easyeffects-irs",
+  "save-data",
   "game-savefiles",
   "games",
   "games-private",
@@ -49,6 +50,10 @@ path = "~/0Git/dotfiles-promax-private/configma"
 [[modules]]
 name = "game-savefiles"
 path = "~/Games/configma"
+
+[[modules]]
+name = "save-data"
+path = "~/daata/configma"
 
 [[modules]]
 name = "games-private"

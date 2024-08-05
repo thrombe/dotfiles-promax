@@ -210,6 +210,18 @@ browser_profile() {
   if [[ $browser == "old" ]]; then
     br_path=~/daata/browser_profiles
     browser="librewolf"
+  elif [[ $browser == "librewolf" ]]; then
+    br_path=~/.librewolf
+    browser="librewolf"
+  elif [[ $browser == "firefox" ]]; then
+    br_path=~/.mozilla/firefox
+    browser="firefox"
+  elif [[ $browser == "thunderbird" ]]; then
+    br_path=~/.thunderbird
+    browser="thunderbird"
+  else
+    echo "browser '$browser' not recognised"
+    return 1
   fi
 
   if [[ "$1" == "-n" ]]; then
