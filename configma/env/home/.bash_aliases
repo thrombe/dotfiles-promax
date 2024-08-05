@@ -244,7 +244,11 @@ browser_profile() {
       fi
     elif [[ $runner == "rofi" ]]; then
       br_name=$(ls $br_path | rofi -p 'Profiles:' -dmenu)
+    else
+      echo "runner '$runner' not recognised"
+      return 1
     fi
+
     if [[ $br_name != "" ]]; then
       echo "$br_path/$br_name"
       detach nixGLIntel $browser --profile $br_path/$br_name
