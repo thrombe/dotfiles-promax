@@ -36,9 +36,10 @@ function ya() {
 	rm -f -- "$tmp"
 }
 
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
+# - [carapace breaks fzf tab completion T_T](https://github.com/carapace-sh/carapace-bin/issues/1277#issuecomment-1229521892)
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+# source <(carapace _carapace)
 
 eval "$(atuin init zsh --disable-up-arrow)"
 
