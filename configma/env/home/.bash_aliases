@@ -36,6 +36,8 @@ function ya() {
 	rm -f -- "$tmp"
 }
 
+eval "$(atuin init zsh --disable-up-arrow)"
+
 eval "$(zoxide init zsh)"
 alias cd="z"
 alias cdi="zi"
