@@ -11,9 +11,6 @@
       # configFile.source = ./.../config.nu;
       # for editing directly to config.nu
       extraConfig = ''
-        let carapace_completer = {|spans|
-          carapace $spans.0 nushell $spans | from json
-        }
         $env.config = {
          show_banner: false,
          completions: {
@@ -26,7 +23,6 @@
                enable: true
                # set to lower can improve completion performance at the cost of omitting some options
                max_results: 100
-               completer: $carapace_completer # check 'carapace_completer'
              }
            }
 
@@ -34,33 +30,33 @@
             # still no fzf tab :(
             # - [Fuzzy Completion Option for nushell · Issue #1275 · nushell/nushell · GitHub](https://github.com/nushell/nushell/issues/1275)
             # - [History (ctrl + r) with fzf](https://github.com/nushell/nushell/issues/1616#issuecomment-1386714173)
-            {
-              name: fuzzy_history
-              modifier: control
-              keycode: char_r
-              mode: [emacs, vi_normal, vi_insert]
-              event: [
-                {
-                  send: ExecuteHostCommand
-                  cmd: "commandline (
-                    history
-                      | each { |it| $it.command }
-                      | uniq
-                      | reverse
-                      | str join (char -i 0)
-                      | fzf --read0 --layout=reverse --height=40% -q (commandline)
-                      | decode utf-8
-                      | str trim
-                  )"
-                }
-              ]
-            }
+            # {
+            #   name: fuzzy_history
+            #   modifier: control
+            #   keycode: char_r
+            #   mode: [emacs, vi_normal, vi_insert]
+            #   event: [
+            #     {
+            #       send: ExecuteHostCommand
+            #       cmd: "commandline (
+            #         history
+            #           | each { |it| $it.command }
+            #           | uniq
+            #           | reverse
+            #           | str join (char -i 0)
+            #           | fzf --read0 --layout=reverse --height=40% -q (commandline)
+            #           | decode utf-8
+            #           | str trim
+            #       )"
+            #     }
+            #   ]
+            # }
           ]
         }
 
         $env.PATH = ($env.PATH |
           split row (char esep) |
-          prepend /home/myuser/.apps |
+          prepend /home/issac/.cargo/bin |
           append /usr/bin/env
         )
 
@@ -70,6 +66,11 @@
         $env.STARSHIP_CONFIG = ${(pkgs.formats.toml {}).generate "starship.toml" (import ./starship.nix {})}
 
         source ~/.cache/nushell/zoxide.nu
+
+        $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+        source ~/.cache/carapace/init.nu
+
+        source ~/.cache/atuin/init.nu
       '';
       extraEnv = ''
         mkdir ~/.cache/starship
@@ -77,11 +78,15 @@
 
         mkdir ~/.cache/nushell
         zoxide init nushell | save -f ~/.cache/nushell/zoxide.nu
+
+        mkdir ~/.cache/carapace
+        carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
+
+        mkdir ~/.cache/atuin/
+        atuin init nu --disable-up-arrow | save -f ~/.cache/atuin/init.nu
       '';
       shellAliases = {
       };
     };
-    carapace.enable = true;
-    carapace.enableNushellIntegration = true;
   };
 }

@@ -36,12 +36,15 @@ function ya() {
 	rm -f -- "$tmp"
 }
 
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 eval "$(atuin init zsh --disable-up-arrow)"
 
 eval "$(zoxide init zsh)"
 alias cd="z"
 alias cdi="zi"
-
 
 alias ls="ls --color=auto"
 alias la="ls -a --color=auto"
