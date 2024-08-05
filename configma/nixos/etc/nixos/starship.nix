@@ -6,7 +6,7 @@
 
   "$schema" = "https://starship.rs/config-schema.json";
   add_newline = true;
-  format = "\${directory}\${nix_shell}\${custom.fhs_shell}\${python}\${shell}\${character}";
+  format = "\${directory}\${nix_shell}\${custom.fhs_shell}\${custom.dev_shell}\${python}\${shell}\${character}";
   # right_format = "$all";
   right_format = "\${git_branch}\${git_commit}\${git_state}\${git_metrics}\${git_status}";
 
@@ -21,18 +21,26 @@
     zsh_indicator = "";
     format = "[ $indicator]($style)";
   };
-  nix_shell = {
-    format = "[ $symbol]($style)";
-    symbol = "❄️";
+  python = {
+    version_format = "";
+    format = "[ \\($virtualenv\\)]($style)";
+    detect_extensions = [];
+    detect_files = [];
+  };
+  custom.dev_shell = {
+    command = "echo $DEV_SHELL";
+    format = "[ \\($output\\)]($style)";
+    style = "bold blue";
+    when = ''test "$DEV_SHELL" '';
   };
   custom.fhs_shell = {
     format = "[ \\(FHS\\)]($style)";
     style = "bold blue";
     when = ''test "$FHS" = "1" '';
   };
-  python = {
-    version_format = "";
-    format = "[( \\(\$virtualenv\\))]($style)";
+  nix_shell = {
+    format = "[ $symbol]($style)";
+    symbol = "❄️";
   };
   directory = {
     format = "[ $path]($style)";
@@ -43,10 +51,10 @@
   # Here is how you can shorten some long paths by text replacement
   # similar to mapped_locations in Oh My Posh:
   directory.substitutions = {
-    "Documents" = "󰈙 ";
-    "Downloads" = " ";
-    "Music" = " ";
-    "Pictures" = " ";
+    # "Documents" = "󰈙 ";
+    # "Downloads" = " ";
+    # "Music" = " ";
+    # "Pictures" = " ";
     # Keep in mind that the order matters. For example:
     # "Important Documents" = " 󰈙 "
     # will not be replaced, because "Documents" was already substituted before.
