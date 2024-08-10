@@ -78,7 +78,7 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
     };
-    hyprland-latest = {
+    hyprland = {
       url = "github:hyprwm/Hyprland/v0.39.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
@@ -110,7 +110,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
-      inputs.hyprland.follows = "hyprland-latest";
+      inputs.hyprland.follows = "hyprland";
     };
     zathura-images = {
       url = "github:thrombe/zathura-images";
@@ -176,7 +176,7 @@
           # helix = flakeDefaultPackage inputs.helix-git;
 
           # hyprland = pkgs.unstable.hyprland;
-          hyprland = flakeDefaultPackage inputs.hyprland-latest;
+          hyprland = flakeDefaultPackage inputs.hyprland;
 
           # eww = super.unstable.eww;
           # eww = flakeDefaultPackage inputs.eww-git;

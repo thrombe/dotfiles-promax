@@ -389,15 +389,15 @@
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
-          "hyprland-latest",
+          "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
-          "hyprland-latest",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyprland-latest",
+          "hyprland",
           "systems"
         ]
       },
@@ -421,7 +421,7 @@
           "flake-utils"
         ],
         "hyprland": [
-          "hyprland-latest"
+          "hyprland"
         ],
         "nixpkgs": [
           "nixpkgs"
@@ -445,7 +445,7 @@
         "type": "github"
       }
     },
-    "hyprland-latest": {
+    "hyprland": {
       "inputs": {
         "hyprcursor": "hyprcursor",
         "hyprland-protocols": "hyprland-protocols",
@@ -475,11 +475,11 @@
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
-          "hyprland-latest",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyprland-latest",
+          "hyprland",
           "systems"
         ]
       },
@@ -500,11 +500,11 @@
     "hyprlang": {
       "inputs": {
         "nixpkgs": [
-          "hyprland-latest",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyprland-latest",
+          "hyprland",
           "systems"
         ]
       },
@@ -767,7 +767,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "hyprkool": "hyprkool",
-        "hyprland-latest": "hyprland-latest",
+        "hyprland": "hyprland",
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database",
         "nix-update-input": "nix-update-input",
@@ -940,19 +940,19 @@
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
-          "hyprland-latest",
+          "hyprland",
           "hyprland-protocols"
         ],
         "hyprlang": [
-          "hyprland-latest",
+          "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
-          "hyprland-latest",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyprland-latest",
+          "hyprland",
           "systems"
         ]
       },
