@@ -215,13 +215,13 @@ browser_profile() {
     br_path=~/daata/browser_profiles
     browser="librewolf"
   elif [[ $browser == "librewolf" ]]; then
-    br_path=~/.librewolf
+    br_path=~/daata/configma/save-data/home/.librewolf
     browser="librewolf"
   elif [[ $browser == "firefox" ]]; then
-    br_path=~/.mozilla/firefox
+    br_path=~/daata/configma/save-data/home/.mozilla/firefox
     browser="firefox"
   elif [[ $browser == "thunderbird" ]]; then
-    br_path=~/.thunderbird
+    br_path=~/daata/configma/save-data/home/.thunderbird
     browser="thunderbird"
   else
     echo "browser '$browser' not recognised"
