@@ -427,7 +427,7 @@
             unstable.broot
             unstable.gitui
             unstable.delta
-            unstable.distrobox
+            # unstable.distrobox
             trashy
             starship
             ueberzugpp
@@ -448,6 +448,9 @@
               done
             '')
 
+            # `top` but for io operations
+            iotop
+            # - [Disc usage in proc box btop](https://github.com/aristocratos/btop/issues/519)
             btop
             s-tui # fan rpm + other stuff
             # zenith-nvidia # - [zenith](https://github.com/bvaisvil/zenith)
