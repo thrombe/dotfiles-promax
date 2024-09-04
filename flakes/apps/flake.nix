@@ -66,6 +66,28 @@
           clementine
           unstable.nuclear
           (let
+            pname = "moosync";
+            version = "10.3.2";
+
+            src = pkgs.fetchurl {
+              url = "https://github.com/Moosync/Moosync/releases/download/v${version}/Moosync-${version}-linux-x86_64.AppImage";
+              hash = "sha256-/7arMhmisJBxXpXVubz/scT7hQoKQirULbGEGLiMmZ4=";
+            };
+
+            appimageTools = pkgs.appimageTools;
+            appimageContents = appimageTools.extract {inherit pname version src;};
+          in
+            appimageTools.wrapType2 {
+              inherit pname version src;
+
+              extraInstallCommands = ''
+                install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
+                substituteInPlace $out/share/applications/${pname}.desktop \
+                  --replace 'Exec=AppRun' 'Exec=${pname}'
+                cp -r ${appimageContents}/usr/share/icons $out/share
+              '';
+            })
+          (let
             # bin/muffon-2.0.3
             pname = "muffon";
             version = "2.0.3";
