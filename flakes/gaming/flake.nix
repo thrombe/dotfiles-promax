@@ -2,9 +2,11 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    nixpkgs-yuzu.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
   };
 
   outputs = inputs:
@@ -16,6 +18,9 @@
       unstable = import inputs.nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
+      };
+      pkgs-yuzu = import inputs.nixpkgs-yuzu {
+        inherit system;
       };
 
       steam-pkg = 
@@ -32,7 +37,7 @@
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
           # yuzu-mainline
-          yuzu-early-access
+          pkgs-yuzu.yuzu-early-access
 
           steam-pkg
           steam-pkg.run
