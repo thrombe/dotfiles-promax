@@ -140,6 +140,26 @@
         "type": "github"
       }
     },
+    "crane": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1722960479,
+        "narHash": "sha256-NhCkJJQhD5GUib8zN9JrmYGMwt4lCRp6ZVNzIiYCl0Y=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "4c6c77920b8d44cd6660c1621dea6b3fc4b4c4f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "flake-utils": [
@@ -362,6 +382,36 @@
         "owner": "GNOME",
         "ref": "46.1",
         "repo": "gnome-shell",
+        "type": "github"
+      }
+    },
+    "helix": {
+      "inputs": {
+        "crane": [
+          "crane"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720973949,
+        "narHash": "sha256-lKsjgqQAh1Pfo57T9N29YOsbJp/Fl5tOTxV5Fn4xFLg=",
+        "owner": "helix-editor",
+        "repo": "helix",
+        "rev": "079f544260f4f5eaff08104bf07abd57bfb7b611",
+        "type": "github"
+      },
+      "original": {
+        "owner": "helix-editor",
+        "ref": "24.07",
+        "repo": "helix",
         "type": "github"
       }
     },
@@ -761,10 +811,12 @@
     "root": {
       "inputs": {
         "configma": "configma",
+        "crane": "crane",
         "devshell": "devshell",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
+        "helix": "helix",
         "home-manager": "home-manager",
         "hyprkool": "hyprkool",
         "hyprland": "hyprland",

@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    crane = {
+      url = "github:ipetkov/crane";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nci = {
     #   url = "github:yusdacra/nix-cargo-integration";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -55,17 +60,14 @@
       inputs.flake-compat.follows = "flake-compat";
     };
 
-    # helix-git = {
-    #   url = "github:helix-editor/helix/24.03";
+    helix = {
+      url = "github:helix-editor/helix/24.07";
 
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.flake-utils.follows = "flake-utils";
-    #   inputs.crane = {
-    #     url = "github:ipetkov/crane";
-    #     inputs.flake-compat.follows = "flake-compat";
-    #   };
-    #   inputs.rust-overlay.follows = "rust-overlay";
-    # };
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.crane.follows = "crane";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
     nixvim = {
       # url = "github:nix-community/nixvim/nixos-23.11";
       # inputs.nixpkgs.follows = "nixpkgs";
@@ -173,7 +175,7 @@
         (forSystem inputs.zathura-images.overlays).default
 
         (self: super: {
-          # helix = flakeDefaultPackage inputs.helix-git;
+          helix = flakeDefaultPackage inputs.helix;
 
           # hyprland = pkgs.unstable.hyprland;
           hyprland = flakeDefaultPackage inputs.hyprland;
