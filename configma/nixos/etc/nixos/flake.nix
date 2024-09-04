@@ -364,10 +364,12 @@
           podman = {
             enable = true;
             # Create a `docker` alias for podman, to use it as a drop-in replacement
-            dockerCompat = true;
+            # dockerCompat = true;
             # Required for containers under podman-compose to be able to talk to each other.
             defaultNetwork.settings.dns_enabled = true;
           };
+
+          docker.enable = true;
         };
 
         programs.virt-manager.enable = true;
@@ -408,6 +410,7 @@
             "wheel"
             "libvirtd"
             "audio" # for pulse
+            "docker"
           ];
           packages = with pkgs; [
             # apps
