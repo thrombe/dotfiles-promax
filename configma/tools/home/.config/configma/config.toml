@@ -7,6 +7,7 @@ modules = [
   "nixos",
   "env",
   "tools",
+  "tools-private",
   "easyeffects-irs",
   "game-savefiles",
   "games",
@@ -21,6 +22,7 @@ modules = [
   "nixos",
   "env",
   "tools",
+  "tools-private",
   "easyeffects-irs",
   "save-data",
   "game-savefiles",
@@ -34,10 +36,15 @@ modules = [
 name = "nothing"
 modules = [
   "tools",
+  "tools-private",
   "env",
   "phone",
   "phone-private",
 ]
+
+[[modules]]
+name = "tools-private"
+path = "~/0Git/dotfiles-promax-private/configma"
 
 [[modules]]
 name = "phone-private"
