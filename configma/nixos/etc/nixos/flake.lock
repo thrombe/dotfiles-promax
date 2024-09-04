@@ -1063,11 +1063,11 @@
         "zls": "zls"
       },
       "locked": {
-        "lastModified": 1720810668,
-        "narHash": "sha256-IwOPWPCykr1Ns7cFUxZZ7cMn/ejImOa7H7ojwBGKy3c=",
+        "lastModified": 1725487340,
+        "narHash": "sha256-K0BqFXbp8ngrRyMuuEriDinPh14AJfTQ2iNhfbzlDRk=",
         "owner": "thrombe",
         "repo": "zathura-images",
-        "rev": "194c68067b6488f30343674de67061b2cae8f746",
+        "rev": "bed0a01f215f7f4ced7c8fbd63a8ed28ed96fe53",
         "type": "github"
       },
       "original": {
