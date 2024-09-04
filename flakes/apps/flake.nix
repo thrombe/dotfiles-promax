@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable2.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable3.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     magicavoxel = {
@@ -24,26 +26,125 @@
         config.allowUnfree = true;
         config.cudaSupport = true;
       };
+      unstable3 = import inputs.nixpkgs-unstable3 {
+        inherit system;
+      };
       unstable-nocuda = import inputs.nixpkgs-unstable {
         inherit system;
       };
+      unstable-nocuda2 = import inputs.nixpkgs-unstable2 {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      focalboard = 
+          (pkgs.stdenv.mkDerivation {
+            name = "focalboard";
+            src = pkgs.fetchurl {
+              url = "https://github.com/mattermost/focalboard/releases/download/v7.10.6/focalboard-linux.tar.gz";
+              hash = "sha256-Z3fxbfqh3uAUKhbRnOL7JLDL4CBsSAR+EuLly54CEA8=";
+            };
+
+            installPhase = ''
+              mkdir -p $out/bin
+
+              cd $out
+              tar -xvzf $src -C $out/.
+              mv $out/focalboard-app/* $out/bin
+              rmdir $out/focalboard-app
+
+              # it looks for db at ./focalboard.db anyway
+              echo "
+                  {
+                  	"serverRoot": "http://localhost:8088",
+                  	"port": 8088,
+                  	"dbtype": "sqlite3",
+                  	"dbconfig": "/home/issac/.config/focalboard/focalboard.db",
+                  	"useSSL": false,
+                  	"webpath": "$out/bin/pack",
+                  	"filespath": "/home/issac/.config/focalboard/files",
+                  	"telemetry": false,
+                  	"localOnly": true
+                  }
+              " > $out/bin/config.json
+            '';
+
+            nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
+            buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
+          });
+      focalboard-server = 
+          (pkgs.stdenv.mkDerivation {
+            name = "focalboard";
+            src = pkgs.fetchurl {
+              url = "https://github.com/mattermost/focalboard/releases/download/v7.10.6/focalboard-server-linux-amd64.tar.gz";
+              hash = "sha256-dkdMQcF/aTrHMDyJgV9RAB0KzC1ehEvKmEYCkHkDi/4=";
+            };
+
+            installPhase = ''
+              mkdir -p $out/bin
+
+              cd $out
+              tar -xvzf $src -C $out/.
+              mv $out/focalboard/bin/* $out/bin/.
+              mv $out/focalboard/pack $out/bin/.
+              # rmdir $out/focalboard-app
+
+              echo "
+                  {
+                  	\"serverRoot\": \"http://localhost:8088\",
+                  	\"port\": 8088,
+                  	\"dbtype\": \"sqlite3\",
+                  	\"dbconfig\": \"/home/issac/.local/share/focalboard/focalboard.db\",
+                    \"postgres_dbconfig\": \"dbname=focalboard sslmode=disable\",
+                  	\"useSSL\": false,
+                  	\"webpath\": \"$out/bin/pack\",
+                  	\"filespath\": \"/home/issac/.local/share/focalboard/files\",
+                    \"prometheusaddress\": \":9092\",
+                    \"session_expire_time\": 2592000,
+                    \"session_refresh_time\": 18000,
+                  	\"telemetry\": false,
+                    \"enableLocalMode\": true,
+                    \"localModeSocketLocation\": \"/var/tmp/focalboard_local.socket\",
+                  	\"localOnly\": true
+                  }
+              " > $out/bin/config.json
+            '';
+
+            nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
+            buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
+          });
     in {
+      packages = { default = focalboard-server; };
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
-          mpv
+          (pkgs.python310.withPackages (ps:
+            with ps; [
+            ]))
+          pkgs.python310Packages.pip
+          pkgs.python310Packages.virtualenv
+          # virtualenv .venv
+          # source ./.venv/bin/activate
+          # pip install ..
+          # python311Packages.venvShellHook # ??
 
-          unstable.thunderbird
+          # GDK_BACKEND=x11
+          unstable-nocuda2.rustdesk-flutter
+          # unstable-nocuda2.anydesk
+          remmina
+
+          ngrok
 
           unstable.logseq
           unstable.obsidian
-          # no focalboard package on nix. and it don't work with nix-alien stuff
+          focalboard
+          focalboard-server
 
-          unstable.krita
+          unstable-nocuda2.krita
           unstable.blender
           unstable.godot_4
 
           unstable-nocuda.obs-studio
-          unstable-nocuda.libsForQt5.kdenlive
+          unstable-nocuda2.libsForQt5.kdenlive
 
           unstable.wf-recorder
           unstable.slurp
@@ -56,9 +157,15 @@
             wf-recorder -g "$geometry" $@
           '')
 
+          # run `ventoy-web`
           ventoy
 
+          # - [gparted cannot open display](https://www.reddit.com/r/hyprland/comments/13ri2nj/gparted_cannot_open_display/)
+          # gparted
+          #  - just use gparted in virt-manager lol
+
           unstable.floorp
+          (opera.override { proprietaryCodecs = true; })
           libreoffice-qt
 
           # music apps
