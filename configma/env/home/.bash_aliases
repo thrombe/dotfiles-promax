@@ -73,11 +73,30 @@ alias za="zellij a \$(zellij ls | grep -v 'EXITED' | cut -d ' ' -f1 | sed 's/\x1
 alias zri="zellij run --in-place -- "
 alias yp="~/0Git/dotfiles-promax-private/scripts/yankpass.sh"
 
+# trashy cli
+alias tp="trash put"
+alias restore="trash_restore"
+alias delete="trash_delete"
+
 open_zellij_workspace() {
   if [[ -f ./workspace.kdl ]]; then
     zellij -l ./workspace.kdl
   else
     zellij
+  fi
+}
+
+trash_restore() {
+  selected="$(trash list | fzf --height=20 --tac --multi | awk '{$1=$1;print}' | rev | cut -d ' ' -f1 | rev)"
+  if [[ $selected != "" ]]; then
+    trash restore --match=exact --force "$selected"
+  fi
+}
+
+trash_delete() {
+  selected="$(trash list | fzf --height=20 --tac --multi | awk '{$1=$1;print}' | rev | cut -d ' ' -f1 | rev)"
+  if [[ $selected != "" ]]; then
+    trash empty --match=exact --force "$selected"
   fi
 }
 

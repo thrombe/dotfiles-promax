@@ -428,6 +428,7 @@
             unstable.gitui
             unstable.delta
             unstable.distrobox
+            trashy
             starship
             ueberzugpp
             fzf
