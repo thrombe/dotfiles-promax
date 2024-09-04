@@ -417,6 +417,13 @@
             # discord # TODO: make voice work
             qbittorrent
             mpv
+            
+            # - [Rclone](https://rclone.org/)
+            # - [Use Microsoft ONEDRIVE in LINUX](https://www.youtube.com/watch?v=u_W0-HEVOyg)
+            # - [rclone mount](https://rclone.org/commands/rclone_mount/)
+            # - [rclone mount](https://rclone.org/commands/rclone_mount/#vfs-file-caching)
+            # rclone mount --vfs-cache-mode writes --vfs-cache-max-age 3d --vfs-cache-max-size 10G onedrive:/daata /home/$USER/onedrive
+            unstable.rclone
 
             # tools
             helix
