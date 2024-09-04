@@ -426,6 +426,7 @@
             unstable.yazi
             unstable.broot
             unstable.gitui
+            unstable.lazygit
             unstable.delta
             # unstable.distrobox
             trashy
