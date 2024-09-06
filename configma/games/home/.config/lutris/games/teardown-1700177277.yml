@@ -1,6 +1,6 @@
 game:
   exe: /home/issac/Games/Teardown/teardown.exe
-  prefix: /home/issac/Games/red-dead-redemption-ii
+  prefix: /home/issac/Games/0prefixes/proton7
 system:
   env: {}
   gamescope: false

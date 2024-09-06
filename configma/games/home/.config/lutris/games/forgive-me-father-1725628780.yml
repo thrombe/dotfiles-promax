@@ -1,0 +1,5 @@
+game:
+  exe: /home/issac/Games/Forgive Me Father/FMF.exe
+  prefix: /home/issac/Games/0prefixes/wine-ge-8
+wine:
+  version: wine-ge-8-25-x86_64

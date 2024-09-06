@@ -1,6 +1,6 @@
 game:
   exe: /home/issac/Games/Post.Void.Build.10891672/Post Void.exe
-  prefix: /home/issac/Games/red-dead-redemption-ii
+  prefix: /home/issac/Games/0prefixes/proton7
 system:
   gamescope: false
 wine:

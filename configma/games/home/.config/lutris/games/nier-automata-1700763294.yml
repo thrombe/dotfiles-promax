@@ -1,6 +1,6 @@
 game:
   exe: /home/issac/Games/NieR Automata Game of the YoRHa Edition/NieRAutomata.exe
-  prefix: /home/issac/Games/red-dead-redemption-ii
+  prefix: /home/issac/Games/0prefixes/proton7
 system:
   gamescope: false
   prime: true

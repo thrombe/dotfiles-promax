@@ -1,10 +1,10 @@
 game:
   args: -opengl -SkipBuildPatchPrereq
-  exe: drive_c/Program Files (x86)/Epic Games/Launcher/Portal/Binaries/Win32/EpicGamesLauncher.exe
-  prefix: /home/issac/Games/epic-games-store
+  exe: /home/issac/Games/0prefixes/epic-games-store/drive_c/Program Files (x86)/Epic
+    Games/Launcher/Portal/Binaries/Win32/EpicGamesLauncher.exe
+  prefix: /home/issac/Games/0prefixes/epic-games-store
 game_slug: epic-games-store
 name: Epic Games Store
-requires: null
 script:
   files:
   - uplay: https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe
@@ -68,8 +68,6 @@ system:
     MESA_GL_VERSION_OVERRIDE: 4.4COMPAT
     __GL_SHADER_DISK_CACHE: '1'
     __GL_SHADER_DISK_CACHE_PATH: /home/issac/Games/epic-games-store
-variables: {}
 version: Standard
 wine:
   version: lutris-GE-Proton8-15-x86_64
-year: null

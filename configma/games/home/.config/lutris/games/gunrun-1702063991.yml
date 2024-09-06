@@ -1,6 +1,6 @@
 game:
   exe: /home/issac/Games/steam/GUNRUN Demo/gunrun.exe
-  prefix: /home/issac/Games/cyberpunk-2077
+  prefix: /home/issac/Games/0prefixes/wine-ge-8
 system:
   gamescope: false
 wine:

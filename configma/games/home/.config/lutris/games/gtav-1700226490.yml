@@ -1,5 +1,3 @@
 game:
   exe: /home/issac/Games/Grand Theft Auto V/GTA5.exe
-  prefix: /home/issac/Games/cyberpunk-2077
-system: {}
-wine: {}
+  prefix: /home/issac/Games/0prefixes/wine-ge-8

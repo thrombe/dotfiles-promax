@@ -2,7 +2,7 @@ game:
   arch: win64
   args: -USEALLAVAILABLECORES -cpuLoadRebalancing -ignorepipelinecach -vulkan
   exe: /home/issac/Games/Red Dead Redemption 2/RDR2.exe
-  prefix: /home/issac/Games/red-dead-redemption-ii
+  prefix: /home/issac/Games/0prefixes/proton7
   working_dir: ''
 system:
   disable_compositor: false

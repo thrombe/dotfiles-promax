@@ -1,7 +1,7 @@
 game:
   args: ''
   exe: /home/issac/Games/Cyberpunk 2077 2.0/REDprelauncher.exe
-  prefix: /home/issac/Games/cyberpunk-2077
+  prefix: /home/issac/Games/0prefixes/wine-ge-8
   working_dir: /home/issac/Games/Cyberpunk 2077 2.0
 system:
   disable_runtime: true

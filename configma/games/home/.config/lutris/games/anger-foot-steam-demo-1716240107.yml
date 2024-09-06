@@ -1,7 +1,6 @@
 game:
   exe: /home/issac/Games/steam/Anger Foot Demo/Anger Foot.exe
-  prefix: /home/issac/Games/red-dead-redemption-ii
-system: {}
+  prefix: /home/issac/Games/0prefixes/proton7
 wine:
   esync: false
   fsync: false

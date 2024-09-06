@@ -1,6 +1,5 @@
 game:
   exe: /home/issac/Games/Anger Foot windows/Anger Foot.exe
-  prefix: /home/issac/Games/cyberpunk-2077
+  prefix: /home/issac/Games/0prefixes/wine-ge-8
 system:
   gamescope: false
-wine: {}
