@@ -23,6 +23,7 @@ modules = [
   "env",
   "tools",
   "tools-private",
+  "notes",
   "easyeffects-irs",
   "save-data",
   "game-savefiles",
@@ -41,6 +42,10 @@ modules = [
   "phone",
   "phone-private",
 ]
+
+[[modules]]
+name = "notes"
+path = "~/0Git/notes/configma"
 
 [[modules]]
 name = "tools-private"
