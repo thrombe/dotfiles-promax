@@ -60,6 +60,14 @@
       inputs.flake-compat.follows = "flake-compat";
     };
 
+    alacritty = {
+      url = "github:ayosec/alacritty/graphics";
+      flake = false;
+    };
+    zellij = {
+      url = "github:lypanov/zellij/repeat_instruction_retries";
+      flake = false;
+    };
     helix = {
       url = "github:helix-editor/helix/24.07";
 
@@ -180,8 +188,31 @@
           # hyprland = pkgs.unstable.hyprland;
           hyprland = flakeDefaultPackage inputs.hyprland;
 
-          alacritty = super.unstable.alacritty;
-          zellij = super.unstable.zellij;
+          # - [override cargoSha256 in buildRustPackage](https://discourse.nixos.org/t/is-it-possible-to-override-cargosha256-in-buildrustpackage/4393/3)
+
+          # - [Add support for libsixel](https://github.com/alacritty/alacritty/issues/910)
+          # - [Support for graphics in alacritty](https://github.com/alacritty/alacritty/pull/4763)
+          # - [ayosec/alacritty: alacritty with sixel](https://github.com/ayosec/alacritty/tree/graphics)
+          alacritty = super.alacritty.overrideAttrs (drv: rec {
+            src = inputs.alacritty;
+            cargoDeps = drv.cargoDeps.overrideAttrs (_: {
+              inherit src;
+              outputHash = "sha256-F9NiVbTIVOWUXnHtIUvxlZ5zvGtgz/AAyAhyS4w9f9I=";
+            });
+          });
+
+          # - [Sixel support broken since v0.40.0](https://github.com/zellij-org/zellij/issues/3372)
+          # - [zellij fix sixel](https://github.com/zellij-org/zellij/pull/3506)
+          zellij = super.zellij.overrideAttrs (drv: rec {
+            src = inputs.zellij;
+            cargoDeps = drv.cargoDeps.overrideAttrs (_: {
+              inherit src;
+              outputHash = "sha256-EPfJTWXVmUkZdzliF7OH4t/4gW7NesxwbJ7gX6XrOvg=";
+            });
+          });
+
+          # alacritty = super.unstable.alacritty;
+          # zellij = super.unstable.zellij;
           zoxide = super.unstable.zoxide;
           yazi = super.unstable.yazi;
           broot = super.unstable.broot;

@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "alacritty": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720878850,
+        "narHash": "sha256-84rdjQzWNupN5dJsK6Txfl+EARXmkMIQ4TyfjIP1hTE=",
+        "owner": "ayosec",
+        "repo": "alacritty",
+        "rev": "6c4910fd20c7bab08b3bcee00eed4b5e4b37ef08",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ayosec",
+        "ref": "graphics",
+        "repo": "alacritty",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -810,6 +827,7 @@
     },
     "root": {
       "inputs": {
+        "alacritty": "alacritty",
         "configma": "configma",
         "crane": "crane",
         "devshell": "devshell",
@@ -832,7 +850,8 @@
         "scripts": "scripts",
         "stylix": "stylix",
         "yankpass": "yankpass",
-        "zathura-images": "zathura-images"
+        "zathura-images": "zathura-images",
+        "zellij": "zellij"
       }
     },
     "rust-overlay": {
@@ -1073,6 +1092,23 @@
       "original": {
         "owner": "thrombe",
         "repo": "zathura-images",
+        "type": "github"
+      }
+    },
+    "zellij": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721396631,
+        "narHash": "sha256-4CKFLApj2Ve03oks3mH4SK8TZFyUhXtcMwkyl99dnzo=",
+        "owner": "lypanov",
+        "repo": "zellij",
+        "rev": "587c9538574a52fa983064842203b1c8d6dfcb3f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lypanov",
+        "ref": "repeat_instruction_retries",
+        "repo": "zellij",
         "type": "github"
       }
     },
