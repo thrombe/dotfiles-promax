@@ -180,6 +180,26 @@
           # hyprland = pkgs.unstable.hyprland;
           hyprland = flakeDefaultPackage inputs.hyprland;
 
+          alacritty = super.unstable.alacritty;
+          zellij = super.unstable.zellij;
+          zoxide = super.unstable.zoxide;
+          yazi = super.unstable.yazi;
+          broot = super.unstable.broot;
+          gitui = super.unstable.gitui;
+          lazygit = super.unstable.lazygit;
+          delta = super.unstable.delta;
+          distrobox = super.unstable.distrobox;
+          rclone = super.unstable.rclone;
+          waybar = super.unstable.waybar;
+          pyprland = super.unstable.pyprland;
+          hyprcursor = super.unstable.hyprcursor;
+          hyprlock = super.unstable.hyprlock;
+          hypridle = super.unstable.hypridle;
+          hyprshot = super.unstable.hyprshot;
+          nh = super.unstable.nh;
+          nvd = super.unstable.nvd;
+          nix-output-monitor = super.unstable.nix-output-monitor;
+
           # eww = super.unstable.eww;
           # eww = flakeDefaultPackage inputs.eww-git;
 
@@ -422,25 +442,25 @@
             # discord # TODO: make voice work
             qbittorrent
             mpv
-            
+
             # - [Rclone](https://rclone.org/)
             # - [Use Microsoft ONEDRIVE in LINUX](https://www.youtube.com/watch?v=u_W0-HEVOyg)
             # - [rclone mount](https://rclone.org/commands/rclone_mount/)
             # - [rclone mount](https://rclone.org/commands/rclone_mount/#vfs-file-caching)
             # rclone mount --vfs-cache-mode writes --vfs-cache-max-age 3d --vfs-cache-max-size 10G onedrive:/daata /home/$USER/onedrive
-            unstable.rclone
+            rclone
 
             # tools
             helix
-            unstable.alacritty
-            unstable.zellij
-            unstable.zoxide
-            unstable.yazi
-            unstable.broot
-            unstable.gitui
-            unstable.lazygit
-            unstable.delta
-            # unstable.distrobox
+            alacritty
+            zellij
+            zoxide
+            yazi
+            broot
+            gitui
+            lazygit
+            delta
+            # distrobox
             trashy
             starship
             ueberzugpp
@@ -495,9 +515,9 @@
             # viper4linux
             # pulseaudio
 
-            unstable.nh
-            unstable.nvd
-            unstable.nix-output-monitor
+            nh
+            nvd
+            nix-output-monitor
             # nix
             nil
             nixd
@@ -734,7 +754,7 @@
 
           # widget/bar
           eww
-          (pkgs.unstable.waybar.overrideAttrs (old: {
+          (waybar.overrideAttrs (old: {
             mesonFlags = old.mesonFlags ++ ["-Dexperimental=true"];
           }))
 
@@ -755,12 +775,12 @@
           hyprpicker
 
           # plugin manager
-          unstable.pyprland
+          pyprland
           # plugins
-          # unstable.hyprcursor
-          unstable.hyprlock
-          unstable.hypridle
-          unstable.hyprshot
+          # hyprcursor
+          hyprlock
+          hypridle
+          hyprshot
 
           papirus-icon-theme
           adwaita-qt
