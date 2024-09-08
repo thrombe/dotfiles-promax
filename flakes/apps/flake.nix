@@ -16,6 +16,9 @@
 
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (system: let
+      flakePackage = flake: package: flake.packages."${system}"."${package}";
+      flakeDefaultPackage = flake: flakePackage flake "default";
+
       pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -37,84 +40,82 @@
         config.allowUnfree = true;
       };
 
-      focalboard = 
-          (pkgs.stdenv.mkDerivation {
-            name = "focalboard";
-            src = pkgs.fetchurl {
-              url = "https://github.com/mattermost/focalboard/releases/download/v7.10.6/focalboard-linux.tar.gz";
-              hash = "sha256-Z3fxbfqh3uAUKhbRnOL7JLDL4CBsSAR+EuLly54CEA8=";
-            };
+      focalboard = pkgs.stdenv.mkDerivation {
+        name = "focalboard";
+        src = pkgs.fetchurl {
+          url = "https://github.com/mattermost/focalboard/releases/download/v7.10.6/focalboard-linux.tar.gz";
+          hash = "sha256-Z3fxbfqh3uAUKhbRnOL7JLDL4CBsSAR+EuLly54CEA8=";
+        };
 
-            installPhase = ''
-              mkdir -p $out/bin
+        installPhase = ''
+          mkdir -p $out/bin
 
-              cd $out
-              tar -xvzf $src -C $out/.
-              mv $out/focalboard-app/* $out/bin
-              rmdir $out/focalboard-app
+          cd $out
+          tar -xvzf $src -C $out/.
+          mv $out/focalboard-app/* $out/bin
+          rmdir $out/focalboard-app
 
-              # it looks for db at ./focalboard.db anyway
-              echo "
-                  {
-                  	"serverRoot": "http://localhost:8088",
-                  	"port": 8088,
-                  	"dbtype": "sqlite3",
-                  	"dbconfig": "/home/issac/.config/focalboard/focalboard.db",
-                  	"useSSL": false,
-                  	"webpath": "$out/bin/pack",
-                  	"filespath": "/home/issac/.config/focalboard/files",
-                  	"telemetry": false,
-                  	"localOnly": true
-                  }
-              " > $out/bin/config.json
-            '';
+          # it looks for db at ./focalboard.db anyway
+          echo "
+              {
+              	"serverRoot": "http://localhost:8088",
+              	"port": 8088,
+              	"dbtype": "sqlite3",
+              	"dbconfig": "/home/issac/.config/focalboard/focalboard.db",
+              	"useSSL": false,
+              	"webpath": "$out/bin/pack",
+              	"filespath": "/home/issac/.config/focalboard/files",
+              	"telemetry": false,
+              	"localOnly": true
+              }
+          " > $out/bin/config.json
+        '';
 
-            nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
-            buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
-          });
-      focalboard-server = 
-          (pkgs.stdenv.mkDerivation {
-            name = "focalboard";
-            src = pkgs.fetchurl {
-              url = "https://github.com/mattermost/focalboard/releases/download/v7.10.6/focalboard-server-linux-amd64.tar.gz";
-              hash = "sha256-dkdMQcF/aTrHMDyJgV9RAB0KzC1ehEvKmEYCkHkDi/4=";
-            };
+        nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
+        buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
+      };
+      focalboard-server = pkgs.stdenv.mkDerivation {
+        name = "focalboard";
+        src = pkgs.fetchurl {
+          url = "https://github.com/mattermost/focalboard/releases/download/v7.10.6/focalboard-server-linux-amd64.tar.gz";
+          hash = "sha256-dkdMQcF/aTrHMDyJgV9RAB0KzC1ehEvKmEYCkHkDi/4=";
+        };
 
-            installPhase = ''
-              mkdir -p $out/bin
+        installPhase = ''
+          mkdir -p $out/bin
 
-              cd $out
-              tar -xvzf $src -C $out/.
-              mv $out/focalboard/bin/* $out/bin/.
-              mv $out/focalboard/pack $out/bin/.
-              # rmdir $out/focalboard-app
+          cd $out
+          tar -xvzf $src -C $out/.
+          mv $out/focalboard/bin/* $out/bin/.
+          mv $out/focalboard/pack $out/bin/.
+          # rmdir $out/focalboard-app
 
-              echo "
-                  {
-                  	\"serverRoot\": \"http://localhost:8088\",
-                  	\"port\": 8088,
-                  	\"dbtype\": \"sqlite3\",
-                  	\"dbconfig\": \"/home/issac/.local/share/focalboard/focalboard.db\",
-                    \"postgres_dbconfig\": \"dbname=focalboard sslmode=disable\",
-                  	\"useSSL\": false,
-                  	\"webpath\": \"$out/bin/pack\",
-                  	\"filespath\": \"/home/issac/.local/share/focalboard/files\",
-                    \"prometheusaddress\": \":9092\",
-                    \"session_expire_time\": 2592000,
-                    \"session_refresh_time\": 18000,
-                  	\"telemetry\": false,
-                    \"enableLocalMode\": true,
-                    \"localModeSocketLocation\": \"/var/tmp/focalboard_local.socket\",
-                  	\"localOnly\": true
-                  }
-              " > $out/bin/config.json
-            '';
+          echo "
+              {
+              	\"serverRoot\": \"http://localhost:8088\",
+              	\"port\": 8088,
+              	\"dbtype\": \"sqlite3\",
+              	\"dbconfig\": \"/home/issac/.local/share/focalboard/focalboard.db\",
+                \"postgres_dbconfig\": \"dbname=focalboard sslmode=disable\",
+              	\"useSSL\": false,
+              	\"webpath\": \"$out/bin/pack\",
+              	\"filespath\": \"/home/issac/.local/share/focalboard/files\",
+                \"prometheusaddress\": \":9092\",
+                \"session_expire_time\": 2592000,
+                \"session_refresh_time\": 18000,
+              	\"telemetry\": false,
+                \"enableLocalMode\": true,
+                \"localModeSocketLocation\": \"/var/tmp/focalboard_local.socket\",
+              	\"localOnly\": true
+              }
+          " > $out/bin/config.json
+        '';
 
-            nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
-            buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
-          });
+        nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
+        buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
+      };
     in {
-      packages = { default = focalboard-server; };
+      packages = {default = focalboard-server;};
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
           (pkgs.python310.withPackages (ps:
@@ -165,7 +166,7 @@
           #  - just use gparted in virt-manager lol
 
           unstable.floorp
-          (opera.override { proprietaryCodecs = true; })
+          (opera.override {proprietaryCodecs = true;})
           libreoffice-qt
 
           # music apps
