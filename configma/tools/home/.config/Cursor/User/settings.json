@@ -7,6 +7,10 @@
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
+            "before": ["<leader>", "f"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
             "before": ["<leader>", "F"],
             "commands": ["workbench.action.quickOpen"]
         },
