@@ -1,0 +1,43 @@
+{
+    "window.commandCenter": 1,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vim.statusBarColors.easymotionmode": "",
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "F"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["g", "l"],
+            "after": ["$"]
+        },
+        {
+            "before": ["g", "h"],
+            "after": ["0"]
+        },
+        {
+            "before": ["g", "e"],
+            "after": ["G"]
+        },
+        {
+            "before": ["g", "s"],
+            "after": ["^"]
+        },
+        {
+            "before": ["<leader>", "b"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["g", "a"],
+            "commands": [
+                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+                "workbench.action.acceptSelectedQuickOpenItem"
+            ]
+        }
+    ],
+    "vim.statusBarColors.replace": "",
+    "vscode-neovim.neovimExecutablePaths.linux": "/etc/profiles/per-user/issac/bin/nvim"
+}
