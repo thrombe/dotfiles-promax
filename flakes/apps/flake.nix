@@ -114,10 +114,18 @@
         nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
         buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
       };
-    in {
-      packages = {default = focalboard-server;};
-      devShells.default = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [
+
+      fhs = pkgs.buildFHSEnv {
+        name = "fhs-shell";
+        targetPkgs = p: (env-packages p);
+        runScript = "${pkgs.zsh}/bin/zsh";
+        profile = ''
+          export FHS=1
+          # source ./.venv/bin/activate
+          # source .env
+        '';
+      };
+      env-packages = pkgs: with pkgs; [
           (pkgs.python310.withPackages (ps:
             with ps; [
             ]))
@@ -127,6 +135,57 @@
           # source ./.venv/bin/activate
           # pip install ..
           # python311Packages.venvShellHook # ??
+
+          # xfce.thunar
+          # cinnamon.nemo-with-extensions
+
+          # - [zsh with glyphs won't render](https://github.com/raphamorim/rio/issues/499)
+          (flakeDefaultPackage inputs.rio)
+
+          (let
+            pname = "cursor";
+            version = "0.40";
+
+            src = pkgs.fetchurl {
+              # this will break if the version is updated.
+              # unfortunately, i couldn't seem to find a url that
+              # points to a specific version.
+              # alternatively, download the appimage manually and
+              # include it via src = ./cursor.AppImage, instead of fetchurl
+              url = "https://downloader.cursor.sh/linux/appImage/x64";
+              hash = "sha256-ZURE8UoLPw+Qo1e4xuwXgc+JSwGrgb/6nfIGXMacmSg=";
+            };
+            appimageContents = pkgs.appimageTools.extract {inherit pname version src;};
+          in
+            with pkgs;
+              appimageTools.wrapType2 {
+                inherit pname version src;
+                extraInstallCommands = ''
+                  install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
+                  substituteInPlace $out/share/applications/${pname}.desktop \
+                    --replace 'Exec=AppRun' 'Exec=${pname}'
+                  cp -r ${appimageContents}/usr/share/icons $out/share
+
+                  # unless linked, the binary is placed in $out/bin/cursor-someVersion
+                  # ln -s $out/bin/${pname}-${version} $out/bin/${pname}
+                '';
+
+                extraBwrapArgs = [
+                  "--bind-try /etc/nixos/ /etc/nixos/"
+                ];
+
+                # vscode likes to kill the parent so that the
+                # gui application isn't attached to the terminal session
+                dieWithParent = false;
+
+                extraPkgs = pkgs: [
+                  unzip
+                  autoPatchelfHook
+                  asar
+                  # override doesn't preserve splicing https://github.com/NixOS/nixpkgs/issues/132651
+                  (buildPackages.wrapGAppsHook.override {inherit (buildPackages) makeWrapper;})
+                ];
+              })
 
           # GDK_BACKEND=x11
           unstable-nocuda2.rustdesk-flutter
@@ -225,6 +284,10 @@
           pkgs.wine64Packages.unstable
           pkgs.winePackages.unstable
         ];
+    in {
+      packages = {default = focalboard-server;};
+      devShells.default = pkgs.mkShell {
+        nativeBuildInputs = (env-packages pkgs) ++ [fhs];
       };
     });
 }
