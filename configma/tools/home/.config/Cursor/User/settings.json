@@ -36,6 +36,14 @@
                 "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
                 "workbench.action.acceptSelectedQuickOpenItem"
             ]
+        },
+        {
+            "before": ["U"],
+            "commands": [":redo"]
+        },
+        {
+            "before": ["<leader>", "<leader>"],
+            "commands": ["workbench.action.showCommands"]
         }
     ],
     "vim.statusBarColors.replace": "",
