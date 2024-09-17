@@ -68,14 +68,10 @@
             wrapProgram $out/bin/rustdesk --set GDK_BACKEND x11
           '';
         };
-        zed-editor = super.buildFHSEnv {
-          name = "zed";
-          targetPkgs = pkgs: [pkgs.unstable3.zed-editor];
-          runScript = ''
-            #!/usr/bin/env bash
-            zed --foreground
-          '';
-        };
+        zed-editor = (super.writeShellScriptBin "zed" ''
+          # - [zed fhs passthru](https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/ze/zed-editor/package.nix#L252)
+          ${super.unstable3.zed-editor.fhs}/bin/zed --foreground $@
+        '');
 
         blender = super.unstable.blender;
         godot_4 = super.unstable.godot_4;
