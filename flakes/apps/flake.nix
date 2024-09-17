@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable2.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable3.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     rust-overlay = {
@@ -37,22 +35,28 @@
       flakePackage = flake: package: flake.packages."${system}"."${package}";
       flakeDefaultPackage = flake: flakePackage flake "default";
 
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [
+          overlay-unstable
+          overlays
+        ];
+      };
       overlay-unstable = final: prev: {
         unstable = import inputs.nixpkgs-unstable {
           inherit system;
-          config.allowUnfree = true;
-          config.cudaSupport = true;
         };
-        unstable3 = import inputs.nixpkgs-unstable3 {
-          inherit system;
-        };
-        unstable-nocuda = import inputs.nixpkgs-unstable {
-          inherit system;
-        };
-        unstable-nocuda2 = import inputs.nixpkgs-unstable2 {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        # unstable-cuda = import inputs.nixpkgs-unstable {
+        #   inherit system;
+        #   config.allowUnfree = true;
+        #   config.cudaSupport = true;
+        # };
+        # pkgs-cuda = import inputs.pkgs {
+        #   inherit system;
+        #   config.allowUnfree = true;
+        #   config.cudaSupport = true;
+        # };
       };
       overlays = self: super: {
         inherit focalboard focalboard-server moosync muffon cursor record-this-window magicavoxel;
@@ -62,7 +66,7 @@
         opera = super.opera.override {proprietaryCodecs = true;};
         rustdesk-flutter = super.symlinkJoin {
           name = "rustdesk";
-          paths = [super.unstable-nocuda2.rustdesk-flutter];
+          paths = [super.unstable.rustdesk-flutter];
           buildInputs = [super.makeWrapper];
           postBuild = ''
             wrapProgram $out/bin/rustdesk --set GDK_BACKEND x11
@@ -70,7 +74,7 @@
         };
         zed-editor = (super.writeShellScriptBin "zed" ''
           # - [zed fhs passthru](https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/ze/zed-editor/package.nix#L252)
-          ${super.unstable3.zed-editor.fhs}/bin/zed --foreground $@
+          ${super.unstable.zed-editor.fhs}/bin/zed --foreground $@
         '');
 
         blender = super.unstable.blender;
@@ -81,22 +85,10 @@
         floorp = super.unstable.floorp;
         slurp = super.unstable.slurp;
         wf-recorder = super.unstable.wf-recorder;
-
-        obs-studio = super.unstable-nocuda.obs-studio;
-
-        anydesk = super.unstable-nocuda2.anydesk;
-        krita = super.unstable-nocuda2.krita;
-        kdenlive = super.unstable-nocuda2.libsForQt5.kdenlive;
-      };
-
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        config.cudaSupport = true;
-        overlays = [
-          overlay-unstable
-          overlays
-        ];
+        obs-studio = super.unstable.obs-studio;
+        anydesk = super.unstable.anydesk;
+        krita = super.unstable.krita;
+        kdenlive = super.unstable.libsForQt5.kdenlive;
       };
 
       focalboard = pkgs.stdenv.mkDerivation {
