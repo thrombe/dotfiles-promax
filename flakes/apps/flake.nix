@@ -68,6 +68,14 @@
             wrapProgram $out/bin/rustdesk --set GDK_BACKEND x11
           '';
         };
+        zed-editor = super.buildFHSEnv {
+          name = "zed";
+          targetPkgs = pkgs: [pkgs.unstable3.zed-editor];
+          runScript = ''
+            #!/usr/bin/env bash
+            zed --foreground
+          '';
+        };
 
         blender = super.unstable.blender;
         godot_4 = super.unstable.godot_4;
@@ -83,8 +91,6 @@
         anydesk = super.unstable-nocuda2.anydesk;
         krita = super.unstable-nocuda2.krita;
         kdenlive = super.unstable-nocuda2.libsForQt5.kdenlive;
-
-        zed-editor = super.unstable3.zed-editor;
       };
 
       pkgs = import inputs.nixpkgs {
@@ -128,7 +134,7 @@
           " > $out/bin/config.json
         '';
 
-        nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
+        nativeBuildInputs = with pkgs; [pkg-config installShellFiles autoPatchelfHook];
         buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
       };
       focalboard-server = pkgs.stdenv.mkDerivation {
@@ -168,7 +174,7 @@
           " > $out/bin/config.json
         '';
 
-        nativeBuildInputs = with pkgs; [pkg-config installShellFiles pkgs.autoPatchelfHook];
+        nativeBuildInputs = with pkgs; [pkg-config installShellFiles autoPatchelfHook];
         buildInputs = with pkgs; [gtk3 webkitgtk go nodejs_20];
       };
       record-this-window = pkgs.writeShellScriptBin "record-this-window" ''
@@ -284,11 +290,11 @@
       };
       env-packages = pkgs:
         with pkgs; [
-          (pkgs.python310.withPackages (ps:
+          (python312.withPackages (ps:
             with ps; [
             ]))
-          pkgs.python310Packages.pip
-          pkgs.python310Packages.virtualenv
+          python312Packages.pip
+          python312Packages.virtualenv
           # virtualenv .venv
           # source ./.venv/bin/activate
           # pip install ..
