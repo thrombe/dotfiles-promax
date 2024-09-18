@@ -1,5 +1,5 @@
 {
-    "window.commandCenter": 1,
+    "window.commandCenter": true,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
@@ -32,7 +32,7 @@
         },
         {
             "before": ["<leader>", "b"],
-            "commands": ["workbench.action.quickOpen"]
+            "commands": ["workbench.action.quickOpenLeastRecentlyUsedEditor"]
         },
         {
             "before": ["g", "a"],
@@ -44,6 +44,10 @@
         {
             "before": ["U"],
             "commands": [":redo"]
+        },
+        {
+            "before": [":", "b", "c", "<CR>"],
+            "commands": ["workbench.action.closeActiveEditor"]
         },
         {
             "before": ["<leader>", "<leader>"],
