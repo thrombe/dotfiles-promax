@@ -820,6 +820,9 @@
           papirus-icon-theme
           adwaita-qt
           gnome.adwaita-icon-theme
+          qt5ct
+          nwg-look
+          gsettings-qt
 
           (pkgs.writeShellScriptBin "start-hypr" ''
             export XDG_SESSION_TYPE=wayland
