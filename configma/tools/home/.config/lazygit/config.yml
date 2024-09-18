@@ -4,8 +4,8 @@ notARepository: quit
 git:
   paging:
     # externalDiffCommand: difft --color=always
-    externalDiffCommand: delta --color-only
-    pager: delta --paging=never
+    # externalDiffCommand: delta --color-only
+    # pager: delta --paging=never
 
 # OOF: lazygit keybinding configuration sucks
 # keybinding:
