@@ -155,6 +155,7 @@ in {
 
     # - [hyprland nvidia](https://wiki.hyprland.org/0.42.0/Nvidia/)
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "nvidia_drm.fbdev=1"
   ];
 
   # select patched linux kernel
@@ -463,6 +464,17 @@ in {
     ${pkgs.systemd}/bin/systemctl restart asusd
     echo "asusd restart command ended"
   '';
+
+  # # - [wireplumber camera battery issue (likely to be fixed in a while)](https://old.reddit.com/r/linux/comments/1em8biv/psa_pipewire_has_been_halving_your_battery_life/)
+  # services.pipewire.wireplumber.extraConfig = {
+  #   "10-disable-camera" = {
+  #     "wireplumber.profiles" = {
+  #       main = {
+  #         "monitor.libcamera" = "disabled";
+  #       };
+  #     };
+  #   };
+  # };
 
   # - [Laptop - NixOS Wiki](https://nixos.wiki/wiki/Laptop)
   # default (atleast in kde)

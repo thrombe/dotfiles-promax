@@ -598,6 +598,12 @@
           enableBashIntegration = false;
         };
 
+        # programs.nh = {
+        #   enable = true;
+        #   package = pkgs.unstable.nh;
+        #   # flake = "/etc/nixos";
+        # };
+
         # https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enable
         programs.zsh = {
           enable = true;
@@ -652,7 +658,7 @@
 
           # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
           base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
-          image = ~/0Git/dotfiles-promax/flakes/ai_apps/Fooocus/outputs/2023-12-12/2023-12-12_23-08-35_8144.png;
+          image = /home/issac/0Git/dotfiles-promax/flakes/ai_apps/Fooocus/outputs/2023-12-12/2023-12-12_23-08-35_8144.png;
 
           cursor = {
             size = 24;
@@ -674,6 +680,12 @@
             };
           };
         };
+
+        # xdg.mime.defaultApplications = {
+        #   "image/*" = [
+        #     "zathura-images.desktop"
+        #   ];
+        # };
 
         # Enable the OpenSSH daemon.
         services.openssh = {
