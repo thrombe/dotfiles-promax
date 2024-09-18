@@ -11,7 +11,9 @@
   };
 
   extensions = builtins.listToAttrs [
-    (extension "tree-style-tab" "treestyletab@piro.sakura.ne.jp")
+    # (extension "tree-style-tab" "treestyletab@piro.sakura.ne.jp")
+    (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}") # opensource :)
+
     (extension "ublock-origin" "uBlock0@raymondhill.net")
     # (extension "umatrix" "uMatrix@raymondhill.net")
     (extension "foxytab" "foxytab@eros.man")
@@ -19,8 +21,10 @@
     # (extension "" "simple-youtube-age-restriction-bypass@zerody.one")
     (extension "auto-tab-discard" "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}")
     (extension "darkreader" "addon@darkreader.org")
-    (extension "greasemonkey" "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}")
-    (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
+    # (extension "greasemonkey" "{e4a8a97b-f2ed-450b-b12d-ee082ba24781}")
+    # (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
+    (extension "popup-blocker" "{de22fd49-c9ab-4359-b722-b3febdc3a0b0}")
+    (extension "i-dont-care-about-cookies" "jid1-KKzOGWgsW3Ao4Q@jetpack")
   ];
 in {
   # - [Declare Firefox extensions and settings](https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265/7)
