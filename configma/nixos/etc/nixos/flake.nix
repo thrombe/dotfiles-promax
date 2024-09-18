@@ -14,17 +14,13 @@
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.flake-utils.follows = "flake-utils";
     };
     crane = {
       url = "github:ipetkov/crane";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     # nci = {
     #   url = "github:yusdacra/nix-cargo-integration";
@@ -297,6 +293,7 @@
       # - [Home Manager Manual](https://nix-community.github.io/home-manager/index.xhtml#sec-install-nixos-module)
       inputs.home-manager.nixosModules.home-manager
       {
+        home-manager.backupFileExtension = "bak";
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
@@ -525,7 +522,7 @@
             btop
             s-tui # fan rpm + other stuff
             # zenith-nvidia # - [zenith](https://github.com/bvaisvil/zenith)
-            nvtop # gpu stats
+            nvtopPackages.full # gpu stats
             # bottom # battery stat + other stuff
             # battop # only battery stat
 
@@ -737,16 +734,18 @@
           };
 
           # Configure keymap in X11
-          layout = "us";
-          xkbVariant = "";
+          xkb = {
+            layout = "us";
+            variant = "";
+          };
 
           # Enable touchpad support (enabled default in most desktopManager).
           # services.xserver.libinput.enable = true;
 
           # Enable the KDE Plasma Desktop Environment.
-          displayManager.sddm.enable = true;
           desktopManager.plasma5.enable = true;
         };
+        services.displayManager.sddm.enable = true;
 
         # exclude some kde apps - [KDE - NixOS Wiki](https://nixos.wiki/wiki/KDE)
         environment.plasma5.excludePackages = with pkgs.libsForQt5; [
@@ -878,7 +877,10 @@
           commonModules
           ++ [
             ./${specialArgs.hostname}/configuration.nix
-            inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402x.nvidia
+
+            # - [Unexpected / new "error: value is a path while a set was expected"](https://github.com/NixOS/nixos-hardware/issues/1052)
+            # - [Create asus-zephyrus-ga402x-amdgpu and asus-zephyrus-ga402x-nvidia entries](https://github.com/NixOS/nixos-hardware/pull/1053/files)
+            inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402x-nvidia
           ];
       };
     };

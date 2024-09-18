@@ -137,13 +137,15 @@
     };
     treesitter = {
       enable = true;
-      incrementalSelection = {
-        enable = true;
-        keymaps = {
-          initSelection = "<M-o>";
-          nodeDecremental = "<M-i>";
-          nodeIncremental = "<M-o>";
-          # scopeIncremental = "<C-u>";
+      settings = {
+        incremental_selection = {
+          enable = true;
+          keymaps = {
+            init_selection = "<M-o>";
+            node_decremental = "<M-i>";
+            node_incremental = "<M-o>";
+            # scope_incremental = "<C-u>";
+          };
         };
       };
     };
