@@ -355,6 +355,8 @@
 
         # Enable networking
         networking.networkmanager.enable = true;
+        networking.extraHosts = ''
+        '';
 
         # Set your time zone.
         time.timeZone = "Asia/Kolkata";
@@ -472,6 +474,7 @@
             stremio
             # discord # TODO: make voice work
             qbittorrent
+            aria2 # multi threaded downloader
             mpv
 
             # - [Rclone](https://rclone.org/)
@@ -571,6 +574,7 @@
 
             # dev
             # rustup
+            libtree # ldd but tree
             libclang
             git
             gcc
