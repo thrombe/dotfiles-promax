@@ -150,7 +150,12 @@ in {
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  boot.kernelParams = ["mem_sleep_default=deep"];
+  boot.kernelParams = [
+    "mem_sleep_default=deep"
+
+    # - [hyprland nvidia](https://wiki.hyprland.org/0.42.0/Nvidia/)
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+  ];
 
   # select patched linux kernel
   # - [Linux kernel nix wiki](https://nixos.wiki/wiki/Linux_kernel)

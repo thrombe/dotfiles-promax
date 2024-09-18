@@ -89,8 +89,11 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.39.1";
+      # - [submodules still not in nix latest](https://github.com/NixOS/nix/pull/7862#issuecomment-1908577578)
+      url = "https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+      type = "git";
+      submodules = true;
     };
     # eww-git = {
     #   url = "github:elkowar/eww";
@@ -116,9 +119,8 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     hyprkool = {
-      url = "github:thrombe/hyprkool/dev";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+      url = "github:thrombe/hyprkool/0.7.2";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
       inputs.hyprland.follows = "hyprland";
     };
@@ -193,23 +195,25 @@
           # - [Add support for libsixel](https://github.com/alacritty/alacritty/issues/910)
           # - [Support for graphics in alacritty](https://github.com/alacritty/alacritty/pull/4763)
           # - [ayosec/alacritty: alacritty with sixel](https://github.com/ayosec/alacritty/tree/graphics)
-          alacritty = super.alacritty.overrideAttrs (drv: rec {
-            src = inputs.alacritty;
-            cargoDeps = drv.cargoDeps.overrideAttrs (_: {
-              inherit src;
-              outputHash = "sha256-F9NiVbTIVOWUXnHtIUvxlZ5zvGtgz/AAyAhyS4w9f9I=";
-            });
-          });
+          # alacritty = super.alacritty.overrideAttrs (drv: rec {
+          #   src = inputs.alacritty;
+          #   cargoDeps = drv.cargoDeps.overrideAttrs (_: {
+          #     inherit src;
+          #     outputHash = "sha256-F9NiVbTIVOWUXnHtIUvxlZ5zvGtgz/AAyAhyS4w9f9I=";
+          #   });
+          # });
+          alacritty = super.unstable.alacritty;
 
           # - [Sixel support broken since v0.40.0](https://github.com/zellij-org/zellij/issues/3372)
           # - [zellij fix sixel](https://github.com/zellij-org/zellij/pull/3506)
-          zellij = super.zellij.overrideAttrs (drv: rec {
-            src = inputs.zellij;
-            cargoDeps = drv.cargoDeps.overrideAttrs (_: {
-              inherit src;
-              outputHash = "sha256-EPfJTWXVmUkZdzliF7OH4t/4gW7NesxwbJ7gX6XrOvg=";
-            });
-          });
+          # zellij = super.zellij.overrideAttrs (drv: rec {
+          #   src = inputs.zellij;
+          #   cargoDeps = drv.cargoDeps.overrideAttrs (_: {
+          #     inherit src;
+          #     outputHash = "sha256-EPfJTWXVmUkZdzliF7OH4t/4gW7NesxwbJ7gX6XrOvg=";
+          #   });
+          # });
+          zellij = super.unstable.zellij;
 
           # alacritty = super.unstable.alacritty;
           # zellij = super.unstable.zellij;
