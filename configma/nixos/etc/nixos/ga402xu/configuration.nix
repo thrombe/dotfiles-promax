@@ -163,9 +163,9 @@ in {
     fedora-asus-kernel = {buildLinux, ...} @ args:
       buildLinux (args
         // rec {
-          version = "6.9.5";
-          extraMeta.branch = "6.9";
-          modDirVersion = version;
+          version = "6.11";
+          extraMeta.branch = "6.11";
+          modDirVersion = "6.11.0";
 
           # extraConfig = "${fedora-40-asus-kernel-source}/package/kernel-x86_64-fedora.config";
 
@@ -177,8 +177,8 @@ in {
             # - [/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/)
             # - [kernel build logs](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/builder-live.log.gz)
             src = builtins.fetchurl {
-              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/kernel-6.9.5-268.rog.fc40.src.rpm";
-              sha256 = "sha256:01kjkjggwm32v2rrap46p42kf03mp56rwc8s2dhdzz94gncpsb2g";
+              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-41-x86_64/08026916-kernel/kernel-6.11.0-666.rog.fc41.src.rpm";
+              sha256 = "sha256:1zs8shim3mc536j8jj9nman6g7mj2fpxn8ndcpmcdnm5y7jjqf4p";
             };
 
             phases = ["unpackPhase" "patchPhase"];
@@ -194,7 +194,7 @@ in {
             patchPhase = ''
               # apply all patches
               # ${pkgs.fd}/bin/fd -t f -e patch . > ./patches.txt
-              patch -p1 -F50 < ./patch-6.9-redhat.patch
+              patch -p1 -F50 < ./patch-6.11-redhat.patch
               patches=$(grep "^ApplyOptionalPatch " ./kernel.spec | grep -v "{patchversion}" | cut -d " " -f2)
               for patch in $patches; do
                 patch -p1 -F50 < ./$patch
