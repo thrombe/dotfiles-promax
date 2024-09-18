@@ -532,17 +532,19 @@ in {
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
+    # - [nvidia-setting broken](https://github.com/TLATER/dotfiles/blob/0310be00fda729b4880ec55e48eb4f81d4ed0b75/nixos-config/hosts/yui/nvidia/default.nix#L17)
+    # nvidiaSettings = lib.mkForce false;
     nvidiaSettings = true;
 
     # package = config.boot.kernelPackages.nvidiaPackages.production;
-    # - [TLATER nix config](https://github.com/TLATER/dotfiles/blob/ef1a08cf30ab648f799c7369847fe935df7e7a93/nixos-config/hosts/yui/nvidia/default.nix#L11)
+    # - [TLATER nix config](https://github.com/TLATER/dotfiles/blob/7b810578505d88a8696ffb4ab831581249f74e91/nixos-config/hosts/yui/nvidia/default.nix)
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "550.67";
-      sha256_64bit = "sha256-mSAaCccc/w/QJh6w8Mva0oLrqB+cOSO1YMz1Se/32uI=";
-      sha256_aarch64 = "sha256-+UuK0UniAsndN15VDb/xopjkdlc6ZGk5LIm/GNs5ivA=";
-      openSha256 = "sha256-M/1qAQxTm61bznAtCoNQXICfThh3hLqfd0s1n1BFj2A=";
-      settingsSha256 = "sha256-FUEwXpeUMH1DYH77/t76wF1UslkcW721x9BHasaRUaM=";
-      persistencedSha256 = "sha256-ojHbmSAOYl3lOi2X6HOBlokTXhTCK6VNsH6+xfGQsyo=";
+      version = "555.58.02";
+      sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+      sha256_aarch64 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
+      openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
+      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+      persistencedSha256 = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
     };
 
     prime = {
