@@ -1076,17 +1076,14 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-unstable": [
-          "nixpkgs-unstable"
-        ],
         "zls": "zls"
       },
       "locked": {
-        "lastModified": 1725487340,
-        "narHash": "sha256-K0BqFXbp8ngrRyMuuEriDinPh14AJfTQ2iNhfbzlDRk=",
+        "lastModified": 1726788756,
+        "narHash": "sha256-+CmTaKQcD2zZ5SHgJON6C6KNW/iiFOiAi2ZMUDSOAdU=",
         "owner": "thrombe",
         "repo": "zathura-images",
-        "rev": "bed0a01f215f7f4ced7c8fbd63a8ed28ed96fe53",
+        "rev": "0975e7fe12baffa32583a8ead7c7712294f736bd",
         "type": "github"
       },
       "original": {
