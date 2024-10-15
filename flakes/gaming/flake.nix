@@ -23,49 +23,65 @@
         inherit system;
       };
 
-      steam-pkg = 
-          (unstable.steam.override {
-            extraLibraries = pkgs:
-              with pkgs; [
-                libxkbcommon
-                mesa
-                wayland
-                sndio
-              ];
-          });
-    in {
-      devShells.default = pkgs.mkShell {
-        packages = with pkgs; [
-          # yuzu-mainline
-          pkgs-yuzu.yuzu-early-access
-
-          steam-pkg
-          steam-pkg.run
-
-          # steam
-          # steam-run
-
-          winetricks
-          pkgs.wine64Packages.unstable
-          pkgs.winePackages.unstable
-
-          # pkg-config
-          # gnome3.adwaita-icon-theme
-
-          # lutris
-          mangohud
-          (lutris.override {
-            extraLibraries = pkgs: [
-              # List library dependencies here
-              # pkg-config
-            ];
-          })
-
-          renderdoc
-          (pkgs.writeShellScriptBin "fugl" ''
-            ./fugl.sh
-          '')
-        ];
+      steam-pkg = unstable.steam.override {
+        extraLibraries = pkgs:
+          with pkgs; [
+            libxkbcommon
+            mesa
+            wayland
+            sndio
+          ];
       };
+
+      stdenv = pkgs.clangStdenv;
+      # stdenv = pkgs.gccStdenv;
+    in {
+      devShells.default =
+        pkgs.mkShell.override {
+          inherit stdenv;
+        } {
+          packages = with pkgs; [
+            # yuzu-mainline
+            pkgs-yuzu.yuzu-early-access
+
+            steam-pkg
+            steam-pkg.run
+
+            # steam
+            # steam-run
+            pkg-config
+            unstable.gamescope
+
+            # - [nixOS usage | Mach: zig game engine & graphics toolkit](https://machengine.org/about/nixos-usage/)
+            unstable.xorg.libX11
+            unstable.vulkan-loader
+
+            winetricks
+            wine64Packages.unstable
+            winePackages.unstable
+
+            # pkg-config
+            # gnome3.adwaita-icon-theme
+
+            # lutris
+            mangohud
+            (lutris.override {
+              extraLibraries = pkgs: [
+                # List library dependencies here
+                pkg-config
+                unstable.gamescope
+              ];
+            })
+
+            renderdoc
+            (pkgs.writeShellScriptBin "fugl" ''
+              ./fugl.sh
+            '')
+          ];
+          shellHook = ''
+            export PROJECT_ROOT="$(pwd)"
+            export LD_LIBRARY_PATH=${unstable.xorg.libX11}/lib:${unstable.vulkan-loader}/lib:$LD_LIBRARY_PATH
+          '';
+        };
     });
 }
