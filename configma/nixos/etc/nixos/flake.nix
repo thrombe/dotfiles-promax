@@ -86,7 +86,7 @@
     };
     hyprland = {
       # - [submodules still not in nix latest](https://github.com/NixOS/nix/pull/7862#issuecomment-1908577578)
-      url = "https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0";
+      url = "https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.44.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       type = "git";
       submodules = true;
@@ -185,6 +185,8 @@
 
           # hyprland = pkgs.unstable.hyprland;
           hyprland = flakeDefaultPackage inputs.hyprland;
+          # wayland-protocols =super.unstable.wayland-protocols;
+          xwayland = super.unstable.xwayland; # needed for good gaming performance
 
           # - [override cargoSha256 in buildRustPackage](https://discourse.nixos.org/t/is-it-possible-to-override-cargosha256-in-buildrustpackage/4393/3)
 
@@ -863,6 +865,7 @@
           enable = true;
           wlr.enable = true;
           extraPortals = [pkgs.xdg-desktop-portal-gtk];
+          configPackages = [pkgs.xdg-desktop-portal-gtk];
         };
 
         fonts.packages = with pkgs; [
