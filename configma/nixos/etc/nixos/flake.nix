@@ -123,7 +123,6 @@
     zathura-images = {
       url = "github:thrombe/zathura-images";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
     scripts = {
