@@ -33,13 +33,13 @@ args = [ "-data", ".cache/jdtls" ]
 name = "python"
 auto-format = false
 indent = { tab-width = 4, unit = "    " }
-formatter = { command = "black", args = ["--quiet", "-"] }
+formatter = { command = "ruff", args = ["format", "-"] }
 # not sure if it is necessary to mention both as helix docs have just one, but ruff has to be used with an lsp
-# language-servers = [ "ruff-lsp"]
-language-servers = [ "pylsp", "ruff-lsp"]
+language-servers = [ "pylsp", "ruff"]
 
-[language-server.ruff-lsp]
-command = "ruff-lsp"
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
 
 
 [[language]]

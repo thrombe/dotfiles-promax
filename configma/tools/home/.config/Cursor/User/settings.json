@@ -55,5 +55,6 @@
         }
     ],
     "vim.statusBarColors.replace": "",
-    "vscode-neovim.neovimExecutablePaths.linux": "/etc/profiles/per-user/issac/bin/nvim"
+    "vscode-neovim.neovimExecutablePaths.linux": "/etc/profiles/per-user/issac/bin/nvim",
+    "sqldeveloper.telemetry.enabled": false
 }

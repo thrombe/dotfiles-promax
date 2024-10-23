@@ -36,20 +36,25 @@
       stdenv = pkgs.clangStdenv;
       # stdenv = pkgs.gccStdenv;
     in {
+      # TODO: minecraft flake from dotfiles promax
       devShells.default =
         pkgs.mkShell.override {
           inherit stdenv;
         } {
           packages = with pkgs; [
+            pkg-config
+
+            # - [suyu: yuzu fork](https://github.com/suyu-emu/suyu)
             # yuzu-mainline
             pkgs-yuzu.yuzu-early-access
 
             steam-pkg
             steam-pkg.run
-
             # steam
             # steam-run
-            pkg-config
+
+            # TODO: try it out!
+            # bottles
             unstable.gamescope
 
             # - [nixOS usage | Mach: zig game engine & graphics toolkit](https://machengine.org/about/nixos-usage/)
@@ -59,6 +64,7 @@
             winetricks
             wine64Packages.unstable
             winePackages.unstable
+            # wineWowPackages.waylandFull
 
             # pkg-config
             # gnome3.adwaita-icon-theme
