@@ -85,7 +85,6 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     hyprland = {
-      # - [submodules still not in nix latest](https://github.com/NixOS/nix/pull/7862#issuecomment-1908577578)
       url = "https://github.com/hyprwm/Hyprland";
       ref = "refs/tags/v0.44.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -115,8 +114,14 @@
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    hyprkool-7-1 = {
+      url = "github:thrombe/hyprkool/0.7.1";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.hyprland.follows = "hyprland";
+    };
     hyprkool = {
-      url = "github:thrombe/hyprkool/0.7.2";
+      url = "github:thrombe/hyprkool/dev";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
       inputs.hyprland.follows = "hyprland";
@@ -184,9 +189,15 @@
           helix = flakeDefaultPackage inputs.helix;
 
           # hyprland = pkgs.unstable.hyprland;
-          hyprland = flakeDefaultPackage inputs.hyprland;
+          # hyprland = flakeDefaultPackage inputs.hyprland;
           # wayland-protocols =super.unstable.wayland-protocols;
-          xwayland = super.unstable.xwayland; # needed for good gaming performance
+          # xwayland = super.unstable.xwayland; # needed for good gaming performance
+
+          # FIXME: hyprland 0.41.2 needs hyprkool-rs 7.1 but overriding plugin is more recent
+          hyprkool-rs = flakePackage inputs.hyprkool-7-1 "hyprkool-rs";
+          hyprkool-plugin = (flakePackage inputs.hyprkool "hyprkool-plugin").override {
+            hyprland = super.hyprland;
+          };
 
           # - [override cargoSha256 in buildRustPackage](https://discourse.nixos.org/t/is-it-possible-to-override-cargosha256-in-buildrustpackage/4393/3)
 
@@ -277,7 +288,6 @@
             # - [install a flake package](https://discourse.nixos.org/t/how-to-install-a-python-flake-package-via-configuration-nix/26970/2)
             configma
             yankpass
-            hyprkool
             nix-update-input # update-input
           ]))
           ++ (map getScript [
@@ -834,6 +844,7 @@
           hyprlock
           hypridle
           hyprshot
+          hyprkool-rs
 
           papirus-icon-theme
           adwaita-qt
@@ -853,7 +864,7 @@
           wayland.windowManager.hyprland = {
             enable = true;
             plugins = [
-              (flakePackage inputs.hyprkool "hyprkool-plugin")
+              pkgs.hyprkool-plugin
             ];
             extraConfig = ''
               source = ~/.config/hypr/hyprland_nonix.conf
@@ -876,8 +887,8 @@
         # - [use unstable mesa for hyprland-git / unstable hyprland](https://github.com/hyprwm/Hyprland/issues/5148#issuecomment-2002533086)
         # - [also on hyprland wiki](https://wiki.hyprland.org/0.38.0/Nix/Hyprland-on-NixOS/)
         hardware.opengl = {
-          package = pkgs.unstable.mesa.drivers;
-          package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
+          # package = pkgs.unstable.mesa.drivers;
+          # package32 = pkgs.unstable.pkgsi686Linux.mesa.drivers;
         };
       })
     ];

@@ -525,16 +525,44 @@
         ]
       },
       "locked": {
-        "lastModified": 1726675021,
-        "narHash": "sha256-qz25iSYdCYUUzBLTPcn7u6i4N3VAnd9EWpzz4ngDd5s=",
+        "lastModified": 1729724701,
+        "narHash": "sha256-uJlTCmu5MNfbzGxCYVhC5fKBUOsGLBotPfcI7OKU1ko=",
         "owner": "thrombe",
         "repo": "hyprkool",
-        "rev": "b14ff09afab05a9b0dc86c5e0cae215076b334bb",
+        "rev": "1bd18bb12d0964cc4e639864b6501a793f20077b",
         "type": "github"
       },
       "original": {
         "owner": "thrombe",
-        "ref": "0.7.2",
+        "ref": "dev",
+        "repo": "hyprkool",
+        "type": "github"
+      }
+    },
+    "hyprkool-7-1": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "hyprland": [
+          "hyprland"
+        ],
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "nixpkgs-unstable": "nixpkgs-unstable"
+      },
+      "locked": {
+        "lastModified": 1722878442,
+        "narHash": "sha256-II9j5IplV6tWg7AKsKIGkFSeDby+AJgB+nNHv3cU16k=",
+        "owner": "thrombe",
+        "repo": "hyprkool",
+        "rev": "e0ae6c6b6513eaa70540fea200031743e4b62165",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thrombe",
+        "ref": "0.7.1",
         "repo": "hyprkool",
         "type": "github"
       }
@@ -888,6 +916,22 @@
     },
     "nixpkgs-unstable": {
       "locked": {
+        "lastModified": 1719075281,
+        "narHash": "sha256-CyyxvOwFf12I91PBWz43iGT1kjsf5oi6ax7CrvaMyAo=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a71e967ef3694799d0c418c98332f7ff4cc5f6af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable_2": {
+      "locked": {
         "lastModified": 1728888510,
         "narHash": "sha256-nsNdSldaAyu6PE3YUA+YQLqUDJh+gRbBooMMekZJwvI=",
         "owner": "nixos",
@@ -972,6 +1016,7 @@
         "helix": "helix",
         "home-manager": "home-manager",
         "hyprkool": "hyprkool",
+        "hyprkool-7-1": "hyprkool-7-1",
         "hyprland": "hyprland",
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database",
@@ -979,7 +1024,7 @@
         "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-unstable": "nixpkgs-unstable_2",
         "nixvim": "nixvim",
         "rust-overlay": "rust-overlay",
         "scripts": "scripts",
