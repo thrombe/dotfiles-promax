@@ -23,6 +23,13 @@
       url = "github:lypanov/zellij/repeat_instruction_retries";
       flake = false;
     };
+    nixvim = {
+      # url = "github:nix-community/nixvim/nixos-23.11";
+      # inputs.nixpkgs.follows = "nixpkgs";
+
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     magicavoxel = {
       url = "https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.1-win64.zip";
@@ -76,6 +83,7 @@
           # - [zed fhs passthru](https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/ze/zed-editor/package.nix#L252)
           ${super.unstable.zed-editor.fhs}/bin/zed --foreground $@
         '');
+        nixvim = (super.callPackage ./nixvim.nix {inherit inputs system;});
 
         blender = super.unstable.blender;
         godot_4 = super.unstable.godot_4;
@@ -294,6 +302,7 @@
 
           zed-editor
           cursor
+          nixvim
 
           # rustdesk-flutter
           # anydesk
