@@ -119,7 +119,7 @@ roots = ["typst.toml"]
 comment-token = "//"
 file-types = ["typ"]
 indent = { tab-width = 4, unit = "    " }
-language-servers = [ "typst-lsp" ]
+language-servers = [ "tinymist", "typst-lsp" ]
 
 [language.auto-pairs]
 '(' = ')'
@@ -135,3 +135,6 @@ command = "typst-lsp"
 # - [Can't disable `exportPdf` · Issue #265 · nvarner/typst-lsp · GitHub](https://github.com/nvarner/typst-lsp/issues/265)
 # - [disable compile on save · nvarner/typst-lsp · Discussion #158 · GitHub](https://github.com/nvarner/typst-lsp/discussions/158#discussioncomment-6272972)
 config = { exportPdf = "never" }
+
+[language-server.tinymist]
+command = "tinymist"
