@@ -2,7 +2,7 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # nixpkgs-git.url = "github:nixos/nixpkgs";
@@ -28,7 +28,7 @@
     # };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -50,7 +50,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     stylix = {
-      url = "github:danth/stylix/release-24.05";
+      url = "github:danth/stylix/release-24.11";
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
@@ -86,7 +86,7 @@
     };
     hyprland = {
       url = "https://github.com/hyprwm/Hyprland";
-      ref = "refs/tags/v0.44.1";
+      ref = "refs/tags/v0.45.2";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       type = "git";
       submodules = true;
@@ -114,15 +114,9 @@
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
-    hyprkool-7-1 = {
-      url = "github:thrombe/hyprkool/0.7.1";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.hyprland.follows = "hyprland";
-    };
     hyprkool = {
       url = "github:thrombe/hyprkool/dev";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
       inputs.hyprland.follows = "hyprland";
     };
@@ -193,8 +187,7 @@
           # wayland-protocols =super.unstable.wayland-protocols;
           # xwayland = super.unstable.xwayland; # needed for good gaming performance
 
-          # FIXME: hyprland 0.41.2 needs hyprkool-rs 7.1 but overriding plugin is more recent
-          hyprkool-rs = flakePackage inputs.hyprkool-7-1 "hyprkool-rs";
+          hyprkool-rs = flakePackage inputs.hyprkool "hyprkool-rs";
           hyprkool-plugin = (flakePackage inputs.hyprkool "hyprkool-plugin").override {
             hyprland = super.hyprland;
           };
@@ -392,8 +385,6 @@
         # Enable CUPS to print documents.
         services.printing.enable = true;
 
-        # Enable sound with pipewire.
-        sound.enable = true;
         hardware.pulseaudio.enable = false;
         security.rtkit.enable = true;
         services.pipewire = {
@@ -710,11 +701,10 @@
           settings.KbdInteractiveAuthentication = false;
         };
 
-        # Enable OpenGL
-        hardware.opengl = {
+        hardware.graphics = {
           enable = true;
-          driSupport = true;
-          driSupport32Bit = true;
+          # driSupport = true;
+          enable32Bit = true;
         };
 
         # a tool to manage cpu freq, turn off cpus, create and manage profiles, etc
@@ -848,8 +838,8 @@
 
           papirus-icon-theme
           adwaita-qt
-          gnome.adwaita-icon-theme
-          qt5ct
+          adwaita-icon-theme
+          libsForQt5.qt5ct
           nwg-look
           gsettings-qt
 

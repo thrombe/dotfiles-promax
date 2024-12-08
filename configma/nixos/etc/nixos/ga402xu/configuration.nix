@@ -164,9 +164,9 @@ in {
     fedora-asus-kernel = {buildLinux, ...} @ args:
       buildLinux (args
         // rec {
-          version = "6.11";
+          version = "6.11.9";
           extraMeta.branch = "6.11";
-          modDirVersion = "6.11.0";
+          modDirVersion = version;
 
           # extraConfig = "${fedora-40-asus-kernel-source}/package/kernel-x86_64-fedora.config";
 
@@ -174,12 +174,12 @@ in {
             name = "linux-source";
             inherit version;
 
-            # - [lukenukem/asus-kernel](https://copr.fedorainfracloud.org/coprs/lukenukem/asus-kernel/package/kernel/)
+            # - [lukenukem/asus-kernel](https://copr.fedorainfracloud.org/coprs/lukenukem/asus-kernel/monitor/)
             # - [/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/)
             # - [kernel build logs](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/builder-live.log.gz)
             src = builtins.fetchurl {
-              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-41-x86_64/08026916-kernel/kernel-6.11.0-666.rog.fc41.src.rpm";
-              sha256 = "sha256:1zs8shim3mc536j8jj9nman6g7mj2fpxn8ndcpmcdnm5y7jjqf4p";
+              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/08278215-kernel/kernel-6.11.9-666.rog.fc40.src.rpm";
+              sha256 = "sha256:1d4ibrf5pjabnhp88q7lk1ckwbb7sdgaafdw5f97gbrml4ky271k";
             };
 
             phases = ["unpackPhase" "patchPhase"];
@@ -538,26 +538,27 @@ in {
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Do not disable this unless your GPU is unsupported or if you have a good reason to.
-    open = true;
+    open = false;
     # if 'nvidia-smi -L' unable to determine device
     # some nvidia forums said to use non-open drivers
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     # - [nvidia-setting broken](https://github.com/TLATER/dotfiles/blob/0310be00fda729b4880ec55e48eb4f81d4ed0b75/nixos-config/hosts/yui/nvidia/default.nix#L17)
-    # nvidiaSettings = lib.mkForce false;
-    nvidiaSettings = true;
+    nvidiaSettings = lib.mkForce false;
+    # nvidiaSettings = true;
 
     # package = config.boot.kernelPackages.nvidiaPackages.production;
     # - [TLATER nix config](https://github.com/TLATER/dotfiles/blob/9122f514f747f4366b26ebc12573403ea87685f4/nixos-config/hosts/yui/nvidia/default.nix#L12)
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "555.58.02";
-      sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
-      sha256_aarch64 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
-      openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
-      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
-      persistencedSha256 = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+      version = "560.35.03";
+      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+      sha256_aarch64 = "sha256-s8ZAVKvRNXpjxRYqM3E5oss5FdqW+tv1qQC2pDjfG+s=";
+      openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
+      settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+      persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
     };
+
     prime = {
       offload = {
         enable = true;
