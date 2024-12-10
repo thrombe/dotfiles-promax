@@ -1338,11 +1338,11 @@
         "zls": "zls"
       },
       "locked": {
-        "lastModified": 1732634713,
-        "narHash": "sha256-lhx+u5DapTn++NTVPkfg/Ne/KIB2QQbR1Zo+ZdqRGog=",
+        "lastModified": 1733857546,
+        "narHash": "sha256-Eto4rY6uHYjlcagHLuvcY26lBCdV/gvHjow4gM8GVag=",
         "owner": "thrombe",
         "repo": "zathura-images",
-        "rev": "63ea75453b9f350963ea066e25a67ef52293743d",
+        "rev": "925679d87f8a7f0d3b75a2859195b81f372cfb71",
         "type": "github"
       },
       "original": {
