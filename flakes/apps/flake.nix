@@ -2,7 +2,7 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -93,7 +93,7 @@
         floorp = super.unstable.floorp;
         slurp = super.unstable.slurp;
         wf-recorder = super.unstable.wf-recorder;
-        obs-studio = super.unstable.obs-studio;
+        # obs-studio = super.unstable.obs-studio;
         anydesk = super.unstable.anydesk;
         krita = super.unstable.krita;
         kdenlive = super.unstable.libsForQt5.kdenlive;
@@ -241,7 +241,8 @@
           # include it via src = ./cursor.AppImage, instead of fetchurl
           url = "https://downloader.cursor.sh/linux/appImage/x64";
           # hash = "sha256-ZURE8UoLPw+Qo1e4xuwXgc+JSwGrgb/6nfIGXMacmSg=";
-          hash = "sha256-WtfyiNGnUn8g1HR0TQPyn3SMJmjqe+otAYeyokMIO+w=";
+          # hash = "sha256-WtfyiNGnUn8g1HR0TQPyn3SMJmjqe+otAYeyokMIO+w=";
+          hash = "sha256-adEyDExGvxwpvAT0qYiCfvkpINP9BJ6a+LSwQHQ/H/U=";
         };
         appimageContents = pkgs.appimageTools.extract {inherit pname version src;};
       in
@@ -300,9 +301,9 @@
           # xfce.thunar
           # cinnamon.nemo-with-extensions
 
-          zed-editor
+          # zed-editor
           cursor
-          nixvim
+          # nixvim
 
           # rustdesk-flutter
           # anydesk
