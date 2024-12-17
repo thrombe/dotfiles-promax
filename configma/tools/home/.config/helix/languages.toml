@@ -31,7 +31,7 @@ args = [ "-data", ".cache/jdtls" ]
 # - [helix python lsp](https://github.com/helix-editor/helix/wiki/How-to-install-the-default-language-servers#python---ruff)
 [[language]]
 name = "python"
-auto-format = false
+auto-format = true
 indent = { tab-width = 4, unit = "    " }
 formatter = { command = "ruff", args = ["format", "-"] }
 # not sure if it is necessary to mention both as helix docs have just one, but ruff has to be used with an lsp

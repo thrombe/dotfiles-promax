@@ -217,6 +217,8 @@ scrollback_editor "hx"
 
 session_serialization true
 
+copy_on_select false
+
 ui {
     pane_frames {
         hide_session_name false
