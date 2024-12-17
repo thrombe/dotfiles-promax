@@ -518,7 +518,20 @@
                 mv $i ./unconverted/$i
               done
             '')
+
             aichat
+            (pkgs.writeScriptBin "chat" ''
+              #!/usr/bin/env zsh
+              ${aichat}/bin/aichat -r default $@
+            '')
+            (pkgs.writeScriptBin "chat-web" ''
+              #!/usr/bin/env zsh
+              ${aichat}/bin/aichat -r web-search $@
+            '')
+            (pkgs.writeScriptBin "coder" ''
+              #!/usr/bin/env zsh
+              ${aichat}/bin/aichat -r code $@
+            '')
 
             # `top` but for io operations
             iotop
