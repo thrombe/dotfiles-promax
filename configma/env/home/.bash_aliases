@@ -76,6 +76,8 @@ alias zz="open_zellij_workspace"
 alias za="zellij a \$(zellij ls | grep -v 'EXITED' | cut -d ' ' -f1 | sed 's/\x1b\[[0-9;]*m//g' | fzf)"
 alias zri="zellij run --in-place -- "
 alias yp="~/0Git/dotfiles-promax-private/scripts/yankpass.sh"
+alias chat="aichat -r default"
+alias chat-web="aichat -r web-search"
 
 # trashy cli
 alias tp="trash put"

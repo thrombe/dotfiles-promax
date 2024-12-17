@@ -518,6 +518,7 @@
                 mv $i ./unconverted/$i
               done
             '')
+            aichat
 
             # `top` but for io operations
             iotop
