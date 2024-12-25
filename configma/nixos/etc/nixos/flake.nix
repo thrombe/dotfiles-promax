@@ -490,14 +490,17 @@
 
             # tools
             helix
-            alacritty
             zellij
+            alacritty
             zoxide
             yazi
             broot
+            libtree # ldd but tree
+            git
             gitui
             lazygit
             delta
+            tokei # cloc but rust
             # distrobox
             trashy
             starship
@@ -592,9 +595,7 @@
 
             # dev
             # rustup
-            libtree # ldd but tree
             libclang
-            git
             gcc
             python311
           ];
