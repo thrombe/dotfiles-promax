@@ -18,8 +18,7 @@
 (defpoll time :initial "" :interval "60s" "date '+%H:%M'")
 (defpoll date :initial "" :interval "60s" "date '+%a %d/%m/%Y'")
 
-
-(defwindow top-bar
+(defwindow top-bar-0
   :stacking "fg"
   :namespace "eww"
   :monitor 0
@@ -29,6 +28,51 @@
     :height "36px"
     :anchor "top left"
   )
+  (top-bar :monitor 0)
+)
+(defwindow cal-0
+  :stacking "fg"
+  :namespace "eww"
+  :monitor 0
+  :geometry (geometry
+    :y 0
+    :x 10
+    :width "0%"
+    :height "0%"
+    :anchor "top right"
+  )
+  (Cal :monitor 0)
+)
+
+; - [widget width scaled monitor](https://github.com/elkowar/eww/discussions/592)
+(defwindow top-bar-1
+  :stacking "fg"
+  :namespace "eww"
+  :monitor 1
+  :geometry (geometry
+    :y 2
+    :width "120%"
+    :height "36px"
+    :anchor "top left"
+  )
+  (top-bar :monitor 1)
+)
+(defwindow cal-1
+  :stacking "fg"
+  :namespace "eww"
+  :monitor 1
+  :geometry (geometry
+    :y 0
+    :x 10
+    :width "0%"
+    :height "0%"
+    :anchor "top right"
+  )
+  (Cal :monitor 1)
+)
+
+
+(defwidget top-bar [monitor]
   (centerbox
     (box
       :halign "start"
@@ -59,23 +103,9 @@
         :class "tray"
         :spacing 5
       )
-      (Stats)
+      (Stats :monitor monitor)
     )
   )
-)
-
-(defwindow cal
-  :stacking "fg"
-  :namespace "eww"
-  :monitor 0
-  :geometry (geometry
-    :y 0
-    :x 10
-    :width "0%"
-    :height "0%"
-    :anchor "top right"
-  )
-  (Cal)
 )
 
 (defwidget WorkspaceWindows [icon-size]
@@ -229,7 +259,7 @@
   )
 )
 
-(defwidget Stats []
+(defwidget Stats [monitor]
   (box
     :space-evenly false
     :spacing 5
@@ -240,7 +270,7 @@
     (MicStat)
     (Cpu)
     (PowerStat)
-    (Datetime)
+    (Datetime :monitor monitor)
   )
 )
 
@@ -252,9 +282,9 @@
   )
 )
 
-(defwidget Cal []
+(defwidget Cal [monitor]
   (eventbox
-    :onhoverlost "sleep 0.5 && eww close cal &"
+    :onhoverlost "sleep 0.5 && eww close cal-${monitor} &"
     (box
       :space-evenly false
       :orientation "vertical"
@@ -267,9 +297,9 @@
   )
 )
 
-(defwidget Datetime []
+(defwidget Datetime [monitor]
   (eventbox
-    :onclick "eww open --toggle cal"
+    :onclick "eww open --toggle cal-${monitor}"
     ; :onhover "eww open cal"
     (fancy-box :color "#ABE9B3"
       (label :text " ${time} |  ${date}")
