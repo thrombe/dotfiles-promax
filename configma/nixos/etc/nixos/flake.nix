@@ -238,6 +238,7 @@
           nh = super.unstable.nh;
           nvd = super.unstable.nvd;
           nix-output-monitor = super.unstable.nix-output-monitor;
+          ungoogled-chromium = super.unstable.ungoogled-chromium;
 
           # eww = super.unstable.eww;
           # eww = flakeDefaultPackage inputs.eww-git;
