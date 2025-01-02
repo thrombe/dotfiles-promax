@@ -53,8 +53,8 @@
     # NOTE: performance scaling_governer is too aggressive. powersave is fine
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
-    # ${pkgs.asusctl}/bin/asusctl profile --profile-set balanced
-    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
+    ${pkgs.asusctl}/bin/asusctl profile --profile-set balanced
+    # ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
   '';
   powerstate-sync-bat = pkgs.writeShellScriptBin "powerstate-sync-bat" ''
     echo "setting battery power settings"
@@ -76,8 +76,8 @@
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
 
-    # ${pkgs.asusctl}/bin/asusctl profile --profile-set quiet
-    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
+    ${pkgs.asusctl}/bin/asusctl profile --profile-set quiet
+    # ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
   '';
   powerstate-sync = pkgs.writeShellScriptBin "powerstate-sync" ''
     # status=="$(${pkgs.busybox}/bin/grep "Battery 0" | ${pkgs.busybox}/bin/cut -d ',' -f1 | ${pkgs.busybox}/bin/cut ' ' -f3)"
