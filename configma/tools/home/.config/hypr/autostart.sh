@@ -18,6 +18,7 @@ hypridle &
 easyeffects --gapplication-service &
 
 # waybar &
-eww open top-bar
+eww open top-bar-0
+eww open top-bar-1
 
 dunst
