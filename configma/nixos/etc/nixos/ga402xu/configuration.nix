@@ -179,7 +179,7 @@ in {
     fedora-asus-kernel = {buildLinux, ...} @ args:
       buildLinux (args
         // rec {
-          version = "6.11.9";
+          version = "6.11.11";
           extraMeta.branch = "6.11";
           modDirVersion = version;
 
@@ -193,8 +193,8 @@ in {
             # - [/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/)
             # - [kernel build logs](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/builder-live.log.gz)
             src = builtins.fetchurl {
-              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/08278215-kernel/kernel-6.11.9-666.rog.fc40.src.rpm";
-              sha256 = "sha256:1d4ibrf5pjabnhp88q7lk1ckwbb7sdgaafdw5f97gbrml4ky271k";
+              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-41-x86_64/08345639-kernel/kernel-6.11.11-666.rog.fc41.src.rpm";
+              sha256 = "sha256:1ffxbs49qncx5hiblml5i884srr5xbzp3jyafkfi2hzfprb4fzbj";
             };
 
             phases = ["unpackPhase" "patchPhase"];
