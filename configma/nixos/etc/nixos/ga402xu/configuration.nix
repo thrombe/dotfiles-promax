@@ -29,27 +29,37 @@
       echo 0
     fi
   '';
+  is-hyprland = pkgs.writeShellScriptBin "is-hyprland" ''
+    if command -v hyprctl &> /dev/null && [[ $(sudo -u issac bash -c "hyprctl instances -j | jq 'length > 0'") == "true" ]]; then
+      echo 1
+    else
+      echo 0
+    fi
+  '';
 
-  # TODO: powerstate commands are completely broken
-  # wlr-randr does not work with sudo
   powerstate-sync-ac = pkgs.writeShellScriptBin "powerstate-sync-ac" ''
     echo "setting ac power settings"
 
-    if [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
+    if [[ "$(${is-hyprland}/bin/is-hyprland)" == "1" ]]; then
+      echo "powerstate hyprland"
+    
+      instance=$(sudo -u issac bash -c "hyprctl instances -j | jq -r '.[0].instance'")
+      sudo -u issac bash -c "hyprctl -i $instance keyword monitor eDP-1,2560x1600@165.00Hz,0x0,1"
+    elif [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
       echo "powerstate wayland"
-
+    
       ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@165.001999Hz
     else
       echo "powerstate x11"
-
-      # - [xrandr cannot open display](https://bbs.archlinux.org/viewtopic.php?id=122848)
+    
       export XAUTHORITY=/home/${username}/.Xauthority
       export DISPLAY=:0
 
       ${pkgs.xorg.xrandr}/bin/xrandr -r 165
     fi
 
-    ${pkgs.coreutils}/bin/echo "balance_performance" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+    # balance_performance balance_power power
+    ${pkgs.coreutils}/bin/echo "balance_power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
     # NOTE: performance scaling_governer is too aggressive. powersave is fine
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
@@ -59,7 +69,12 @@
   powerstate-sync-bat = pkgs.writeShellScriptBin "powerstate-sync-bat" ''
     echo "setting battery power settings"
 
-    if [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
+    if [[ "$(${is-hyprland}/bin/is-hyprland)" == "1" ]]; then
+      echo "powerstate hyprland"
+    
+      instance=$(sudo -u issac bash -c "hyprctl instances -j | jq -r '.[0].instance'")
+      sudo -u issac bash -c "hyprctl -i $instance keyword monitor eDP-1,2560x1600@60.00Hz,0x0,1"
+    elif [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
       echo "powerstate wayland"
 
       ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@60.001999Hz
@@ -586,6 +601,7 @@ in {
     powerstate-sync-bat
     powerstate-sync
     get-session
+    is-hyprland
     is-wayland
     is-x11
   ];
