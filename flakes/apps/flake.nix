@@ -23,6 +23,11 @@
       url = "github:lypanov/zellij/repeat_instruction_retries";
       flake = false;
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+    };
     nixvim = {
       # url = "github:nix-community/nixvim/nixos-23.11";
       # inputs.nixpkgs.follows = "nixpkgs";
@@ -84,6 +89,7 @@
           ${super.unstable.zed-editor.fhs}/bin/zed --foreground $@
         '');
         nixvim = (super.callPackage ./nixvim.nix {inherit inputs system;});
+        ghostty = flakeDefaultPackage inputs.ghostty;
 
         blender = super.unstable.blender;
         godot_4 = super.unstable.godot_4;
@@ -304,6 +310,7 @@
           # zed-editor
           cursor
           # nixvim
+          ghostty
 
           # rustdesk-flutter
           # anydesk
@@ -336,6 +343,7 @@
           floorp
           opera
           libreoffice-qt
+          chromium
 
           # music apps
           # spotube
@@ -343,6 +351,8 @@
           # nuclear
           # moosync
           # muffon
+
+          # kanata
 
           # magicavoxel
           # pkgs.wine64Packages.unstable
