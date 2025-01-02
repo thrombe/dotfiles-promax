@@ -57,7 +57,8 @@
     };
 
     alacritty = {
-      url = "github:ayosec/alacritty/graphics";
+      # url = "github:ayosec/alacritty/graphics";
+      url = "github:alacritty/alacritty/v0.14.0";
       flake = false;
     };
     zellij = {
@@ -197,14 +198,15 @@
           # - [Add support for libsixel](https://github.com/alacritty/alacritty/issues/910)
           # - [Support for graphics in alacritty](https://github.com/alacritty/alacritty/pull/4763)
           # - [ayosec/alacritty: alacritty with sixel](https://github.com/ayosec/alacritty/tree/graphics)
-          # alacritty = super.alacritty.overrideAttrs (drv: rec {
-          #   src = inputs.alacritty;
-          #   cargoDeps = drv.cargoDeps.overrideAttrs (_: {
-          #     inherit src;
-          #     outputHash = "sha256-F9NiVbTIVOWUXnHtIUvxlZ5zvGtgz/AAyAhyS4w9f9I=";
-          #   });
-          # });
-          alacritty = super.unstable.alacritty;
+          alacritty = super.alacritty.overrideAttrs (drv: rec {
+            src = inputs.alacritty;
+            version = "0.14.0";
+            cargoDeps = drv.cargoDeps.overrideAttrs (_: {
+              inherit src version;
+              outputHash = "sha256-T+/G2z7H/egJ/IlP3KA31jydg1CmFdLW8bLYSf/yWck=";
+            });
+          });
+          # alacritty = super.unstable.alacritty;
 
           # - [Sixel support broken since v0.40.0](https://github.com/zellij-org/zellij/issues/3372)
           # - [zellij fix sixel](https://github.com/zellij-org/zellij/pull/3506)
