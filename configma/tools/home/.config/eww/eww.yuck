@@ -2,11 +2,7 @@
 (defvar hyprkool "hyprkool")
 
 ; - [[FEATURE] Can't format command strings · Issue #998 · elkowar/eww · GitHub](https://github.com/elkowar/eww/issues/998)
-(deflisten workspace-windows :initial "[]" "hyprkool info -m active-workspace-windows -s 64 -t Papirus")
-(deflisten active-window :initial "{}" "hyprkool info -m active-window -s 64 -t Papirus")
-(deflisten activities :initial "[]" "hyprkool info -m activities")
-(deflisten workspaces :initial "{}" "hyprkool info -m workspaces")
-(deflisten all-workspaces :initial "{}" "hyprkool info -m all-workspaces")
+(deflisten monitors-info :initial "{}" "hyprkool info -m monitors-all-info")
 (deflisten submap :initial "{\"submap\": \"\"}" "hyprkool info -m submap")
 
 (deflisten brightness :initial "{}" "./scripts/brightness.sh")
@@ -28,7 +24,7 @@
     :height "36px"
     :anchor "top left"
   )
-  (top-bar :monitor 0)
+  (top-bar :monitor 0 :monitor-info {jq(monitors-info, ".[0]")})
 )
 (defwindow cal-0
   :stacking "fg"
@@ -55,7 +51,7 @@
     :height "36px"
     :anchor "top left"
   )
-  (top-bar :monitor 1)
+  (top-bar :monitor 1 :monitor-info {jq(monitors-info, ".[1]")})
 )
 (defwindow cal-1
   :stacking "fg"
@@ -72,7 +68,7 @@
 )
 
 
-(defwidget top-bar [monitor]
+(defwidget top-bar [monitor monitor-info]
   (centerbox
     (box
       :halign "start"
@@ -82,15 +78,18 @@
       :space-evenly false
       :spacing 5
       (Launcher)
-      (Activities)
-      ; (Workspaces)
-      (AllWorkspaces)
-      (Submap)
+      (Monitors :monitors monitors-info)
+      (Activities :activities {monitor-info.activities})
+      (AllWorkspaces :activities {monitor-info.activities})
+      (Submap :submap submap)
     )
     (box
       :halign "center"
       :space-evenly false
-      (WorkspaceWindows :icon-size 36)
+      (WorkspaceWindows
+        :icon-size 36
+        :workspace {jq(monitor-info.activities, ".[] | select(.focused == true) | .workspaces | .[] | .[] | select(.focused == true)")}
+      )
     )
     (box
       :halign "end"
@@ -108,14 +107,15 @@
   )
 )
 
-(defwidget WorkspaceWindows [icon-size]
+(defwidget WorkspaceWindows [icon-size workspace]
   (box :space-evenly false :orientation "horizontal" :halign "center"
-    (label :visible false :text "${active-window}") ; without this, it does not update in the style for some reason
-    (for window in workspace-windows
+    ; (label :visible false :text "${active-window}") ; without this, it does not update in the style for some reason
+    ; (label :visible true :text "${jq(workspace, ".windows | .[] | .address")}")
+    (for window in {jq(workspace.windows, "sort_by(.title)")}
       (box
         :style "
           background-color: #24273a;
-          border: 3px solid ${window.title == active-window.title ? "#a6da95" : "#24273a"};
+          border: 3px solid ${"\"${window.address}\"" == (jq(workspace.windows, ".[] | select(.focused == true) | .address")) ? "#a6da95" : "#24273a"};
           margin-right: 4px;
         "
         (eventbox
@@ -131,7 +131,38 @@
   )
 )
 
-(defwidget Activities []
+(defwidget Monitors [monitors]
+  (box :orientation "horizontal"
+    :style "
+      background-color: #bd93f9;
+
+      border-radius: 5px;
+
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-left: 3px;
+      padding-right: 3px;
+    "
+    (for m in monitors
+      (box
+        (eventbox
+          :width {40}
+          :height {10}
+          :style "
+            background-color: ${m.focused ? "#45475a" : "transparent"};
+            border-radius: 1px;
+            margin-right: 3px;
+          "
+          :tooltip "${m.name}"
+          ; :onclick "${hyprkool} switch-to-activity -n '${m.name}'"
+          ; :onmiddleclick "${hyprkool} switch-to-activity -n '${m.name}'; ${hyprkool} toggle-overview"
+        )
+      )
+    )
+  )
+)
+
+(defwidget Activities [activities]
   (box :orientation "horizontal"
     :style "
       background-color: #ed8796;
@@ -162,12 +193,13 @@
   )
 )
 
-(defwidget AllWorkspaces []
+(defwidget AllWorkspaces [activities]
   (box :orientation "horizontal" :spacing 5
-    (for workspaces in all-workspaces
+    (for activity in activities
       (box :orientation "vertical"
+          ; background-color: ${active-window.workspace == "special:minimized" ? "#ca9ee6" : "#a6e3a1"};
         :style "
-          background-color: ${active-window.workspace == "special:minimized" ? "#ca9ee6" : "#a6e3a1"};
+          background-color: #a6e3a1;
 
           border-radius: 5px;
 
@@ -176,7 +208,7 @@
           padding-left: 3px;
           padding-right: 3px;
         "
-        (for row in workspaces
+        (for row in {activity.workspaces}
           (box
             (for ws in row
               (eventbox
@@ -205,37 +237,6 @@
   )
 )
 
-(defwidget Workspaces []
-  (box :orientation "vertical"
-    :style "
-      background-color: ${active-window.workspace == "special:minimized" ? "#ca9ee6" : "#a6e3a1"};
-
-      border-radius: 5px;
-
-      padding-top: 3px;
-      padding-bottom: 3px;
-      padding-left: 3px;
-      padding-right: 3px;
-    "
-    (for row in workspaces
-      (box
-        (for ws in row
-          (eventbox
-            :width {17}
-            :height {10}
-            :style "
-              background-color: ${ws.focused ? "#45475a" : "transparent"};
-              border-radius: 1px;
-            "
-            :tooltip "${ws.name}"
-            :onclick "${hyprkool} switch-to-workspace -n '${ws.name}'"
-          )
-        )
-      )
-    )
-  )
-)
-
 (defwidget Launcher []
   (eventbox
     :onclick "rofi -show drun -show-icons &"
@@ -251,7 +252,7 @@
   )
 )
 
-(defwidget Submap []
+(defwidget Submap [submap]
   (eventbox
     (fancy-box :color "#f5a97f"
       (label :text "${submap.submap == "" ? "normal" : submap.submap}")
