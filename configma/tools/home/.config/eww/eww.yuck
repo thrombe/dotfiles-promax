@@ -78,7 +78,7 @@
       :space-evenly false
       :spacing 5
       (Launcher)
-      (Monitors :monitors monitors-info)
+      (Monitors :monitors monitors-info :current monitor)
       (Activities :activities {monitor-info.activities})
       (AllWorkspaces :activities {monitor-info.activities})
       (Submap :submap submap)
@@ -131,7 +131,7 @@
   )
 )
 
-(defwidget Monitors [monitors]
+(defwidget Monitors [monitors current]
   (box :orientation "horizontal"
     :style "
       background-color: #bd93f9;
@@ -149,13 +149,14 @@
           :width {40}
           :height {10}
           :style "
-            background-color: ${m.focused ? "#45475a" : "transparent"};
+            background-color: ${m.name == monitors[current].name ? "#45475a" : "transparent"};
             border-radius: 1px;
             margin-right: 3px;
           "
           :tooltip "${m.name}"
-          ; :onclick "${hyprkool} switch-to-activity -n '${m.name}'"
-          ; :onmiddleclick "${hyprkool} switch-to-activity -n '${m.name}'; ${hyprkool} toggle-overview"
+          :onclick "${hyprkool} switch-to-monitor -n '${m.name}'"
+          :onmiddleclick "${hyprkool} switch-to-monitor -n '${m.name}' -w"
+          :onrightclick "${hyprkool} swap-monitors-active-workspace"
         )
       )
     )
@@ -240,6 +241,7 @@
 (defwidget Launcher []
   (eventbox
     :onclick "rofi -show drun -show-icons &"
+    :onmiddleclick "eww reload; eww open-many top-bar-0 top-bar-1"
     (fancy-box :color "#89b4fa"
       (label
         :text ""
