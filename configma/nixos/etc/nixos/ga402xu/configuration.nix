@@ -59,7 +59,7 @@
     fi
 
     # balance_performance balance_power power
-    ${pkgs.coreutils}/bin/echo "balance_power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+    ${pkgs.coreutils}/bin/echo "power" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
     # NOTE: performance scaling_governer is too aggressive. powersave is fine
     ${pkgs.coreutils}/bin/echo "powersave" | ${pkgs.coreutils}/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
