@@ -7,6 +7,7 @@
 
 (deflisten brightness :initial "{}" "./scripts/brightness.sh")
 
+(defpoll idle :initial "{\"inhibit\": false}" :interval "5s" "./scripts/idle_inhibit.sh")
 (defpoll volume :initial "{\"level\": 0, \"muted\": true}" :interval "5s" "./scripts/volume.sh")
 (defpoll mic :initial "{\"level\": 0, \"muted\": true}" :interval "5s" "./scripts/mic.sh")
 (defpoll network :initial "{\"enabled\": false}" :interval "30s" "./scripts/network.sh")
@@ -268,6 +269,7 @@
     :spacing 5
     (NetworkStat)
     (BatteryStat)
+    ; (IdleInhibit)
     (BrightnessStat)
     (VolumeStat)
     (MicStat)
@@ -373,9 +375,19 @@
 
 (defwidget BrightnessStat []
   (eventbox
+    :onrightclick "./scripts/idle_inhibit.sh click"
     :onscroll "./scripts/brightness-scroll.sh {}"
     (fancy-box :color "#F8BD96"
-      (label :text " ${brightness.level}")
+      (label :text "${idle.inhibit ? "👁 " : ""} ${brightness.level}")
+    )
+  )
+)
+
+(defwidget IdleInhibit []
+  (eventbox
+    :onclick "./scripts/idle_inhibit.sh click"
+    (fancy-box :color "#89b4fa"
+      (label :text "👁 ${idle.inhibit ? "x" : "⏱ "}")
     )
   )
 )
