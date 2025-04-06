@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs-yuzu.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
@@ -11,16 +12,30 @@
 
   outputs = inputs:
     inputs.flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
-      pkgs = import inputs.nixpkgs {
+      unstable = import inputs.nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
-      unstable = import inputs.nixpkgs-unstable {
+      unstable-latest = import inputs.nixpkgs-unstable-latest {
         inherit system;
         config.allowUnfree = true;
       };
       pkgs-yuzu = import inputs.nixpkgs-yuzu {
         inherit system;
+      };
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [
+          (self: super: {
+            yuzu = pkgs-yuzu.yuzu-early-access;
+            # yuzu = pkgs-yuzu.yuzu-mainline;
+
+            torzu = unstable-latest.torzu;
+
+            ryubing = unstable-latest.ryubing;
+          })
+        ];
       };
 
       steam-pkg = unstable.steam.override {
@@ -44,9 +59,8 @@
           packages = with pkgs; [
             pkg-config
 
-            # - [suyu: yuzu fork](https://github.com/suyu-emu/suyu)
-            # yuzu-mainline
-            pkgs-yuzu.yuzu-early-access
+            yuzu
+            ryubing
 
             steam-pkg
             steam-pkg.run
@@ -78,6 +92,8 @@
                 unstable.gamescope
               ];
             })
+
+            zerotierone
 
             renderdoc
             (pkgs.writeShellScriptBin "fugl" ''
