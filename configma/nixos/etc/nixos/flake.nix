@@ -66,7 +66,7 @@
       flake = false;
     };
     helix = {
-      url = "github:helix-editor/helix/24.07";
+      url = "github:helix-editor/helix/25.01";
 
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
@@ -229,8 +229,6 @@
           delta = super.unstable.delta;
           distrobox = super.unstable.distrobox;
           rclone = super.unstable.rclone;
-          waybar = super.unstable.waybar;
-          pyprland = super.unstable.pyprland;
           hyprcursor = super.unstable.hyprcursor;
           hyprlock = super.unstable.hyprlock;
           hypridle = super.unstable.hypridle;
@@ -396,7 +394,7 @@
           alsa.support32Bit = true;
           pulse.enable = true;
           # If you want to use JACK applications, uncomment this
-          #jack.enable = true;
+          # jack.enable = true;
 
           # use the example session manager (no others are packaged yet so this is enabled by default,
           # no need to redefine it in your config for now)
@@ -499,6 +497,7 @@
             yazi
             broot
             libtree # ldd but tree
+            binwalk # look for standard headers inside binary files (zip embedded in bin etc)
             git
             gitui
             lazygit
@@ -529,6 +528,10 @@
             (pkgs.writeScriptBin "chat" ''
               #!/usr/bin/env zsh
               ${aichat}/bin/aichat -r default $@
+            '')
+            (pkgs.writeScriptBin "chat-think" ''
+              #!/usr/bin/env zsh
+              ${aichat}/bin/aichat -r default -m groq:deepseek-r1-distill-llama-70b $@
             '')
             (pkgs.writeScriptBin "chat-web" ''
               #!/usr/bin/env zsh
@@ -825,9 +828,6 @@
 
           # widget/bar
           eww
-          (waybar.overrideAttrs (old: {
-            mesonFlags = old.mesonFlags ++ ["-Dexperimental=true"];
-          }))
 
           # app launcher
           rofi-wayland
@@ -842,12 +842,7 @@
           wtype
           wev # like xev
 
-          # color picker
-          hyprpicker
-
-          # plugin manager
-          pyprland
-          # plugins
+          hyprpicker # color picker
           # hyprcursor
           hyprlock
           hypridle
