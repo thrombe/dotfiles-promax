@@ -91,7 +91,7 @@
         nixvim = (super.callPackage ./nixvim.nix {inherit inputs system;});
         ghostty = flakeDefaultPackage inputs.ghostty;
 
-        blender = super.unstable.blender;
+        # blender = super.unstable.blender;
         godot_4 = super.unstable.godot_4;
         logseq = super.unstable.logseq;
         obsidian = super.unstable.obsidian;
@@ -294,27 +294,17 @@
       };
       env-packages = pkgs:
         with pkgs; [
-          (python312.withPackages (ps:
-            with ps; [
-            ]))
-          python312Packages.pip
-          python312Packages.virtualenv
-          # virtualenv .venv
-          # source ./.venv/bin/activate
-          # pip install ..
-          # python311Packages.venvShellHook # ??
-
           # xfce.thunar
           # cinnamon.nemo-with-extensions
 
           # zed-editor
-          cursor
+          # cursor
           # nixvim
-          ghostty
+          # ghostty
 
           # rustdesk-flutter
           # anydesk
-          remmina
+          # remmina
 
           ngrok
 
@@ -340,10 +330,10 @@
           # gparted
           #  - just use gparted in virt-manager lol
 
-          floorp
+          # floorp
           opera
-          libreoffice-qt
-          chromium
+          # libreoffice-qt
+          # chromium
 
           # music apps
           # spotube

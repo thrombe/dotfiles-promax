@@ -69,11 +69,11 @@
 
             # TODO: try it out!
             # bottles
-            unstable.gamescope
+            gamescope
 
             # - [nixOS usage | Mach: zig game engine & graphics toolkit](https://machengine.org/about/nixos-usage/)
-            unstable.xorg.libX11
-            unstable.vulkan-loader
+            xorg.libX11
+            vulkan-loader
 
             winetricks
             wine64Packages.unstable
@@ -89,7 +89,7 @@
               extraLibraries = pkgs: [
                 # List library dependencies here
                 pkg-config
-                unstable.gamescope
+                gamescope
               ];
             })
 
@@ -102,7 +102,7 @@
           ];
           shellHook = ''
             export PROJECT_ROOT="$(pwd)"
-            export LD_LIBRARY_PATH=${unstable.xorg.libX11}/lib:${unstable.vulkan-loader}/lib:$LD_LIBRARY_PATH
+            export LD_LIBRARY_PATH=${pkgs.xorg.libX11}/lib:${pkgs.vulkan-loader}/lib:$LD_LIBRARY_PATH
           '';
         };
     });
