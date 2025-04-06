@@ -1,0 +1,17 @@
+
+cursor-style = block
+shell-integration-features = no-cursor
+scrollback-limit = 0
+window-decoration = false
+window-save-state = never
+copy-on-select = false
+font-feature = -liga # turn off ligatures
+
+# by default, .desktop file will open windows in a single process
+# but from commandline, it won't. doing this does
+# https://ghostty.org/docs/config/reference#gtk-single-instance
+gtk-single-instance = true
+
+theme = GruvboxDarkHard
+background = 202020
+background-opacity = 0.82
