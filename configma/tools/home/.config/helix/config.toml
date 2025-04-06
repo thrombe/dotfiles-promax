@@ -16,6 +16,7 @@ theme = "gruvbox_transparent"
 
 [editor]
 line-number = "relative"
+continue-comments = false
 
 [editor.smart-tab]
 enable = false
@@ -25,3 +26,4 @@ enable = true
 
 [editor.lsp]
 display-inlay-hints = true
+auto-signature-help = false
