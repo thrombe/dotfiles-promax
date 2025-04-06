@@ -2,9 +2,8 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs-yuzu.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
@@ -13,10 +12,6 @@
   outputs = inputs:
     inputs.flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
       unstable = import inputs.nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      unstable-latest = import inputs.nixpkgs-unstable-latest {
         inherit system;
         config.allowUnfree = true;
       };
@@ -30,10 +25,8 @@
           (self: super: {
             yuzu = pkgs-yuzu.yuzu-early-access;
             # yuzu = pkgs-yuzu.yuzu-mainline;
-
-            torzu = unstable-latest.torzu;
-
-            ryubing = unstable-latest.ryubing;
+            torzu = unstable.torzu;
+            ryubing = unstable.ryubing;
           })
         ];
       };

@@ -80,9 +80,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-      inputs.devshell.follows = "devshell";
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
     };
     hyprland = {
@@ -181,7 +178,7 @@
         (forSystem inputs.zathura-images.overlays).default
 
         (self: super: {
-          helix = flakeDefaultPackage inputs.helix;
+          # helix = flakeDefaultPackage inputs.helix;
 
           # hyprland = pkgs.unstable.hyprland;
           # hyprland = flakeDefaultPackage inputs.hyprland;
@@ -198,14 +195,14 @@
           # - [Add support for libsixel](https://github.com/alacritty/alacritty/issues/910)
           # - [Support for graphics in alacritty](https://github.com/alacritty/alacritty/pull/4763)
           # - [ayosec/alacritty: alacritty with sixel](https://github.com/ayosec/alacritty/tree/graphics)
-          alacritty = super.alacritty.overrideAttrs (drv: rec {
-            src = inputs.alacritty;
-            version = "0.14.0";
-            cargoDeps = drv.cargoDeps.overrideAttrs (_: {
-              inherit src version;
-              outputHash = "sha256-T+/G2z7H/egJ/IlP3KA31jydg1CmFdLW8bLYSf/yWck=";
-            });
-          });
+          # alacritty = super.alacritty.overrideAttrs (drv: rec {
+          #   src = inputs.alacritty;
+          #   version = "0.14.0";
+          #   cargoDeps = drv.cargoDeps.overrideAttrs (_: {
+          #     inherit src version;
+          #     outputHash = "sha256-T+/G2z7H/egJ/IlP3KA31jydg1CmFdLW8bLYSf/yWck=";
+          #   });
+          # });
           # alacritty = super.unstable.alacritty;
 
           # - [Sixel support broken since v0.40.0](https://github.com/zellij-org/zellij/issues/3372)
@@ -603,7 +600,7 @@
             # rustup
             libclang
             gcc
-            python311
+            python312
           ];
           useDefaultShell = true;
         };
