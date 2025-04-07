@@ -31,13 +31,18 @@
         ];
       };
 
-      steam-pkg = unstable.steam.override {
+      steam-pkg = pkgs.steam.override {
         extraLibraries = pkgs:
           with pkgs; [
             libxkbcommon
             mesa
             wayland
             sndio
+
+            gamescope
+            xorg.libX11
+            vulkan-loader
+            libGL.dev
           ];
       };
 
@@ -55,10 +60,10 @@
             yuzu
             ryubing
 
-            steam-pkg
-            steam-pkg.run
-            # steam
-            # steam-run
+            # steam-pkg
+            # steam-pkg.run
+            steam
+            steam-run
 
             # TODO: try it out!
             # bottles
@@ -67,6 +72,7 @@
             # - [nixOS usage | Mach: zig game engine & graphics toolkit](https://machengine.org/about/nixos-usage/)
             xorg.libX11
             vulkan-loader
+            libGL.dev
 
             winetricks
             wine64Packages.unstable
