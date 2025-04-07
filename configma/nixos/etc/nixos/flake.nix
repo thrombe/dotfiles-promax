@@ -62,7 +62,7 @@
       flake = false;
     };
     zellij = {
-      url = "github:lypanov/zellij/repeat_instruction_retries";
+      url = "github:zellij-org/zellij/v0.42.0";
       flake = false;
     };
     helix = {
@@ -207,14 +207,14 @@
 
           # - [Sixel support broken since v0.40.0](https://github.com/zellij-org/zellij/issues/3372)
           # - [zellij fix sixel](https://github.com/zellij-org/zellij/pull/3506)
-          # zellij = super.zellij.overrideAttrs (drv: rec {
+          # zellij = super.unstable.zellij.overrideAttrs (drv: rec {
           #   src = inputs.zellij;
           #   cargoDeps = drv.cargoDeps.overrideAttrs (_: {
           #     inherit src;
-          #     outputHash = "sha256-EPfJTWXVmUkZdzliF7OH4t/4gW7NesxwbJ7gX6XrOvg=";
+          #     outputHash = "sha256-R+zQuIbgeyY3fNUSr9zuXmQ+OqaWkXUuogjg/cJ1kas=";
           #   });
           # });
-          zellij = super.unstable.zellij;
+          # zellij = super.unstable.zellij;
 
           # alacritty = super.unstable.alacritty;
           # zellij = super.unstable.zellij;
