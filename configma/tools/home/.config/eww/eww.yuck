@@ -5,7 +5,7 @@
 (deflisten monitors-info :initial "{}" "hyprkool info -m monitors-all-info")
 (deflisten submap :initial "{\"submap\": \"\"}" "hyprkool info -m submap")
 
-(deflisten brightness :initial "{}" "./scripts/brightness.sh")
+(deflisten brightness :initial "{\"level\": \"100\"}" "./scripts/brightness.sh")
 
 (defpoll idle :initial "{\"inhibit\": false}" :interval "5s" "./scripts/idle_inhibit.sh")
 (defpoll volume :initial "{\"level\": 0, \"muted\": true}" :interval "5s" "./scripts/volume.sh")
@@ -378,7 +378,8 @@
     :onrightclick "./scripts/idle_inhibit.sh click"
     :onscroll "./scripts/brightness-scroll.sh {}"
     (fancy-box :color "#F8BD96"
-      (label :text "${idle.inhibit ? "👁 " : ""} ${brightness.level}")
+      (label :text "${idle.inhibit ? "👁 " : ""} ")
+      (label :text " ${brightness.level}")
     )
   )
 )
