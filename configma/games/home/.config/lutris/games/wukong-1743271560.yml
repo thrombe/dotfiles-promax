@@ -1,0 +1,5 @@
+game:
+  exe: /home/issac/Games/BlackMythWukong/b1.exe
+  prefix: /home/issac/Games/0prefixes/wukong-ge-8-26
+wine:
+  version: lutris-GE-Proton8-15-x86_64

@@ -1,0 +1,4 @@
+game:
+  arch: win64
+  exe: /home/issac/Games/DOOM Eternal/DOOMEternalx64vk.exe
+  prefix: /home/issac/Games/0prefixes/wine-ge-8

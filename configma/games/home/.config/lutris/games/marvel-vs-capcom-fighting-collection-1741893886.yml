@@ -1,0 +1,9 @@
+game:
+  exe: /home/issac/Games/Marvel vs Capcom Fighting Collection/MarvelVsCapcomFightingCollection.exe
+  prefix: /home/issac/Games/0prefixes/wine-ge-8
+system:
+  disable_runtime: false
+  prefer_system_libs: false
+wine:
+  custom_wine_path: ''
+  version: wine-ge-8-26-x86_64

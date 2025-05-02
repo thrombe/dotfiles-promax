@@ -1,0 +1,7 @@
+game:
+  arch: win64
+  exe: /home/issac/Games/Buckshot Roulette/Buckshot Roulette.exe
+  prefix: /home/issac/Games/0prefixes/wine-ge-8
+wine:
+  custom_wine_path: ''
+  version: lutris-GE-Proton8-15-x86_64

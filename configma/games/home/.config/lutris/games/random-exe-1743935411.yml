@@ -1,0 +1,6 @@
+game:
+  exe: /home/issac/0Git/zhottem/zig-out/bin/zhottem.exe
+  prefix: /home/issac/Games/0prefixes/wukong-ge-8-26
+  working_dir: /home/issac/0Git/zhottem
+wine:
+  version: wine-ge-8-26-x86_64
