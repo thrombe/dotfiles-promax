@@ -35,7 +35,8 @@ auto-format = true
 indent = { tab-width = 4, unit = "    " }
 formatter = { command = "ruff", args = ["format", "-"] }
 # not sure if it is necessary to mention both as helix docs have just one, but ruff has to be used with an lsp
-language-servers = ["basedpyright", "pyright", "pylsp", "ruff", "pylyzer"]
+# language-servers = ["basedpyright", "pyright", "pylsp", "ruff", "pylyzer"]
+language-servers = ["pyright", "ruff"]
 
 [language-server.pyright.config.python.analysis]
 typeCheckingMode = "basic"
