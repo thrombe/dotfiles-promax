@@ -14,5 +14,9 @@
         "key": "shift+tab",
         "command": "workbench.action.quickOpenNavigatePrevious",
         "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "composerMode.agent"
     }
 ]
