@@ -1,0 +1,40 @@
+[user]
+name = "thrombe"
+email = "yash.n.thombare620@gmail.com"
+
+
+[git]
+# auto track remote branches as bookmarks
+auto-local-bookmark = true
+
+# can't push these commits
+private-commits = "description(glob:'private:*')"
+
+[revsets]
+log = 'all()'
+
+[ui]
+default-command = ["log"]
+
+# default pager is buggy :/
+pager = "delta"
+
+paginate = "auto"
+# paginate = "never"
+
+# Shows a single snapshot and one or more diffs to apply to it
+# conflict-marker-style = "diff"
+# Shows a snapshot for each side and base of the conflict
+# conflict-marker-style = "snapshot"
+# Uses Git's "diff3" conflict markers to support tools that depend on it
+conflict-marker-style = "git"
+
+[ui.streampager]
+# interface = "quit-if-one-page"
+interface = "quit-quickly-or-clear-output"
+
+[ui.diff]
+format = "git"
+
+[aliases]
+l = ["log", "-r", "(main..@):: | (main..@)-"]

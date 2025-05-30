@@ -71,8 +71,13 @@
         source ~/.cache/carapace/init.nu
 
         source ~/.cache/atuin/init.nu
+
+        source ~/.cache/jj/completions-jj.nu
       '';
       extraEnv = ''
+        mkdir ~/.cache/jj
+        jj util completion nushell | save -f ~/.cache/jj/completions-jj.nu
+
         mkdir ~/.cache/starship
         starship init nu | save -f ~/.cache/starship/init.nu
 

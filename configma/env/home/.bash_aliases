@@ -45,6 +45,11 @@ function ya() {
 # zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 # source <(carapace _carapace)
 
+# - [Installation and setup - Jujutsu docs](https://jj-vcs.github.io/jj/latest/install-and-setup/)
+# autoload -U compinit
+# compinit
+source <(jj util completion zsh)
+
 eval "$(atuin init zsh --disable-up-arrow)"
 
 eval "$(zoxide init zsh)"

@@ -521,10 +521,15 @@
             broot
             libtree # ldd but tree
             binwalk # look for standard headers inside binary files (zip embedded in bin etc)
+
             git
             gitui
             lazygit
             delta
+            jujutsu # a git compatible vcs
+            lazyjj
+            jjui
+
             tokei # cloc but rust
             # distrobox
             trashy
