@@ -42,16 +42,16 @@
 
     if [[ "$(${is-hyprland}/bin/is-hyprland)" == "1" ]]; then
       echo "powerstate hyprland"
-    
+
       instance=$(sudo -u issac bash -c "hyprctl instances -j | jq -r '.[0].instance'")
       sudo -u issac bash -c "hyprctl -i $instance keyword monitor eDP-1,2560x1600@165.00Hz,0x0,1"
     elif [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
       echo "powerstate wayland"
-    
+
       ${pkgs.wlr-randr}/bin/wlr-randr --output eDP-1 --mode 2560x1600@165.001999Hz
     else
       echo "powerstate x11"
-    
+
       export XAUTHORITY=/home/${username}/.Xauthority
       export DISPLAY=:0
 
@@ -71,7 +71,7 @@
 
     if [[ "$(${is-hyprland}/bin/is-hyprland)" == "1" ]]; then
       echo "powerstate hyprland"
-    
+
       instance=$(sudo -u issac bash -c "hyprctl instances -j | jq -r '.[0].instance'")
       sudo -u issac bash -c "hyprctl -i $instance keyword monitor eDP-1,2560x1600@60.00Hz,0x0,1"
     elif [[ "$(${is-wayland}/bin/is-wayland)" == "1" ]]; then
@@ -179,8 +179,8 @@ in {
     fedora-asus-kernel = {buildLinux, ...} @ args:
       buildLinux (args
         // rec {
-          version = "6.11.11";
-          extraMeta.branch = "6.11";
+          version = "6.14.8";
+          extraMeta.branch = "6.14";
           modDirVersion = version;
 
           # extraConfig = "${fedora-40-asus-kernel-source}/package/kernel-x86_64-fedora.config";
@@ -193,8 +193,8 @@ in {
             # - [/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/)
             # - [kernel build logs](https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-40-x86_64/07623253-kernel/builder-live.log.gz)
             src = builtins.fetchurl {
-              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-41-x86_64/08345639-kernel/kernel-6.11.11-666.rog.fc41.src.rpm";
-              sha256 = "sha256:1ffxbs49qncx5hiblml5i884srr5xbzp3jyafkfi2hzfprb4fzbj";
+              url = "https://download.copr.fedorainfracloud.org/results/lukenukem/asus-kernel/fedora-42-x86_64/09078139-kernel-rog-cachyos/kernel-rog-cachyos-6.14.8-rog_cachyos1.fc42.src.rpm";
+              sha256 = "sha256:1pipwyryqbl93x1asws9vf90skr5ps9vb0pyza4wcrbkc2l4ziza";
             };
 
             phases = ["unpackPhase" "patchPhase"];
@@ -209,26 +209,26 @@ in {
 
             patchPhase = ''
               # apply all patches
-              # ${pkgs.fd}/bin/fd -t f -e patch . > ./patches.txt
-              patch -p1 -F50 < ./patch-6.11-redhat.patch
-              patches=$(grep "^ApplyOptionalPatch " ./kernel.spec | grep -v "{patchversion}" | cut -d " " -f2)
+              # patch -p1 -F50 < ./patch-6.11-redhat.patch
+              # patches=$(grep "^ApplyOptionalPatch " ./kernel-cachyos.spec | grep -v "{patchversion}" | cut -d " " -f2)
+              patches=$(${pkgs.fd}/bin/fd -t f -e patch .)
               for patch in $patches; do
                 patch -p1 -F50 < ./$patch
               done
 
               # ./Makefile.rhelver is not included in the kernel.dev package. so make sure it is not needed at all
               # inject RHEL stuff directly into the makefile
-              cd $out
-              var1="# Set RHEL variables"
-              TOTAL_LINES=`cat ./Makefile | wc -l`
-              BEGIN_LINE=`grep -n -e "$var1" ./Makefile | cut -d : -f 1`
-              BEGIN_LINE=$(($BEGIN_LINE - 1))
-              TAIL_LINES=$(($TOTAL_LINES - $BEGIN_LINE - 11))
+              # cd $out
+              # var1="# Set RHEL variables"
+              # TOTAL_LINES=`cat ./Makefile | wc -l`
+              # BEGIN_LINE=`grep -n -e "$var1" ./Makefile | cut -d : -f 1`
+              # BEGIN_LINE=$(($BEGIN_LINE - 1))
+              # TAIL_LINES=$(($TOTAL_LINES - $BEGIN_LINE - 11))
 
-              head -n $BEGIN_LINE ./Makefile > ./Makefile2
-              cat ./Makefile.rhelver >> ./Makefile2
-              tail -n $TAIL_LINES ./Makefile >> ./Makefile2
-              mv ./Makefile2 ./Makefile
+              # head -n $BEGIN_LINE ./Makefile > ./Makefile2
+              # cat ./Makefile.rhelver >> ./Makefile2
+              # tail -n $TAIL_LINES ./Makefile >> ./Makefile2
+              # mv ./Makefile2 ./Makefile
             '';
           };
           kernelPatches = [];
@@ -553,7 +553,7 @@ in {
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Do not disable this unless your GPU is unsupported or if you have a good reason to.
-    open = false;
+    open = true;
     # if 'nvidia-smi -L' unable to determine device
     # some nvidia forums said to use non-open drivers
 
@@ -563,16 +563,35 @@ in {
     nvidiaSettings = lib.mkForce false;
     # nvidiaSettings = true;
 
+    # ??
+    # dynamicBoost.enable = cfg.enable && cfg.withIntegratedGPU;
+
     # package = config.boot.kernelPackages.nvidiaPackages.production;
-    # - [TLATER nix config](https://github.com/TLATER/dotfiles/blob/9122f514f747f4366b26ebc12573403ea87685f4/nixos-config/hosts/yui/nvidia/default.nix#L12)
-    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "560.35.03";
-      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-      sha256_aarch64 = "sha256-s8ZAVKvRNXpjxRYqM3E5oss5FdqW+tv1qQC2pDjfG+s=";
-      openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
-      settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-      persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
-    };
+    # - [TLATER nix config](https://github.com/TLATER/dotfiles/blob/aead0719222fb9140976b190b3aed79f8ea6b80b/nixos-modules/nvidia/default.nix)
+    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #   version = "570.133.07";
+    #   sha256_64bit = "sha256-LUPmTFgb5e9VTemIixqpADfvbUX1QoTT2dztwI3E3CY=";
+    #   sha256_aarch64 = lib.fakeHash;
+    #   openSha256 = "sha256-9l8N83Spj0MccA8+8R1uqiXBS0Ag4JrLPjrU3TaXHnM=";
+    #   settingsSha256 = "sha256-XMk+FvTlGpMquM8aE8kgYK2PIEszUZD2+Zmj2OpYrzU=";
+    #   persistencedSha256 = lib.fakeHash;
+    # };
+    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #   version = "570.86.16";
+    #   sha256_64bit = "sha256-RWPqS7ZUJH9JEAWlfHLGdqrNlavhaR1xMyzs8lJhy9U=";
+    #   openSha256 = "sha256-DuVNA63+pJ8IB7Tw2gM4HbwlOh1bcDg2AN2mbEU9VPE=";
+    #   settingsSha256 = "sha256-9rtqh64TyhDF5fFAYiWl3oDHzKJqyOW3abpcf2iNRT8=";
+    #   usePersistenced = false;
+    # };
+    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #   version = "560.35.03";
+    #   sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+    #   sha256_aarch64 = "sha256-s8ZAVKvRNXpjxRYqM3E5oss5FdqW+tv1qQC2pDjfG+s=";
+    #   openSha256 = "sha256-/32Zf0dKrofTmPZ3Ratw4vDM7B+OgpC4p7s+RHUjCrg=";
+    #   settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+    #   persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
+    # };
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
       offload = {

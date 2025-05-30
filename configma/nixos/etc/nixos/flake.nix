@@ -2,7 +2,7 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # nixpkgs-git.url = "github:nixos/nixpkgs";
@@ -28,7 +28,7 @@
     # };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -50,7 +50,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     stylix = {
-      url = "github:danth/stylix/release-24.11";
+      url = "github:danth/stylix/release-25.05";
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
@@ -269,6 +269,30 @@
     };
 
     commonModules = [
+      ({...}: {
+        nix.settings = {
+          # nixConfig = {
+          substituters = [
+            "https://cache.nixos.org/"
+            "https://hyprland.cachix.org"
+
+            # Replace the official cache with a mirror located in China
+            # "https://mirrors.ustc.edu.cn/nix-channels/store"
+          ];
+          trusted-substituters = [
+            "https://nix-community.cachix.org"
+            # - [cuda-maintainers | Cachix](https://app.cachix.org/cache/cuda-maintainers#pull)
+            "https://cuda-maintainers.cachix.org"
+            "https://hyprland.cachix.org"
+          ];
+          trusted-public-keys = [
+            "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+          ];
+        };
+      })
+
       # {_module.args = inputs;}
       inputs.nix-index-database.nixosModules.nix-index
       inputs.stylix.nixosModules.stylix
@@ -305,7 +329,7 @@
         # home-manager.users."${username}" = import ./home.nix;
         home-manager.users."${username}" = {config, ...}: {
           imports = [
-            ./nushell.nix
+            # ./nushell.nix
           ];
 
           home.username = "${username}";
@@ -347,6 +371,8 @@
 
           # stylix hm module goofs up when kde is not running
           stylix.targets.kde.enable = false;
+          stylix.targets.firefox.profileNames = [];
+          stylix.targets.qt.platform = "qtct";
         };
       }
       ./firefox.nix
@@ -383,7 +409,7 @@
         # Enable CUPS to print documents.
         services.printing.enable = true;
 
-        hardware.pulseaudio.enable = false;
+        services.pulseaudio.enable = false;
         security.rtkit.enable = true;
         services.pipewire = {
           enable = true;
@@ -661,7 +687,10 @@
           };
         };
         users.defaultUserShell = pkgs.zsh;
-        environment.shells = with pkgs; [zsh nushell];
+        environment.shells = with pkgs; [
+          zsh
+          # nushell
+        ];
         # https://rycee.gitlab.io/home-manager/options.html#opt-programs.zsh.enableCompletion
         environment.pathsToLink = ["/share/zsh"];
         environment.variables = {
@@ -880,7 +909,8 @@
         };
 
         fonts.packages = with pkgs; [
-          nerdfonts
+          # nerdfonts
+          nerd-fonts.jetbrains-mono
           meslo-lgs-nf
         ];
 
@@ -897,7 +927,7 @@
       ga402xu = inputs.nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           hostname = "ga402xu";
-          inherit inputs pkgs system username;
+          inherit inputs system username pkgs;
         };
 
         modules =

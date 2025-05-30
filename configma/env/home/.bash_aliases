@@ -3,7 +3,7 @@
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
-export FLAKE="$(realpath /etc/nixos)"
+export NH_FLAKE="$(realpath /etc/nixos)"
 
 # - [Go directory in $HOME : r/golang](https://www.reddit.com/r/golang/comments/m4yi12/go_directory_in_home/)
 # export GOPATH="$HOME/.go"
