@@ -1,5 +1,5 @@
 
-repo = "~/0Git/dotfiles-promax/configma"
+repo = "~/daata/repos/projects/dotfiles-promax/configma"
 
 [[profiles]]
 name = "gl553ve"
@@ -45,23 +45,23 @@ modules = [
 
 [[modules]]
 name = "notes"
-path = "~/0Git/notes/configma"
+path = "~/daata/repos/projects/notes/configma"
 
 [[modules]]
 name = "tools-private"
-path = "~/0Git/dotfiles-promax-private/configma"
+path = "~/daata/repos/projects/dotfiles-promax-private/configma"
 
 [[modules]]
 name = "phone-private"
-path = "~/0Git/dotfiles-promax-private/configma"
+path = "~/daata/repos/projects/dotfiles-promax-private/configma"
 
 [[modules]]
 name = "easyeffects-irs"
-path = "~/0Git/dotfiles-promax-private/configma"
+path = "~/daata/repos/projects/dotfiles-promax-private/configma"
 
 [[modules]]
 name = "game-savefiles"
-path = "~/Games/configma"
+path = "~/daata/games/configma"
 
 [[modules]]
 name = "save-data"
@@ -69,7 +69,7 @@ path = "~/daata/configma"
 
 [[modules]]
 name = "games-private"
-path = "~/0Git/dotfiles-promax-private/configma"
+path = "~/daata/repos/projects/dotfiles-promax-private/configma"
 
 
 
