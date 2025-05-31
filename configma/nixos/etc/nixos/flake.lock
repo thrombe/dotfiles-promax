@@ -493,11 +493,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748487945,
-        "narHash": "sha256-e9zc/rHdoH9i+sFFhhQiKoF6IuD+T2rB/nUyPaO7CCg=",
+        "lastModified": 1748627093,
+        "narHash": "sha256-1hFy+bZRZoYb7RaUXsW+9YFtjjFrQpschd8qZpy9org=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0d13ea58d565d3c1c1468ddae1f623316dc395d9",
+        "rev": "afe9ce8b2014fa1230ade38bf07156cdcef63658",
         "type": "github"
       },
       "original": {
@@ -923,6 +923,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-zellij-0-41-1": {
+      "locked": {
+        "lastModified": 1731731112,
+        "narHash": "sha256-nAlsuFVl77/sioOE3ce7ukm8iC+DmhakoYsDQfcbpLY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "34a626458d686f1b58139620a8b2793e9e123bba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "34a626458d686f1b58139620a8b2793e9e123bba",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": [
@@ -1040,6 +1056,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-zellij-0-41-1": "nixpkgs-zellij-0-41-1",
         "nixvim": "nixvim",
         "rust-overlay": "rust-overlay",
         "scripts": "scripts",
@@ -1397,16 +1414,16 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1742198761,
-        "narHash": "sha256-qvm8mRm/YYcuNX2Rv0tYjcIXjaF9dkwd7wpL++ho3t0=",
+        "lastModified": 1730717861,
+        "narHash": "sha256-EUoJHM0Jm0uFKFeHhtzon/ZRC615SHfYa1gr4RnCNBw=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "cad0888920adc0f97907048ab216c7846db7f594",
+        "rev": "9b756be3d7dd9341ea1a62ed7539692982e89a18",
         "type": "github"
       },
       "original": {
         "owner": "zellij-org",
-        "ref": "v0.42.0",
+        "ref": "v0.41.1",
         "repo": "zellij",
         "type": "github"
       }

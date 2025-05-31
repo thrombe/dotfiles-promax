@@ -8,6 +8,9 @@
     # nixpkgs-git.url = "github:nixos/nixpkgs";
     # nur.url = "github:nix-community/NUR";
 
+    # - [zellij | Nix or Devbox](https://www.nixhub.io/packages/zellij)
+    nixpkgs-zellij-0-41-1.url = "github:nixos/nixpkgs/34a626458d686f1b58139620a8b2793e9e123bba";
+
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -62,7 +65,7 @@
       flake = false;
     };
     zellij = {
-      url = "github:zellij-org/zellij/v0.42.0";
+      url = "github:zellij-org/zellij/v0.41.1";
       flake = false;
     };
     helix = {
@@ -146,6 +149,9 @@
         inherit system;
         config.allowUnfree = true;
       };
+      nixpkgs-zellij-0-41-1 = import inputs.nixpkgs-zellij-0-41-1 {
+        inherit system;
+      };
       # pkgs-git = import inputs.nixpkgs-git {
       #   inherit system;
       #   config.allowUnfree = true;
@@ -205,16 +211,74 @@
           # });
           # alacritty = super.unstable.alacritty;
 
-          # - [Sixel support broken since v0.40.0](https://github.com/zellij-org/zellij/issues/3372)
-          # - [zellij fix sixel](https://github.com/zellij-org/zellij/pull/3506)
-          # zellij = super.unstable.zellij.overrideAttrs (drv: rec {
+          # sixel broke:
+          #   - [Sixel support broken since v0.40.0](https://github.com/zellij-org/zellij/issues/3372)
+          #   - [zellij fix sixel](https://github.com/zellij-org/zellij/pull/3506)
+          # vertical pane collapse breaks helix scroll:
+          #   - [zellij package.nix](https://github.com/NixOS/nixpkgs/blob/nixos-25.05/pkgs/by-name/ze/zellij/package.nix)
+          #   - [zellij 0.41.1](https://github.com/NixOS/nixpkgs/commit/d33fc745e4c60197d3c3f672164e51f8f2afa0da)
+          # zellij = super.rustPlatform.buildRustPackage (finalAttrs: {
+          #   pname = "zellij";
+          #   version = "0.41.1";
+
           #   src = inputs.zellij;
-          #   cargoDeps = drv.cargoDeps.overrideAttrs (_: {
-          #     inherit src;
-          #     outputHash = "sha256-R+zQuIbgeyY3fNUSr9zuXmQ+OqaWkXUuogjg/cJ1kas=";
-          #   });
+
+          #   # Remove the `vendored_curl` feature in order to link against the libcurl from nixpkgs instead of
+          #   # the vendored one
+          #   postPatch = ''
+          #     substituteInPlace zellij-utils/Cargo.toml \
+          #       --replace-fail 'isahc = "1.7.2"' 'isahc = { version = "1.7.2", default-features = false, features = ["http2", "text-decoding"] }'
+          #   '';
+
+          #   useFetchCargoVendor = true;
+          #   cargoHash = "sha256-YpRWUl2LT1+I6OPJyltZbQ5WIQRQlrlpNBIOoNJBt5I=";
+
+          #   env.OPENSSL_NO_VENDOR = 1;
+
+          #   nativeBuildInputs = with super; [
+          #     mandown
+          #     installShellFiles
+          #     pkg-config
+          #     (inputs.nixpkgs.lib.getDev curl)
+          #   ];
+
+          #   buildInputs = with super; [
+          #     curl
+          #     openssl
+          #   ];
+
+          #   nativeCheckInputs = with super; [
+          #     writableTmpDirAsHomeHook
+          #   ];
+
+          #   nativeInstallCheckInputs = with super; [
+          #     versionCheckHook
+          #   ];
+          #   versionCheckProgramArg = "--version";
+          #   doInstallCheck = true;
+
+          #   # Ensure that we don't vendor curl, but instead link against the libcurl from nixpkgs
+          #   installCheckPhase = inputs.nixpkgs.lib.optionalString (super.stdenv.hostPlatform.libc == "glibc") ''
+          #     runHook preInstallCheck
+
+          #     ldd "$out/bin/zellij" | grep libcurl.so
+
+          #     runHook postInstallCheck
+          #   '';
+
+          #   postInstall =
+          #     ''
+          #       mandown docs/MANPAGE.md > zellij.1
+          #       installManPage zellij.1
+          #     ''
+          #     + inputs.nixpkgs.lib.optionalString (super.stdenv.buildPlatform.canExecute super.stdenv.hostPlatform) ''
+          #       installShellCompletion --cmd $pname \
+          #         --bash <($out/bin/zellij setup --generate-completion bash) \
+          #         --fish <($out/bin/zellij setup --generate-completion fish) \
+          #         --zsh <($out/bin/zellij setup --generate-completion zsh)
+          #     '';
           # });
-          # zellij = super.unstable.zellij;
+          zellij = super.nixpkgs-zellij-0-41-1.zellij;
 
           # alacritty = super.unstable.alacritty;
           # zellij = super.unstable.zellij;
