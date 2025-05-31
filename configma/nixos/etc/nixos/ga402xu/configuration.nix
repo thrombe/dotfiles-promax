@@ -553,14 +553,14 @@ in {
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Do not disable this unless your GPU is unsupported or if you have a good reason to.
-    open = true;
+    open = false;
     # if 'nvidia-smi -L' unable to determine device
     # some nvidia forums said to use non-open drivers
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     # - [nvidia-setting broken](https://github.com/TLATER/dotfiles/blob/0310be00fda729b4880ec55e48eb4f81d4ed0b75/nixos-config/hosts/yui/nvidia/default.nix#L17)
-    nvidiaSettings = lib.mkForce false;
+    nvidiaSettings = lib.mkForce true;
     # nvidiaSettings = true;
 
     # ??
