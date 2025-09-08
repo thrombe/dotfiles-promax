@@ -121,6 +121,11 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.hyprland.follows = "hyprland";
     };
+    jjazy = {
+      url = "github:thrombe/jjazy";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     zathura-images = {
       url = "github:thrombe/zathura-images";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -195,6 +200,7 @@
           hyprkool-plugin = (flakePackage inputs.hyprkool "hyprkool-plugin").override {
             hyprland = super.hyprland;
           };
+          jjazy = flakePackage inputs.jjazy "jjazy";
 
           # - [override cargoSha256 in buildRustPackage](https://discourse.nixos.org/t/is-it-possible-to-override-cargosha256-in-buildrustpackage/4393/3)
 
@@ -282,6 +288,7 @@
 
           # alacritty = super.unstable.alacritty;
           # zellij = super.unstable.zellij;
+          jujutsu = super.unstable.jujutsu;
           zoxide = super.unstable.zoxide;
           yazi = super.unstable.yazi;
           broot = super.unstable.broot;
@@ -595,6 +602,7 @@
             jujutsu # a git compatible vcs
             lazyjj
             jjui
+            jjazy
 
             tokei # cloc but rust
             # distrobox
@@ -643,6 +651,7 @@
             s-tui # fan rpm + other stuff
             # zenith-nvidia # - [zenith](https://github.com/bvaisvil/zenith)
             nvtopPackages.full # gpu stats
+            nvitop # gpu stats
             # bottom # battery stat + other stuff
             # battop # only battery stat
 
