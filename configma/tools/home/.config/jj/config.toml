@@ -8,12 +8,13 @@ email = "yash.n.thombare620@gmail.com"
 auto-local-bookmark = true
 
 # can't push these commits
-private-commits = "description(glob:'private:*')"
+private-commits = "description(glob:'private:*') | description(glob:'wip:*')"
 
 [revsets]
 log = 'all()'
 
 [ui]
+diff-formatter = ":git"
 default-command = ["log"]
 
 # default pager is buggy :/
@@ -32,9 +33,6 @@ conflict-marker-style = "git"
 [ui.streampager]
 # interface = "quit-if-one-page"
 interface = "quit-quickly-or-clear-output"
-
-[ui.diff]
-format = "git"
 
 [aliases]
 l = ["log", "-r", "(main..@):: | (main..@)-"]
