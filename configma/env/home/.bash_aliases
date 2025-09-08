@@ -64,8 +64,7 @@ alias kk="qalc"
 alias k="kalker"
 alias tsa="tree -a"
 alias ts="tree"
-# alias cargob="RUST_BACKTRACE=1 cargo"
-alias d="QT_QPA_PLATFORM=xcb dolphin_whale" # qpa platform xcb cuz dolphin transparent bg is buggy on hyprland
+alias d="dolphin_whale"
 alias t="new_terminal"
 alias x="detach"
 alias ssh7s="ssh 192.168.1.190 -p 8022"
@@ -81,6 +80,7 @@ alias zz="open_zellij_workspace"
 alias za="zellij a \$(zellij ls | grep -v 'EXITED' | cut -d ' ' -f1 | sed 's/\x1b\[[0-9;]*m//g' | fzf)"
 alias zri="zellij run --in-place -- "
 alias yp="~/0Git/dotfiles-promax-private/scripts/yankpass.sh"
+alias chrome="chromium --disable-features=WaylandFractionalScaleV1"
 
 # trashy cli
 alias tp="trash put"
