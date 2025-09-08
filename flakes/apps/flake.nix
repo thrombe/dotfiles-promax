@@ -2,7 +2,7 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -304,19 +304,23 @@
 
           # rustdesk-flutter
           # anydesk
-          # remmina
+          remmina
 
-          ngrok
+          # gtk man. never works on nix :(
+          pika-backup
+
+          # ngrok
 
           # logseq
           # obsidian
           # focalboard
           # focalboard-server
 
+          audacity
           obs-studio
           kdenlive
           krita
-          # blender
+          blender
           # godot_4
 
           # wf-recorder
@@ -324,7 +328,7 @@
           # record-this-window
 
           # run `ventoy-web`
-          ventoy
+          # ventoy
 
           # - [gparted cannot open display](https://www.reddit.com/r/hyprland/comments/13ri2nj/gparted_cannot_open_display/)
           # gparted
@@ -334,6 +338,14 @@
           opera
           # libreoffice-qt
           # chromium
+          # firefox-devedition
+          # brave
+
+          # fractal software
+          # mandelbulber
+          # golly
+          # marble-marcher-ce
+          # TODO: try fragmentarium
 
           # music apps
           # spotube
