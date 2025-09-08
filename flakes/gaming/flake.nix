@@ -2,7 +2,7 @@
   description = "yaaaaaaaaaaaaaaaaaaaaa";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -82,6 +82,13 @@
             # pkg-config
             # gnome3.adwaita-icon-theme
 
+            # proton version managers (pvm :|)
+            # protonplus # gui better than protonup? (also a game launcher)
+            # protonup-qt # gui (also a game launcher)
+            # protonup-ng # cli
+
+            # - [BadKiko/steam-online-fix-launcher](https://github.com/BadKiko/steam-online-fix-launcher)
+            # - [Open-Wine-Components/umu-launcher](https://github.com/Open-Wine-Components/umu-launcher)
             # lutris
             mangohud
             (lutris.override {
@@ -91,8 +98,6 @@
                 gamescope
               ];
             })
-
-            zerotierone
 
             renderdoc
             (pkgs.writeShellScriptBin "fugl" ''
