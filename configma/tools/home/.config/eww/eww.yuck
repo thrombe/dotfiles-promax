@@ -242,7 +242,7 @@
 (defwidget Launcher []
   (eventbox
     :onclick "rofi -show drun -show-icons &"
-    :onmiddleclick "eww reload; eww open-many top-bar-0 top-bar-1"
+    :onmiddleclick "eww kill; eww daemon; eww open-many top-bar-0 top-bar-1"
     (fancy-box :color "#89b4fa"
       (label
         :text ""
