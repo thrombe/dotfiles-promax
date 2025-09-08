@@ -1,5 +1,5 @@
 {
-    "serverVersion": "4.19.0",
+    "serverVersion": "4.20.8",
     "appPath": "/home/issac/.stremio-server",
     "cacheRoot": "/home/issac/.stremio-server",
     "cacheSize": 2147483648,
@@ -10,5 +10,16 @@
     "btDownloadSpeedHardLimit": 3670016,
     "btMinPeersForStable": 5,
     "remoteHttps": "",
-    "localAddonEnabled": false
+    "localAddonEnabled": false,
+    "transcodeHorsepower": 0.75,
+    "transcodeMaxBitRate": 0,
+    "transcodeConcurrency": 1,
+    "transcodeTrackConcurrency": 1,
+    "transcodeHardwareAccel": true,
+    "transcodeProfile": null,
+    "allTranscodeProfiles": [
+        "nvenc-linux",
+        "vaapi-renderD128"
+    ],
+    "transcodeMaxWidth": 1920
 }
