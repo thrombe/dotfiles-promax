@@ -1,0 +1,8 @@
+
+[keys.preview]
+half_page_up = ["ctrl+k"]
+half_page_down = ["ctrl+j"]
+
+[preview]
+show_at_start = true
+extra_args = ["--summary", "--tool", "delta"]
