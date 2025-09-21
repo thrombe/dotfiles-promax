@@ -778,11 +778,11 @@
         "zls": "zls"
       },
       "locked": {
-        "lastModified": 1757368901,
-        "narHash": "sha256-utzqDREYL3JzzrY9c7KG1jqQ4og0sSUKL6eXvJetqWo=",
+        "lastModified": 1758491136,
+        "narHash": "sha256-vbSgE9J0PfbAB//yQZBCFsdrN++ZneQwTopSjShJ8HE=",
         "owner": "thrombe",
         "repo": "jjazy",
-        "rev": "eb2efac208d77350aa9ff5d4d43b3c41023845fc",
+        "rev": "07000cb22358a524c609799e3b16d43976194d23",
         "type": "github"
       },
       "original": {
